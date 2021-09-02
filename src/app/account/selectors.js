@@ -3,7 +3,12 @@ import { store } from "../store.js"
 
 const selectState = () => store.getState();
 
-export const selectIsSignedIn = createSelector(
+const selectAccountState = createSelector(
     selectState,
+    state => state.account
+)
+
+export const selectIsSignedIn = createSelector(
+    selectAccountState,
     state => state.signedIn
 )
