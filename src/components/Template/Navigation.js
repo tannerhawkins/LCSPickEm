@@ -3,6 +3,7 @@ import { HashLink } from 'react-router-hash-link';
 
 import Hamburger from './Hamburger';
 import routes from '../../data/routes';
+import Login from '../Authentication/Login';
 
 // Websites Navbar, displays routes defined in 'src/data/routes'
 const Navigation = () => (
@@ -21,6 +22,7 @@ const Navigation = () => (
         ))}
       </ul>
     </nav>
+    <Login />
     <Hamburger />
   </header>
 );

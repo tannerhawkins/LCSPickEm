@@ -7,7 +7,6 @@ import Main from '../layouts/Main';
 const Index = () => {
   const dispatch = useDispatch();
   const isSignedIn = useSelector(selectIsSignedIn);
-  console.log(isSignedIn);
 
   const handleSignIn = () => {
     dispatch(signIn());
