@@ -11,12 +11,18 @@ const initialState = {
         return {
           ...state,
           signedIn: true,
+          user: action.payload,
+          displayName: action.payload.displayName,
+          email: action.payload.email,
         }
       
       case "SIGN_OUT":
         return {
           ...state,
           signedIn: false,
+          user: null,
+          displayName: null,
+          email: null,
         }
       default:
         // If this reducer doesn't recognize the action type, or doesn't
