@@ -9,7 +9,7 @@ import ScrollToTop from '../components/Template/ScrollToTop';
 const Main = (props) => (
   <HelmetProvider>
     <ScrollToTop />
-    <Helmet titleTemplate="%s | Comp523 Site" defaultTitle="Comp523 Site" defer={false}>
+    <Helmet titleTemplate="%s | Ancient Path Adventures" defaultTitle="Ancient Path Adventures" defer={false}>
       {props.title && <title>{props.title}</title>}
       <meta name="description" content={props.description} />
     </Helmet>
@@ -18,7 +18,6 @@ const Main = (props) => (
       <div id="main">
         {props.children}
       </div>
-      {props.fullPage ? null : <SideBar />}
     </div>
   </HelmetProvider>
 );
@@ -37,7 +36,7 @@ Main.defaultProps = {
   children: null,
   fullPage: false,
   title: null,
-  description: "Michael D'Angelo's personal website.",
+  description: "Ancient Path Adventures",
 };
 
 export default Main;

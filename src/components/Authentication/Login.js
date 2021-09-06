@@ -4,11 +4,13 @@ import {useAuthState} from 'react-firebase-hooks/auth';
 import { useDispatch, useSelector } from 'react-redux';
 import { signIn, signOut } from '../../app/account/actions.js';
 import { selectDisplayName } from '../../app/account/selectors.js';
+import StyledButton from '../Template/Button.js';
+import { Constants } from '../../data/constants.js';
+import styled from 'styled-components';
   
 const Login = () => {
     const dispatch = useDispatch();
     const loginState = useAuthState(auth)[0];
-    const displayName = useSelector(selectDisplayName);
   
     // Sign in with google
     const signin = () => {
@@ -26,13 +28,15 @@ const Login = () => {
       
     return (
         <div>
-            {displayName}
-            {!loginState && <button onClick={signin}>Sign In with Google</button>}
-            {loginState && <button onClick={logout}>
-                Logout
-            </button>}
+            {!loginState && <StyledSignInButton onClick={signin}>SIGN-IN</StyledSignInButton>}
+            {loginState && <div onClick={logout}>Logout</div>}
         </div>
     );
 }
+
+const StyledSignInButton = styled(StyledButton)`
+  background-color: ${Constants.DARK_GREEN};
+  width: 120px;
+`
   
 export default Login;
