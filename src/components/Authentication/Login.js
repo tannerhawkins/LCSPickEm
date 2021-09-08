@@ -17,7 +17,7 @@ const Login = () => {
         auth.signInWithPopup(provider).then((result) => {
             const user = result.user;
             dispatch(signIn(user));
-        }).catch(alert);
+        }).catch(alert => alert.message ? console.log(alert.message) : console.log("Unexpected Error"));
     }
 
     const logout = () => {
@@ -29,7 +29,7 @@ const Login = () => {
     return (
         <div>
             {!loginState && <StyledSignInButton onClick={signin}>SIGN-IN</StyledSignInButton>}
-            {loginState && <div onClick={logout}>Logout</div>}
+            {loginState && <StyledSignInButton onClick={logout}>LOGOUT</StyledSignInButton>}
         </div>
     );
 }
