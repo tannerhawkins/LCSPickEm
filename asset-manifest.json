@@ -1,0 +1,35 @@
+{
+  "files": {
+    "main.css": "/AncientPathAdventures/static/css/main.6dea0f05.chunk.css",
+    "main.js": "/AncientPathAdventures/static/js/main.47066e3d.chunk.js",
+    "main.js.map": "/AncientPathAdventures/static/js/main.47066e3d.chunk.js.map",
+    "runtime-main.js": "/AncientPathAdventures/static/js/runtime-main.5975b48b.js",
+    "runtime-main.js.map": "/AncientPathAdventures/static/js/runtime-main.5975b48b.js.map",
+    "static/js/2.99f3a8fb.chunk.js": "/AncientPathAdventures/static/js/2.99f3a8fb.chunk.js",
+    "static/js/2.99f3a8fb.chunk.js.map": "/AncientPathAdventures/static/js/2.99f3a8fb.chunk.js.map",
+    "static/css/3.9db5570a.chunk.css": "/AncientPathAdventures/static/css/3.9db5570a.chunk.css",
+    "static/js/3.867e1c7f.chunk.js": "/AncientPathAdventures/static/js/3.867e1c7f.chunk.js",
+    "static/js/3.867e1c7f.chunk.js.map": "/AncientPathAdventures/static/js/3.867e1c7f.chunk.js.map",
+    "static/js/4.f6b73d09.chunk.js": "/AncientPathAdventures/static/js/4.f6b73d09.chunk.js",
+    "static/js/4.f6b73d09.chunk.js.map": "/AncientPathAdventures/static/js/4.f6b73d09.chunk.js.map",
+    "static/js/5.6d8bc739.chunk.js": "/AncientPathAdventures/static/js/5.6d8bc739.chunk.js",
+    "static/js/5.6d8bc739.chunk.js.map": "/AncientPathAdventures/static/js/5.6d8bc739.chunk.js.map",
+    "static/js/6.74677e88.chunk.js": "/AncientPathAdventures/static/js/6.74677e88.chunk.js",
+    "static/js/6.74677e88.chunk.js.map": "/AncientPathAdventures/static/js/6.74677e88.chunk.js.map",
+    "static/js/7.d6fb3734.chunk.js": "/AncientPathAdventures/static/js/7.d6fb3734.chunk.js",
+    "static/js/7.d6fb3734.chunk.js.map": "/AncientPathAdventures/static/js/7.d6fb3734.chunk.js.map",
+    "index.html": "/AncientPathAdventures/index.html",
+    "static/css/3.9db5570a.chunk.css.map": "/AncientPathAdventures/static/css/3.9db5570a.chunk.css.map",
+    "static/css/main.6dea0f05.chunk.css.map": "/AncientPathAdventures/static/css/main.6dea0f05.chunk.css.map",
+    "static/js/2.99f3a8fb.chunk.js.LICENSE.txt": "/AncientPathAdventures/static/js/2.99f3a8fb.chunk.js.LICENSE.txt",
+    "static/media/homepage-splash-2.df6b84b2.png": "/AncientPathAdventures/static/media/homepage-splash-2.df6b84b2.png",
+    "static/media/homepage-splash.82706964.png": "/AncientPathAdventures/static/media/homepage-splash.82706964.png",
+    "static/media/white mtn.bb2904a1.png": "/AncientPathAdventures/static/media/white mtn.bb2904a1.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.5975b48b.js",
+    "static/js/2.99f3a8fb.chunk.js",
+    "static/css/main.6dea0f05.chunk.css",
+    "static/js/main.47066e3d.chunk.js"
+  ]
+}
