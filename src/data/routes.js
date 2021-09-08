@@ -1,7 +1,7 @@
 const routes = [
   {
     index: true,
-    label: "Comp523 Site",
+    label: "Ancient Path Adventures",
     path: '/home',
   },
   {

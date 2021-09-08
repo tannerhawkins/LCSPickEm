@@ -1,11 +1,11 @@
 {
-  "name": "Comp523Site",
+  "name": "AncientPathAdventures",
   "version": "3.0.1",
-  "homepage": "https://tannerhawkins.github.io/Comp523-Website",
+  "homepage": "https://tannerhawkins.github.io/AncientPathAdventures",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/tannerhawkins/Comp523-Website.git"
+    "url": "https://github.com/tannerhawkins/AncientPathAdventures.git"
   },
   "scripts": {
     "build": "react-scripts build",
