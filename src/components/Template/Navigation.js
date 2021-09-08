@@ -3,11 +3,15 @@ import Login from '../Authentication/Login';
 import styled from 'styled-components';
 import { Constants } from '../../data/constants';
 import StyledButton from './Button';
+import Logo from '../../images/white mtn.png'
 
 // Websites Navbar, displays routes defined in 'src/data/routes'
 const Navigation = () => (
   <StyledHeader id="header">
-    <StyledLogo>LOGO</StyledLogo>
+    <StyledLogoContainer>
+      <StyledLogo src={Logo} />
+      <HeaderName>Ancient Path Adventures</HeaderName>
+    </StyledLogoContainer>
     <StyledButtonContainer>
       <StyledHelpButton>HELP</StyledHelpButton>
       <Login />
@@ -34,7 +38,24 @@ const StyledButtonContainer = styled.div`
   margin-right: 3%;
 `
 
-const StyledLogo = styled.div`
+const HeaderName = styled.div`
+  font-family: Playball;
+  color: ${Constants.WHITE};
+  white-space: nowrap;
+  margin-left: 30px;
+  font-size: 30px;
+  font-weight: bold;
+  text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+`
+
+const StyledLogo = styled.img`
+  margin-left: 3%;
+  width: 130px;
+`
+
+const StyledLogoContainer = styled.div`
+  display: flex;
+  align-items: center;
   margin-left: 3%;
 `
 

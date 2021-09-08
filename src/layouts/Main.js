@@ -14,7 +14,6 @@ const Main = (props) => (
       <meta name="description" content={props.description} />
     </Helmet>
     <div id="wrapper">
-      <Navigation />
       <div id="main">
         {props.children}
       </div>
