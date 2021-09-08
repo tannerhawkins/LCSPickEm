@@ -10,7 +10,7 @@ const StyledButton = styled.div`
     text-align: center;
     height: 40px;
     padding: 20px;
-    color: ${Constants.WHITE};
+    color: white;
     font-weight: bold;
     &:hover {
         filter: brightness(110%);

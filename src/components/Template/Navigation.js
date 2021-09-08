@@ -30,6 +30,7 @@ const StyledHeader = styled.header`
 	top: 0;
 	width: 100%;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  z-index: 1;
 `
 
 const StyledButtonContainer = styled.div`
@@ -40,7 +41,7 @@ const StyledButtonContainer = styled.div`
 
 const HeaderName = styled.div`
   font-family: Playball;
-  color: ${Constants.WHITE};
+  color: white;
   white-space: nowrap;
   margin-left: 30px;
   font-size: 30px;
