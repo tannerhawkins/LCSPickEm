@@ -56,19 +56,21 @@ const TextContainer = styled.div`
     display: flex;
     flex-flow: column wrap;
     max-width: 35%;
+    z-index: 1;
 `
 
 const ButtonContainer = styled.div`
     display: flex;
     margin-top: 5%;
     margin-left: 10%;
+    z-index: 1;
 `
 
 const StyledButtonOne = styled(Button)`
     font-size: 30px;
     line-height: 36px;
     font-weight: 700;
-    width: 200px;
+    max-width: 200px;
     height: 60px;
 `
 
@@ -78,7 +80,7 @@ const StyledButtonTwo = styled(Button)`
     font-size: 30px;
     line-height: 36px;
     font-weight: 700;
-    width: 200px;
+    max-width: 200px;
     height: 60px;
 `
 
