@@ -50,6 +50,8 @@ const CirclesContainer = styled.div`
     width: 100%;
     display: flex;
     flex-flow: row wrap;
+    align-items: center;
+    justify-content: center;
 `
 
 const SquaresContainer = styled.div`
@@ -77,6 +79,9 @@ const StyledCircle = styled.img`
 `
 
 const StyledTextContainer = styled.p`
+    display: flex;
+    justify-content: center;
+    align-items: center;
     font-weight: 300;
     font-size: 36px;
     line-height: 43px;
