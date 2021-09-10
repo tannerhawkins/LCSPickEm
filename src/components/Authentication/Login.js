@@ -28,7 +28,7 @@ const Login = () => {
       
     return (
         <div>
-            {!loginState && <StyledSignInButton onClick={signin}>SIGN-IN</StyledSignInButton>}
+            {!loginState && <StyledSignInButton onClick={() => window.location.href='/AncientPathAdventures/SignIn'}>SIGN-IN</StyledSignInButton>}
             {loginState && <StyledSignInButton onClick={logout}>LOGOUT</StyledSignInButton>}
         </div>
     );
