@@ -1,12 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Constants } from '../../data/constants';
-import StyledButton from './Button';
+import StyledButton from '../Template/Button';
 import Logo from '../../images/white mtn.png'
-import SignInOutButton from '../Authentication/SignInOutButton'
 
 // Websites Navbar, displays routes defined in 'src/data/routes'
-const Navigation = () => (
+const Header = () => (
   <StyledHeader id="header">
     <StyledLogoContainer>
       <StyledLogo src={Logo} />
@@ -14,7 +13,6 @@ const Navigation = () => (
     </StyledLogoContainer>
     <StyledButtonContainer>
       <StyledHelpButton>HELP</StyledHelpButton>
-      <SignInOutButton />
     </StyledButtonContainer>
   </StyledHeader>
 );
@@ -66,11 +64,7 @@ const StyledLogoContainer = styled.div`
 const StyledHelpButton = styled(StyledButton)`
   margin-right: 10px;
   box-shadow: none;
+  height: 10px;
 `
 
-const StyledSignInButton = styled(StyledButton)`
-  background-color: ${Constants.DARK_GREEN};
-  width: 120px;
-`
-
-export default Navigation;
+export default Header;

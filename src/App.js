@@ -1,6 +1,8 @@
 import React, { Suspense, lazy } from 'react';
-import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
+import { BrowserRouter, Switch, Route, Redirect, matchPath } from 'react-router-dom';
 import Main from './layouts/Main'; // fallback for lazy pages
+import {useAuthState} from 'react-firebase-hooks/auth';
+import {auth}  from './data/firebase';
 
 const { PUBLIC_URL } = process.env;
 
@@ -13,21 +15,24 @@ const NotFound = lazy(() => import('./pages/NotFound'));
 const Journal = lazy(() => import('./pages/Journal'));
 const Deliverables = lazy(() => import('./pages/Deliverables'));
 
-const App = () => (
+const App = () => {
+  const loginState = useAuthState(auth)[0];
+  return (
   <BrowserRouter basename={PUBLIC_URL}>
     <Suspense fallback={<Main />}>
       <Switch>
         <Route exact path="/home" component={Index} />
         <Route path="/SignIn" component={SignIn} />
-        <Route path="/journal" component={Journal} />
-        <Route path="/deliverables" component={Deliverables} />
-        <Route component={NotFound} status={404} />
+        {loginState && <Route path="/journal" component={Journal} />}
+        {loginState && <Route path="/deliverables" component={Deliverables} />}
+        <Redirect to="/home" />
       </Switch>
       <Route exact path="/">
           <Redirect to="/home" />
       </Route>
     </Suspense>
   </BrowserRouter>
-);
+  )
+};
 
 export default App;

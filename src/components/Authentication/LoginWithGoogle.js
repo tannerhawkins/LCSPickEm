@@ -1,14 +1,13 @@
 import React from 'react';
 import {auth , provider}  from '../../data/firebase.js';
 import {useAuthState} from 'react-firebase-hooks/auth';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { signIn, signOut } from '../../app/account/actions.js';
-import { selectDisplayName } from '../../app/account/selectors.js';
 import StyledButton from '../Template/Button.js';
 import { Constants } from '../../data/constants.js';
 import styled from 'styled-components';
   
-const Login = () => {
+const LoginWithGoogle = () => {
     const dispatch = useDispatch();
     const loginState = useAuthState(auth)[0];
   
@@ -28,7 +27,7 @@ const Login = () => {
       
     return (
         <div>
-            {!loginState && <StyledSignInButton onClick={() => window.location.href='/AncientPathAdventures/SignIn'}>SIGN-IN</StyledSignInButton>}
+            {!loginState && <StyledSignInButton onClick={signin}>SIGN-IN</StyledSignInButton>}
             {loginState && <StyledSignInButton onClick={logout}>LOGOUT</StyledSignInButton>}
         </div>
     );
@@ -39,4 +38,4 @@ const StyledSignInButton = styled(StyledButton)`
   width: 120px;
 `
   
-export default Login;
+export default LoginWithGoogle;

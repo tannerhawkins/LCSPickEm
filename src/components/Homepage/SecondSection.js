@@ -117,6 +117,7 @@ const CirclesDivider = styled.div`
 const StyledCircle = styled.img`
     position: absolute;
     width: 20%;
+    max-width: 350px;
     @media (max-width: 1000px) {
         position: relative;
         width: 40%;
@@ -150,10 +151,11 @@ const SquaresText = styled.p`
 const StyledTextContainer = styled.p`
     position: absolute;
     font-weight: 300;
-    font-size: 2.3vw;
+    font-size: min(2.3vw, 40px);
     margin: 0 auto;
     margin-left: 40px;
     width: 20%;
+    max-width: 300px;
     font-weight: 500;
     @media (max-width: 1000px) {
         position: relative;

@@ -1,5 +1,5 @@
 import React from 'react';
-import Login from '../Authentication/Login';
+import Login from '../Authentication/LoginWithGoogle';
 import styled from 'styled-components';
 import { Constants } from '../../data/constants';
 import StyledButton from './Button';
