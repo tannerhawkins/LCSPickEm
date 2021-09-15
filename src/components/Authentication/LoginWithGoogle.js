@@ -4,8 +4,8 @@ import {useAuthState} from 'react-firebase-hooks/auth';
 import { useDispatch } from 'react-redux';
 import { signIn, signOut } from '../../app/account/actions.js';
 import StyledButton from '../Template/Button.js';
-import { Constants } from '../../data/constants.js';
 import styled from 'styled-components';
+import GoogleLogo from '../../images/SignIn/googleLogo.png'
   
 const LoginWithGoogle = () => {
     const dispatch = useDispatch();
@@ -27,15 +27,24 @@ const LoginWithGoogle = () => {
       
     return (
         <div>
-            {!loginState && <StyledSignInButton onClick={signin}>SIGN-IN</StyledSignInButton>}
+            {!loginState && <StyledSignInButton onClick={signin}><StyledGoogleLogo src={GoogleLogo} />SIGN-IN WITH GOOGLE</StyledSignInButton>}
             {loginState && <StyledSignInButton onClick={logout}>LOGOUT</StyledSignInButton>}
         </div>
     );
 }
 
 const StyledSignInButton = styled(StyledButton)`
-  background-color: ${Constants.DARK_GREEN};
-  width: 120px;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 20px;
+  width: 250px;
+  color: black;
+  display: flex;
+  justify-content: space-around;
+`
+
+const StyledGoogleLogo = styled.img`
+    height: 90%;
 `
   
 export default LoginWithGoogle;

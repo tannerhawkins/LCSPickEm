@@ -14,6 +14,7 @@ const StyledButton = styled.div`
     font-weight: bold;
     &:hover {
         filter: brightness(110%);
+        cursor: pointer;
     }
 `
   

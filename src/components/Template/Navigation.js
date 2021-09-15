@@ -24,7 +24,7 @@ const StyledHeader = styled.header`
   background-color: ${Constants.LIGHT_GREEN};
   justify-content: space-between;
   align-items: center;
-	height: 80px;
+	height: ${Constants.HEADER_HEIGHT};
 	left: 0;
 	position: fixed;
 	top: 0;
