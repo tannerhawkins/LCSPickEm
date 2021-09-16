@@ -21,7 +21,7 @@ const Navigation = () => (
 
 const StyledHeader = styled.header`
   display: flex;
-  background-color: ${Constants.LIGHT_GREEN};
+  background-color: ${Constants.COLOR.LIGHT_GREEN};
   justify-content: space-between;
   align-items: center;
 	height: ${Constants.HEADER_HEIGHT};
@@ -69,7 +69,7 @@ const StyledHelpButton = styled(StyledButton)`
 `
 
 const StyledSignInButton = styled(StyledButton)`
-  background-color: ${Constants.DARK_GREEN};
+  background-color: ${Constants.COLOR.DARK_GREEN};
   width: 120px;
 `
 

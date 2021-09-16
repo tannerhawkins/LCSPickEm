@@ -9,7 +9,8 @@ const { PUBLIC_URL } = process.env;
 // Every route - we lazy load so that each page can be chunked
 // NOTE that some of these chunks are very small. We should optimize
 // which pages are lazy loaded in the future.
-const SignIn = lazy(() => import('./pages/SignIn'));
+const SignIn = lazy(() => import('./pages/LogIn/SignIn'));
+const SignUp = lazy(() => import('./pages/LogIn/SignUp'));
 const Index = lazy(() => import('./pages/Index'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 const Journal = lazy(() => import('./pages/Journal'));
@@ -22,7 +23,8 @@ const App = () => {
     <Suspense fallback={<Main />}>
       <Switch>
         <Route exact path="/home" component={Index} />
-        <Route path="/SignIn" component={SignIn} />
+        <Route path="/signin" component={SignIn} />
+        <Route path="/signup" component={SignUp} />
         {loginState && <Route path="/journal" component={Journal} />}
         {loginState && <Route path="/deliverables" component={Deliverables} />}
         <Redirect to="/home" />

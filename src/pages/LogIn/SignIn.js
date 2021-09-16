@@ -1,26 +1,25 @@
 import React from 'react';
-import LoginWithGoogle from '../components/Authentication/LoginWithGoogle';
-import Main from '../layouts/Main';
+import LoginWithGoogle from '../../components/Authentication/LoginWithGoogle';
+import Main from '../../layouts/Main';
 import styled from "styled-components";
-import Header from '../components/Authentication/Header';
-import { Constants } from '../data/constants';
-import Button from '../components/Template/Button'
+import Header from '../../components/Authentication/Header';
+import { Constants } from '../../data/constants';
+import Button from '../../components/Template/Button'
 
-const Team = () => (
+const SignIn = () => (
   <Main
   description={"Sign-In"}
 >
   <Header />
   <MainContainer>
-    <StyledTitle>Login</StyledTitle>
+    <StyledTitle>Sign-In</StyledTitle>
     <StyledForm>
-      <StyledInput type="text" placeholder="Username" name="username" required />
-      <StyledForgotButton>Did you forget your username?</StyledForgotButton>
+      <StyledEmailInput type="email" placeholder="Email" name="email" required />
       <StyledInput type="password" placeholder="Password" name="password" required />
       <StyledForgotButton>Did you forget your password?</StyledForgotButton>
       <StyledButtonContainer>
         <StyledSubmitButton type="submit">SIGN-IN</StyledSubmitButton>
-        <StyledSignUpButton>Don't have an account? Don’t worry! Sign up here</StyledSignUpButton>
+        <StyledSignUpButton onClick={() => window.location.href='/AncientPathAdventures/signup'}>Don't have an account? Don’t worry! Sign up here</StyledSignUpButton>
       </StyledButtonContainer>
     </StyledForm>
     <StyledOrContainer>
@@ -70,15 +69,19 @@ const StyledInput = styled.input`
   outline: none;
 `
 
+const StyledEmailInput = styled(StyledInput)`
+  margin-bottom: 60px;
+`
+
 const StyledForgotButton = styled.p`
   text-align: right;
   font-size: 18px;
   margin-bottom: 30px;
-  color: ${Constants.LIGHT_GREEN};
+  color: ${Constants.COLOR.LIGHT_GREEN};
 
   &:hover {
     cursor: pointer;
-    color: ${Constants.DARK_GREEN};
+    color: ${Constants.COLOR.DARK_GREEN};
   }
 `
 
@@ -100,7 +103,7 @@ const StyledSubmitButton = styled(Button)`
   height: 40px;
   width: 20%;
   min-width: 100px;
-  background-color: ${Constants.DARK_GREEN};
+  background-color: ${Constants.COLOR.DARK_GREEN};
   &:hover {
     cursor: pointer;
   }
@@ -120,4 +123,4 @@ const StyledOrContainer = styled.div`
   width: 90%;
 `
 
-export default Team;
+export default SignIn;

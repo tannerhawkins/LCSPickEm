@@ -2,7 +2,7 @@ import { Constants } from "../../data/constants";
 import styled from 'styled-components';
 
 const StyledButton = styled.div`
-    background-color: ${Constants.LIGHT_GREEN};
+    background-color: ${Constants.COLOR.LIGHT_GREEN};
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     display: flex;
     align-items: center;

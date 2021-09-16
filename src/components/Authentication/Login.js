@@ -26,7 +26,7 @@ const Login = () => {
 }
 
 const StyledSignInButton = styled(StyledButton)`
-  background-color: ${Constants.DARK_GREEN};
+  background-color: ${Constants.COLOR.DARK_GREEN};
   width: 120px;
 `
   

@@ -1,9 +1,6 @@
 import React from 'react';
-import Login from '../Authentication/LoginWithGoogle';
 import styled from 'styled-components';
 import { Constants } from '../../data/constants';
-import StyledButton from './Button';
-import Logo from '../../images/white mtn.png'
 
 // Websites Navbar, displays routes defined in 'src/data/routes'
 const Footer = () => (
@@ -15,7 +12,7 @@ const Footer = () => (
 
 const StyledFooter = styled.div`
     display: flex;
-    background-color: ${Constants.DARK_GREEN};
+    background-color: ${Constants.COLOR.DARK_GREEN};
     justify-content: center;
     align-items: center;
     flex-flow: column;
@@ -35,7 +32,7 @@ const StyledTermsLinks = styled.p`
 
 const StyledCopyRight = styled.p`
     font-size: 15px;
-    color: ${Constants.LIGHT_GREEN};
+    color: ${Constants.COLOR.LIGHT_GREEN};
 `
 
 export default Footer;

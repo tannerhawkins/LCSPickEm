@@ -20,6 +20,18 @@ const routes = [
     label: 'Deliverables',
     path: '/deliverables',
   },
+  {
+    label: 'Log-in',
+    path: '/login',
+  },
+  {
+    label: 'Sign-in',
+    path: '/signin',
+  },
+  {
+    label: 'Sign-up',
+    path: '/signup',
+  },
 ];
 
 export default routes;

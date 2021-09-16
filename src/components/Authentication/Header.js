@@ -19,7 +19,7 @@ const Header = () => (
 
 const StyledHeader = styled.header`
   display: flex;
-  background-color: ${Constants.LIGHT_GREEN};
+  background-color: ${Constants.COLOR.LIGHT_GREEN};
   justify-content: space-between;
   align-items: center;
 	height: ${Constants.HEADER_HEIGHT};

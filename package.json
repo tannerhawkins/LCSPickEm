@@ -17,13 +17,15 @@
     "analyze": "npm run build && source-map-explorer build/static/js/*.chunk.js"
   },
   "dependencies": {
+    "@firebase/firestore": "^3.0.2",
     "@fortawesome/fontawesome-svg-core": "^1.2.34",
     "@fortawesome/free-brands-svg-icons": "^5.15.2",
     "@fortawesome/free-regular-svg-icons": "^5.15.2",
     "@fortawesome/react-fontawesome": "0.1.14",
     "@reduxjs/toolkit": "^1.6.1",
     "dayjs": "^1.10.4",
-    "firebase": "^8.3.1",
+    "firebase": "^9.0.2",
+    "firestore": "^1.1.6",
     "git": "^0.1.5",
     "node-sass": "^4.14.1",
     "prop-types": "^15.7.2",

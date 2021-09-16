@@ -24,7 +24,7 @@ const SectionContainer = styled.div`
     display: flex;
     flex-flow: column wrap;
     height: 775px;
-    background-color: ${Constants.GREEN};
+    background-color: ${Constants.COLOR.GREEN};
     position: relative;
     display: flex;
 `
@@ -44,7 +44,7 @@ const StyledHeaderText = styled.h1`
 `
 
 const StyledSubText = styled.h3`
-    color: ${Constants.LIGHT_GREEN};
+    color: ${Constants.COLOR.LIGHT_GREEN};
     font-weight: 300;
     font-size: 37px;
     line-height: 43px;
@@ -75,7 +75,7 @@ const StyledButtonOne = styled(Button)`
 `
 
 const StyledButtonTwo = styled(Button)`
-    background-color: ${Constants.DARK_GREEN};
+    background-color: ${Constants.COLOR.DARK_GREEN};
     margin-left: 19px;
     font-size: 30px;
     line-height: 36px;

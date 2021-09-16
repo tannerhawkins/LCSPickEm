@@ -166,7 +166,7 @@ const StyledTextContainer = styled.p`
 `
 
 const StyledHeader = styled.h1`
-    color: ${Constants.DARK_GREEN};
+    color: ${Constants.COLOR.DARK_GREEN};
     font-size: 90px;
     padding-left: 12%;
     padding-top: 300px;

@@ -1,5 +1,6 @@
 // Import the functions you need from the SDKs you need
 import firebase from "firebase";
+import { collection, query, where, getDocs } from "firebase/firestore";
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -18,7 +19,17 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = firebase.initializeApp(firebaseConfig);
+const db = firebase.firestore();
 
 var auth = firebase.auth();
-var provider = new firebase.auth.GoogleAuthProvider(); 
+var provider = new firebase.auth.GoogleAuthProvider();
+
+
+export const userDataDb = db.collection("userData");
+userDataDb.get().then(result => {
+  result.forEach(doc => {
+    console.log(doc.id);
+  })
+});
+
 export {auth , provider};

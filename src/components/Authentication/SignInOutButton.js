@@ -19,14 +19,14 @@ const SignInOutButton = () => {
       
     return (
         <div>
-            {!loginState && <StyledSignInButton onClick={() => window.location.href='/AncientPathAdventures/SignIn'}>SIGN-IN</StyledSignInButton>}
+            {!loginState && <StyledSignInButton onClick={() => window.location.href='/AncientPathAdventures/signin'}>SIGN-IN</StyledSignInButton>}
             {loginState && <StyledSignInButton onClick={logout}>LOGOUT</StyledSignInButton>}
         </div>
     );
 }
 
 const StyledSignInButton = styled(StyledButton)`
-  background-color: ${Constants.DARK_GREEN};
+  background-color: ${Constants.COLOR.DARK_GREEN};
   width: 120px;
 `
   
