@@ -6,37 +6,40 @@ import Header from '../../components/Authentication/Header';
 import { Constants } from '../../data/constants';
 import Button from '../../components/Template/Button'
 import { auth, userDataDb } from '../../data/firebase';
-import firestore from "firebase/firestore";
+import { useDispatch } from 'react-redux';
+import { signIn } from '../../app/account/actions.js';
 
 const SignUp = () => {
-    const [shouldShowPasswordError, setShouldShowPasswordError] = useState("none");
-    const [shouldShowFieldsError, setShouldShowFieldsError] = useState("none");
     const [errorMessage, setErrorMessage] = useState();
+    const dispatch = useDispatch();
 
     const handleSubmit = () => {
-        setShouldShowFieldsError("none");
-        setShouldShowPasswordError("none");
         setErrorMessage();
 
+        // get sign up form data
         const data = Object.values(document.forms.signUpForm).reduce((obj,field) => { obj[field.name] = field.value; return obj }, {});
 
+        // checks all fields are filled out
         for (var value in data) {
             if (data[value] === "") {
-                setShouldShowFieldsError("block");
+                setErrorMessage("Please fill out all fields");
                 return;
             }
         }
+        // checks password and password confirm match
         if (data.password !== data.passwordConfirm) {
-            setShouldShowPasswordError("block");
+            setErrorMessage("Passwords must match");
             return;
         }
+        // sends request to create account
         auth.createUserWithEmailAndPassword(data.email, data.password).then(() => {
+            // updates account with user display name
             auth.currentUser.updateProfile({
                 displayName: `${data.first} ${data.last}`,
-            })
-            console.log(userDataDb.getDocs());
-            console.log(auth.currentUser);
+            }).then(dispatch(signIn(auth.currentUser)));
+            userDataDb.where("doc.id", "==", auth.currentUser.uid).get().then(result => result.forEach(doc => console.log(doc))).catch(error => console.log(error));
         }).catch(response => {
+            // sets error message if something goes wrong
             setErrorMessage(response.message);
         });
     }
@@ -58,9 +61,7 @@ const SignUp = () => {
         <StyledInput type="email" placeholder="Email" name="email" required />
         <StyledInput type="password" placeholder="Password" name="password" required />
         <StyledInput type="password" placeholder="Confirm Pasword" name="passwordConfirm" required />
-        <StyledPasswordError style={{display: shouldShowPasswordError}}>Passwords must match</StyledPasswordError>
-        <StyledPasswordError style={{display: shouldShowFieldsError}}>Please fill out all fields</StyledPasswordError>
-        <StyledPasswordError>{errorMessage}</StyledPasswordError>
+        <StyledError>{errorMessage}</StyledError>
         <StyledButtonContainer>
             <StyledSubmitButton onClick={handleSubmit}>SIGN-UP</StyledSubmitButton>
             <StyledSignUpButton onClick={() => window.location.href='/AncientPathAdventures/signin'}>Already have an account? Don’t worry! Sign in here</StyledSignUpButton>
@@ -163,7 +164,7 @@ const StyledOrContainer = styled.div`
   width: 90%;
 `
 
-const StyledPasswordError = styled.p`
+const StyledError = styled.p`
     color: red;
     margin-top: -20px;
 `

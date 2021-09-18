@@ -6,10 +6,11 @@ import { signIn, signOut } from '../../app/account/actions.js';
 import StyledButton from '../Template/Button.js';
 import { Constants } from '../../data/constants.js';
 import styled from 'styled-components';
+import { selectIsSignedIn } from '../../app/account/selectors.js';
   
 const Login = () => {
     const dispatch = useDispatch();
-    const loginState = useAuthState(auth)[0];
+    const loginState = useSelector(selectIsSignedIn);
 
     const logout = () => {
         auth.signOut().then(() => {

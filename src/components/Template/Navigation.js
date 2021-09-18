@@ -5,7 +5,6 @@ import StyledButton from './Button';
 import Logo from '../../images/white mtn.png'
 import SignInOutButton from '../Authentication/SignInOutButton'
 
-// Websites Navbar, displays routes defined in 'src/data/routes'
 const Navigation = () => (
   <StyledHeader id="header">
     <StyledLogoContainer>
@@ -66,11 +65,6 @@ const StyledLogoContainer = styled.div`
 const StyledHelpButton = styled(StyledButton)`
   margin-right: 10px;
   box-shadow: none;
-`
-
-const StyledSignInButton = styled(StyledButton)`
-  background-color: ${Constants.COLOR.DARK_GREEN};
-  width: 120px;
 `
 
 export default Navigation;

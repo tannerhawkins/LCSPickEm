@@ -3,6 +3,8 @@ import { BrowserRouter, Switch, Route, Redirect, matchPath } from 'react-router-
 import Main from './layouts/Main'; // fallback for lazy pages
 import {useAuthState} from 'react-firebase-hooks/auth';
 import {auth}  from './data/firebase';
+import { selectIsSignedIn } from './app/account/selectors';
+import { useSelector } from 'react-redux';
 
 const { PUBLIC_URL } = process.env;
 
@@ -15,18 +17,21 @@ const Index = lazy(() => import('./pages/Index'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 const Journal = lazy(() => import('./pages/Journal'));
 const Deliverables = lazy(() => import('./pages/Deliverables'));
+const TeacherRoutes = lazy(() => import('./routes/TeacherRoutes'));
 
 const App = () => {
-  const loginState = useAuthState(auth)[0];
+  const loginState = useSelector(selectIsSignedIn);
+
   return (
   <BrowserRouter basename={PUBLIC_URL}>
     <Suspense fallback={<Main />}>
       <Switch>
         <Route exact path="/home" component={Index} />
-        <Route path="/signin" component={SignIn} />
-        <Route path="/signup" component={SignUp} />
+        {!loginState && <Route path="/signin" component={SignIn} />}
+        {!loginState && <Route path="/signup" component={SignUp} />}
         {loginState && <Route path="/journal" component={Journal} />}
         {loginState && <Route path="/deliverables" component={Deliverables} />}
+        {loginState && <Route path="/teacher" component={TeacherRoutes} />}
         <Redirect to="/home" />
       </Switch>
       <Route exact path="/">
