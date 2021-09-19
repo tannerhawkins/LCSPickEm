@@ -26,10 +26,5 @@ var provider = new firebase.auth.GoogleAuthProvider();
 
 
 export const userDataDb = db.collection("userData");
-userDataDb.get().then(result => {
-  result.forEach(doc => {
-    console.log(doc.id);
-  })
-});
 
 export {auth , provider};

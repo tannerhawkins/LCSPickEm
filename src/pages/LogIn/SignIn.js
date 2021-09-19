@@ -31,11 +31,13 @@ const SignIn = () => {
         return;
       }
 
-      auth.signInWithEmailAndPassword(data.email, data.password).then(
-        dispatch(signIn(auth.currentUser))
-      ).catch((error) => {
+      auth.signInWithEmailAndPassword(data.email, data.password).then(() => {
+        dispatch(signIn(auth.currentUser));
+      }).catch((error) => {
         if (error.code === "auth/user-not-found") {
           setErrorMessage("A user with this email address does not exist")
+        } else if (error.code === "auth/wrong-password"){
+          setErrorMessage("The password is invalid or the user is attempting to use a third party account to sign in. Try using one of the options below.")
         } else {
           setErrorMessage(error.message);
         }

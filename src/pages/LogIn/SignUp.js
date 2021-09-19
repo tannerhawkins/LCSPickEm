@@ -37,7 +37,6 @@ const SignUp = () => {
             auth.currentUser.updateProfile({
                 displayName: `${data.first} ${data.last}`,
             }).then(dispatch(signIn(auth.currentUser)));
-            userDataDb.where("doc.id", "==", auth.currentUser.uid).get().then(result => result.forEach(doc => console.log(doc))).catch(error => console.log(error));
         }).catch(response => {
             // sets error message if something goes wrong
             setErrorMessage(response.message);
