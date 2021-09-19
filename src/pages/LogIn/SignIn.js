@@ -1,24 +1,61 @@
-import React from 'react';
+import React, { useState } from 'react';
 import LoginWithGoogle from '../../components/Authentication/LoginWithGoogle';
 import Main from '../../layouts/Main';
 import styled from "styled-components";
 import Header from '../../components/Authentication/Header';
 import { Constants } from '../../data/constants';
 import Button from '../../components/Template/Button'
+import { useDispatch } from 'react-redux';
+import { auth } from '../../data/firebase';
+import { signIn } from '../../app/account/actions.js';
 
-const SignIn = () => (
+const SignIn = () => {
+  const [errorMessage, setErrorMessage] = useState();
+  const dispatch = useDispatch();
+
+  const handleSubmit = () => {
+      setErrorMessage();
+
+      // get sign up form data
+      const data = Object.values(document.forms.signInForm).reduce((obj,field) => { obj[field.name] = field.value; return obj }, {});
+
+      // checks all fields are filled out
+      for (var value in data) {
+          if (data[value] === "") {
+              setErrorMessage("Please fill out all fields");
+              return;
+          }
+      }
+      if (!data.email.includes("@")) {
+        setErrorMessage("Please enter valid email address");
+        return;
+      }
+
+      auth.signInWithEmailAndPassword(data.email, data.password).then(
+        dispatch(signIn(auth.currentUser))
+      ).catch((error) => {
+        if (error.code === "auth/user-not-found") {
+          setErrorMessage("A user with this email address does not exist")
+        } else {
+          setErrorMessage(error.message);
+        }
+      })
+  }
+  
+  return (
   <Main
   description={"Sign-In"}
 >
   <Header />
   <MainContainer>
     <StyledTitle>Sign-In</StyledTitle>
-    <StyledForm>
+    <StyledForm id="signInForm">
       <StyledEmailInput type="email" placeholder="Email" name="email" required />
       <StyledInput type="password" placeholder="Password" name="password" required />
       <StyledForgotButton>Did you forget your password?</StyledForgotButton>
+      <StyledError>{errorMessage}</StyledError>
       <StyledButtonContainer>
-        <StyledSubmitButton type="submit">SIGN-IN</StyledSubmitButton>
+        <StyledSubmitButton type="submit" onClick={handleSubmit}>SIGN-IN</StyledSubmitButton>
         <StyledSignUpButton onClick={() => window.location.href='/AncientPathAdventures/signup'}>Don't have an account? Don’t worry! Sign up here</StyledSignUpButton>
       </StyledButtonContainer>
     </StyledForm>
@@ -30,7 +67,7 @@ const SignIn = () => (
     <LoginWithGoogle />
   </MainContainer>
 </Main>
-);
+)};
 
 const MainContainer = styled.div`
   display: flex;
@@ -121,6 +158,11 @@ const StyledOrContainer = styled.div`
   align-items: center;
   justify-content: center;
   width: 90%;
+`
+
+const StyledError = styled.p`
+    color: red;
+    margin-top: -20px;
 `
 
 export default SignIn;
