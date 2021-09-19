@@ -33,6 +33,9 @@ const StyledHeader = styled.header`
 	position: fixed;
 	top: 0;
 	width: calc(100% - ${Constants.SIDEBAR_WIDTH});
+	@media (max-width: 500px) {
+    display: none;
+  }
 `
 
 const StyledButtonsContainer = styled.div`

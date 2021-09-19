@@ -1,14 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Constants } from '../../data/constants';
 import DownArrowIcon from '../../images/Icons/down arrow icon.png'
 import ProfileImage from './ProfileImage';
 
 // TODO implement logic to get display name and account type from auth
-const HeaderProfileInfo = () => {
+const HeaderProfileInfo = ({className}) => {
   
   return (
-    <StyledProfileInfo>
+    <StyledProfileInfo className={className}>
       <StyledProfileImage />
       <StyledDownArrow src={DownArrowIcon} />
       <StyledInfoContainer>
@@ -29,7 +28,7 @@ const StyledDownArrow = styled.img`
 `
 
 const StyledProfileImage = styled(ProfileImage)`
-  height: 100%;
+  height: 50%;
 `
 
 const StyledInfoContainer = styled.div`
@@ -37,6 +36,10 @@ const StyledInfoContainer = styled.div`
   justify-content: center;
   flex-direction: column;
   padding-top: 10px;
+
+  @media (max-width: 800px) {
+        display: none;
+    }
 `
 
 const StyledDisplayName = styled.h1`

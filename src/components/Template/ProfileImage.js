@@ -4,10 +4,10 @@ import DefaultProfileIcon from '../../images/Icons/default profile icon.png';
 
 
 // TODO Set up logic to retrieve profile image and if none available, set to default image
-const ProfileImage = () => {
+const ProfileImage = ({className}) => {
   
   return (
-    <StyledProfileImage src={DefaultProfileIcon} />
+    <StyledProfileImage className={className} src={DefaultProfileIcon} />
 )};
 
 const StyledProfileImage = styled.img`

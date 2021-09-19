@@ -27,6 +27,9 @@ const StyledSidebar = styled.div`
   left: 0;
   top: 0;
   background-color: ${Constants.COLOR.DARK_BLUE};
+	@media (max-width: 500px) {
+    display: none;
+  }
 `
 
 const StyledLogoBox = styled.div`

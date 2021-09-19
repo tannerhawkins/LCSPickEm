@@ -12,6 +12,16 @@
   opacity: 0.5;
 }
 
+.burger-button {
+
+  button {
+    background-color: blue !important;
+  }
+  height: 100px;
+  width: 100px;
+  background-color: blue;
+}
+
 .hamburger-ul {
   display: block;
 
