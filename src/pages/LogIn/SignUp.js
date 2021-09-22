@@ -47,8 +47,9 @@ const SignUp = () => {
 
     return (
   <Main
-  description={"Sign-Up"}
->
+    title={"Sign-Up"}
+    description={"Sign-Up"}
+  >
   <Header />
   <MainContainer>
     <StyledTitle>Sign-up</StyledTitle>

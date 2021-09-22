@@ -15,8 +15,6 @@ const SignIn = lazy(() => import('./pages/LogIn/SignIn'));
 const SignUp = lazy(() => import('./pages/LogIn/SignUp'));
 const Index = lazy(() => import('./pages/Index'));
 const NotFound = lazy(() => import('./pages/NotFound'));
-const Journal = lazy(() => import('./pages/Journal'));
-const Deliverables = lazy(() => import('./pages/Deliverables'));
 const TeacherRoutes = lazy(() => import('./routes/TeacherRoutes'));
 
 const App = () => {
@@ -29,8 +27,6 @@ const App = () => {
         <Route exact path="/home" component={Index} />
         {!loginState && <Route path="/signin" component={SignIn} />}
         {!loginState && <Route path="/signup" component={SignUp} />}
-        {loginState && <Route path="/journal" component={Journal} />}
-        {loginState && <Route path="/deliverables" component={Deliverables} />}
         {loginState && <Route path="/teacher" component={TeacherRoutes} />}
         <Redirect to="/home" />
       </Switch>
