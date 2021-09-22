@@ -8,8 +8,6 @@ const StyledButton = styled.div`
     align-items: center;
     justify-content: center;
     text-align: center;
-    height: 40px;
-    padding: 20px;
     color: white;
     font-weight: bold;
     &:hover {

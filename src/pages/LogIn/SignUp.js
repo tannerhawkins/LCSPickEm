@@ -141,7 +141,7 @@ const StyledSignUpButton = styled.p`
 
 const StyledSubmitButton = styled(Button)`
   font-size: 25px;
-  height: 40px;
+  height: 70px;
   width: 20%;
   min-width: 100px;
   background-color: ${Constants.COLOR.DARK_GREEN};
@@ -162,6 +162,7 @@ const StyledOrContainer = styled.div`
   align-items: center;
   justify-content: center;
   width: 90%;
+  margin-bottom: 30px;
 `
 
 const StyledError = styled.p`

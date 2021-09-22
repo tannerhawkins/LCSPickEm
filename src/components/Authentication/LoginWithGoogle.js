@@ -7,7 +7,7 @@ import StyledButton from '../Template/Button.js';
 import styled from 'styled-components';
 import GoogleLogo from '../../images/SignIn/googleLogo.png'
   
-const LoginWithGoogle = () => {
+const LoginWithGoogle = ({className}) => {
     const dispatch = useDispatch();
     const loginState = useAuthState(auth)[0];
   
@@ -26,7 +26,7 @@ const LoginWithGoogle = () => {
     }
       
     return (
-        <div>
+        <div className={className}>
             {!loginState && <StyledSignInButton onClick={signin}><StyledGoogleLogo src={GoogleLogo} />SIGN-IN WITH GOOGLE</StyledSignInButton>}
             {loginState && <StyledSignInButton onClick={logout}>LOGOUT</StyledSignInButton>}
         </div>
@@ -40,11 +40,12 @@ const StyledSignInButton = styled(StyledButton)`
   width: 250px;
   color: black;
   display: flex;
+  height: 60px;
   justify-content: space-around;
 `
 
 const StyledGoogleLogo = styled.img`
-    height: 90%;
+    height: 60%;
 `
   
 export default LoginWithGoogle;

@@ -28,11 +28,13 @@ const StyledTermsLinks = styled.p`
     font-size: 20px;
     line-height: 43px;
     color: white;
+    margin: 0 auto;
 `
 
 const StyledCopyRight = styled.p`
     font-size: 15px;
     color: ${Constants.COLOR.LIGHT_GREEN};
+    margin: 0 auto;
 `
 
 export default Footer;

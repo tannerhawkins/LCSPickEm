@@ -13,7 +13,7 @@ const Navigation = () => (
     </StyledLogoContainer>
     <StyledButtonContainer>
       <StyledHelpButton>HELP</StyledHelpButton>
-      <SignInOutButton />
+      <StyledSignInOutButton />
     </StyledButtonContainer>
   </StyledHeader>
 );
@@ -65,6 +65,10 @@ const StyledLogoContainer = styled.div`
 const StyledHelpButton = styled(StyledButton)`
   margin-right: 10px;
   box-shadow: none;
+  padding: 10px 20px;
+`
+
+const StyledSignInOutButton = styled(SignInOutButton)`
 `
 
 export default Navigation;

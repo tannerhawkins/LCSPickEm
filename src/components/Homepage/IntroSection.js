@@ -27,6 +27,7 @@ const SectionContainer = styled.div`
     background-color: ${Constants.COLOR.GREEN};
     position: relative;
     display: flex;
+    margin-top: ${Constants.HEADER_HEIGHT};
 `
 const StyledImage = styled.img`
     position: absolute;
@@ -52,7 +53,7 @@ const StyledSubText = styled.h3`
 
 const TextContainer = styled.div`
     margin-left: 10%;
-    margin-top: 8%;
+    margin-top: 5%;
     display: flex;
     flex-flow: column wrap;
     max-width: 35%;
@@ -72,6 +73,7 @@ const StyledButtonOne = styled(Button)`
     font-weight: 700;
     max-width: 200px;
     height: 60px;
+    padding: 10px 35px;
 `
 
 const StyledButtonTwo = styled(Button)`
@@ -82,6 +84,7 @@ const StyledButtonTwo = styled(Button)`
     font-weight: 700;
     max-width: 200px;
     height: 60px;
+    padding: 10px 35px;
 `
 
 export default IntroSection;
