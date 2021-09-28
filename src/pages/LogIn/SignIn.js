@@ -6,7 +6,7 @@ import Header from '../../components/Authentication/Header';
 import { Constants } from '../../data/constants';
 import Button from '../../components/Template/Button'
 import { useDispatch } from 'react-redux';
-import { auth } from '../../data/firebase';
+import { auth, userDataDb } from '../../data/firebase';
 import { signIn } from '../../app/account/actions.js';
 
 const SignIn = () => {
@@ -32,7 +32,9 @@ const SignIn = () => {
       }
 
       auth.signInWithEmailAndPassword(data.email, data.password).then(() => {
-        dispatch(signIn(auth.currentUser));
+        userDataDb.doc(auth.currentUser.uid).get().then(doc => {
+          dispatch(signIn(doc.data()))
+        })
       }).catch((error) => {
         if (error.code === "auth/user-not-found") {
           setErrorMessage("A user with this email address does not exist")

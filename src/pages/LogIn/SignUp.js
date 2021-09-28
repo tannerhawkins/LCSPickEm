@@ -50,7 +50,14 @@ const SignUp = () => {
             auth.currentUser.updateProfile({
                 displayName: `${data.first} ${data.last}`,
             }).then(
-              dispatch(signIn(auth.currentUser),
+              dispatch(
+                signIn(
+                  {
+                    ...auth.currentUser,
+                    displayName: `${data.first} ${data.last}`,
+                    accountType: data.accountType,
+                  }
+                ),
               console.log(auth.currentUser),
               userDataDb.doc(auth.currentUser.uid).set({
                 uid: auth.currentUser.uid,
