@@ -6,6 +6,7 @@ import Header from '../../components/Authentication/Header';
 import { Constants } from '../../data/constants';
 import Button from '../../components/Template/Button'
 import { auth, userDataDb } from '../../data/firebase';
+import { addDoc } from 'firebase/firestore'
 import { useDispatch } from 'react-redux';
 import { signIn } from '../../app/account/actions.js';
 
@@ -50,8 +51,11 @@ const SignUp = () => {
                 displayName: `${data.first} ${data.last}`,
             }).then(
               dispatch(signIn(auth.currentUser),
-              userDataDb.add({
+              console.log(auth.currentUser),
+              userDataDb.doc(auth.currentUser.uid).set({
                 uid: auth.currentUser.uid,
+                displayName: `${data.first} ${data.last}`,
+                email: auth.currentUser.email,
                 accountType: data.accountType,
               })
               ));
@@ -92,12 +96,12 @@ const SignUp = () => {
             <StyledSignUpButton onClick={() => window.location.href='/AncientPathAdventures/signin'}>Already have an account? Don’t worry! Sign in here</StyledSignUpButton>
         </StyledButtonContainer>
     </StyledForm>
-    <StyledOrContainer>
+    {/* <StyledOrContainer>
         <StyledLine />
         <p>OR</p>
         <StyledLine />
     </StyledOrContainer>
-    <LoginWithGoogle />
+    <LoginWithGoogle /> */}
   </MainContainer>
 </Main>
 )
