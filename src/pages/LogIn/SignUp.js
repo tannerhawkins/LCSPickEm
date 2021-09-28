@@ -17,8 +17,20 @@ const SignUp = () => {
         setErrorMessage();
 
         // get sign up form data
-        const data = Object.values(document.forms.signUpForm).reduce((obj,field) => { obj[field.name] = field.value; return obj }, {});
-
+        const data = Object.values(document.forms.signUpForm).reduce((obj,field) => {
+          if (field.type === "radio") {
+            if (field.checked) {
+              obj[field.name] = field.value;
+            } else {
+              if (obj[field.name] === undefined) {
+                obj[field.name] = "";
+              }
+            }
+          } else {
+            obj[field.name] = field.value;
+          }
+          return obj
+        }, {});
         // checks all fields are filled out
         for (var value in data) {
             if (data[value] === "") {
@@ -36,7 +48,13 @@ const SignUp = () => {
             // updates account with user display name
             auth.currentUser.updateProfile({
                 displayName: `${data.first} ${data.last}`,
-            }).then(dispatch(signIn(auth.currentUser)));
+            }).then(
+              dispatch(signIn(auth.currentUser),
+              userDataDb.add({
+                uid: auth.currentUser.uid,
+                accountType: data.accountType,
+              })
+              ));
         }).catch(response => {
             // sets error message if something goes wrong
             setErrorMessage(response.message);
@@ -61,6 +79,13 @@ const SignUp = () => {
         <StyledInput type="email" placeholder="Email" name="email" required />
         <StyledInput type="password" placeholder="Password" name="password" required />
         <StyledInput type="password" placeholder="Confirm Pasword" name="passwordConfirm" required />
+        <StyledText style={{  marginTop: "-20px"}}>I am a:</StyledText>
+        <StyledRadioButtonContainer>
+          <StyledRadioButton type="radio" name="accountType" value="teacher" required/>
+          <StyledText>Teacher</StyledText>
+          <StyledRadioButton type="radio" name="accountType" value="student" required/>
+          <StyledText>Student</StyledText>
+        </StyledRadioButtonContainer>
         <StyledError>{errorMessage}</StyledError>
         <StyledButtonContainer>
             <StyledSubmitButton onClick={handleSubmit}>SIGN-UP</StyledSubmitButton>
@@ -99,6 +124,13 @@ const StyledNamesContainer = styled.div`
     justify-content: space-between;
 `
 
+const StyledRadioButtonContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-bottom: 70px;
+`
+
 const StyledTitle = styled.header`
   font-weight: bold;
   font-size: 64px;
@@ -120,6 +152,12 @@ const StyledInput = styled.input`
   margin-bottom: 70px;
   font-size: 30px;
   outline: none;
+`
+
+const StyledRadioButton = styled.input`
+  height: 20px;
+  width: 20px;
+  margin-right: -15%;
 `
 
 const StyledNameInput = styled(StyledInput)`
@@ -168,6 +206,10 @@ const StyledOrContainer = styled.div`
 const StyledError = styled.p`
     color: red;
     margin-top: -20px;
+`
+
+const StyledText = styled.p`
+  font-size: 20px;
 `
 
 export default SignUp;
