@@ -58,7 +58,6 @@ const SignUp = () => {
                     accountType: data.accountType,
                   }
                 ),
-              console.log(auth.currentUser),
               userDataDb.doc(auth.currentUser.uid).set({
                 uid: auth.currentUser.uid,
                 displayName: `${data.first} ${data.last}`,
