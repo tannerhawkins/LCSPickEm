@@ -4,7 +4,6 @@ import { Constants } from '../../data/constants';
 import StyledButton from '../Template/Button';
 import Logo from '../../images/white mtn.png'
 
-// Websites Navbar, displays routes defined in 'src/data/routes'
 const Header = () => (
   <StyledHeader id="header">
     <StyledLogoContainer>
