@@ -1,18 +1,22 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import styled from 'styled-components';
+import { selectAccountType, selectDisplayName } from '../../app/account/selectors';
 import DownArrowIcon from '../../images/Icons/down arrow icon.png'
 import ProfileImage from './ProfileImage';
 
 // TODO implement logic to get display name and account type from auth
 const HeaderProfileInfo = ({className}) => {
+  const displayName = useSelector(selectDisplayName);
+  const accountType = useSelector(selectAccountType);
   
   return (
     <StyledProfileInfo className={className}>
       <StyledProfileImage />
       <StyledDownArrow src={DownArrowIcon} />
       <StyledInfoContainer>
-        <StyledDisplayName>Tanner Hawkins</StyledDisplayName>
-        <StyledAccountType>Teacher</StyledAccountType>
+        <StyledDisplayName>{displayName}</StyledDisplayName>
+        <StyledAccountType>{accountType}</StyledAccountType>
       </StyledInfoContainer>
     </StyledProfileInfo>
 )};
