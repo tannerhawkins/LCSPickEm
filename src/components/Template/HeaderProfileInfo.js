@@ -46,17 +46,18 @@ const StyledInfoContainer = styled.div`
     }
 `
 
-const StyledDisplayName = styled.h1`
-  font-size: 20px;
+const StyledDisplayName = styled.p`
+  font-size: 18px;
   line-height: 18px;
   margin: 0;
   font-weight: 500;
 `
 
-const StyledAccountType = styled.h2`
+const StyledAccountType = styled.p`
   font-size: 15px;
   font-weight: 400;
   margin: 0;
+  text-transform: capitalize;
 `
 
 export default HeaderProfileInfo;
