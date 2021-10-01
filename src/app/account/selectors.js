@@ -42,3 +42,8 @@ export const selectIsStudent = createSelector(
   selectAccountType,
   (type) => type === "student"
 );
+
+export const selectClassList = createSelector(
+  selectAccountState,
+  (state) => state.classList
+);

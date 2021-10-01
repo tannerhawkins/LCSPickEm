@@ -47,7 +47,7 @@ const SignIn = () => {
             dispatch(signIn(doc.data()));
             if (doc.data().classList.length !== 0) {
               classDataDb
-                .doc(doc.data().classList[0])
+                .doc(doc.data().classList[0].cid)
                 .get()
                 .then((result) => dispatch(setCurrentClass(result.data())));
             } else {

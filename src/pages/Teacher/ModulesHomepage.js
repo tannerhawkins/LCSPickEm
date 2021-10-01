@@ -8,9 +8,12 @@ import NewCard from "../../components/Teacher/NewCard";
 import { Constants } from "../../data/constants";
 import { useSelector } from "react-redux";
 import { selectCurrentClass } from "../../app/class/selectors";
+import { selectClassList } from "../../app/account/selectors";
+import Dropdown, { Option } from "../../components/Template/ClassDropdown";
 
 const ModulesHomepage = () => {
   const currentClass = useSelector(selectCurrentClass);
+  const classes = useSelector(selectClassList);
 
   useEffect(() => {}, [currentClass]);
 
@@ -22,11 +25,23 @@ const ModulesHomepage = () => {
         <Hamburger />
         <StyledBody>
           <BodyHeader>
-            <StyledTitle>
-              Dashboard{" "}
-              {currentClass && <span>- {currentClass.className}</span>}
-            </StyledTitle>
+            <TitleContainer>
+              <StyledTitle>Dashboard </StyledTitle>
+              {/* Maps each class in classes to an option in the dropdown list and selects the one that matches the current selected class */}
+              {classes[0] && (
+                <Dropdown>
+                  {classes.map((item) => (
+                    <Option
+                      selected={item.cid === currentClass.cid ? "selected" : ""}
+                      value={item}
+                      classItem={item}
+                    />
+                  ))}
+                </Dropdown>
+              )}
+            </TitleContainer>
             <EnrollmentCode>
+              {/* Only shows the enrollment code if a current class is selected */}
               {currentClass && (
                 <p>
                   <b>Enrollment Code:</b> {currentClass.enrollmentCode}
@@ -84,6 +99,11 @@ const StyledTitle = styled.p`
   font-size: 30px;
 `;
 
+const TitleContainer = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
 const EnrollmentCode = styled.p`
   font-size: 18px;
 `;
@@ -105,4 +125,5 @@ const StyledSectionHeader = styled.p`
   line-height: 43px;
   font-weight: 500;
 `;
+
 export default ModulesHomepage;
