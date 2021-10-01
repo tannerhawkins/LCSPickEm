@@ -1,19 +1,21 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Helmet, HelmetProvider } from 'react-helmet-async';
-import ScrollToTop from '../components/Template/ScrollToTop';
+import React from "react";
+import PropTypes from "prop-types";
+import { Helmet, HelmetProvider } from "react-helmet-async";
+import ScrollToTop from "../components/Template/ScrollToTop";
 
 const Main = (props) => (
   <HelmetProvider>
     <ScrollToTop />
-    <Helmet titleTemplate="%s | Ancient Path Adventures" defaultTitle="Ancient Path Adventures" defer={false}>
+    <Helmet
+      titleTemplate="%s | Ancient Path Adventures"
+      defaultTitle="Ancient Path Adventures"
+      defer={false}
+    >
       {props.title && <title>{props.title}</title>}
       <meta name="description" content={props.description} />
     </Helmet>
     <div id="wrapper">
-      <div id="main">
-        {props.children}
-      </div>
+      <div id="main">{props.children}</div>
     </div>
   </HelmetProvider>
 );

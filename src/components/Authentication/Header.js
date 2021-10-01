@@ -1,8 +1,8 @@
-import React from 'react';
-import styled from 'styled-components';
-import { Constants } from '../../data/constants';
-import StyledButton from '../Template/Button';
-import Logo from '../../images/white mtn.png'
+import React from "react";
+import styled from "styled-components";
+import { Constants } from "../../data/constants";
+import StyledButton from "../Template/Button";
+import Logo from "../../images/white mtn.png";
 
 const Header = () => (
   <StyledHeader id="header">
@@ -21,19 +21,19 @@ const StyledHeader = styled.header`
   background-color: ${Constants.COLOR.LIGHT_GREEN};
   justify-content: space-between;
   align-items: center;
-	height: ${Constants.HEADER_HEIGHT};
-	left: 0;
-	top: 0;
-	width: 100%;
+  height: ${Constants.HEADER_HEIGHT};
+  left: 0;
+  top: 0;
+  width: 100%;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   z-index: 100000;
-`
+`;
 
 const StyledButtonContainer = styled.div`
   display: flex;
   align-items: center;
   margin-right: 3%;
-`
+`;
 
 const HeaderName = styled.div`
   font-family: Playball;
@@ -45,24 +45,24 @@ const HeaderName = styled.div`
   text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
   @media (max-width: 800px) {
     display: none;
-}
-`
+  }
+`;
 
 const StyledLogo = styled.img`
   margin-left: 3%;
   width: 130px;
-`
+`;
 
 const StyledLogoContainer = styled.div`
   display: flex;
   align-items: center;
   margin-left: 3%;
-`
+`;
 
 const StyledHelpButton = styled(StyledButton)`
   margin-right: 10px;
   box-shadow: none;
   height: 10px;
-`
+`;
 
 export default Header;

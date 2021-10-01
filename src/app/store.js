@@ -1,17 +1,17 @@
-import { combineReducers, createStore } from '@reduxjs/toolkit';
-import accountReducer from './account/reducers.js';
-import storage from 'redux-persist/lib/storage';
-import persistReducer from 'redux-persist/es/persistReducer';
-import persistStore from 'redux-persist/es/persistStore';
+import { combineReducers, createStore } from "@reduxjs/toolkit";
+import accountReducer from "./account/reducers.js";
+import storage from "redux-persist/lib/storage";
+import persistReducer from "redux-persist/es/persistReducer";
+import persistStore from "redux-persist/es/persistStore";
 
 const rootReducer = combineReducers({
-  account: accountReducer
-})
+  account: accountReducer,
+});
 
 const persistConfig = {
-  key: 'root',
+  key: "root",
   storage,
-}
+};
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 

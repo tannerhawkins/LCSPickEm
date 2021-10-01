@@ -14,7 +14,7 @@ const firebaseConfig = {
   storageBucket: "ancient-path-adventures.appspot.com",
   messagingSenderId: "1051282870332",
   appId: "1:1051282870332:web:8f7a5922db7d370e86b339",
-  measurementId: "G-NPPQJQTEQN"
+  measurementId: "G-NPPQJQTEQN",
 };
 
 // Initialize Firebase
@@ -24,7 +24,6 @@ const db = firebase.firestore();
 var auth = firebase.auth();
 var provider = new firebase.auth.GoogleAuthProvider();
 
-
 export const userDataDb = db.collection("userData");
 
-export {auth , provider};
+export { auth, provider };

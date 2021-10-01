@@ -1,12 +1,12 @@
 export const signIn = (user) => {
-    return  {
-        type: 'SIGN_IN',
-        payload: user,
-    }
-}
+  return {
+    type: "SIGN_IN",
+    payload: user,
+  };
+};
 
 export const signOut = () => {
-    return  {
-        type: 'SIGN_OUT',
-    }
-}
+  return {
+    type: "SIGN_OUT",
+  };
+};
