@@ -1,0 +1,2 @@
+(this.webpackJsonpAncientPathAdventures=this.webpackJsonpAncientPathAdventures||[]).push([[13],{89:function(e,t,n){"use strict";n.r(t);var s=n(0),c=n(5),a=n(2);const h=Object(s.lazy)((()=>Promise.all([n.e(0),n.e(1),n.e(2),n.e(9)]).then(n.bind(null,85))));t.default=({match:e})=>Object(a.jsxs)(c.d,{children:[Object(a.jsx)(c.b,{path:`${e.path}/home`,component:h}),Object(a.jsx)(c.a,{to:`${e.path}/home`})]})}}]);
+//# sourceMappingURL=13.668da780.chunk.js.map
