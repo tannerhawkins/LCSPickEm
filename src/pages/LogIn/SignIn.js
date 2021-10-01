@@ -1,13 +1,13 @@
 import React, { useState } from "react";
-import LoginWithGoogle from "../../components/Authentication/LoginWithGoogle";
 import Main from "../../layouts/Main";
 import styled from "styled-components";
 import Header from "../../components/Authentication/Header";
 import { Constants } from "../../data/constants";
 import Button from "../../components/Template/Button";
 import { useDispatch } from "react-redux";
-import { auth, userDataDb } from "../../data/firebase";
+import { auth, classDataDb, userDataDb } from "../../data/firebase";
 import { signIn } from "../../app/account/actions.js";
+import { setCurrentClass } from "../../app/class/actions";
 
 const SignIn = () => {
   const [errorMessage, setErrorMessage] = useState();
@@ -45,6 +45,14 @@ const SignIn = () => {
           .get()
           .then((doc) => {
             dispatch(signIn(doc.data()));
+            if (doc.data().classList.length !== 0) {
+              classDataDb
+                .doc(doc.data().classList[0])
+                .get()
+                .then((result) => dispatch(setCurrentClass(result.data())));
+            } else {
+              dispatch(setCurrentClass(null));
+            }
           });
       })
       .catch((error) => {

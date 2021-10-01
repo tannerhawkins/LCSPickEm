@@ -40,6 +40,8 @@ const App = () => {
           {!loginState && <Route path="/signup" component={SignUp} />}
           {isTeacher && <Route path="/teacher" component={TeacherRoutes} />}
           {isStudent && <Route path="/student" component={StudentRoutes} />}
+          {isTeacher && <Redirect to="/teacher" />}
+          {isTeacher && <Redirect to="/student" />}
           <Redirect to="/home" />
         </Switch>
         <Route exact path="/">

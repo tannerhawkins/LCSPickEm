@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import SideBar from "../../components/Template/SideBar";
 import Header from "../../components/Teacher/Header";
 import styled from "styled-components";
@@ -6,8 +6,14 @@ import Hamburger from "../../components/Template/Hamburger";
 import Main from "../../layouts/Main";
 import NewCard from "../../components/Teacher/NewCard";
 import { Constants } from "../../data/constants";
+import { useSelector } from "react-redux";
+import { selectCurrentClass } from "../../app/class/selectors";
 
 const ModulesHomepage = () => {
+  const currentClass = useSelector(selectCurrentClass);
+
+  useEffect(() => {}, [currentClass]);
+
   return (
     <Main title={"Dashboard"} description={"Dashboard"}>
       <StyledHomepage>
@@ -16,9 +22,16 @@ const ModulesHomepage = () => {
         <Hamburger />
         <StyledBody>
           <BodyHeader>
-            <StyledTitle>Dashboard</StyledTitle>
+            <StyledTitle>
+              Dashboard{" "}
+              {currentClass && <span>- {currentClass.className}</span>}
+            </StyledTitle>
             <EnrollmentCode>
-              <b>Enrollment Code:</b> b0551ng
+              {currentClass && (
+                <p>
+                  <b>Enrollment Code:</b> {currentClass.enrollmentCode}
+                </p>
+              )}
             </EnrollmentCode>
           </BodyHeader>
           <StyledSectionHeader>New</StyledSectionHeader>

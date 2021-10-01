@@ -9,6 +9,7 @@ import { auth, userDataDb } from "../../data/firebase";
 import { addDoc } from "firebase/firestore";
 import { useDispatch } from "react-redux";
 import { signIn } from "../../app/account/actions.js";
+import { setCurrentClass } from "../../app/class/actions";
 
 const SignUp = () => {
   const [errorMessage, setErrorMessage] = useState();
@@ -65,6 +66,7 @@ const SignUp = () => {
               accountType: data.accountType,
             };
             dispatch(signIn(accountInfo));
+            dispatch(setCurrentClass(null));
             userDataDb.doc(auth.currentUser.uid).set(accountInfo);
           });
       })

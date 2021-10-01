@@ -25,5 +25,6 @@ var auth = firebase.auth();
 var provider = new firebase.auth.GoogleAuthProvider();
 
 export const userDataDb = db.collection("userData");
+export const classDataDb = db.collection("classData");
 
 export { auth, provider };
