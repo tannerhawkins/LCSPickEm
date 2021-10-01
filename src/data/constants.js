@@ -6,6 +6,7 @@ export const Constants = {
         GREEN: "#7DCBB5",
         WHITE: "#e9e9ff",
         DARK_BLUE: "#373B53",
+        TEAL: "#B5FFEA",
     },
     HEADER_HEIGHT: "80px",
     SIDEBAR_WIDTH: "80px",

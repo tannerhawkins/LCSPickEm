@@ -5,7 +5,7 @@ import ProfileImage from './ProfileImage';
 import HelpIcon from '../../images/Icons/green help icon.png';
 import FeedbackIcon from '../../images/Icons/green feedback icon.png';
 import MessageIcon from '../../images/Icons/green message icon.png';
-import PlusIcon from '../../images/Icons/plus icon.png';
+import PlusIcon from '../../images/Icons/green plus icon.png';
 import LogoutIcon from '../../images/Icons/logout icon.png';
 
 const Hamburger = () => {

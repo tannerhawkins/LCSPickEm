@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Constants } from '../../data/constants';
 import DownArrowIcon from '../../images/Icons/down arrow icon.png';
-import PlusIcon from '../../images/Icons/plus icon.png';
+import PlusIcon from '../../images/Icons/green plus icon.png';
 import NotificationBell from '../Template/NotificationBell';
 import LogoutIcon from '../../images/Icons/logout icon.png';
 import HeaderProfileInfo from '../Template/HeaderProfileInfo';
