@@ -6,7 +6,7 @@ import Header from '../../components/Authentication/Header';
 import { Constants } from '../../data/constants';
 import Button from '../../components/Template/Button'
 import { useDispatch } from 'react-redux';
-import { auth } from '../../data/firebase';
+import { auth, userDataDb } from '../../data/firebase';
 import { signIn } from '../../app/account/actions.js';
 
 const SignIn = () => {
@@ -32,12 +32,14 @@ const SignIn = () => {
       }
 
       auth.signInWithEmailAndPassword(data.email, data.password).then(() => {
-        dispatch(signIn(auth.currentUser));
+        userDataDb.doc(auth.currentUser.uid).get().then(doc => {
+          dispatch(signIn(doc.data()))
+        })
       }).catch((error) => {
         if (error.code === "auth/user-not-found") {
           setErrorMessage("A user with this email address does not exist")
         } else if (error.code === "auth/wrong-password"){
-          setErrorMessage("The password is invalid or the user is attempting to use a third party account to sign in. Try using one of the options below.")
+          setErrorMessage("The password is invalid.")
         } else {
           setErrorMessage(error.message);
         }
@@ -62,12 +64,12 @@ const SignIn = () => {
         <StyledSignUpButton onClick={() => window.location.href='/AncientPathAdventures/signup'}>Don't have an account? Don’t worry! Sign up here</StyledSignUpButton>
       </StyledButtonContainer>
     </StyledForm>
-    <StyledOrContainer>
+    {/* <StyledOrContainer>
       <StyledLine />
       <p>OR</p>
       <StyledLine />
     </StyledOrContainer>
-    <LoginWithGoogle />
+    <LoginWithGoogle /> */}
   </MainContainer>
 </Main>
 )};

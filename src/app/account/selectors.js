@@ -1,6 +1,5 @@
 import { createSelector } from "reselect";
 import { store } from "../store.js"
-import { auth } from "../../data/firebase.js";
 
 const selectState = () => store.getState();
 
@@ -27,4 +26,19 @@ export const selectEmail = createSelector(
 export const selectUser = createSelector(
     selectAccountState,
     state => state.user
+)
+
+export const selectAccountType = createSelector(
+    selectAccountState,
+    state => state.accountType
+)
+
+export const selectIsTeacher = createSelector(
+    selectAccountType,
+    type => type === "teacher"
+)
+
+export const selectIsStudent = createSelector(
+    selectAccountType,
+    type => type === "student"
 )
