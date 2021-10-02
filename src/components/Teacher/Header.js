@@ -6,8 +6,13 @@ import PlusIcon from "../../images/Icons/green plus icon.png";
 import NotificationBell from "../Template/NotificationBell";
 import LogoutIcon from "../../images/Icons/logout icon.png";
 import HeaderProfileInfo from "../Template/HeaderProfileInfo";
+import { useDispatch } from "react-redux";
+import { signOut } from "../../app/account/actions";
 
-const Header = () => (
+const Header = () => {
+  const dispatch = useDispatch();
+  
+  return (
   <StyledHeader id="header">
     <StyledSearchContainer></StyledSearchContainer>
     <StyledButtonsContainer>
@@ -17,10 +22,10 @@ const Header = () => (
         <StyledArrowIcon src={DownArrowIcon} />
       </StyledPlusContainer>
       <NotificationBell />
-      <StyledLogoutIcon src={LogoutIcon} />
+      <StyledLogoutIcon onClick={() => dispatch(signOut())} src={LogoutIcon} />
     </StyledButtonsContainer>
   </StyledHeader>
-);
+)};
 
 const StyledHeader = styled.header`
   display: flex;
@@ -69,6 +74,9 @@ const StyledArrowIcon = styled.img`
 const StyledLogoutIcon = styled.img`
   height: 35%;
   padding-left: 10%;
+  :hover {
+    cursor: pointer;
+  }
 `;
 
 const StyledProfileInfo = styled(HeaderProfileInfo)``;

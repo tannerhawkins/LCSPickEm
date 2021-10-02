@@ -5,17 +5,21 @@ import Logo from "../../images/white mtn.png";
 import HelpIcon from "../../images/Icons/help icon.png";
 import FeedbackIcon from "../../images/Icons/feedback icon.png";
 import MessageIcon from "../../images/Icons/message icon.png";
+import { useHistory } from "react-router-dom";
 
-const SideBar = () => (
+const SideBar = () => {
+  const history = useHistory();
+
+  return (
   <StyledSidebar>
     <StyledLogoBox>
-      <StyledLogo src={Logo} />
+      <StyledLogo onClick={() => history.push("/home")} src={Logo} />
     </StyledLogoBox>
     <StyledIcon src={HelpIcon} />
     <StyledIcon src={FeedbackIcon} />
     <StyledIcon src={MessageIcon} />
   </StyledSidebar>
-);
+)};
 
 const StyledSidebar = styled.div`
   display: flex;
@@ -38,6 +42,9 @@ const StyledLogoBox = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  :hover {
+    cursor: pointer;
+  }
 `;
 
 const StyledLogo = styled.img`
@@ -47,5 +54,8 @@ const StyledLogo = styled.img`
 const StyledIcon = styled.img`
   width: 40px;
   margin: 50px auto 0px;
+  :hover {
+    cursor: pointer;
+  }
 `;
 export default SideBar;

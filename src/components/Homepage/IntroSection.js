@@ -2,8 +2,15 @@ import { Constants } from "../../data/constants.js";
 import styled from "styled-components";
 import homepageSplash from "../../images/Homepage/homepage-splash.png";
 import Button from "../Template/Button.js";
+import { useHistory } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { selectAccountType, selectIsSignedIn } from "../../app/account/selectors.js";
 
 const IntroSection = () => {
+  const history = useHistory();
+  const accountType = useSelector(selectAccountType);
+  const isSignedIn = useSelector(selectIsSignedIn);
+
   return (
     <SectionContainer>
       <TextContainer>
@@ -11,7 +18,7 @@ const IntroSection = () => {
         <StyledSubText>Some convincing text should go here</StyledSubText>
       </TextContainer>
       <ButtonContainer>
-        <StyledButtonOne>BTN</StyledButtonOne>
+        <StyledButtonOne onClick={() => isSignedIn ? history.push(`${accountType}/home`) : history.push(`/signin`)}>Dashboard</StyledButtonOne>
         <StyledButtonTwo>BTN2</StyledButtonTwo>
       </ButtonContainer>
       <StyledImage src={homepageSplash} />
@@ -68,7 +75,7 @@ const ButtonContainer = styled.div`
 
 const StyledButtonOne = styled(Button)`
   font-size: 30px;
-  line-height: 36px;
+  line-height: 30px;
   font-weight: 700;
   max-width: 200px;
   height: 60px;
