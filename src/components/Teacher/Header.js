@@ -11,21 +11,25 @@ import { signOut } from "../../app/account/actions";
 
 const Header = () => {
   const dispatch = useDispatch();
-  
+
   return (
-  <StyledHeader id="header">
-    <StyledSearchContainer></StyledSearchContainer>
-    <StyledButtonsContainer>
-      <StyledProfileInfo />
-      <StyledPlusContainer>
-        <StyledPlusIcon src={PlusIcon} />
-        <StyledArrowIcon src={DownArrowIcon} />
-      </StyledPlusContainer>
-      <NotificationBell />
-      <StyledLogoutIcon onClick={() => dispatch(signOut())} src={LogoutIcon} />
-    </StyledButtonsContainer>
-  </StyledHeader>
-)};
+    <StyledHeader id="header">
+      <StyledSearchContainer></StyledSearchContainer>
+      <StyledButtonsContainer>
+        <StyledProfileInfo />
+        <StyledPlusContainer>
+          <StyledPlusIcon src={PlusIcon} />
+          <StyledArrowIcon src={DownArrowIcon} />
+        </StyledPlusContainer>
+        <NotificationBell />
+        <StyledLogoutIcon
+          onClick={() => dispatch(signOut())}
+          src={LogoutIcon}
+        />
+      </StyledButtonsContainer>
+    </StyledHeader>
+  );
+};
 
 const StyledHeader = styled.header`
   display: flex;

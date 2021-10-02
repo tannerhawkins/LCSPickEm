@@ -11,15 +11,16 @@ const SideBar = () => {
   const history = useHistory();
 
   return (
-  <StyledSidebar>
-    <StyledLogoBox>
-      <StyledLogo onClick={() => history.push("/home")} src={Logo} />
-    </StyledLogoBox>
-    <StyledIcon src={HelpIcon} />
-    <StyledIcon src={FeedbackIcon} />
-    <StyledIcon src={MessageIcon} />
-  </StyledSidebar>
-)};
+    <StyledSidebar>
+      <StyledLogoBox>
+        <StyledLogo onClick={() => history.push("/home")} src={Logo} />
+      </StyledLogoBox>
+      <StyledIcon src={HelpIcon} />
+      <StyledIcon src={FeedbackIcon} />
+      <StyledIcon src={MessageIcon} />
+    </StyledSidebar>
+  );
+};
 
 const StyledSidebar = styled.div`
   display: flex;

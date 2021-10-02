@@ -10,8 +10,10 @@ import { useSelector } from "react-redux";
 import { selectCurrentClass } from "../../app/class/selectors";
 import { selectClassList } from "../../app/account/selectors";
 import Dropdown, { Option } from "../../components/Template/ClassDropdown";
+import { useHistory } from "react-router";
 
 const ModulesHomepage = () => {
+  const history = useHistory();
   const currentClass = useSelector(selectCurrentClass);
   const classes = useSelector(selectClassList);
 
@@ -69,6 +71,7 @@ const ModulesHomepage = () => {
               plusIconColor="green"
               barColor={Constants.COLOR.GREEN}
               cardColor="white"
+              onClick={() => history.push("/teacher/create-class")}
             >
               Class
             </StyledCard>

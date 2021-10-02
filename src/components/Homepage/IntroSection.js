@@ -4,7 +4,10 @@ import homepageSplash from "../../images/Homepage/homepage-splash.png";
 import Button from "../Template/Button.js";
 import { useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { selectAccountType, selectIsSignedIn } from "../../app/account/selectors.js";
+import {
+  selectAccountType,
+  selectIsSignedIn,
+} from "../../app/account/selectors.js";
 
 const IntroSection = () => {
   const history = useHistory();
@@ -18,7 +21,15 @@ const IntroSection = () => {
         <StyledSubText>Some convincing text should go here</StyledSubText>
       </TextContainer>
       <ButtonContainer>
-        <StyledButtonOne onClick={() => isSignedIn ? history.push(`${accountType}/home`) : history.push(`/signin`)}>Dashboard</StyledButtonOne>
+        <StyledButtonOne
+          onClick={() =>
+            isSignedIn
+              ? history.push(`${accountType}/home`)
+              : history.push(`/signin`)
+          }
+        >
+          Dashboard
+        </StyledButtonOne>
         <StyledButtonTwo>BTN2</StyledButtonTwo>
       </ButtonContainer>
       <StyledImage src={homepageSplash} />
