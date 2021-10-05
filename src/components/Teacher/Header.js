@@ -38,7 +38,7 @@ const StyledHeader = styled.header`
   align-items: center;
   height: ${Constants.HEADER_HEIGHT};
   left: ${Constants.SIDEBAR_WIDTH};
-  position: fixed;
+  position: absolute;
   top: 0;
   width: calc(100% - ${Constants.SIDEBAR_WIDTH});
   @media (max-width: 500px) {

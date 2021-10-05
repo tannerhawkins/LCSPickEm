@@ -25,7 +25,7 @@ const SideBar = () => {
 const StyledSidebar = styled.div`
   display: flex;
   flex-direction: column;
-  height: 100%;
+  height: calc(100% + ${Constants.HEADER_HEIGHT});
   width: ${Constants.SIDEBAR_WIDTH};
   position: absolute;
   left: 0;

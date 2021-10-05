@@ -1,12 +1,10 @@
 import React, { useState } from "react";
-import LoginWithGoogle from "../../components/Authentication/LoginWithGoogle";
 import Main from "../../layouts/Main";
 import styled from "styled-components";
 import Header from "../../components/Authentication/Header";
 import { Constants } from "../../data/constants";
 import Button from "../../components/Template/Button";
 import { auth, userDataDb } from "../../data/firebase";
-import { addDoc } from "firebase/firestore";
 import { useDispatch } from "react-redux";
 import { signIn } from "../../app/account/actions.js";
 import { setCurrentClass } from "../../app/class/actions";
