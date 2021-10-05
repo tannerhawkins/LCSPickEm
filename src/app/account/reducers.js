@@ -20,6 +20,12 @@ export default function accountReducer(state = initialState, action) {
         initialState,
       };
 
+    case "UPDATE_CLASS_LIST":
+      return {
+        ...state,
+        classList: action.payload,
+      };
+
     default:
       // If this reducer doesn't recognize the action type, or doesn't
       // care about this specific action, return the existing state unchanged

@@ -10,3 +10,10 @@ export const signOut = () => {
     type: "SIGN_OUT",
   };
 };
+
+export const updateClassList = (classList) => {
+  return {
+    type: "UPDATE_CLASS_LIST",
+    payload: classList,
+  };
+};
