@@ -24,7 +24,7 @@
     "@fortawesome/react-fontawesome": "0.1.14",
     "@reduxjs/toolkit": "^1.6.1",
     "dayjs": "^1.10.4",
-    "firebase": "^9.0.2",
+    "firebase": "^8.10.0",
     "firestore": "^1.1.6",
     "git": "^0.1.5",
     "js-beautify": "^1.14.0",
