@@ -3,11 +3,15 @@ import { Switch, Route, Redirect } from "react-router-dom";
 
 const ModulesHomepage = lazy(() => import("../pages/Teacher/ModulesHomepage"));
 const CreateAClass = lazy(() => import("../pages/Teacher/CreateClass"));
+const AddStudents = lazy(() => import("../pages/Teacher/AddStudents"));
+const AddModule = lazy(() => import("../pages/Teacher/AddModule"));
 
 const TeacherRoutes = ({ match }) => (
   <Switch>
     <Route path={`${match.path}/home`} component={ModulesHomepage} />
     <Route path={`${match.path}/create-class`} component={CreateAClass} />
+    <Route path={`${match.path}/add-students`} component={AddStudents} />
+    <Route path={`${match.path}/add-module`} component={AddModule} />
     <Redirect to={`${match.path}/home`} />
   </Switch>
 );
