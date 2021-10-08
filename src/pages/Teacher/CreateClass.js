@@ -95,9 +95,7 @@ const CreateClass = () => {
             <StyledSubmitButton onClick={handleSubmit}>
               CREATE
             </StyledSubmitButton>
-            <StyledDashboardButton
-              onClick={() => history.push(`teacher/home`)}
-            >
+            <StyledDashboardButton onClick={() => history.push(`teacher/home`)}>
               BACK TO DASHBOARD
             </StyledDashboardButton>
           </StyledButtonContainer>

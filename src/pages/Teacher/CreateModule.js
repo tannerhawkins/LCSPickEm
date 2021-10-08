@@ -14,13 +14,16 @@ const CreateModule = () => {
   const handleSubmit = () => {
     modulesDb.add(Constants.MOCK_MODULE).then((doc) => {
       modulesDb.doc(doc.id).update({ mid: doc.id });
-      userDataDb.doc(auth.currentUser.uid).update({
-        moduleList: firebase.firestore.FieldValue.arrayUnion({
-          mid: doc.id,
-          title: Constants.MOCK_MODULE.title,
-          description: Constants.MOCK_MODULE.description,
-        }),
-      }).then(() => history.push("teacher/home"));
+      userDataDb
+        .doc(auth.currentUser.uid)
+        .update({
+          moduleList: firebase.firestore.FieldValue.arrayUnion({
+            mid: doc.id,
+            title: Constants.MOCK_MODULE.title,
+            description: Constants.MOCK_MODULE.description,
+          }),
+        })
+        .then(() => history.push("teacher/home"));
     });
   };
 

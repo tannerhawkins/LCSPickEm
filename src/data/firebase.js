@@ -28,4 +28,9 @@ export const userDataDb = db.collection("userData");
 export const classDataDb = db.collection("classData");
 export const modulesDb = db.collection("modules");
 
+export const getAllModules = async () => {
+  const modules = await modulesDb.get();
+  return modules.docs.map((doc) => doc.data());
+};
+
 export { auth, provider };

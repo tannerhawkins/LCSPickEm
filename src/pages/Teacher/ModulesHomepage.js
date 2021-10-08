@@ -34,7 +34,9 @@ const ModulesHomepage = () => {
                 <Dropdown>
                   {classes.map((item) => (
                     <Option
-                      selected={item.cid === currentClass?.cid ? "selected" : ""}
+                      selected={
+                        item.cid === currentClass?.cid ? "selected" : ""
+                      }
                       value={item}
                       classItem={item}
                     />
