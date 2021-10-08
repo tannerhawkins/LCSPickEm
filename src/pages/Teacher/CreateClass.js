@@ -6,11 +6,7 @@ import styled from "styled-components";
 import { Constants } from "../../data/constants";
 import Button from "../../components/Template/Button";
 import { useHistory } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import {
-  selectAccountType,
-  selectClassList,
-} from "../../app/account/selectors";
+import { useDispatch } from "react-redux";
 import { auth, classDataDb, userDataDb } from "../../data/firebase";
 import firebase from "firebase";
 import { setCurrentClass } from "../../app/class/actions";
@@ -18,8 +14,6 @@ import { signIn } from "../../app/account/actions";
 
 const CreateClass = () => {
   const history = useHistory();
-  const accountType = useSelector(selectAccountType);
-  const classList = useSelector(selectClassList);
   const dispatch = useDispatch();
   const [errorMessage, setErrorMessage] = useState();
 
@@ -48,11 +42,17 @@ const CreateClass = () => {
         enrollmentCode: "placeholdercode",
       })
       .then((doc) => {
-        classDataDb.doc(doc.id).update({ cid: doc.id }).then(() => {
-          classDataDb.doc(doc.id).get().then(doc2 => {
-            dispatch(setCurrentClass(doc2.data()));
-          })
-        });
+        classDataDb
+          .doc(doc.id)
+          .update({ cid: doc.id })
+          .then(() => {
+            classDataDb
+              .doc(doc.id)
+              .get()
+              .then((doc2) => {
+                dispatch(setCurrentClass(doc2.data()));
+              });
+          });
         userDataDb
           .doc(auth.currentUser.uid)
           .update({
@@ -68,7 +68,7 @@ const CreateClass = () => {
               .then((doc) => {
                 dispatch(signIn(doc.data()));
               });
-            history.push(`${accountType}/home`);
+            history.push(`teacher/home`);
           });
       });
   };
@@ -95,7 +95,7 @@ const CreateClass = () => {
               CREATE
             </StyledSubmitButton>
             <StyledDashboardButton
-              onClick={() => history.push(`${accountType}/home`)}
+              onClick={() => history.push(`teacher/home`)}
             >
               BACK TO DASHBOARD
             </StyledDashboardButton>
