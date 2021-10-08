@@ -10,8 +10,13 @@ const AddModule = () => {
   const handleSubmit = () => {
   };
 
+
+  // I think this page should be some kind of place to search for already created modules
+  // There should be some kind of search functionality that connects to firebase to allow
+  // teachers to search through modules created by APA and by other teachers
+  // Also should include a button to go to the create a module page
   return (
-    <Main title={"Create a Class"} description={"Create a Class"}>
+    <Main title={"Add a Module"} description={"Add a Module"}>
       <SideBar />
       <Header />
       <StyledBody>

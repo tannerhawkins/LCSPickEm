@@ -5,16 +5,18 @@ import Header from "../../components/Teacher/Header";
 import styled from "styled-components";
 import { Constants } from "../../data/constants";
 
-const AddStudents = () => {
+const CreateModule = () => {
 
   const handleSubmit = () => {
   };
 
-  // Should really just take an input of a students email and add that student
-  // to the current selected class. Should maybe include the drop down from the
-  // modules page to allow teacher to change selected class on this page.
+
+  // Likely should have a field for Title, description, and some kind of interface for adding
+  // "steps" to the module. These steps would be things like text, video, and quizzes.
+  // Then there needs to be a way to modify these steps with the information desired.
+  // Should be an option to make module private or public
   return (
-    <Main title={"Add a Student"} description={"Add a Student"}>
+    <Main title={"Create a Module"} description={"Create a Module"}>
       <SideBar />
       <Header />
       <StyledBody>
@@ -30,4 +32,4 @@ const StyledBody = styled.div`
 `;
 
 
-export default AddStudents;
+export default CreateModule;
