@@ -56,13 +56,23 @@ const SignUp = () => {
             displayName: `${data.first} ${data.last}`,
           })
           .then(() => {
-            const accountInfo = {
-              email: auth.currentUser.email,
-              uid: auth.currentUser.uid,
-              classList: [],
-              displayName: `${data.first} ${data.last}`,
-              accountType: data.accountType,
-            };
+            const accountInfo =
+              data.accountType === "teacher"
+                ? {
+                    email: auth.currentUser.email,
+                    uid: auth.currentUser.uid,
+                    classList: [],
+                    displayName: `${data.first} ${data.last}`,
+                    accountType: data.accountType,
+                    moduleList: [],
+                  }
+                : {
+                    email: auth.currentUser.email,
+                    uid: auth.currentUser.uid,
+                    classList: [],
+                    displayName: `${data.first} ${data.last}`,
+                    accountType: data.accountType,
+                  };
             dispatch(signIn(accountInfo));
             dispatch(setCurrentClass(null));
             userDataDb.doc(auth.currentUser.uid).set(accountInfo);

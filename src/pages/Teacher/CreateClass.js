@@ -40,6 +40,7 @@ const CreateClass = () => {
         description: data["description"],
         students: [],
         enrollmentCode: "placeholdercode",
+        modules: [],
       })
       .then((doc) => {
         classDataDb
