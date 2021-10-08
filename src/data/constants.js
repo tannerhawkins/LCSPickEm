@@ -9,4 +9,29 @@ export const Constants = {
   },
   HEADER_HEIGHT: "80px",
   SIDEBAR_WIDTH: "80px",
+  MOCK_MODULE: {
+    title: "Mock Module",
+    description: "This module is used for testing and development",
+    public: true,
+    steps: [
+      {
+        type: "text",
+        data: {
+          // Some kind of text data here (title, description, etc.)
+        }
+      },
+      {
+        type: "video",
+        data: {
+          // Some kind of reference to a video stored somewhere in Firebase and maybe a video title
+        }
+      },
+      {
+        type: "quiz",
+        data: {
+          // Some kind of quiz data here (array of questions, title, etc.)
+        }
+      }
+    ]
+  }
 };
