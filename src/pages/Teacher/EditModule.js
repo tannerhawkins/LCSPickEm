@@ -6,10 +6,7 @@ import styled from "styled-components";
 import { Constants } from "../../data/constants";
 
 const EditModule = () => {
-
-  const handleSubmit = () => {
-  };
-
+  const handleSubmit = () => {};
 
   // This page should function and look identically to the create module page
   // Only real difference is that all of the fields in the form will be filled in
@@ -18,8 +15,7 @@ const EditModule = () => {
     <Main title={"Edit Module"} description={"Edit Module"}>
       <SideBar />
       <Header />
-      <StyledBody>
-      </StyledBody>
+      <StyledBody></StyledBody>
     </Main>
   );
 };
@@ -29,6 +25,5 @@ const StyledBody = styled.div`
   margin-left: ${Constants.SIDEBAR_WIDTH};
   padding: 0 50px;
 `;
-
 
 export default EditModule;
