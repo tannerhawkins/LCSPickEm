@@ -19,8 +19,8 @@ const ModuleCard = (props) => {
     <StyledModuleCard>
       {moduleData ? (
         <>
-          <StyledTitle>{moduleData?.title}</StyledTitle>
-          <StyledDescription>{moduleData?.description}</StyledDescription>
+          <StyledTitle>{moduleData.title}</StyledTitle>
+          <StyledDescription>{moduleData.description}</StyledDescription>
         </>
       ) : (
         <>Loading...</>
