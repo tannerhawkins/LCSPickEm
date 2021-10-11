@@ -11,13 +11,16 @@ import { selectCurrentClass } from "../../app/class/selectors";
 import { selectClassList } from "../../app/account/selectors";
 import Dropdown, { Option } from "../../components/Template/ClassDropdown";
 import { useHistory } from "react-router";
+import ModuleCard from "../../components/Template/ModuleCard";
 
 const ModulesHomepage = () => {
   const history = useHistory();
   const currentClass = useSelector(selectCurrentClass);
   const classes = useSelector(selectClassList);
-
-  useEffect(() => {}, [currentClass]);
+  const assignedModules = currentClass?.modules;
+  const moduleCards = assignedModules?.map((currModule) => (
+    <ModuleCard module={currModule} />
+  ));
 
   return (
     <Main title={"Dashboard"} description={"Dashboard"}>
@@ -80,6 +83,8 @@ const ModulesHomepage = () => {
               Class
             </StyledCard>
           </NewCardContainer>
+          <StyledSectionHeader>Assigned Modules</StyledSectionHeader>
+          <div>{moduleCards}</div>
         </StyledBody>
       </StyledHomepage>
     </Main>
