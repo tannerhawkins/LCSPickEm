@@ -4,3 +4,10 @@ export const setCurrentClass = (classNumber) => {
     payload: classNumber,
   };
 };
+
+export const addModule = (module) => {
+  return {
+    type: "ADD_MODULE",
+    payload: module,
+  };
+};

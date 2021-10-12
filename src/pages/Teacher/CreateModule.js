@@ -7,9 +7,12 @@ import { Constants } from "../../data/constants";
 import { auth, modulesDb, userDataDb } from "../../data/firebase";
 import firebase from "firebase";
 import { useHistory } from "react-router-dom";
+import Button from "../../components/Template/Button";
+import DragAndDrop from "../../components/Teacher/DragAndDrop";
 
 const CreateModule = () => {
   const history = useHistory();
+  const [errorMessage, setErrorMessage] = useState();
 
   const handleSubmit = () => {
     modulesDb.add(Constants.MOCK_MODULE).then((doc) => {
@@ -39,8 +42,31 @@ const CreateModule = () => {
       <SideBar />
       <Header />
       <StyledBody>
-        {/* This button can be removed, was simply for testing purposes when adding the firebase things */}
-        <b onClick={handleSubmit}>Click to Create Module</b>
+        <StyledTitle>Create New Module</StyledTitle>
+        <StyledParagraph>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce ac
+          purus eget lacus pellentesque consequat. Donec commodo tincidunt
+          lorem, c ursus accumsan eros varius vel.
+        </StyledParagraph>
+        <StyledForm id="classForm">
+          <StyledText>Module Name</StyledText>
+          <StyledInput type="text" name="name" required />
+          <StyledText>Module Description</StyledText>
+          <StyledInput type="text" name="description" />
+          <StyledText>Steps</StyledText>
+          <StepsContainer>
+            <DragAndDrop />
+          </StepsContainer>
+          <StyledError>{errorMessage}</StyledError>
+          <StyledButtonContainer>
+            <StyledSubmitButton onClick={handleSubmit}>
+              CREATE
+            </StyledSubmitButton>
+            <StyledDashboardButton onClick={() => history.push(`teacher/home`)}>
+              BACK TO DASHBOARD
+            </StyledDashboardButton>
+          </StyledButtonContainer>
+        </StyledForm>
       </StyledBody>
     </Main>
   );
@@ -50,6 +76,76 @@ const StyledBody = styled.div`
   margin-top: ${Constants.HEADER_HEIGHT};
   margin-left: ${Constants.SIDEBAR_WIDTH};
   padding: 0 50px;
+`;
+
+const StyledTitle = styled.p`
+  line-height: 36px;
+  font-size: 30px;
+  font-weight: 600;
+`;
+
+const StyledParagraph = styled.p`
+  font-size: 20px;
+`;
+
+const StyledButtonContainer = styled.div`
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+`;
+
+const StepsContainer = styled.div``;
+
+const StyledForm = styled.form`
+  display: flex;
+  flex-direction: column;
+  outline: none;
+  width: 90%;
+  max-width: 600px;
+  margin-top: 60px;
+`;
+
+const StyledInput = styled.input`
+  border: none;
+  border-bottom: 1px solid black;
+  height: 60px;
+  margin-bottom: 70px;
+  font-size: 30px;
+  outline: none;
+`;
+
+const StyledSubmitButton = styled(Button)`
+  font-size: 25px;
+  height: 70px;
+  padding: 0 5px;
+  min-width: 120px;
+  background-color: ${Constants.COLOR.DARK_GREEN};
+  &:hover {
+    cursor: pointer;
+  }
+`;
+
+const StyledDashboardButton = styled(Button)`
+  font-size: 15px;
+  height: 50px;
+  padding: 0 5px;
+  min-width: 120px;
+  background-color: ${Constants.COLOR.LIGHT_GREEN};
+  &:hover {
+    cursor: pointer;
+  }
+`;
+
+const StyledError = styled.p`
+  color: red;
+  margin-top: -20px;
+`;
+
+const StyledText = styled.p`
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0;
 `;
 
 export default CreateModule;

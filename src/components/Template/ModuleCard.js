@@ -16,7 +16,7 @@ const ModuleCard = (props) => {
   }, [module]);
 
   return (
-    <StyledModuleCard>
+    <StyledModuleCard onClick={props.onClick}>
       {moduleData ? (
         <>
           <StyledTitle>{moduleData.title}</StyledTitle>

@@ -47,3 +47,8 @@ export const selectClassList = createSelector(
   selectAccountState,
   (state) => state.classList
 );
+
+export const selectModuleList = createSelector(
+  selectAccountState,
+  (state) => state.moduleList
+);
