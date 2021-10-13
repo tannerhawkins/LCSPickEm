@@ -8,6 +8,7 @@ import LogoutIcon from "../../images/Icons/logout icon.png";
 import HeaderProfileInfo from "../Template/HeaderProfileInfo";
 import { useDispatch } from "react-redux";
 import { signOut } from "../../app/account/actions";
+import { clearState } from "../../app/store";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -23,7 +24,7 @@ const Header = () => {
         </StyledPlusContainer>
         <NotificationBell />
         <StyledLogoutIcon
-          onClick={() => dispatch(signOut())}
+          onClick={() => dispatch(clearState())}
           src={LogoutIcon}
         />
       </StyledButtonsContainer>

@@ -6,6 +6,7 @@ import StyledButton from "../Template/Button.js";
 import { Constants } from "../../data/constants.js";
 import styled from "styled-components";
 import { selectIsSignedIn } from "../../app/account/selectors.js";
+import { clearState } from "../../app/store.js";
 
 const SignInOutButton = ({ className }) => {
   const dispatch = useDispatch();
@@ -13,7 +14,7 @@ const SignInOutButton = ({ className }) => {
 
   const logout = () => {
     auth.signOut().then(() => {
-      dispatch(signOut());
+      dispatch(clearState());
     });
   };
 

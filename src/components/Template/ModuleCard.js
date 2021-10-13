@@ -15,8 +15,10 @@ const ModuleCard = (props) => {
       });
   }, [module]);
 
+  const handleClick = () => {}
+
   return (
-    <StyledModuleCard>
+    <StyledModuleCard onClick={handleClick}>
       {moduleData ? (
         <>
           <StyledTitle>{moduleData.title}</StyledTitle>
