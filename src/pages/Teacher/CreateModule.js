@@ -53,7 +53,7 @@ const CreateModule = () => {
           <StyledInput type="text" name="name" required />
           <StyledText>Module Description</StyledText>
           <StyledInput type="text" name="description" />
-          <StyledText>Steps</StyledText>
+          <StyledText>Steps - Drag to Change Order</StyledText>
           <StepsContainer>
             <DragAndDrop />
           </StepsContainer>
@@ -75,7 +75,7 @@ const CreateModule = () => {
 const StyledBody = styled.div`
   margin-top: ${Constants.HEADER_HEIGHT};
   margin-left: ${Constants.SIDEBAR_WIDTH};
-  padding: 0 50px;
+  padding: 10px 50px;
 `;
 
 const StyledTitle = styled.p`

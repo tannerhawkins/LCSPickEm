@@ -1,24 +1,22 @@
 import React, { useState } from "react";
+import styled from "styled-components";
 import Box from "./Box";
 
 const DragAndDrop = () => {
   const [dragId, setDragId] = useState();
   const [boxes, setBoxes] = useState([
     {
-      id: "Box-1",
-      color: "red",
-      order: 1,
+      id: "TEXT STEP",
+      order: 1
     },
     {
-      id: "Box-2",
-      color: "green",
-      order: 2,
+      id: "VIDEO STEP",
+      order: 2
     },
     {
-      id: "Box-3",
-      color: "blue",
-      order: 3,
-    },
+      id: "QUIZ STEP",
+      order: 3
+    }
   ]);
 
   const handleDrag = (ev) => {
@@ -46,20 +44,26 @@ const DragAndDrop = () => {
   };
 
   return (
-    <div className="App">
+    <DragWrapper>
       {boxes
         .sort((a, b) => a.order - b.order)
         .map((box) => (
           <Box
             key={box.id}
             boxColor={box.color}
-            boxNumber={box.id}
+            title={box.id}
             handleDrag={handleDrag}
             handleDrop={handleDrop}
           />
         ))}
-    </div>
+    </DragWrapper>
   );
 };
+
+const DragWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    margin: 40px 0px;
+`
 
 export default DragAndDrop;

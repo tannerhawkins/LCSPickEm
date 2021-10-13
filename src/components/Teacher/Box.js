@@ -1,26 +1,30 @@
 import React from "react";
+import styled from "styled-components";
+import { Constants } from "../../data/constants";
 
-const Box = ({ boxColor, boxNumber, handleDrag, handleDrop }) => {
+const Box = ({ title, handleDrag, handleDrop }) => {
   return (
-    <div
+    <StyledBox
       draggable={true}
-      id={boxNumber}
+      id={title}
       onDragOver={(ev) => ev.preventDefault()}
       onDragStart={handleDrag}
       onDrop={handleDrop}
-      style={{
-        backgroundColor: boxColor,
-        border: "1px solid",
-        borderColor: boxColor,
-        borderRadius: "5px",
-        color: "#FFF",
-        width: "30%",
-        height: "100px",
-      }}
     >
-      {boxNumber}
-    </div>
+      {title}
+    </StyledBox>
   );
 };
+
+const StyledBox = styled.div`
+  background-color: ${Constants.COLOR.GREEN};
+  border-radius: 4px;
+  width: 80%;
+  height: 90px;
+  margin: 8px 0px;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+`;
 
 export default Box;
