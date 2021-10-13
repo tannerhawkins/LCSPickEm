@@ -15,6 +15,8 @@ const ModuleCard = (props) => {
       });
   }, [module]);
 
+  const handleClick = () => {}
+
   return (
     <StyledModuleCard onClick={props.onClick}>
       {moduleData ? (

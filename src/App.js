@@ -13,6 +13,7 @@ import {
   selectIsStudent,
 } from "./app/account/selectors";
 import { useSelector } from "react-redux";
+import { selectIsInModule } from "./app/module/selectors";
 
 const { PUBLIC_URL } = process.env;
 
@@ -22,7 +23,6 @@ const { PUBLIC_URL } = process.env;
 const SignIn = lazy(() => import("./pages/LogIn/SignIn"));
 const SignUp = lazy(() => import("./pages/LogIn/SignUp"));
 const Index = lazy(() => import("./pages/Index"));
-const NotFound = lazy(() => import("./pages/NotFound"));
 const TeacherRoutes = lazy(() => import("./routes/TeacherRoutes"));
 const StudentRoutes = lazy(() => import("./routes/StudentRoutes"));
 
