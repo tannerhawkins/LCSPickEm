@@ -14,6 +14,7 @@ export const Constants = {
     title: "Mock Module",
     description: "This module is used for testing and development",
     public: true,
+    creator: "someteacherIDhere",
     steps: [
       {
         type: "text",

@@ -6,11 +6,7 @@ import styled from "styled-components";
 import { Constants } from "../../data/constants";
 import Button from "../../components/Template/Button";
 import { useHistory } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import {
-  selectAccountType,
-  selectClassList,
-} from "../../app/account/selectors";
+import { useDispatch } from "react-redux";
 import { auth, classDataDb, userDataDb } from "../../data/firebase";
 import firebase from "firebase";
 import { setCurrentClass } from "../../app/class/actions";
@@ -18,8 +14,6 @@ import { signIn } from "../../app/account/actions";
 
 const CreateClass = () => {
   const history = useHistory();
-  const accountType = useSelector(selectAccountType);
-  const classList = useSelector(selectClassList);
   const dispatch = useDispatch();
   const [errorMessage, setErrorMessage] = useState();
 
@@ -46,6 +40,7 @@ const CreateClass = () => {
         description: data["description"],
         students: [],
         enrollmentCode: "placeholdercode",
+        modules: [],
       })
       .then((doc) => {
         classDataDb
@@ -74,7 +69,7 @@ const CreateClass = () => {
               .then((doc) => {
                 dispatch(signIn(doc.data()));
               });
-            history.push(`${accountType}/home`);
+            history.push(`teacher/home`);
           });
       });
   };
@@ -100,9 +95,7 @@ const CreateClass = () => {
             <StyledSubmitButton onClick={handleSubmit}>
               CREATE
             </StyledSubmitButton>
-            <StyledDashboardButton
-              onClick={() => history.push(`${accountType}/home`)}
-            >
+            <StyledDashboardButton onClick={() => history.push(`teacher/home`)}>
               BACK TO DASHBOARD
             </StyledDashboardButton>
           </StyledButtonContainer>

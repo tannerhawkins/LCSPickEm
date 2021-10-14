@@ -4,11 +4,27 @@ import classReducer from "./class/reducers.js";
 import storage from "redux-persist/lib/storage";
 import persistReducer from "redux-persist/es/persistReducer";
 import persistStore from "redux-persist/es/persistStore";
+import moduleReducer from "./module/reducers.js";
 
-const rootReducer = combineReducers({
+const allReducers = combineReducers({
   account: accountReducer,
   class: classReducer,
+  module: moduleReducer,
 });
+
+const rootReducer = (state, action) => {
+  if (action.type === 'CLEAR_STATE') {
+    state = undefined;
+  }
+
+  return allReducers(state, action);
+}
+
+export const clearState = () => {
+  return {
+    type: "CLEAR_STATE",
+  };
+};
 
 const persistConfig = {
   key: "root",
