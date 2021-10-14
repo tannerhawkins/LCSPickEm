@@ -13,11 +13,20 @@ export default function classReducer(state = initialState, action) {
         currentClass: action.payload,
       };
 
+    case "ADD_MODULE":
+      return {
+        ...state,
+        currentClass: {
+          ...state.currentClass,
+          modules: [...state.currentClass.modules, action.payload],
+        },
+      };
+
     case "CLEAR_STATE":
       return {
-        initialState
+        initialState,
       };
-      
+
     default:
       // If this reducer doesn't recognize the action type, or doesn't
       // care about this specific action, return the existing state unchanged

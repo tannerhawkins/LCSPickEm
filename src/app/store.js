@@ -13,12 +13,12 @@ const allReducers = combineReducers({
 });
 
 const rootReducer = (state, action) => {
-  if (action.type === 'CLEAR_STATE') {
+  if (action.type === "CLEAR_STATE") {
     state = undefined;
   }
 
   return allReducers(state, action);
-}
+};
 
 export const clearState = () => {
   return {

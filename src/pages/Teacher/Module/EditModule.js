@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import Main from "../../layouts/Main";
-import SideBar from "../../components/Template/SideBar";
-import Header from "../../components/Teacher/Header";
+import Main from "../../../layouts/Main";
+import SideBar from "../../../components/Template/SideBar";
+import Header from "../../../components/Teacher/Header";
 import styled from "styled-components";
-import { Constants } from "../../data/constants";
+import { Constants } from "../../../data/constants";
 
 const EditModule = () => {
   const handleSubmit = () => {};

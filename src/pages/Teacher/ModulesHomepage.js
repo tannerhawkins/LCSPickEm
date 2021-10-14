@@ -84,7 +84,7 @@ const ModulesHomepage = () => {
             </StyledCard>
           </NewCardContainer>
           <StyledSectionHeader>Assigned Modules</StyledSectionHeader>
-          <div>{moduleCards}</div>
+          <AssignedModules>{moduleCards}</AssignedModules>
         </StyledBody>
       </StyledHomepage>
     </Main>
@@ -97,6 +97,14 @@ const StyledBody = styled.div`
   margin-top: ${Constants.HEADER_HEIGHT};
   margin-left: ${Constants.SIDEBAR_WIDTH};
   padding: 0 50px;
+`;
+
+const AssignedModules = styled.div`
+  display: flex;
+  width: 100%;
+  flex-wrap: no-wrap;
+  overflow: auto;
+  height: 300px;
 `;
 
 const BodyHeader = styled.div`

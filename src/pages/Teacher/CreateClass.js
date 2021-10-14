@@ -79,7 +79,7 @@ const CreateClass = () => {
       <SideBar />
       <Header />
       <StyledBody>
-        <StyledTitle>Create new class</StyledTitle>
+        <StyledTitle>Create New Class</StyledTitle>
         <StyledParagraph>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce ac
           purus eget lacus pellentesque consequat. Donec commodo tincidunt

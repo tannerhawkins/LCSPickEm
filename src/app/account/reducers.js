@@ -28,7 +28,7 @@ export default function accountReducer(state = initialState, action) {
 
     case "CLEAR_STATE":
       return {
-        initialState
+        initialState,
       };
 
     default:

@@ -14,3 +14,13 @@ export const selectCurrentStep = createSelector(
   selectModuleState,
   (state) => state.currentStep
 );
+
+export const selectSelectedModule = createSelector(
+  selectModuleState,
+  (state) => state.selectedModule
+);
+
+export const selectSteps = createSelector(
+  selectSelectedModule,
+  (module) => module?.steps
+);

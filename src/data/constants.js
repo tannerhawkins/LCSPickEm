@@ -9,6 +9,13 @@ export const Constants = {
   },
   HEADER_HEIGHT: "80px",
   SIDEBAR_WIDTH: "80px",
+  EMPTY_MODULE: {
+    title: "",
+    description: "",
+    public: true,
+    creator: undefined,
+    steps: [],
+  },
   MOCK_MODULE: {
     title: "Mock Module",
     description: "This module is used for testing and development",
