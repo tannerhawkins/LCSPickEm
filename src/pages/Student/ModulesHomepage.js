@@ -108,10 +108,6 @@ const ModulesHomepage = () => {
 
 const StyledHomepage = styled.div``;
 
-var completedModTxt = styled.div`"Module \
-Score: ";
-`;
-
 const StyledBody = styled.div`
   margin-top: ${Constants.HEADER_HEIGHT};
   margin-left: ${Constants.SIDEBAR_WIDTH};
