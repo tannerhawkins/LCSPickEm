@@ -22,10 +22,12 @@ const SideBar = () => {
   );
 };
 
+/* calc(100% + ${Constants.HEADER_HEIGHT}); 
+position: absolute */
 const StyledSidebar = styled.div`
   display: flex;
   flex-direction: column;
-  height: calc(100% + ${Constants.HEADER_HEIGHT});
+  height: 100%;
   width: ${Constants.SIDEBAR_WIDTH};
   position: fixed;
   left: 0;
