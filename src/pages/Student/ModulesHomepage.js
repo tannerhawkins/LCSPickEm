@@ -21,91 +21,20 @@ const ModulesHomepage = () => {
   const currentClass = useSelector(selectCurrentClass);
   const classes = useSelector(selectClassList);
   const isInClass = classes[0] != null;
+  const classList = useSelector(selectClassList);
 
-  const mockStudentClass = {
-    cid: "uxdK7zI7KyxfnFqEAoaY",
-    assignedModules: [
-      {
-        mid: "7LuMu8nVI5TLuC9YQAcS",
-        description: "test description",
-        completed: false,
-        steps: [
-          {
-            type: "text",
-            data: {
-              // Some kind of text data here (title, description, etc.)
-            },
-          },
-          {
-            type: "video",
-            data: {
-              // Some kind of reference to a video stored somewhere in Firebase and maybe a video title
-            },
-          },
-          {
-            type: "quiz",
-            data: {
-              // Some kind of quiz data here (array of questions, title, etc.)
-            },
-          },
-        ],
-      },
-      {
-        mid: "3RHzUTLlaISLh84prvXP",
-        description: "test description 2",
-        completed: true,
-        steps: [
-          {
-            type: "text",
-            data: {
-              // Some kind of text data here (title, description, etc.)
-            },
-          },
-          {
-            type: "video",
-            data: {
-              // Some kind of reference to a video stored somewhere in Firebase and maybe a video title
-            },
-          },
-          {
-            type: "quiz",
-            data: {
-              // Some kind of quiz data here (array of questions, title, etc.)
-            },
-          },
-        ],
-      },
-      {
-        mid: "GfyEjNxn6QAIqkpbBnbi",
-        description: "test description 3",
-        completed: false,
-        steps: [
-          {
-            type: "text",
-            data: {
-              // Some kind of text data here (title, description, etc.)
-            },
-          },
-          {
-            type: "video",
-            data: {
-              // Some kind of reference to a video stored somewhere in Firebase and maybe a video title
-            },
-          },
-          {
-            type: "quiz",
-            data: {
-              // Some kind of quiz data here (array of questions, title, etc.)
-            },
-          },
-        ],
-      },
-    ],
-  };
+  const assignedModuleCards = classList.filter(cls => cls.cid == currentClass.cid)[0].modules.map(
+    (module) => (
+          <ModuleCard
+            module={module}
+            onClick={() => moduleOnClick(module)}
+          ></ModuleCard>
+        )
+  )
 
   const moduleOnClick = (module) => {
     modulesDb
-      .doc(module.mid)
+      .doc(module)
       .get()
       .then((doc) => {
         dispatch(setCurrentStep(-1));
@@ -113,24 +42,6 @@ const ModulesHomepage = () => {
         history.push("/student/module");
       });
   };
-
-  const completedModuleCards = mockStudentClass.assignedModules
-    .filter((module) => module.completed)
-    .map((module) => (
-      <ModuleCard
-        module={module.mid}
-        onClick={() => moduleOnClick(module)}
-      ></ModuleCard>
-    ));
-
-  const assignedModuleCards = mockStudentClass.assignedModules
-    .filter((module) => !module.completed)
-    .map((module) => (
-      <ModuleCard
-        module={module.mid}
-        onClick={() => moduleOnClick(module)}
-      ></ModuleCard>
-    ));
 
   useEffect(() => {}, [currentClass]);
 
@@ -166,12 +77,12 @@ const ModulesHomepage = () => {
               )}
             </EnrollmentCode>
           </BodyHeader>
-          {true ? (
+          {isInClass ? (
             <>
               <StyledSectionHeader>Assigned Modules</StyledSectionHeader>
               <ModulesContainer>{assignedModuleCards}</ModulesContainer>
-              <StyledSectionHeader>Completed Modules</StyledSectionHeader>
-              <ModulesContainer>{completedModuleCards}</ModulesContainer>
+              {/* <StyledSectionHeader>Completed Modules</StyledSectionHeader>
+              <ModulesContainer>{completedModuleCards}</ModulesContainer> */}
             </>
           ) : (
             <p>
