@@ -1,5 +1,5 @@
 const initialState = {
-  currentStep: null,
+  currentStep: -1,
   inModule: false,
   selectedModule: undefined,
 };

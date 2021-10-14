@@ -13,7 +13,7 @@ import ModuleCard from "../../components/Template/ModuleCard";
 import Dropdown, { Option } from "../../components/Template/ClassDropdown";
 import { useHistory } from "react-router";
 import { modulesDb } from "../../data/firebase";
-import { setSelectedModule } from "../../app/module/actions";
+import { setCurrentStep, setSelectedModule } from "../../app/module/actions";
 
 const ModulesHomepage = () => {
   const history = useHistory();
@@ -29,16 +29,76 @@ const ModulesHomepage = () => {
         mid: "7LuMu8nVI5TLuC9YQAcS",
         description: "test description",
         completed: false,
+        steps: [
+          {
+            type: "text",
+            data: {
+              // Some kind of text data here (title, description, etc.)
+            },
+          },
+          {
+            type: "video",
+            data: {
+              // Some kind of reference to a video stored somewhere in Firebase and maybe a video title
+            },
+          },
+          {
+            type: "quiz",
+            data: {
+              // Some kind of quiz data here (array of questions, title, etc.)
+            },
+          },
+        ],
       },
       {
         mid: "3RHzUTLlaISLh84prvXP",
         description: "test description 2",
         completed: true,
+        steps: [
+          {
+            type: "text",
+            data: {
+              // Some kind of text data here (title, description, etc.)
+            },
+          },
+          {
+            type: "video",
+            data: {
+              // Some kind of reference to a video stored somewhere in Firebase and maybe a video title
+            },
+          },
+          {
+            type: "quiz",
+            data: {
+              // Some kind of quiz data here (array of questions, title, etc.)
+            },
+          },
+        ],
       },
       {
         mid: "GfyEjNxn6QAIqkpbBnbi",
         description: "test description 3",
         completed: false,
+        steps: [
+          {
+            type: "text",
+            data: {
+              // Some kind of text data here (title, description, etc.)
+            },
+          },
+          {
+            type: "video",
+            data: {
+              // Some kind of reference to a video stored somewhere in Firebase and maybe a video title
+            },
+          },
+          {
+            type: "quiz",
+            data: {
+              // Some kind of quiz data here (array of questions, title, etc.)
+            },
+          },
+        ],
       },
     ],
   };
@@ -48,6 +108,7 @@ const ModulesHomepage = () => {
       .doc(module.mid)
       .get()
       .then((doc) => {
+        dispatch(setCurrentStep(-1));
         dispatch(setSelectedModule(doc.data()));
         history.push("/student/module");
       });

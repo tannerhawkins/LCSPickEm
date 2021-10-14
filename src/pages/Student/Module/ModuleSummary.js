@@ -1,7 +1,18 @@
+import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
+import {
+  selectCurrentStep,
+} from "../../../app/module/selectors";
+import { setCurrentStep } from "../../../app/module/actions";
 
 const ModuleSummary = () => {
-  return <Body>This is the Module Summary Page</Body>;
+  const dispatch = useDispatch();
+  const currentStep = useSelector(selectCurrentStep);
+
+  return <Body>
+    This is the Module Summary Page
+    <button onClick={() => dispatch(setCurrentStep(currentStep + 1))}>Next Step</button>
+    </Body>;
 };
 
 const Body = styled.div`
