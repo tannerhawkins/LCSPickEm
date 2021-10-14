@@ -6,6 +6,7 @@ export const Constants = {
     WHITE: "#e9e9ff",
     DARK_BLUE: "#373B53",
     TEAL: "#B5FFEA",
+    GRAY: "#E5E5E5"
   },
   HEADER_HEIGHT: "80px",
   SIDEBAR_WIDTH: "80px",
@@ -18,20 +19,20 @@ export const Constants = {
         type: "text",
         data: {
           // Some kind of text data here (title, description, etc.)
-        }
+        },
       },
       {
         type: "video",
         data: {
           // Some kind of reference to a video stored somewhere in Firebase and maybe a video title
-        }
+        },
       },
       {
         type: "quiz",
         data: {
           // Some kind of quiz data here (array of questions, title, etc.)
-        }
-      }
-    ]
-  }
+        },
+      },
+    ],
+  },
 };

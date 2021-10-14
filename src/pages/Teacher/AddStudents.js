@@ -6,9 +6,7 @@ import styled from "styled-components";
 import { Constants } from "../../data/constants";
 
 const AddStudents = () => {
-
-  const handleSubmit = () => {
-  };
+  const handleSubmit = () => {};
 
   // Should really just take an input of a students email and add that student
   // to the current selected class. Should maybe include the drop down from the
@@ -17,8 +15,7 @@ const AddStudents = () => {
     <Main title={"Add a Student"} description={"Add a Student"}>
       <SideBar />
       <Header />
-      <StyledBody>
-      </StyledBody>
+      <StyledBody></StyledBody>
     </Main>
   );
 };
@@ -28,6 +25,5 @@ const StyledBody = styled.div`
   margin-left: ${Constants.SIDEBAR_WIDTH};
   padding: 0 50px;
 `;
-
 
 export default AddStudents;

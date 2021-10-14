@@ -48,11 +48,17 @@ const CreateClass = () => {
         enrollmentCode: "placeholdercode",
       })
       .then((doc) => {
-        classDataDb.doc(doc.id).update({ cid: doc.id }).then(() => {
-          classDataDb.doc(doc.id).get().then(doc2 => {
-            dispatch(setCurrentClass(doc2.data()));
-          })
-        });
+        classDataDb
+          .doc(doc.id)
+          .update({ cid: doc.id })
+          .then(() => {
+            classDataDb
+              .doc(doc.id)
+              .get()
+              .then((doc2) => {
+                dispatch(setCurrentClass(doc2.data()));
+              });
+          });
         userDataDb
           .doc(auth.currentUser.uid)
           .update({

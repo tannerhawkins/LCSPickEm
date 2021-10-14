@@ -6,10 +6,7 @@ import styled from "styled-components";
 import { Constants } from "../../data/constants";
 
 const CreateModule = () => {
-
-  const handleSubmit = () => {
-  };
-
+  const handleSubmit = () => {};
 
   // Likely should have a field for Title, description, and some kind of interface for adding
   // "steps" to the module. These steps would be things like text, video, and quizzes.
@@ -19,8 +16,7 @@ const CreateModule = () => {
     <Main title={"Create a Module"} description={"Create a Module"}>
       <SideBar />
       <Header />
-      <StyledBody>
-      </StyledBody>
+      <StyledBody></StyledBody>
     </Main>
   );
 };
@@ -30,6 +26,5 @@ const StyledBody = styled.div`
   margin-left: ${Constants.SIDEBAR_WIDTH};
   padding: 0 50px;
 `;
-
 
 export default CreateModule;

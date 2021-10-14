@@ -6,10 +6,7 @@ import styled from "styled-components";
 import { Constants } from "../../data/constants";
 
 const AddModule = () => {
-
-  const handleSubmit = () => {
-  };
-
+  const handleSubmit = () => {};
 
   // I think this page should be some kind of place to search for already created modules
   // There should be some kind of search functionality that connects to firebase to allow
@@ -19,8 +16,7 @@ const AddModule = () => {
     <Main title={"Add a Module"} description={"Add a Module"}>
       <SideBar />
       <Header />
-      <StyledBody>
-      </StyledBody>
+      <StyledBody></StyledBody>
     </Main>
   );
 };
@@ -30,6 +26,5 @@ const StyledBody = styled.div`
   margin-left: ${Constants.SIDEBAR_WIDTH};
   padding: 0 50px;
 `;
-
 
 export default AddModule;
