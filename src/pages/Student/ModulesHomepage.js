@@ -6,16 +6,70 @@ import Hamburger from "../../components/Template/Hamburger";
 import Main from "../../layouts/Main";
 import NewCard from "../../components/Student/NewCard";
 import { Constants } from "../../data/constants";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { selectCurrentClass } from "../../app/class/selectors";
 import { selectClassList } from "../../app/account/selectors";
+import ModuleCard from "../../components/Template/ModuleCard";
 import Dropdown, { Option } from "../../components/Template/ClassDropdown";
 import { useHistory } from "react-router";
+import { modulesDb } from "../../data/firebase";
+import { setSelectedModule } from "../../app/module/actions";
 
 const ModulesHomepage = () => {
   const history = useHistory();
+  const dispatch = useDispatch();
   const currentClass = useSelector(selectCurrentClass);
   const classes = useSelector(selectClassList);
+  const isInClass = classes[0] != null;
+
+  const mockStudentClass = {
+    cid: "uxdK7zI7KyxfnFqEAoaY",
+    assignedModules: [
+      {
+        mid: "7LuMu8nVI5TLuC9YQAcS",
+        description: "test description",
+        completed: false,
+      },
+      {
+        mid: "3RHzUTLlaISLh84prvXP",
+        description: "test description 2",
+        completed: true,
+      },
+      {
+        mid: "GfyEjNxn6QAIqkpbBnbi",
+        description: "test description 3",
+        completed: false,
+      },
+    ],
+  };
+
+  const moduleOnClick = (module) => {
+    modulesDb
+      .doc(module.mid)
+      .get()
+      .then((doc) => {
+        dispatch(setSelectedModule(doc.data()));
+        history.push("/student/module");
+      });
+  };
+
+  const completedModuleCards = mockStudentClass.assignedModules
+    .filter((module) => module.completed)
+    .map((module) => (
+      <ModuleCard
+        module={module.mid}
+        onClick={() => moduleOnClick(module)}
+      ></ModuleCard>
+    ));
+
+  const assignedModuleCards = mockStudentClass.assignedModules
+    .filter((module) => !module.completed)
+    .map((module) => (
+      <ModuleCard
+        module={module.mid}
+        onClick={() => moduleOnClick(module)}
+      ></ModuleCard>
+    ));
 
   useEffect(() => {}, [currentClass]);
 
@@ -51,55 +105,18 @@ const ModulesHomepage = () => {
               )}
             </EnrollmentCode>
           </BodyHeader>
-          <StyledSectionHeader>Assigned Modules</StyledSectionHeader>
-          <NewCardContainer>
-            <StyledCard
-              barColor={Constants.COLOR.GREEN}
-              cardColor="white"
-              // onClick={() =>}
-            >
-              Module Name
-            </StyledCard>
-            <StyledCard
-              barColor={Constants.COLOR.GREEN}
-              cardColor="white"
-            >
-              Module Name
-            </StyledCard>
-            <StyledCard
-              plusIconColor="green"
-              barColor={Constants.COLOR.GREEN}
-              cardColor="white"
-              // onClick={() => history.push("/teacher/create-class")}
-            >
-              Module Name
-            </StyledCard>
-          </NewCardContainer>
-          <StyledSectionHeader>Completed Modules</StyledSectionHeader>
-          <NewCardContainer>
-            <StyledCard
-              completedModTxt
-              barColor={Constants.COLOR.GREEN}
-              cardColor="white"
-              // onClick={() =>}
-            >
-            </StyledCard>
-            <StyledCard
-              barColor={Constants.COLOR.GREEN}
-              cardColor="white"
-            >
-              Module Name \
-              Score:
-            </StyledCard>
-            <StyledCard
-              barColor={Constants.COLOR.GREEN}
-              cardColor="white"
-              // onClick={() => history.push("/teacher/create-class")}
-            >
-              Module Name \
-              Score:
-            </StyledCard>
-          </NewCardContainer>
+          {true ? (
+            <>
+              <StyledSectionHeader>Assigned Modules</StyledSectionHeader>
+              <ModulesContainer>{assignedModuleCards}</ModulesContainer>
+              <StyledSectionHeader>Completed Modules</StyledSectionHeader>
+              <ModulesContainer>{completedModuleCards}</ModulesContainer>
+            </>
+          ) : (
+            <p>
+              You have not been assigned to a class, please talk to your teacher
+            </p>
+          )}
         </StyledBody>
       </StyledHomepage>
     </Main>
@@ -112,6 +129,14 @@ const StyledBody = styled.div`
   margin-top: ${Constants.HEADER_HEIGHT};
   margin-left: ${Constants.SIDEBAR_WIDTH};
   padding: 0 50px;
+`;
+
+const ModulesContainer = styled.div`
+  display: flex;
+  width: 100%;
+  flex-wrap: no-wrap;
+  overflow: auto;
+  height: 300px;
 `;
 
 const BodyHeader = styled.div`

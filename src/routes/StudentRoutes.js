@@ -11,8 +11,8 @@ const StudentRoutes = ({ match }) => {
 
   return (
     <Switch>
-      <Route path="/module" component={Module} />
-      {inModule && <Redirect to="/module" />}
+      <Route path={`${match.path}/module`} component={Module} />
+      {inModule && <Redirect to={`${match.path}/module`} />}
       <Route path={`${match.path}/home`} component={ModulesHomepage} />
       <Redirect to={`${match.path}/home`} />
     </Switch>

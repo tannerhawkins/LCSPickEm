@@ -5,10 +5,10 @@ export const setCurrentStep = (step) => {
   };
 };
 
-export const setSelectedModule = (module) => {
+export const setSelectedModule = (moduleToAdd) => {
   return {
     type: "SET_SELECTED_MODULE",
-    payload: module,
+    payload: moduleToAdd,
   };
 };
 

@@ -1,23 +1,28 @@
 import { useSelector } from "react-redux";
 import styled from "styled-components";
-import { selectCurrentStep } from "../../../app/module/selectors";
-import { Constants } from "../../../data/constants";
+import {
+  selectCurrentStep,
+  selectSelectedModule,
+} from "../../../app/module/selectors";
+import Main from "../../../layouts/Main";
 import ModuleSummary from "./ModuleSummary";
 
 const Module = () => {
+  const currentModule = useSelector(selectSelectedModule);
   const currentStep = useSelector(selectCurrentStep);
 
   return (
-    <ModuleWrapper>
-      <ModuleSummary />
-    </ModuleWrapper>
+    <Main title={currentModule?.title} description={"Module Page"}>
+      <ModuleWrapper>
+        <ModuleSummary />
+      </ModuleWrapper>
+    </Main>
   );
 };
 
 const ModuleWrapper = styled.div`
-  width: 100vw;
-  height: 100vh;
-  background-color: ${Constants.COLOR.TEAL};
+  width: 100%;
+  height: 100%;
 `;
 
 export default Module;
