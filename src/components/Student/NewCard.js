@@ -1,6 +1,4 @@
 import styled from "styled-components";
-import GreenPlusIcon from "../../images/Icons/green plus icon.png";
-import TealPlusIcon from "../../images/Icons/teal plus icon.png";
 import { Constants } from "../../data/constants";
 
 const NewCard = ({
