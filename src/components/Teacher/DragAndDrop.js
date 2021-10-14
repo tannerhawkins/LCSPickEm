@@ -1,57 +1,50 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
+import { setSteps } from "../../app/module/actions";
+import { selectSteps } from "../../app/module/selectors";
 import Box from "./Box";
 
-const DragAndDrop = () => {
+const DragAndDrop = (props) => {
+  const dispatch = useDispatch();
   const [dragId, setDragId] = useState();
-  const [boxes, setBoxes] = useState([
-    {
-      id: "TEXT STEP",
-      order: 1
-    },
-    {
-      id: "VIDEO STEP",
-      order: 2
-    },
-    {
-      id: "QUIZ STEP",
-      order: 3
-    }
-  ]);
+  const steps = useSelector(selectSteps);
 
   const handleDrag = (ev) => {
     setDragId(ev.currentTarget.id);
   };
 
   const handleDrop = (ev) => {
-    const dragBox = boxes.find((box) => box.id === dragId);
-    const dropBox = boxes.find((box) => box.id === ev.currentTarget.id);
+    const dragBox = steps.find((box) => box.id === parseInt(dragId));
+    const dropBox = steps.find(
+      (box) => box.id === parseInt(ev.currentTarget.id)
+    );
 
     const dragBoxOrder = dragBox.order;
     const dropBoxOrder = dropBox.order;
 
-    const newBoxState = boxes.map((box) => {
-      if (box.id === dragId) {
+    const newBoxState = steps.map((box) => {
+      if (box.id === parseInt(dragId)) {
         box.order = dropBoxOrder;
       }
-      if (box.id === ev.currentTarget.id) {
+      if (box.id === parseInt(ev.currentTarget.id)) {
         box.order = dragBoxOrder;
       }
       return box;
     });
 
-    setBoxes(newBoxState);
+    dispatch(setSteps(newBoxState));
   };
 
   return (
     <DragWrapper>
-      {boxes
+      {steps
         .sort((a, b) => a.order - b.order)
         .map((box) => (
           <Box
-            key={box.id}
+            id={parseInt(box.id)}
             boxColor={box.color}
-            title={box.id}
+            type={box.type}
             handleDrag={handleDrag}
             handleDrop={handleDrop}
           />
@@ -61,9 +54,9 @@ const DragAndDrop = () => {
 };
 
 const DragWrapper = styled.div`
-    display: flex;
-    flex-direction: column;
-    margin: 40px 0px;
-`
+  display: flex;
+  flex-direction: column;
+  margin: 40px 0px;
+`;
 
 export default DragAndDrop;

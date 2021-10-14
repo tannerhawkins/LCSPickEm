@@ -8,16 +8,16 @@ const Module = () => {
   const currentStep = useSelector(selectCurrentStep);
 
   return (
-  <ModuleWrapper>
+    <ModuleWrapper>
       <ModuleSummary />
-  </ModuleWrapper>
+    </ModuleWrapper>
   );
 };
 
 const ModuleWrapper = styled.div`
-    width: 100vw;
-    height: 100vh;
-    background-color: ${Constants.COLOR.TEAL};
-`
+  width: 100vw;
+  height: 100vh;
+  background-color: ${Constants.COLOR.TEAL};
+`;
 
 export default Module;

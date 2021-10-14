@@ -1,6 +1,7 @@
 const initialState = {
   currentStep: null,
   inModule: false,
+  selectedModule: undefined,
 };
 
 // Use the initialState as a default value
@@ -14,11 +15,30 @@ export default function moduleReducer(state = initialState, action) {
         currentStep: action.payload,
       };
 
-    case "CLEAR_STATE":
+    case "SET_SELECTED_MODULE":
       return {
-        initialState,
+        ...state,
+        selectedModule: action.payload,
       };
-      
+
+    case "ADD_STEP":
+      return {
+        ...state,
+        selectedModule: {
+          ...state.selectedModule,
+          steps: [...state.selectedModule.steps, action.payload],
+        },
+      };
+
+    case "SET_STEPS":
+      return {
+        ...state,
+        selectedModule: {
+          ...state.selectedModule,
+          steps: action.payload,
+        },
+      };
+
     default:
       // If this reducer doesn't recognize the action type, or doesn't
       // care about this specific action, return the existing state unchanged

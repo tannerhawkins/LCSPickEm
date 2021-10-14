@@ -24,9 +24,9 @@ export default function classReducer(state = initialState, action) {
 
     case "CLEAR_STATE":
       return {
-        initialState
+        initialState,
       };
-      
+
     default:
       // If this reducer doesn't recognize the action type, or doesn't
       // care about this specific action, return the existing state unchanged

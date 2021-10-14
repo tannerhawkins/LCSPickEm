@@ -2,16 +2,16 @@ import React from "react";
 import styled from "styled-components";
 import { Constants } from "../../data/constants";
 
-const Box = ({ title, handleDrag, handleDrop }) => {
+const Box = ({ id, type, handleDrag, handleDrop }) => {
   return (
     <StyledBox
       draggable={true}
-      id={title}
+      id={id}
       onDragOver={(ev) => ev.preventDefault()}
       onDragStart={handleDrag}
       onDrop={handleDrop}
     >
-      {title}
+      {type}
     </StyledBox>
   );
 };

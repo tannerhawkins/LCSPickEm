@@ -1,18 +1,19 @@
 import React, { useEffect, useState } from "react";
-import Main from "../../layouts/Main";
-import SideBar from "../../components/Template/SideBar";
-import Header from "../../components/Teacher/Header";
+import Main from "../../../layouts/Main";
+import SideBar from "../../../components/Template/SideBar";
+import Header from "../../../components/Teacher/Header";
 import styled from "styled-components";
-import { Constants } from "../../data/constants";
-import { classDataDb, getAllModules } from "../../data/firebase";
-import ModuleCard from "../../components/Template/ModuleCard";
+import { Constants } from "../../../data/constants";
+import { classDataDb, getAllModules } from "../../../data/firebase";
+import ModuleCard from "../../../components/Template/ModuleCard";
 import { useDispatch, useSelector } from "react-redux";
-import { selectModuleList } from "../../app/account/selectors";
-import { selectCurrentClass } from "../../app/class/selectors";
-import { addModule } from "../../app/class/actions";
+import { selectModuleList } from "../../../app/account/selectors";
+import { selectCurrentClass } from "../../../app/class/selectors";
+import { setCurrentClass } from "../../../app/class/actions";
 import firebase from "firebase";
-import Button from "../../components/Template/Button";
+import Button from "../../../components/Template/Button";
 import { useHistory } from "react-router";
+import { setSelectedModule } from "../../../app/module/actions";
 
 const AddModule = () => {
   const dispatch = useDispatch();
@@ -34,10 +35,22 @@ const AddModule = () => {
     ));
 
   const handleClick = (mid) => {
-    classDataDb.doc(currentClass.cid).update({
-      modules: firebase.firestore.FieldValue.arrayUnion(mid),
-    });
-    dispatch(addModule(mid));
+    classDataDb
+      .doc(currentClass.cid)
+      .update({
+        modules: firebase.firestore.FieldValue.arrayUnion(mid),
+      })
+      .then(
+        classDataDb
+          .doc(currentClass?.cid)
+          .get()
+          .then((doc) => dispatch(setCurrentClass(doc.data())))
+      );
+  };
+
+  const handleCreateNewModule = () => {
+    dispatch(setSelectedModule(Constants.EMPTY_MODULE));
+    history.push(`create-module`);
   };
 
   // I think this page should be some kind of place to search for already created modules
@@ -53,7 +66,7 @@ const AddModule = () => {
         <StyledSectionTitle>Existing Modules</StyledSectionTitle>
         <ExistingModules>{modulesCards}</ExistingModules>
         <StyledButtonContainer>
-          <StyledDashboardButton onClick={() => history.push(`create-module`)}>
+          <StyledDashboardButton onClick={handleCreateNewModule}>
             CREATE NEW MODULE
           </StyledDashboardButton>
           <StyledDashboardButton onClick={() => history.push(`home`)}>

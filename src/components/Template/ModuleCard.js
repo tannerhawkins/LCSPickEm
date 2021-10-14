@@ -15,7 +15,7 @@ const ModuleCard = (props) => {
       });
   }, [module]);
 
-  const handleClick = () => {}
+  const handleClick = () => {};
 
   return (
     <StyledModuleCard onClick={props.onClick}>
@@ -46,6 +46,8 @@ const StyledModuleCard = styled.div`
   width: 300px;
   height: 200px;
   padding: 10px;
+  min-width: 200px;
+  margin: 0px 10px;
 `;
 
 const StyledTitle = styled.p`
@@ -56,6 +58,8 @@ const StyledDescription = styled.p`
   font-size: 20px;
   background-color: white;
   padding: 20px 5px;
+  width: 85%;
+  height: 100%;
   border-radius: 5px;
 `;
 

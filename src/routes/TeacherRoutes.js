@@ -4,9 +4,9 @@ import { Switch, Route, Redirect } from "react-router-dom";
 const ModulesHomepage = lazy(() => import("../pages/Teacher/ModulesHomepage"));
 const CreateAClass = lazy(() => import("../pages/Teacher/CreateClass"));
 const AddStudents = lazy(() => import("../pages/Teacher/AddStudents"));
-const AddModule = lazy(() => import("../pages/Teacher/AddModule"));
-const CreateModule = lazy(() => import("../pages/Teacher/CreateModule"));
-const EditModule = lazy(() => import("../pages/Teacher/EditModule"));
+const AddModule = lazy(() => import("../pages/Teacher/Module/AddModule"));
+const CreateModule = lazy(() => import("../pages/Teacher/Module/CreateModule"));
+const EditModule = lazy(() => import("../pages/Teacher/Module/EditModule"));
 
 const TeacherRoutes = ({ match }) => (
   <Switch>

@@ -1,30 +1,88 @@
-import React, { useState } from "react";
-import Main from "../../layouts/Main";
-import SideBar from "../../components/Template/SideBar";
-import Header from "../../components/Teacher/Header";
+import React, { useEffect, useState } from "react";
+import Main from "../../../layouts/Main";
+import SideBar from "../../../components/Template/SideBar";
+import Header from "../../../components/Teacher/Header";
 import styled from "styled-components";
-import { Constants } from "../../data/constants";
-import { auth, modulesDb, userDataDb } from "../../data/firebase";
+import { Constants } from "../../../data/constants";
+import {
+  auth,
+  classDataDb,
+  modulesDb,
+  userDataDb,
+} from "../../../data/firebase";
 import firebase from "firebase";
 import { useHistory } from "react-router-dom";
-import Button from "../../components/Template/Button";
-import DragAndDrop from "../../components/Teacher/DragAndDrop";
+import Button from "../../../components/Template/Button";
+import DragAndDrop from "../../../components/Teacher/DragAndDrop";
+import AddStepPopup from "../../../components/Teacher/Popups/AddStepPopup";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  selectSelectedModule,
+  selectSteps,
+} from "../../../app/module/selectors";
+import { selectCurrentClass } from "../../../app/class/selectors";
+import { setCurrentClass } from "../../../app/class/actions";
 
 const CreateModule = () => {
   const history = useHistory();
+  const dispatch = useDispatch();
+  const [showAddStepPopup, setShowAddStepPopup] = useState(false);
   const [errorMessage, setErrorMessage] = useState();
+  const selectedModule = useSelector(selectSelectedModule);
+  const steps = useSelector(selectSteps);
+  const currentClass = useSelector(selectCurrentClass);
+
+  useEffect(() => {}, [steps]);
 
   const handleSubmit = () => {
-    modulesDb.add(Constants.MOCK_MODULE).then((doc) => {
+    setErrorMessage();
+
+    // get form data
+    const data = Object.values(document.forms.moduleForm)
+      .filter((item) => item.name)
+      .reduce((obj, field) => {
+        obj[field.name] = field.value;
+        return obj;
+      }, {});
+    const toAdd = {
+      ...selectedModule,
+      title: data.title,
+      description: data.description,
+      creator: auth.currentUser.uid,
+    };
+    console.log(toAdd);
+    if (data["title"] === "") {
+      setErrorMessage("Please fill out module title");
+      return;
+    }
+    if (steps.length === 0) {
+      setErrorMessage("Please add at least one step");
+      return;
+    }
+
+    modulesDb.add(toAdd).then((doc) => {
       modulesDb.doc(doc.id).update({ mid: doc.id });
       userDataDb
         .doc(auth.currentUser.uid)
         .update({
           moduleList: firebase.firestore.FieldValue.arrayUnion({
             mid: doc.id,
-            title: Constants.MOCK_MODULE.title,
-            description: Constants.MOCK_MODULE.description,
+            title: data.title,
+            description: data.description,
           }),
+        })
+        .then(() => {
+          classDataDb
+            .doc(currentClass.cid)
+            .update({
+              modules: firebase.firestore.FieldValue.arrayUnion(doc.id),
+            })
+            .then(
+              classDataDb
+                .doc(currentClass?.cid)
+                .get()
+                .then((doc) => dispatch(setCurrentClass(doc.data())))
+            );
         })
         .then(() => history.push("teacher/home"));
     });
@@ -41,6 +99,10 @@ const CreateModule = () => {
     <Main title={"Create a Module"} description={"Create a Module"}>
       <SideBar />
       <Header />
+      <AddStepPopup
+        style={{ display: showAddStepPopup ? "flex" : "none" }}
+        onClose={() => setShowAddStepPopup(false)}
+      />
       <StyledBody>
         <StyledTitle>Create New Module</StyledTitle>
         <StyledParagraph>
@@ -48,14 +110,28 @@ const CreateModule = () => {
           purus eget lacus pellentesque consequat. Donec commodo tincidunt
           lorem, c ursus accumsan eros varius vel.
         </StyledParagraph>
-        <StyledForm id="classForm">
-          <StyledText>Module Name</StyledText>
-          <StyledInput type="text" name="name" required />
+        <StyledForm id="moduleForm">
+          <StyledText>Module Title</StyledText>
+          <StyledInput
+            type="text"
+            name="title"
+            defaultValue={selectedModule?.title}
+            required
+          />
           <StyledText>Module Description</StyledText>
-          <StyledInput type="text" name="description" />
-          <StyledText>Steps - Drag to Change Order</StyledText>
+          <StyledInput
+            type="text"
+            name="description"
+            defaultValue={selectedModule?.description}
+          />
+          <StyledFlexContainer>
+            <StyledText>Steps - Drag to Change Order</StyledText>
+            <StyledAddStepButton onClick={() => setShowAddStepPopup(true)}>
+              Add Step
+            </StyledAddStepButton>
+          </StyledFlexContainer>
           <StepsContainer>
-            <DragAndDrop />
+            <DragAndDrop steps={steps} />
           </StepsContainer>
           <StyledError>{errorMessage}</StyledError>
           <StyledButtonContainer>
@@ -97,6 +173,12 @@ const StyledButtonContainer = styled.div`
 
 const StepsContainer = styled.div``;
 
+const StyledFlexContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`;
+
 const StyledForm = styled.form`
   display: flex;
   flex-direction: column;
@@ -125,6 +207,8 @@ const StyledSubmitButton = styled(Button)`
     cursor: pointer;
   }
 `;
+
+const StyledAddStepButton = styled(StyledSubmitButton)``;
 
 const StyledDashboardButton = styled(Button)`
   font-size: 15px;

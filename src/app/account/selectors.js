@@ -52,3 +52,8 @@ export const selectModuleList = createSelector(
   selectAccountState,
   (state) => state.moduleList
 );
+
+export const selectUID = createSelector(
+  selectAccountState,
+  (state) => state.uid
+);
