@@ -51,6 +51,7 @@ export const StyledSelect = styled.select`
   outline: 0px;
   font-size: 25px;
   color: ${Constants.COLOR.GREEN};
+  background-color: ${Constants.COLOR.GRAY};
 `;
 
 export const StyledOption = styled.option`
