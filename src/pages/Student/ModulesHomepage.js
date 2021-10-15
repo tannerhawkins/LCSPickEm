@@ -23,14 +23,14 @@ const ModulesHomepage = () => {
   const isInClass = classes[0] != null;
   const classList = useSelector(selectClassList);
 
-  const assignedModuleCards = classList.filter(cls => cls.cid == currentClass.cid)[0].modules.map(
-    (module) => (
-          <ModuleCard
-            module={module}
-            onClick={() => moduleOnClick(module)}
-          ></ModuleCard>
-        )
-  )
+  const assignedModuleCards = classList
+    .filter((cls) => cls.cid == currentClass.cid)[0]
+    .modules.map((module) => (
+      <ModuleCard
+        module={module}
+        onClick={() => moduleOnClick(module)}
+      ></ModuleCard>
+    ));
 
   const moduleOnClick = (module) => {
     modulesDb

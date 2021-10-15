@@ -35,35 +35,41 @@ const AddStudents = () => {
       setErrorMessage("Please enter a valid email");
       return;
     }
-    userDataDb.where("email", "==", data["email"]).get().then(result => {
-      const data = result.docs[0]?.data();
-      if (data === undefined || data.accountType !== "student") {
-        setErrorMessage("Student not found");
-        return;
-      } else if (data.classList.map(cls => cls.cid).includes(currentClass.cid)) {
-        setErrorMessage("Student already in class");
-        return;
-      } else {
-        classDataDb.doc(currentClass.cid).update({
-          students: firebase.firestore.FieldValue.arrayUnion({
-            uid: data.uid,
-            displayName: data.displayName,
-            email: data.email,
-          }),
-        })
-        userDataDb.doc(data.uid).update({
-          classList: firebase.firestore.FieldValue.arrayUnion({
-            cid: currentClass.cid,
-            modules: currentClass.modules,
-            className: currentClass.className,
-          }),
-        })
-        setErrorMessage(`Added ${data.displayName} to ${currentClass.className}`);
-        document.getElementById("studentsForm").reset();
-      }
-    });
+    userDataDb
+      .where("email", "==", data["email"])
+      .get()
+      .then((result) => {
+        const data = result.docs[0]?.data();
+        if (data === undefined || data.accountType !== "student") {
+          setErrorMessage("Student not found");
+          return;
+        } else if (
+          data.classList.map((cls) => cls.cid).includes(currentClass.cid)
+        ) {
+          setErrorMessage("Student already in class");
+          return;
+        } else {
+          classDataDb.doc(currentClass.cid).update({
+            students: firebase.firestore.FieldValue.arrayUnion({
+              uid: data.uid,
+              displayName: data.displayName,
+              email: data.email,
+            }),
+          });
+          userDataDb.doc(data.uid).update({
+            classList: firebase.firestore.FieldValue.arrayUnion({
+              cid: currentClass.cid,
+              modules: currentClass.modules,
+              className: currentClass.className,
+            }),
+          });
+          setErrorMessage(
+            `Added ${data.displayName} to ${currentClass.className}`
+          );
+          document.getElementById("studentsForm").reset();
+        }
+      });
   };
-
 
   // Should really just take an input of a students email and add that student
   // to the current selected class. Should maybe include the drop down from the
@@ -73,7 +79,7 @@ const AddStudents = () => {
       <SideBar />
       <Header />
       <StyledBody>
-      <StyledTitle>Add Students to a Class</StyledTitle>
+        <StyledTitle>Add Students to a Class</StyledTitle>
         <StyledParagraph>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce ac
           purus eget lacus pellentesque consequat. Donec commodo tincidunt
@@ -84,15 +90,13 @@ const AddStudents = () => {
           <StyledInput type="text" name="email" required />
           <StyledText>Add to Class</StyledText>
           <Dropdown>
-                  {classes.map((item) => (
-                    <Option
-                      selected={
-                        item.cid === currentClass?.cid ? "selected" : ""
-                      }
-                      value={item}
-                      classItem={item}
-                    />
-                  ))}
+            {classes.map((item) => (
+              <Option
+                selected={item.cid === currentClass?.cid ? "selected" : ""}
+                value={item}
+                classItem={item}
+              />
+            ))}
           </Dropdown>
           <StyledError>{errorMessage}</StyledError>
           <StyledButtonContainer>

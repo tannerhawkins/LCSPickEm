@@ -1,18 +1,20 @@
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
-import {
-  selectCurrentStep,
-} from "../../../app/module/selectors";
+import { selectCurrentStep } from "../../../app/module/selectors";
 import { setCurrentStep } from "../../../app/module/actions";
 
 const ModuleVideo = () => {
   const dispatch = useDispatch();
   const currentStep = useSelector(selectCurrentStep);
 
-  return <Body>
-    This is the Module Video Page
-    <button onClick={() => dispatch(setCurrentStep(currentStep + 1))}>Next Step</button>
-    </Body>;
+  return (
+    <Body>
+      This is the Module Video Page
+      <button onClick={() => dispatch(setCurrentStep(currentStep + 1))}>
+        Next Step
+      </button>
+    </Body>
+  );
 };
 
 const Body = styled.div`
