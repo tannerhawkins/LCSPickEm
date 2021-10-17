@@ -23,12 +23,12 @@ const ModuleSummary = () => {
     
     <StyledTitle>This is the {module.title} Summary Page:</StyledTitle>
     <StyledBody>{module.description}</StyledBody>
-
     The summary of this page is simple and short that you can read it very quick for the purpose of this assignment called the "Walking Skeleton".
     
+    Note: You CANNOT back out of a module once you begin!
     <StyledButtonContainer>
       <StyledSubmitButton onClick={() => dispatch(setCurrentStep(currentStep + 1))}>
-        Next Step
+        Start Module
       </StyledSubmitButton>
     </StyledButtonContainer>
     </Body>;
