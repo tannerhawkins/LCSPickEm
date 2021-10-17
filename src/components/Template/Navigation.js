@@ -4,19 +4,24 @@ import { Constants } from "../../data/constants";
 import StyledButton from "./Button";
 import Logo from "../../images/white mtn.png";
 import SignInOutButton from "../Authentication/SignInOutButton";
+import { useHistory } from "react-router";
 
-const Navigation = () => (
-  <StyledHeader id="header">
-    <StyledLogoContainer>
-      <StyledLogo src={Logo} />
-      <HeaderName>Ancient Path Adventures</HeaderName>
-    </StyledLogoContainer>
-    <StyledButtonContainer>
-      <StyledHelpButton>HELP</StyledHelpButton>
-      <StyledSignInOutButton />
-    </StyledButtonContainer>
-  </StyledHeader>
-);
+const Navigation = () => {
+  const history = useHistory();
+
+  return (
+    <StyledHeader id="header">
+      <StyledLogoContainer onClick={() => history.push(`/home`)}>
+        <StyledLogo src={Logo} />
+        <HeaderName>Ancient Path Adventures</HeaderName>
+      </StyledLogoContainer>
+      <StyledButtonContainer>
+        <StyledHelpButton>HELP</StyledHelpButton>
+        <StyledSignInOutButton />
+      </StyledButtonContainer>
+    </StyledHeader>
+  );
+};
 
 const StyledHeader = styled.header`
   display: flex;
@@ -60,6 +65,9 @@ const StyledLogoContainer = styled.div`
   display: flex;
   align-items: center;
   margin-left: 3%;
+  :hover {
+    cursor: pointer;
+  }
 `;
 
 const StyledHelpButton = styled(StyledButton)`

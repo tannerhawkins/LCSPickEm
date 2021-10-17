@@ -1,7 +1,8 @@
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import {
-  selectCurrentStep, selectSelectedModule,
+  selectCurrentStep,
+  selectSelectedModule,
 } from "../../../app/module/selectors";
 import { setCurrentStep } from "../../../app/module/actions";
 import { useHistory } from "react-router";
@@ -12,26 +13,29 @@ const ModuleSummary = () => {
   const dispatch = useDispatch();
   const currentStep = useSelector(selectCurrentStep);
   const history = useHistory();
-  const module = useSelector(selectSelectedModule)
+  const module = useSelector(selectSelectedModule);
 
-  return <Body>
-    <StyledButtonContainer>
-      <StyledSubmitButton onClick={() => history.push("/student/home")}>
-        Back to Home
-      </StyledSubmitButton>
-    </StyledButtonContainer>
-    
-    <StyledTitle>This is the {module.title} Summary Page:</StyledTitle>
-    <StyledBody>{module.description}</StyledBody>
-    The summary of this page is simple and short that you can read it very quick for the purpose of this assignment called the "Walking Skeleton".
-    
-    Note: You CANNOT back out of a module once you begin!
-    <StyledButtonContainer>
-      <StyledSubmitButton onClick={() => dispatch(setCurrentStep(currentStep + 1))}>
-        Start Module
-      </StyledSubmitButton>
-    </StyledButtonContainer>
-    </Body>;
+  return (
+    <Body>
+      <StyledButtonContainer>
+        <StyledSubmitButton onClick={() => history.push("/student/home")}>
+          Back to Home
+        </StyledSubmitButton>
+      </StyledButtonContainer>
+      <StyledTitle>This is the {module.title} Summary Page:</StyledTitle>
+      <StyledBody>{module.description}</StyledBody>
+      The summary of this page is simple and short that you can read it very
+      quick for the purpose of this assignment called the "Walking Skeleton".
+      Note: You CANNOT back out of a module once you begin!
+      <StyledButtonContainer>
+        <StyledSubmitButton
+          onClick={() => dispatch(setCurrentStep(currentStep + 1))}
+        >
+          Start Module
+        </StyledSubmitButton>
+      </StyledButtonContainer>
+    </Body>
+  );
 };
 
 const Body = styled.div`

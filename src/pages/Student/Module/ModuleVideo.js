@@ -10,15 +10,19 @@ const ModuleVideo = () => {
   const dispatch = useDispatch();
   const currentStep = useSelector(selectCurrentStep);
 
-  return <Body>
-    <StyledTitle>This is the Module Video Page</StyledTitle>
-    <img src={videoPlayer} alt="Video Player" width="80%" height="600" />
-    <StyledButtonContainer>
-    <StyledSubmitButton onClick={() => dispatch(setCurrentStep(currentStep + 1))}>
-      Next Step
-    </StyledSubmitButton>
-    </StyledButtonContainer>
-  </Body>;
+  return (
+    <Body>
+      <StyledTitle>This is the Module Video Page</StyledTitle>
+      <img src={videoPlayer} alt="Video Player" width="80%" height="600" />
+      <StyledButtonContainer>
+        <StyledSubmitButton
+          onClick={() => dispatch(setCurrentStep(currentStep + 1))}
+        >
+          Next Step
+        </StyledSubmitButton>
+      </StyledButtonContainer>
+    </Body>
+  );
 };
 
 const Body = styled.div`

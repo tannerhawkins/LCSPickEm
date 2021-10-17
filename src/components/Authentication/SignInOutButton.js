@@ -22,9 +22,7 @@ const SignInOutButton = ({ className }) => {
   return (
     <div className={className}>
       {!loginState && (
-        <StyledSignInButton
-          onClick={() => history.push('/signin')}
-        >
+        <StyledSignInButton onClick={() => history.push("/signin")}>
           SIGN-IN
         </StyledSignInButton>
       )}

@@ -3,18 +3,23 @@ import styled from "styled-components";
 import { Constants } from "../../data/constants";
 import StyledButton from "../Template/Button";
 import Logo from "../../images/white mtn.png";
+import { useHistory } from "react-router";
 
-const Header = () => (
-  <StyledHeader id="header">
-    <StyledLogoContainer>
-      <StyledLogo src={Logo} />
-      <HeaderName>Ancient Path Adventures</HeaderName>
-    </StyledLogoContainer>
-    <StyledButtonContainer>
-      <StyledHelpButton>HELP</StyledHelpButton>
-    </StyledButtonContainer>
-  </StyledHeader>
-);
+const Header = () => {
+  const history = useHistory();
+
+  return (
+    <StyledHeader id="header">
+      <StyledLogoContainer onClick={() => history.push(`/home`)}>
+        <StyledLogo src={Logo} />
+        <HeaderName>Ancient Path Adventures</HeaderName>
+      </StyledLogoContainer>
+      <StyledButtonContainer>
+        <StyledHelpButton>HELP</StyledHelpButton>
+      </StyledButtonContainer>
+    </StyledHeader>
+  );
+};
 
 const StyledHeader = styled.header`
   display: flex;
@@ -57,6 +62,9 @@ const StyledLogoContainer = styled.div`
   display: flex;
   align-items: center;
   margin-left: 3%;
+  :hover {
+    cursor: pointer;
+  }
 `;
 
 const StyledHelpButton = styled(StyledButton)`
