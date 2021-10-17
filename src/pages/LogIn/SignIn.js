@@ -8,8 +8,10 @@ import { useDispatch } from "react-redux";
 import { auth, classDataDb, userDataDb } from "../../data/firebase";
 import { signIn } from "../../app/account/actions.js";
 import { setCurrentClass } from "../../app/class/actions";
+import { useHistory } from "react-router";
 
 const SignIn = () => {
+  const history = useHistory();
   const [errorMessage, setErrorMessage] = useState();
   const dispatch = useDispatch();
 
@@ -91,9 +93,7 @@ const SignIn = () => {
               SIGN-IN
             </StyledSubmitButton>
             <StyledSignUpButton
-              onClick={() =>
-                (window.location.href = "/AncientPathAdventures/signup")
-              }
+              onClick={() => history.push(`/signup`)}
             >
               Don't have an account? Don’t worry! Sign up here
             </StyledSignUpButton>
