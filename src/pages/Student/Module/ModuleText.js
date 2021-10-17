@@ -1,33 +1,38 @@
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
-import {
-  selectCurrentStep,
-} from "../../../app/module/selectors";
+import { selectCurrentStep } from "../../../app/module/selectors";
 import { setCurrentStep } from "../../../app/module/actions";
 import { Constants } from "../../../data/constants";
 import Button from "../../../components/Template/Button";
-
 
 const ModuleText = () => {
   const dispatch = useDispatch();
   const currentStep = useSelector(selectCurrentStep);
 
-  return <Body>
-    <StyledTitle>This is the Module Text Page</StyledTitle>
-    <StyledBody>
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-    </StyledBody>
-    <StyledQuestionContainer>
-      <StyledQuestion>
-
-      </StyledQuestion>
-    </StyledQuestionContainer>
-    <StyledButtonContainer>
-      <StyledSubmitButton onClick={() => dispatch(setCurrentStep(currentStep + 1))}>
-        Next Step
-      </StyledSubmitButton>
-    </StyledButtonContainer>
-    </Body>;
+  return (
+    <Body>
+      <StyledTitle>This is the Module Text Page</StyledTitle>
+      <StyledBody>
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+        commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+        velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+        occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+        mollit anim id est laborum."
+      </StyledBody>
+      <StyledQuestionContainer>
+        <StyledQuestion></StyledQuestion>
+      </StyledQuestionContainer>
+      <StyledButtonContainer>
+        <StyledSubmitButton
+          onClick={() => dispatch(setCurrentStep(currentStep + 1))}
+        >
+          Next Step
+        </StyledSubmitButton>
+      </StyledButtonContainer>
+    </Body>
+  );
 };
 
 const Body = styled.div`
@@ -57,11 +62,9 @@ const StyledButtonContainer = styled.div`
   margin-left: ${Constants.SIDEBAR_WIDTH};
 `;
 
-const StyledQuestionContainer = styled.div`
-`
+const StyledQuestionContainer = styled.div``;
 
-const StyledQuestion = styled.div`
-`
+const StyledQuestion = styled.div``;
 
 const StyledSubmitButton = styled(Button)`
   font-size: 25px;

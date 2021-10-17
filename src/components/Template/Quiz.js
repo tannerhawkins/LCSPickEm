@@ -1,8 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
-import {
-  selectCurrentStep,
-} from "../../app/module/selectors";
+import { selectCurrentStep } from "../../app/module/selectors";
 import { setCurrentStep } from "../../app/module/actions";
 import { Constants } from "../../data/constants";
 import Button from "../../components/Template/Button";
@@ -70,9 +68,11 @@ const Quiz = () => {
       {showScore ? (
         <ScoreSection>
           You scored {score} out of {questions.length}
-          <StyledSubmitButton onClick={() => dispatch(setCurrentStep(currentStep + 1))}>
-        Submit Quiz
-      </StyledSubmitButton>
+          <StyledSubmitButton
+            onClick={() => dispatch(setCurrentStep(currentStep + 1))}
+          >
+            Submit Quiz
+          </StyledSubmitButton>
         </ScoreSection>
       ) : (
         <>
@@ -88,7 +88,11 @@ const Quiz = () => {
             {questions[currentQuestion].answerOptions.map((answerOption) => (
               <AnswerButton
                 onClick={() => handleAnswerOptionClick(answerOption.isCorrect)}
-                style={{height:(`${100/questions[currentQuestion].answerOptions.length}%`)}}
+                style={{
+                  height: `${
+                    100 / questions[currentQuestion].answerOptions.length
+                  }%`,
+                }}
               >
                 {answerOption.answerText}
               </AnswerButton>
