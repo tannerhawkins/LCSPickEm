@@ -1,23 +1,25 @@
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
-import {
-  selectCurrentStep,
-} from "../../../app/module/selectors";
-import { setCurrentStep } from "../../../app/module/actions";
+import { selectCurrentStep } from "../../../app/module/selectors";
+import Quiz from "../../../components/Template/Quiz";
 
 const ModuleQuiz = () => {
   const dispatch = useDispatch();
   const currentStep = useSelector(selectCurrentStep);
 
-  return <Body>
-    This is the Module Quiz Page
-    <button onClick={() => dispatch(setCurrentStep(currentStep + 1))}>Next Step</button>
-    </Body>;
+  return (
+    <Body>
+      <Quiz />
+    </Body>
+  );
 };
 
 const Body = styled.div`
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 export default ModuleQuiz;

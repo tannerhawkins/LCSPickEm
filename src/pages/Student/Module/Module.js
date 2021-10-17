@@ -15,7 +15,8 @@ const Module = () => {
   const history = useHistory();
   const currentModule = useSelector(selectSelectedModule);
   const currentStep = useSelector(selectCurrentStep);
-  const currentStepData = currentStep === -1 ? undefined : currentModule?.steps[currentStep];
+  const currentStepData =
+    currentStep === -1 ? undefined : currentModule?.steps[currentStep];
 
   const StepPage = () => {
     const stepType = currentStepData.type;
@@ -28,15 +29,15 @@ const Module = () => {
     }
     history.push("/student/home");
     return;
-  }
-
+  };
 
   return (
     <Main title={currentModule?.title} description={"Module Page"}>
       <ModuleWrapper>
         {currentStep === -1 && <ModuleSummary />}
         {currentStepData && StepPage()}
-        {currentStep >= currentModule?.steps?.length && history.push("/student/home")}
+        {currentStep >= currentModule?.steps?.length &&
+          history.push("/student/home")}
       </ModuleWrapper>
     </Main>
   );
