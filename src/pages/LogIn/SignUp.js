@@ -141,9 +141,7 @@ const SignUp = () => {
             <StyledSubmitButton onClick={handleSubmit}>
               SIGN-UP
             </StyledSubmitButton>
-            <StyledSignUpButton
-              onClick={() => history.push(`signin`)}
-            >
+            <StyledSignUpButton onClick={() => history.push(`signin`)}>
               Already have an account? Don’t worry! Sign in here
             </StyledSignUpButton>
           </StyledButtonContainer>

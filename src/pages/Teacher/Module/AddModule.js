@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Main from "../../../layouts/Main";
 import SideBar from "../../../components/Template/SideBar";
 import Header from "../../../components/Teacher/Header";
 import styled from "styled-components";
 import { Constants } from "../../../data/constants";
-import { classDataDb, getAllModules } from "../../../data/firebase";
+import { classDataDb } from "../../../data/firebase";
 import ModuleCard from "../../../components/Template/ModuleCard";
 import { useDispatch, useSelector } from "react-redux";
 import { selectModuleList } from "../../../app/account/selectors";

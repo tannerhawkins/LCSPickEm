@@ -6,8 +6,10 @@ import Button from "../../Template/Button";
 import Popup from "../../Template/Popup";
 import { addStep } from "../../../app/module/actions";
 import { selectSteps } from "../../../app/module/selectors";
+import { useHistory } from "react-router";
 
 const AddStepPopup = ({ className, onClose, style }) => {
+  const history = useHistory();
   const dispatch = useDispatch();
   const steps = useSelector(selectSteps);
   const getID = () => {
@@ -18,6 +20,8 @@ const AddStepPopup = ({ className, onClose, style }) => {
     }
   };
   const handleClick = (type) => {
+    history.push(`/teacher/create-module/edit-${type}`);
+    return;
     const step = {
       type: type,
       order: steps.length,

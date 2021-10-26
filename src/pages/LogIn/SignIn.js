@@ -92,9 +92,7 @@ const SignIn = () => {
             <StyledSubmitButton type="submit" onClick={handleSubmit}>
               SIGN-IN
             </StyledSubmitButton>
-            <StyledSignUpButton
-              onClick={() => history.push(`/signup`)}
-            >
+            <StyledSignUpButton onClick={() => history.push(`/signup`)}>
               Don't have an account? Don’t worry! Sign up here
             </StyledSignUpButton>
           </StyledButtonContainer>
