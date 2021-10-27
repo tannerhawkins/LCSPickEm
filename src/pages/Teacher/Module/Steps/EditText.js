@@ -4,6 +4,7 @@ import SideBar from "../../../../components/Template/SideBar";
 import Header from "../../../../components/Teacher/Header";
 import styled from "styled-components";
 import { Constants } from "../../../../data/constants";
+import TextEditor from "../../../../components/Teacher/TextEditor";
 
 const EditText = () => {
   return (
@@ -12,6 +13,7 @@ const EditText = () => {
       <Header />
       <StyledBody>
         <StyledSectionTitle>Edit Text</StyledSectionTitle>
+        <StyledTextEditor onSubmit={(props) => console.log(props.body)}/>
       </StyledBody>
     </Main>
   );
@@ -28,5 +30,9 @@ const StyledSectionTitle = styled.p`
   line-height: 43px;
   font-weight: 500;
 `;
+
+const StyledTextEditor = styled(TextEditor)`
+  height: 500px;
+`
 
 export default EditText;
