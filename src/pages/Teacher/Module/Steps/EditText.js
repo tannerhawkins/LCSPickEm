@@ -5,15 +5,44 @@ import Header from "../../../../components/Teacher/Header";
 import styled from "styled-components";
 import { Constants } from "../../../../data/constants";
 import TextEditor from "../../../../components/Teacher/TextEditor";
+import { useDispatch, useSelector } from "react-redux";
+import { addStep } from "../../../../app/module/actions";
+import { useHistory } from "react-router";
+import { selectSteps } from "../../../../app/module/selectors";
 
 const EditText = () => {
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const steps = useSelector(selectSteps);
+
+  const getID = () => {
+    if (steps.length === 0) {
+      return 0;
+    } else {
+      return Math.max(...steps.map((step) => step.id)) + 1;
+    }
+  };
+
+  const onSubmit = (props) => {
+
+    dispatch(addStep({
+      type: "text",
+      order: steps.length,
+      id: getID(),
+      data: props.body,
+    }));
+    history.push(`/teacher/create-module`);
+  }
+
+
+
   return (
     <Main title={"Edit Text Step"} description={"Edit Text Step"}>
       <SideBar />
       <Header />
       <StyledBody>
         <StyledSectionTitle>Edit Text</StyledSectionTitle>
-        <StyledTextEditor onSubmit={(props) => console.log(props.body)}/>
+        <StyledTextEditor onSubmit={onSubmit}/>
       </StyledBody>
     </Main>
   );

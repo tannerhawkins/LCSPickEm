@@ -33,4 +33,4 @@ export const getAllModules = async () => {
   return modules.docs.map((doc) => doc.data());
 };
 
-export { auth, provider };
+export { auth, provider, app };

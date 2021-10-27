@@ -42,7 +42,7 @@ const TextEditor = (props) => {
       }}
       />
       <ButtonContainer>
-        <StyledButton type="submit">Submit</StyledButton>
+        <StyledButton type="submit" onClick={handleSubmit}>Submit</StyledButton>
         <StyledButton type="submit">Cancel</StyledButton>
       </ButtonContainer>
     </form>
