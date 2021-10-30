@@ -29,6 +29,7 @@ const ModulesHomepage = () => {
         .modules.map((module) => (
           <ModuleCard
             module={module}
+            key={module.mid}
             onClick={() => moduleOnClick(module)}
           ></ModuleCard>
         ))
@@ -65,6 +66,7 @@ const ModulesHomepage = () => {
                       selected={item.cid === currentClass.cid ? "selected" : ""}
                       value={item}
                       classItem={item}
+                      key={item.cid}
                     />
                   ))}
                 </Dropdown>
