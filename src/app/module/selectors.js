@@ -32,3 +32,9 @@ export const selectNextID = createSelector(selectSteps, (steps) => {
     return Math.max(...steps.map((step) => step.id)) + 1;
   }
 });
+
+export const selectCurrentStepData = createSelector(
+  selectCurrentStep,
+  selectSteps,
+  (currentStep, steps) => steps[currentStep].data
+)

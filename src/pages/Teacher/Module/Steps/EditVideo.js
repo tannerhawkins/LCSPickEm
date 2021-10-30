@@ -27,12 +27,13 @@ const EditVideo = () => {
         setError("Please enter valid Youtube URL");
         return;
       }
+      const newUrl = `//www.youtube.com/embed/${match[2]}?rel=0`
       dispatch(
         addStep({
           type: "video",
           order: steps.length,
           id: id,
-          data: url,
+          data: newUrl,
         })
       );
       history.push("/teacher/create-module");
