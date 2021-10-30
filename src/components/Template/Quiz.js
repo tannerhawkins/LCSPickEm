@@ -1,6 +1,9 @@
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
-import { selectCurrentStep, selectCurrentStepData } from "../../app/module/selectors";
+import {
+  selectCurrentStep,
+  selectCurrentStepData,
+} from "../../app/module/selectors";
 import { setCurrentStep } from "../../app/module/actions";
 import { Constants } from "../../data/constants";
 import Button from "../../components/Template/Button";

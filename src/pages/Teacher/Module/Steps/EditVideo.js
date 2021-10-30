@@ -27,7 +27,7 @@ const EditVideo = () => {
         setError("Please enter valid Youtube URL");
         return;
       }
-      const newUrl = `//www.youtube.com/embed/${match[2]}?rel=0`
+      const newUrl = `//www.youtube.com/embed/${match[2]}?rel=0`;
       dispatch(
         addStep({
           type: "video",

@@ -1,6 +1,9 @@
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
-import { selectCurrentStep, selectCurrentStepData } from "../../../app/module/selectors";
+import {
+  selectCurrentStep,
+  selectCurrentStepData,
+} from "../../../app/module/selectors";
 import { setCurrentStep } from "../../../app/module/actions";
 import { Constants } from "../../../data/constants";
 import Button from "../../../components/Template/Button";
@@ -13,7 +16,13 @@ const ModuleVideo = () => {
   return (
     <Body>
       <StyledTitle>This is the Module Video Page</StyledTitle>
-      <Video frameborder="0" src={`${stepData}`} allow={"autoplay;"} sandbox="allow-scripts allow-same-origin" allowFullScreen/>
+      <Video
+        frameborder="0"
+        src={`${stepData}`}
+        allow={"autoplay;"}
+        sandbox="allow-scripts allow-same-origin"
+        allowFullScreen
+      />
       <StyledButtonContainer>
         <StyledSubmitButton
           onClick={() => dispatch(setCurrentStep(currentStep + 1))}
@@ -28,7 +37,7 @@ const ModuleVideo = () => {
 const Video = styled.iframe`
   width: 90vw;
   height: 90vh;
-`
+`;
 
 const Body = styled.div`
   width: 100%;

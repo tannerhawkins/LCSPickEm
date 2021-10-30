@@ -60,59 +60,67 @@ const CreateModule = () => {
     }
 
     // currently assigns all students but this is subject to change
-    const studentsToAssign = currentClass.students
+    const studentsToAssign = currentClass.students;
 
-    modulesDb.add(toAdd).then((doc) => {
-      modulesDb.doc(doc.id).update({ mid: doc.id });
-      userDataDb
-        .doc(auth.currentUser.uid)
-        .update({
-          moduleList: firebase.firestore.FieldValue.arrayUnion({
-            mid: doc.id,
-            title: data.title,
-            description: data.description,
-          }),
-        })
-        .then(() => {
-          classDataDb
-            .doc(currentClass.cid)
-            .update({
-              modules: firebase.firestore.FieldValue.arrayUnion(doc.id),
-            })
-            .then(
-              classDataDb
-                .doc(currentClass?.cid)
-                .get()
-                .then((doc) => dispatch(setCurrentClass(doc.data())))
-            ).then(() => {
-              studentsToAssign.forEach(student => {
-                userDataDb.doc(student.uid).get().then(classdoc => {
-                  const classList = classdoc.data().classList;
-                  const oldClass = classList.filter(cla => cla.cid === currentClass.cid)[0];
-                  const newClass = {
-                    ...oldClass,
-                    modules: [...oldClass.modules, doc.id],
-                  }
-                  const getIndex = () => {
-                    for (let i = 0; i < classList.length; i++) {
-                      if (classList[i].cid === oldClass.cid) {
-                        return i;
-                      }
-                    }
-                    return -1;
-                  }
-                  const index = getIndex();
-                  classList.splice(index, 1, newClass)
-                  userDataDb.doc(student.uid).update({
-                    classList: classList
-                  })
-                })
-              })
-            })
+    modulesDb
+      .add(toAdd)
+      .then((doc) => {
+        modulesDb.doc(doc.id).update({ mid: doc.id });
+        userDataDb
+          .doc(auth.currentUser.uid)
+          .update({
+            moduleList: firebase.firestore.FieldValue.arrayUnion({
+              mid: doc.id,
+              title: data.title,
+              description: data.description,
+            }),
           })
-        })
-        .then(() => history.push("teacher/home"));
-  }
+          .then(() => {
+            classDataDb
+              .doc(currentClass.cid)
+              .update({
+                modules: firebase.firestore.FieldValue.arrayUnion(doc.id),
+              })
+              .then(
+                classDataDb
+                  .doc(currentClass?.cid)
+                  .get()
+                  .then((doc) => dispatch(setCurrentClass(doc.data())))
+              )
+              .then(() => {
+                studentsToAssign.forEach((student) => {
+                  userDataDb
+                    .doc(student.uid)
+                    .get()
+                    .then((classdoc) => {
+                      const classList = classdoc.data().classList;
+                      const oldClass = classList.filter(
+                        (cla) => cla.cid === currentClass.cid
+                      )[0];
+                      const newClass = {
+                        ...oldClass,
+                        modules: [...oldClass.modules, doc.id],
+                      };
+                      const getIndex = () => {
+                        for (let i = 0; i < classList.length; i++) {
+                          if (classList[i].cid === oldClass.cid) {
+                            return i;
+                          }
+                        }
+                        return -1;
+                      };
+                      const index = getIndex();
+                      classList.splice(index, 1, newClass);
+                      userDataDb.doc(student.uid).update({
+                        classList: classList,
+                      });
+                    });
+                });
+              });
+          });
+      })
+      .then(() => history.push("teacher/home"));
+  };
 
   // Likely should have a field for Title, description, and some kind of interface for adding
   // "steps" to the module. These steps would be things like text, video, and quizzes.

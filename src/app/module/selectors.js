@@ -37,4 +37,4 @@ export const selectCurrentStepData = createSelector(
   selectCurrentStep,
   selectSteps,
   (currentStep, steps) => steps[currentStep].data
-)
+);

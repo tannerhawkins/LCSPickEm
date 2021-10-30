@@ -1,6 +1,10 @@
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
-import { selectCurrentStep, selectCurrentStepData, selectSelectedModule } from "../../../app/module/selectors";
+import {
+  selectCurrentStep,
+  selectCurrentStepData,
+  selectSelectedModule,
+} from "../../../app/module/selectors";
 import { setCurrentStep } from "../../../app/module/actions";
 import { Constants } from "../../../data/constants";
 import Button from "../../../components/Template/Button";
@@ -13,7 +17,7 @@ const ModuleText = () => {
   return (
     <Body>
       <StyledTitle>This is the Module Text Page</StyledTitle>
-      <StyledBody dangerouslySetInnerHTML={{__html: stepData}} />
+      <StyledBody dangerouslySetInnerHTML={{ __html: stepData }} />
       <StyledQuestionContainer>
         <StyledQuestion></StyledQuestion>
       </StyledQuestionContainer>
