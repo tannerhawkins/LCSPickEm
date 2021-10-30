@@ -1,22 +1,20 @@
 import React, { useState } from "react";
-import { CKEditor } from "@ckeditor/ckeditor5-react"
+import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import Button from "../Template/Button";
 import styled from "styled-components";
 import { Constants } from "../../data/constants";
-
 
 const TextEditor = (props) => {
   const [body, setBody] = useState("");
 
   const config = {
     height: "500px",
-  }
+  };
 
   const handleCancel = (e) => {
     props.onCancel();
-  }
-
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -33,16 +31,18 @@ const TextEditor = (props) => {
         }}
         onReady={(editor) => {
           editor.editing.view.change((writer) => {
-          writer.setStyle(
+            writer.setStyle(
               "height",
               "60vh",
               editor.editing.view.document.getRoot()
-          );
+            );
           });
-      }}
+        }}
       />
       <ButtonContainer>
-        <StyledButton type="submit" onClick={handleSubmit}>Submit</StyledButton>
+        <StyledButton type="submit" onClick={handleSubmit}>
+          Submit
+        </StyledButton>
         <StyledButton type="submit">Cancel</StyledButton>
       </ButtonContainer>
     </form>
@@ -53,14 +53,14 @@ const StyledButton = styled(Button)`
   height: 60px;
   width: 130px;
   margin-top: 40px;
-  background-color: ${Constants.COLOR.DARK_GREEN}
-`
+  background-color: ${Constants.COLOR.DARK_GREEN};
+`;
 
 const ButtonContainer = styled.div`
   display: flex;
   justify-content: space-around;
   align-items: center;
   max-width: 400px;
-`
+`;
 
 export default TextEditor;

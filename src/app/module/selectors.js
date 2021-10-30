@@ -24,3 +24,11 @@ export const selectSteps = createSelector(
   selectSelectedModule,
   (module) => module?.steps
 );
+
+export const selectNextID = createSelector(selectSteps, (steps) => {
+  if (steps.length === 0) {
+    return 0;
+  } else {
+    return Math.max(...steps.map((step) => step.id)) + 1;
+  }
+});

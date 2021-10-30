@@ -43,6 +43,7 @@ const DragAndDrop = (props) => {
         .map((box) => (
           <Box
             id={parseInt(box.id)}
+            key={parseInt(box.id)}
             boxColor={box.color}
             type={box.type}
             handleDrag={handleDrag}

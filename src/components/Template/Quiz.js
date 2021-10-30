@@ -5,6 +5,7 @@ import { setCurrentStep } from "../../app/module/actions";
 import { Constants } from "../../data/constants";
 import Button from "../../components/Template/Button";
 import { useState } from "react";
+import QuestionCard from "./QuestionCard";
 
 const Quiz = () => {
   const dispatch = useDispatch();
@@ -75,30 +76,11 @@ const Quiz = () => {
           </StyledSubmitButton>
         </ScoreSection>
       ) : (
-        <>
-          <QuestionSection>
-            <QuestionCount>
-              <span>Question {currentQuestion + 1}</span>/{questions.length}
-            </QuestionCount>
-            <QuestionText>
-              {questions[currentQuestion].questionText}
-            </QuestionText>
-          </QuestionSection>
-          <AnswerSection>
-            {questions[currentQuestion].answerOptions.map((answerOption) => (
-              <AnswerButton
-                onClick={() => handleAnswerOptionClick(answerOption.isCorrect)}
-                style={{
-                  height: `${
-                    100 / questions[currentQuestion].answerOptions.length
-                  }%`,
-                }}
-              >
-                {answerOption.answerText}
-              </AnswerButton>
-            ))}
-          </AnswerSection>
-        </>
+        <QuestionCard
+          currentQuestion={currentQuestion}
+          questions={questions}
+          handleAnswerOptionClick={handleAnswerOptionClick}
+        />
       )}
     </StyledQuiz>
   );
