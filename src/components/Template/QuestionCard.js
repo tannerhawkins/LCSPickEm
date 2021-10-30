@@ -2,7 +2,6 @@ import styled from "styled-components";
 import { Constants } from "../../data/constants";
 
 const QuestionCard = (props) => {
-  console.log(props.questions[props.currentQuestion].answerOptions);
   return (
     <>
       <QuestionSection>

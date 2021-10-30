@@ -54,7 +54,6 @@ const EditQuestionCard = (props) => {
       setAnswerOptions(answerOptions);
       setIsChecked(answerOption.isCorrect);
     };
-    console.log(answerOption.answerText);
 
     return (
       <StyledAnswer style={style}>

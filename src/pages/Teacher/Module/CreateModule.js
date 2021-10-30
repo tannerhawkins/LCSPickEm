@@ -50,7 +50,6 @@ const CreateModule = () => {
       description: data.description,
       creator: auth.currentUser.uid,
     };
-    console.log(toAdd);
     if (data["title"] === "") {
       setErrorMessage("Please fill out module title");
       return;
