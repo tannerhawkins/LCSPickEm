@@ -22,6 +22,7 @@ import {
 } from "../../../app/module/selectors";
 import { selectCurrentClass } from "../../../app/class/selectors";
 import { setCurrentClass } from "../../../app/class/actions";
+import { setLoadingFalse, setLoadingTrue } from "../../../app/actions";
 
 const CreateModule = () => {
   const history = useHistory();
@@ -61,7 +62,7 @@ const CreateModule = () => {
 
     // currently assigns all students but this is subject to change
     const studentsToAssign = currentClass.students;
-
+    dispatch(setLoadingTrue());
     modulesDb
       .add(toAdd)
       .then((doc) => {
@@ -119,7 +120,10 @@ const CreateModule = () => {
               });
           });
       })
-      .then(() => history.push("teacher/home"));
+      .then(() => {
+        dispatch(setLoadingFalse());
+        history.push("teacher/home")
+      });
   };
 
   // Likely should have a field for Title, description, and some kind of interface for adding

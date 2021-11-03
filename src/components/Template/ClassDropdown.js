@@ -8,6 +8,7 @@ export const Dropdown = (props) => {
   const dispatch = useDispatch();
 
   const selectClass = (event) => {
+    dispatch(setLoadingTrue());
     const cid = Array.from(event.target.children)
       .filter((item) => item.selected)
       .map((item) => item.dataset.cid)[0];
@@ -15,6 +16,7 @@ export const Dropdown = (props) => {
       .doc(cid)
       .get()
       .then((result) => dispatch(setCurrentClass(result.data())));
+    dispatch(setLoadingFalse());
   };
 
   return (

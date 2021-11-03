@@ -11,6 +11,7 @@ import { auth, classDataDb, userDataDb } from "../../data/firebase";
 import firebase from "firebase";
 import { setCurrentClass } from "../../app/class/actions";
 import { signIn } from "../../app/account/actions";
+import { setLoadingFalse, setLoadingTrue } from "../../app/actions";
 
 const CreateClass = () => {
   const history = useHistory();
@@ -34,6 +35,7 @@ const CreateClass = () => {
       return;
     }
     // sends request to create class
+    dispatch(setLoadingTrue());
     classDataDb
       .add({
         className: data["name"],
@@ -72,6 +74,7 @@ const CreateClass = () => {
             history.push(`teacher/home`);
           });
       });
+      dispatch(setLoadingFalse());
   };
 
   return (

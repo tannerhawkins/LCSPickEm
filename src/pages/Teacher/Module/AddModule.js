@@ -14,6 +14,7 @@ import firebase from "firebase";
 import Button from "../../../components/Template/Button";
 import { useHistory } from "react-router";
 import { setSelectedModule } from "../../../app/module/actions";
+import { setLoadingFalse, setLoadingTrue } from "../../../app/actions";
 
 const AddModule = () => {
   const dispatch = useDispatch();
@@ -31,10 +32,12 @@ const AddModule = () => {
       <ModuleCard
         onClick={() => handleClick(moduleToAdd.mid)}
         module={moduleToAdd.mid}
+        key={moduleToAdd.mid}
       />
     ));
 
   const handleClick = (mid) => {
+    dispatch(setLoadingTrue());
     classDataDb
       .doc(currentClass.cid)
       .update({
@@ -46,6 +49,7 @@ const AddModule = () => {
           .get()
           .then((doc) => dispatch(setCurrentClass(doc.data())))
       );
+    dispatch(setLoadingFalse());
   };
 
   const handleCreateNewModule = () => {

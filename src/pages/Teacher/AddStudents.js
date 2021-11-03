@@ -8,13 +8,15 @@ import Button from "../../components/Template/Button";
 import { useHistory } from "react-router-dom";
 import { classDataDb, userDataDb } from "../../data/firebase";
 import Dropdown, { Option } from "../../components/Template/ClassDropdown";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { selectCurrentClass } from "../../app/class/selectors";
 import { selectClassList } from "../../app/account/selectors";
 import firebase from "firebase";
+import { setLoadingFalse, setLoadingTrue } from "../../app/actions";
 
 const AddStudents = () => {
   const history = useHistory();
+  const dispatch = useDispatch();
   const [errorMessage, setErrorMessage] = useState();
   const currentClass = useSelector(selectCurrentClass);
   const classes = useSelector(selectClassList);
@@ -49,6 +51,7 @@ const AddStudents = () => {
           setErrorMessage("Student already in class");
           return;
         } else {
+          dispatch(setLoadingTrue());
           classDataDb.doc(currentClass.cid).update({
             students: firebase.firestore.FieldValue.arrayUnion({
               uid: data.uid,
@@ -66,6 +69,7 @@ const AddStudents = () => {
           setErrorMessage(
             `Added ${data.displayName} to ${currentClass.className}`
           );
+          dispatch(setLoadingFalse());
           document.getElementById("studentsForm").reset();
         }
       });
