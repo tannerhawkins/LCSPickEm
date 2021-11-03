@@ -58,22 +58,22 @@ const ModulesHomepage = () => {
           </BodyHeader>
           <StyledSectionHeader>New</StyledSectionHeader>
           <NewCardContainer>
-            <StyledCard
+            {currentClass && <StyledCard
               plusIconColor="green"
               barColor={Constants.COLOR.GREEN}
               cardColor={Constants.COLOR.TEAL}
               onClick={() => history.push("/teacher/add-module")}
             >
               Module
-            </StyledCard>
-            <StyledCard
+            </StyledCard>}
+            {currentClass && <StyledCard
               plusIconColor="teal"
               barColor={Constants.COLOR.TEAL}
               cardColor={Constants.COLOR.GREEN}
               onClick={() => history.push("/teacher/add-students")}
             >
               Students
-            </StyledCard>
+            </StyledCard>}
             <StyledCard
               plusIconColor="green"
               barColor={Constants.COLOR.GREEN}
@@ -131,7 +131,7 @@ const EnrollmentCode = styled.p`
 const NewCardContainer = styled.div`
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
   max-width: 950px;
 `;
 
