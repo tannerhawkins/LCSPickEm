@@ -6,11 +6,13 @@ import { persistor, store } from "./app/store";
 import { Provider } from "react-redux";
 import * as serviceWorker from "./serviceWorker";
 import { PersistGate } from "redux-persist/integration/react";
+import LoadingScreen from "./components/Template/LoadingScreen";
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
+        <LoadingScreen />
         <App />
       </PersistGate>
     </Provider>

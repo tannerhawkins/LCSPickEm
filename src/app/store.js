@@ -5,11 +5,13 @@ import storage from "redux-persist/lib/storage";
 import persistReducer from "redux-persist/es/persistReducer";
 import persistStore from "redux-persist/es/persistStore";
 import moduleReducer from "./module/reducers.js";
+import appReducer from "./reducers.js";
 
 const allReducers = combineReducers({
   account: accountReducer,
   class: classReducer,
   module: moduleReducer,
+  app: appReducer,
 });
 
 const rootReducer = (state, action) => {
