@@ -6,20 +6,17 @@ import styled from "styled-components";
 import { Constants } from "../../data/constants";
 import Button from "../../components/Template/Button";
 import { useHistory } from "react-router-dom";
-import { auth, classDataDb, userDataDb } from "../../data/firebase";
-import Dropdown, { Option } from "../../components/Template/ClassDropdown";
+import { classDataDb, userDataDb } from "../../data/firebase";
 import { useDispatch, useSelector } from "react-redux";
-import { selectCurrentClass } from "../../app/class/selectors";
 import { selectClassList, selectUser } from "../../app/account/selectors";
 import firebase from "firebase";
-import { refreshAccountData, signIn } from "../../app/account/actions";
+import { signIn } from "../../app/account/actions";
 import { setCurrentClass } from "../../app/class/actions";
 
 const AddClass = () => {
   const history = useHistory();
   const [errorMessage, setErrorMessage] = useState();
   const dispatch = useDispatch();
-  const classes = useSelector(selectClassList);
   const user = useSelector(selectUser);
   const handleSubmit = () => {
     setErrorMessage();
