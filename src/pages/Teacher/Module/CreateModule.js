@@ -163,11 +163,15 @@ const CreateModule = () => {
           />
           <StyledFlexContainer>
             <StyledText>Steps - Drag to Change Order</StyledText>
-            <StyledAddStepButton onClick={() => {
-              dispatch(setTitle(document.getElementById("title").value))
-              dispatch(setDescription(document.getElementById("description").value))
-              setShowAddStepPopup(true)
-              }}>
+            <StyledAddStepButton
+              onClick={() => {
+                dispatch(setTitle(document.getElementById("title").value));
+                dispatch(
+                  setDescription(document.getElementById("description").value)
+                );
+                setShowAddStepPopup(true);
+              }}
+            >
               Add Step
             </StyledAddStepButton>
           </StyledFlexContainer>

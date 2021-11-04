@@ -31,11 +31,11 @@ export const setTitle = (title) => {
     type: "SET_TITLE",
     payload: title,
   };
-}
+};
 
 export const setDescription = (description) => {
   return {
     type: "SET_DESCRIPTION",
     payload: description,
   };
-}
+};
