@@ -46,7 +46,7 @@ const AddModule = () => {
           .doc(currentClass.cid)
           .get()
           .then((doc) => {
-            doc.data().students.forEach(student => {
+            doc.data().students.forEach((student) => {
               console.log(student.uid);
               userDataDb
                 .doc(student.uid)
@@ -74,7 +74,7 @@ const AddModule = () => {
                     classList: classList,
                   });
                 });
-            })
+            });
           })
           .then(
             classDataDb
