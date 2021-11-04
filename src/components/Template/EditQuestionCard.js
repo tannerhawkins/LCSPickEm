@@ -44,6 +44,10 @@ const EditQuestionCard = (props) => {
     const [isChecked, setIsChecked] = useState(answerOption.isCorrect);
 
     const onRadioClick = (answerOption) => {
+      const correct = answerOptions.filter(answerOption => answerOption.isCorrect);
+      if (correct.includes(answerOption) && correct.length === 1) {
+        return;
+      }
       delete answerOptions[answerOption.key];
       answerOption.isCorrect = !answerOption.isCorrect;
       for (var i = 0; i < answerOptions.length; i++) {
