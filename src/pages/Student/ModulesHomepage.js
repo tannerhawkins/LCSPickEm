@@ -14,6 +14,7 @@ import Dropdown, { Option } from "../../components/Template/ClassDropdown";
 import { useHistory } from "react-router";
 import { modulesDb } from "../../data/firebase";
 import { setCurrentStep, setSelectedModule } from "../../app/module/actions";
+import StyledButton from "../../components/Template/Button";
 
 const ModulesHomepage = () => {
   const history = useHistory();
@@ -71,6 +72,9 @@ const ModulesHomepage = () => {
                   ))}
                 </Dropdown>
               )}
+              <StyledAddClassButton onClick={() => history.push(`/student/add-class`)}>
+          Add Class
+        </StyledAddClassButton>
             </TitleContainer>
             <EnrollmentCode>
               {/* Only shows the enrollment code if a current class is selected */}
@@ -107,6 +111,13 @@ const StyledBody = styled.div`
   padding: 0 50px;
 `;
 
+const StyledAddClassButton = styled(StyledButton)`
+  height: 60px;
+  width: 130px;
+  margin-left: 40px;
+  background-color: ${Constants.COLOR.GREEN};
+`;
+
 const ModulesContainer = styled.div`
   display: flex;
   width: 100%;
@@ -125,6 +136,7 @@ const StyledTitle = styled.p`
   color: ${Constants.COLOR.GREEN};
   line-height: 36px;
   font-size: 30px;
+  margin-right: 20px;
 `;
 
 const TitleContainer = styled.div`
@@ -134,18 +146,6 @@ const TitleContainer = styled.div`
 
 const EnrollmentCode = styled.p`
   font-size: 18px;
-`;
-
-const NewCardContainer = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  max-width: 950px;
-`;
-
-const StyledCard = styled(NewCard)`
-  width: 250px;
-  height: 228px;
 `;
 
 const StyledSectionHeader = styled.p`

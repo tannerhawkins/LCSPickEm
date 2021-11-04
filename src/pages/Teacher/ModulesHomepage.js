@@ -121,6 +121,7 @@ const StyledTitle = styled.p`
   color: ${Constants.COLOR.GREEN};
   line-height: 36px;
   font-size: 30px;
+  margin-right: 20px;
 `;
 
 const TitleContainer = styled.div`
