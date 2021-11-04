@@ -3,12 +3,14 @@ import styled from "styled-components";
 import { setCurrentClass } from "../../app/class/actions";
 import { Constants } from "../../data/constants";
 import { classDataDb } from "../../data/firebase";
+import { setLoadingTrue, setLoadingFalse } from '../../app/actions'
 
 export const Dropdown = (props) => {
   const dispatch = useDispatch();
 
   const selectClass = (event) => {
     dispatch(setLoadingTrue());
+    debugger;
     const cid = Array.from(event.target.children)
       .filter((item) => item.selected)
       .map((item) => item.dataset.cid)[0];
