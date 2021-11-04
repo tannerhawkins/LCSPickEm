@@ -4,7 +4,7 @@ import SideBar from "../../../components/Template/SideBar";
 import Header from "../../../components/Teacher/Header";
 import styled from "styled-components";
 import { Constants } from "../../../data/constants";
-import { classDataDb } from "../../../data/firebase";
+import { classDataDb, userDataDb } from "../../../data/firebase";
 import ModuleCard from "../../../components/Template/ModuleCard";
 import { useDispatch, useSelector } from "react-redux";
 import { selectModuleList } from "../../../app/account/selectors";
@@ -31,6 +31,7 @@ const AddModule = () => {
       <ModuleCard
         onClick={() => handleClick(moduleToAdd.mid)}
         module={moduleToAdd.mid}
+        key={moduleToAdd.mid}
       />
     ));
 
@@ -42,9 +43,45 @@ const AddModule = () => {
       })
       .then(
         classDataDb
-          .doc(currentClass?.cid)
+          .doc(currentClass.cid)
           .get()
-          .then((doc) => dispatch(setCurrentClass(doc.data())))
+          .then((doc) => {
+            doc.data().students.forEach(student => {
+              console.log(student.uid);
+              userDataDb
+                .doc(student.uid)
+                .get()
+                .then((userdoc) => {
+                  const classList = userdoc.data().classList;
+                  const oldClass = classList.filter(
+                    (cla) => cla.cid === currentClass.cid
+                  )[0];
+                  const newClass = {
+                    ...oldClass,
+                    modules: [...oldClass.modules, mid],
+                  };
+                  const getIndex = () => {
+                    for (let i = 0; i < classList.length; i++) {
+                      if (classList[i].cid === oldClass.cid) {
+                        return i;
+                      }
+                    }
+                    return -1;
+                  };
+                  const index = getIndex();
+                  classList.splice(index, 1, newClass);
+                  userDataDb.doc(student.uid).update({
+                    classList: classList,
+                  });
+                });
+            })
+          })
+          .then(
+            classDataDb
+              .doc(currentClass?.cid)
+              .get()
+              .then((doc) => dispatch(setCurrentClass(doc.data())))
+          )
       );
   };
 

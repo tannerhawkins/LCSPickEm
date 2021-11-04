@@ -9,15 +9,18 @@ const Header = () => {
   const history = useHistory();
 
   return (
-  <StyledHeader id="header">
-    <StyledLogoContainer>
-      <StyledLogo onClick={() => history.push("/home")} src={Logo} />
-      <HeaderName onClick={() => history.push("/home")}>Ancient Path Adventures</HeaderName>
-    </StyledLogoContainer>
-    <StyledButtonContainer>
-      <StyledHelpButton>HELP</StyledHelpButton>
-    </StyledButtonContainer>
-  </StyledHeader>)
+    <StyledHeader id="header">
+      <StyledLogoContainer>
+        <StyledLogo onClick={() => history.push("/home")} src={Logo} />
+        <HeaderName onClick={() => history.push("/home")}>
+          Ancient Path Adventures
+        </HeaderName>
+      </StyledLogoContainer>
+      <StyledButtonContainer>
+        <StyledHelpButton>HELP</StyledHelpButton>
+      </StyledButtonContainer>
+    </StyledHeader>
+  );
 };
 
 const StyledHeader = styled.header`

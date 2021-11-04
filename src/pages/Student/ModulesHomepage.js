@@ -29,7 +29,7 @@ const ModulesHomepage = () => {
         .modules.map((module) => (
           <ModuleCard
             module={module}
-            key={module.mid}
+            key={module}
             onClick={() => moduleOnClick(module)}
           ></ModuleCard>
         ))

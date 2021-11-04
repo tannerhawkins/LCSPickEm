@@ -58,22 +58,26 @@ const ModulesHomepage = () => {
           </BodyHeader>
           <StyledSectionHeader>New</StyledSectionHeader>
           <NewCardContainer>
-            {currentClass && <StyledCard
-              plusIconColor="green"
-              barColor={Constants.COLOR.GREEN}
-              cardColor={Constants.COLOR.TEAL}
-              onClick={() => history.push("/teacher/add-module")}
-            >
-              Module
-            </StyledCard>}
-            {currentClass && <StyledCard
-              plusIconColor="teal"
-              barColor={Constants.COLOR.TEAL}
-              cardColor={Constants.COLOR.GREEN}
-              onClick={() => history.push("/teacher/add-students")}
-            >
-              Students
-            </StyledCard>}
+            {currentClass && (
+              <StyledCard
+                plusIconColor="green"
+                barColor={Constants.COLOR.GREEN}
+                cardColor={Constants.COLOR.TEAL}
+                onClick={() => history.push("/teacher/add-module")}
+              >
+                Module
+              </StyledCard>
+            )}
+            {currentClass && (
+              <StyledCard
+                plusIconColor="teal"
+                barColor={Constants.COLOR.TEAL}
+                cardColor={Constants.COLOR.GREEN}
+                onClick={() => history.push("/teacher/add-students")}
+              >
+                Students
+              </StyledCard>
+            )}
             <StyledCard
               plusIconColor="green"
               barColor={Constants.COLOR.GREEN}
