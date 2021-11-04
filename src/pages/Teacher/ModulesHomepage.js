@@ -51,7 +51,7 @@ const ModulesHomepage = () => {
               {/* Only shows the enrollment code if a current class is selected */}
               {currentClass && (
                 <p>
-                  <b>Enrollment Code:</b> {currentClass.enrollmentCode}
+                  <b>Enrollment Code:</b> {currentClass.cid}
                 </p>
               )}
             </EnrollmentCode>

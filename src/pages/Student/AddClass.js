@@ -6,95 +6,104 @@ import styled from "styled-components";
 import { Constants } from "../../data/constants";
 import Button from "../../components/Template/Button";
 import { useHistory } from "react-router-dom";
-import { useDispatch } from "react-redux";
 import { auth, classDataDb, userDataDb } from "../../data/firebase";
+import Dropdown, { Option } from "../../components/Template/ClassDropdown";
+import { useDispatch, useSelector } from "react-redux";
+import { selectCurrentClass } from "../../app/class/selectors";
+import { selectClassList, selectUser } from "../../app/account/selectors";
 import firebase from "firebase";
+import { refreshAccountData, signIn } from "../../app/account/actions";
 import { setCurrentClass } from "../../app/class/actions";
-import { signIn } from "../../app/account/actions";
 
-const CreateClass = () => {
+const AddClass = () => {
   const history = useHistory();
-  const dispatch = useDispatch();
   const [errorMessage, setErrorMessage] = useState();
-
+  const dispatch = useDispatch();
+  const classes = useSelector(selectClassList);
+  const user = useSelector(selectUser);
   const handleSubmit = () => {
     setErrorMessage();
 
     // get form data
-    const data = Object.values(document.forms.classForm).reduce(
+    const data = Object.values(document.forms.enrollmentForm).reduce(
       (obj, field) => {
         obj[field.name] = field.value;
         return obj;
       },
       {}
     );
-    // checks all fields are filled out
-    if (data["name"] === "") {
-      setErrorMessage("Please fill out class name");
+
+    // checks fields are filled out
+    if (data["code"] === "") {
+      setErrorMessage("Please enter a valid code");
       return;
     }
-    // sends request to create class
     classDataDb
-      .add({
-        className: data["name"],
-        description: data["description"],
-        students: [],
-        modules: [],
-      })
-      .then((doc) => {
-        classDataDb
-          .doc(doc.id)
-          .update({ cid: doc.id })
-          .then(() => {
-            classDataDb
-              .doc(doc.id)
-              .get()
-              .then((doc2) => {
-                dispatch(setCurrentClass(doc2.data()));
-              });
-          });
-        userDataDb
-          .doc(auth.currentUser.uid)
-          .update({
-            classList: firebase.firestore.FieldValue.arrayUnion({
-              cid: doc.id,
-              className: data["name"],
+      .where("cid", "==", data["code"])
+      .get()
+      .then((result) => {
+        const data = result.docs[0]?.data();
+        debugger;
+        if (data === undefined) {
+          setErrorMessage("Class not found");
+          return;
+        } else if (data.students.map((stu) => stu.uid).includes(user.uid)) {
+          setErrorMessage("Student already in class");
+          return;
+        } else {
+          classDataDb.doc(data.cid).update({
+            students: firebase.firestore.FieldValue.arrayUnion({
+              uid: user.uid,
+              displayName: user.displayName,
+              email: user.email,
             }),
-          })
-          .then(() => {
-            userDataDb
-              .doc(auth.currentUser.uid)
-              .get()
-              .then((doc) => {
-                dispatch(signIn(doc.data()));
-              });
-            history.push(`teacher/home`);
           });
+          userDataDb
+            .doc(user.uid)
+            .update({
+              classList: firebase.firestore.FieldValue.arrayUnion({
+                cid: data.cid,
+                modules: data.modules,
+                className: data.className,
+              }),
+            })
+            .then(() => {
+              setErrorMessage(`Added ${user.displayName} to ${data.className}`);
+              userDataDb
+                .doc(user.uid)
+                .get()
+                .then((doc) => dispatch(signIn(doc.data())));
+              classDataDb
+                .doc(data.cid)
+                .get()
+                .then((doc) => {
+                  dispatch(setCurrentClass(doc.data()));
+                  history.push(`/student/home`);
+                });
+            });
+        }
       });
   };
 
   return (
-    <Main title={"Create a Class"} description={"Create a Class"}>
+    <Main title={"Add a Class"} description={"Add a Class"}>
       <SideBar />
       <Header />
       <StyledBody>
-        <StyledTitle>Create New Class</StyledTitle>
+        <StyledTitle>Add a Class</StyledTitle>
         <StyledParagraph>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce ac
-          purus eget lacus pellentesque consequat. Donec commodo tincidunt
-          lorem, c ursus accumsan eros varius vel.
+          Please enter the enrollment code of the class you would like to enroll
+          in.
         </StyledParagraph>
-        <StyledForm id="classForm">
-          <StyledText>Class Name</StyledText>
-          <StyledInput type="text" name="name" required />
-          <StyledText>Class Description</StyledText>
-          <StyledInput type="text" name="description" />
+        <StyledForm id="enrollmentForm">
+          <StyledText>Enrollment Code</StyledText>
+          <StyledInput type="text" name="code" required />
           <StyledError>{errorMessage}</StyledError>
           <StyledButtonContainer>
             <StyledSubmitButton onClick={handleSubmit}>
-              CREATE
+              ADD CLASS
             </StyledSubmitButton>
-            <StyledDashboardButton onClick={() => history.push(`teacher/home`)}>
+            <StyledDashboardButton onClick={() => history.push(`student/home`)}>
               BACK TO DASHBOARD
             </StyledDashboardButton>
           </StyledButtonContainer>
@@ -169,7 +178,6 @@ const StyledDashboardButton = styled(Button)`
 
 const StyledError = styled.p`
   color: red;
-  margin-top: -20px;
 `;
 
 const StyledText = styled.p`
@@ -178,4 +186,4 @@ const StyledText = styled.p`
   margin: 0;
 `;
 
-export default CreateClass;
+export default AddClass;

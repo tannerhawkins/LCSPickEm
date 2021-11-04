@@ -23,10 +23,7 @@ export const selectEmail = createSelector(
   (state) => state.email
 );
 
-export const selectUser = createSelector(
-  selectAccountState,
-  (state) => state.user
-);
+export const selectUser = createSelector(selectAccountState, (state) => state);
 
 export const selectAccountType = createSelector(
   selectAccountState,
