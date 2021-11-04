@@ -72,9 +72,11 @@ const ModulesHomepage = () => {
                   ))}
                 </Dropdown>
               )}
-              <StyledAddClassButton onClick={() => history.push(`/student/add-class`)}>
-          Add Class
-        </StyledAddClassButton>
+              <StyledAddClassButton
+                onClick={() => history.push(`/student/add-class`)}
+              >
+                Add Class
+              </StyledAddClassButton>
             </TitleContainer>
             <EnrollmentCode>
               {/* Only shows the enrollment code if a current class is selected */}

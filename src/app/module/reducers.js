@@ -39,6 +39,24 @@ export default function moduleReducer(state = initialState, action) {
         },
       };
 
+    case "SET_TITLE":
+      return {
+        ...state,
+        selectedModule: {
+          ...state.selectedModule,
+          title: action.payload,
+        },
+      };
+
+    case "SET_DESCRIPTION":
+      return {
+        ...state,
+        selectedModule: {
+          ...state.selectedModule,
+          description: action.payload,
+        },
+      };
+
     default:
       // If this reducer doesn't recognize the action type, or doesn't
       // care about this specific action, return the existing state unchanged

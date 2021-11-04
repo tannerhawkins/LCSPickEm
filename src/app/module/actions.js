@@ -25,3 +25,17 @@ export const setSteps = (steps) => {
     payload: steps,
   };
 };
+
+export const setTitle = (title) => {
+  return {
+    type: "SET_TITLE",
+    payload: title,
+  };
+}
+
+export const setDescription = (description) => {
+  return {
+    type: "SET_DESCRIPTION",
+    payload: description,
+  };
+}

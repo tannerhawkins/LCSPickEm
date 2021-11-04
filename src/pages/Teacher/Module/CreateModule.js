@@ -22,6 +22,7 @@ import {
 } from "../../../app/module/selectors";
 import { selectCurrentClass } from "../../../app/class/selectors";
 import { setCurrentClass } from "../../../app/class/actions";
+import { setDescription, setTitle } from "../../../app/module/actions";
 
 const CreateModule = () => {
   const history = useHistory();
@@ -148,6 +149,7 @@ const CreateModule = () => {
           <StyledText>Module Title</StyledText>
           <StyledInput
             type="text"
+            id="title"
             name="title"
             defaultValue={selectedModule?.title}
             required
@@ -155,12 +157,17 @@ const CreateModule = () => {
           <StyledText>Module Description</StyledText>
           <StyledInput
             type="text"
+            id="description"
             name="description"
             defaultValue={selectedModule?.description}
           />
           <StyledFlexContainer>
             <StyledText>Steps - Drag to Change Order</StyledText>
-            <StyledAddStepButton onClick={() => setShowAddStepPopup(true)}>
+            <StyledAddStepButton onClick={() => {
+              dispatch(setTitle(document.getElementById("title").value))
+              dispatch(setDescription(document.getElementById("description").value))
+              setShowAddStepPopup(true)
+              }}>
               Add Step
             </StyledAddStepButton>
           </StyledFlexContainer>
