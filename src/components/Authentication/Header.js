@@ -50,6 +50,9 @@ const HeaderName = styled.div`
   font-size: 30px;
   font-weight: bold;
   text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+  :hover {
+    cursor: pointer;
+  }
   @media (max-width: 800px) {
     display: none;
   }
@@ -58,6 +61,9 @@ const HeaderName = styled.div`
 const StyledLogo = styled.img`
   margin-left: 3%;
   width: 130px;
+  :hover {
+    cursor: pointer;
+  }
 `;
 
 const StyledLogoContainer = styled.div`
