@@ -1,8 +1,4 @@
-import {
-  classDataDb,
-  modulesDb,
-  userDataDb,
-} from "../../src/data/firebase";
+import { classDataDb, modulesDb, userDataDb } from "../../src/data/firebase";
 
 const teacherAccountInfo = {
   accountType: "teacher",
@@ -122,25 +118,29 @@ const testClass1 = {
   cid: "CsC8yxKXd1IbALpDAOFL",
   className: "Test Class 1",
   description: "Description",
-  modules: ['aOrljPVgVSPtAlOh4W63'],
+  modules: ["aOrljPVgVSPtAlOh4W63"],
   students: [
-    {displayName: "Test Student",
-    email: "teststudent@apa.com",
-    uid: "nGgCZShjguNmKlepiskkSjyUuq32"},
-  ]
-}
+    {
+      displayName: "Test Student",
+      email: "teststudent@apa.com",
+      uid: "nGgCZShjguNmKlepiskkSjyUuq32",
+    },
+  ],
+};
 
 const testClass2 = {
   cid: "Zz666EQiFLXecsIJUUGi",
   className: "Test Class 2",
   description: "Description",
-  modules: ['aZC5gvZstpTZmkh9xRMA'],
+  modules: ["aZC5gvZstpTZmkh9xRMA"],
   students: [
-    {displayName: "Test Student",
-    email: "teststudent@apa.com",
-    uid: "nGgCZShjguNmKlepiskkSjyUuq32"},
-  ]
-}
+    {
+      displayName: "Test Student",
+      email: "teststudent@apa.com",
+      uid: "nGgCZShjguNmKlepiskkSjyUuq32",
+    },
+  ],
+};
 
 // realModulesDb.doc("aOrljPVgVSPtAlOh4W63").get().then(result =>
 //   modulesDb.doc("aOrljPVgVSPtAlOh4W63").set(result.data())
@@ -196,12 +196,8 @@ Cypress.Commands.add("resetStudentAccount", () => {
 });
 
 Cypress.Commands.add("resetClassDb", () => {
-  classDataDb
-  .doc("CsC8yxKXd1IbALpDAOFL")
-  .set(testClass1);
-  classDataDb
-  .doc("Zz666EQiFLXecsIJUUGi")
-  .set(testClass2);
+  classDataDb.doc("CsC8yxKXd1IbALpDAOFL").set(testClass1);
+  classDataDb.doc("Zz666EQiFLXecsIJUUGi").set(testClass2);
 
   classDataDb.get().then((result) => {
     result.docs.forEach((doc) => {
@@ -238,24 +234,20 @@ Cypress.Commands.add("resetUserDb", () => {
 });
 
 Cypress.Commands.add("resetModulesDb", () => {
-  modulesDb
-    .doc("aOrljPVgVSPtAlOh4W63")
-    .set(testMod1);
-  modulesDb
-    .doc("aZC5gvZstpTZmkh9xRMA")
-    .set(testMod2);
+  modulesDb.doc("aOrljPVgVSPtAlOh4W63").set(testMod1);
+  modulesDb.doc("aZC5gvZstpTZmkh9xRMA").set(testMod2);
 
-    modulesDb.get().then((result) => {
-      result.docs.forEach((doc) => {
-        if (
-          doc.id != "aOrljPVgVSPtAlOh4W63" &&
-          doc.id != "aZC5gvZstpTZmkh9xRMA"
-        ) {
-          modulesDb.doc(doc.id).delete();
-        }
-      });
+  modulesDb.get().then((result) => {
+    result.docs.forEach((doc) => {
+      if (
+        doc.id != "aOrljPVgVSPtAlOh4W63" &&
+        doc.id != "aZC5gvZstpTZmkh9xRMA"
+      ) {
+        modulesDb.doc(doc.id).delete();
+      }
     });
-})
+  });
+});
 
 Cypress.Commands.add("newCommand", () => {
   classDataDb.get().then((result) => {

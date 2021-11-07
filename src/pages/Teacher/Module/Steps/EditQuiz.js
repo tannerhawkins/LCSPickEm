@@ -45,7 +45,10 @@ const EditQuiz = () => {
       <Header />
       <StyledBody>
         <StyledSectionTitle>Edit Quiz</StyledSectionTitle>
-        <StyledAddQuestionButton onClick={() => setShowEditQuestion(true)} data-test="add-question">
+        <StyledAddQuestionButton
+          onClick={() => setShowEditQuestion(true)}
+          data-test="add-question"
+        >
           Add Question
         </StyledAddQuestionButton>
         {showEditQuestion && (
@@ -61,7 +64,9 @@ const EditQuiz = () => {
           </StyledQuiz>
         ))}
         {questions.length != 0 && (
-          <StyledSubmitButton onClick={onSubmit} data-test="submit">Submit</StyledSubmitButton>
+          <StyledSubmitButton onClick={onSubmit} data-test="submit">
+            Submit
+          </StyledSubmitButton>
         )}
       </StyledBody>
     </Main>

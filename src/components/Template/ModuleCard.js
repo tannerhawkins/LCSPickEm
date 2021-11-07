@@ -8,12 +8,12 @@ const ModuleCard = (props) => {
 
   useEffect(() => {
     if (!moduleData) {
-    modulesDb
-      .doc(props.module)
-      .get()
-      .then((doc) => {
-        setModuleData(doc.data());
-      });
+      modulesDb
+        .doc(props.module)
+        .get()
+        .then((doc) => {
+          setModuleData(doc.data());
+        });
     }
   }, []);
 

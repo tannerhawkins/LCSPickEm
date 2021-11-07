@@ -137,7 +137,9 @@ const EditQuestionCard = (props) => {
           />
         </QuestionText>
         <StyledError>{error}</StyledError>
-        <SubmitButton onClick={onSubmit} data-test="submit-question">Submit Question</SubmitButton>
+        <SubmitButton onClick={onSubmit} data-test="submit-question">
+          Submit Question
+        </SubmitButton>
         <AddAnswerButton
           onClick={() =>
             answerOptions.length < 4

@@ -19,7 +19,7 @@ const ModulesHomepage = () => {
   const classes = useSelector(selectClassList);
   const assignedModules = currentClass?.modules;
   const moduleCards = assignedModules?.map((currModule) => (
-    <ModuleCard module={currModule} key={currModule} data-test="module-card"/>
+    <ModuleCard module={currModule} key={currModule} data-test="module-card" />
   ));
 
   return (
@@ -48,10 +48,12 @@ const ModulesHomepage = () => {
                 </Dropdown>
               )}
             </TitleContainer>
-              {/* Only shows the enrollment code if a current class is selected */}
-              {currentClass && <EnrollmentCode>
-                  <b>Enrollment Code:</b> {currentClass.cid}
-                </EnrollmentCode>}
+            {/* Only shows the enrollment code if a current class is selected */}
+            {currentClass && (
+              <EnrollmentCode>
+                <b>Enrollment Code:</b> {currentClass.cid}
+              </EnrollmentCode>
+            )}
           </BodyHeader>
           <StyledSectionHeader>New</StyledSectionHeader>
           <NewCardContainer>

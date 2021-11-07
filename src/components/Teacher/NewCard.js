@@ -10,7 +10,7 @@ const NewCard = ({
   barColor,
   cardColor,
   onClick,
-  dataTest
+  dataTest,
 }) => {
   const textColor = cardColor === Constants.COLOR.GREEN ? "white" : "black";
 
