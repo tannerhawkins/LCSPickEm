@@ -97,26 +97,30 @@ const SignUp = () => {
               type="text"
               placeholder="First Name"
               name="first"
+              data-test="first-name"
               required
             />
             <StyledNameInput
               type="text"
               placeholder="Last Name"
               name="last"
+              data-test="last-name"
               required
             />
           </StyledNamesContainer>
-          <StyledInput type="email" placeholder="Email" name="email" required />
+          <StyledInput type="email" data-test="email" placeholder="Email" name="email" required />
           <StyledInput
             type="password"
             placeholder="Password"
             name="password"
+            data-test="password"
             required
           />
           <StyledInput
             type="password"
             placeholder="Confirm Pasword"
             name="passwordConfirm"
+            data-test="confirm-password"
             required
           />
           <StyledText style={{ marginTop: "-20px" }}>I am a:</StyledText>
@@ -125,6 +129,7 @@ const SignUp = () => {
               type="radio"
               name="accountType"
               value="teacher"
+              data-test="teacher"
               required
             />
             <StyledText>Teacher</StyledText>
@@ -138,10 +143,10 @@ const SignUp = () => {
           </StyledRadioButtonContainer>
           <StyledError>{errorMessage}</StyledError>
           <StyledButtonContainer>
-            <StyledSubmitButton onClick={handleSubmit}>
+            <StyledSubmitButton  data-test="submit" onClick={handleSubmit}>
               SIGN-UP
             </StyledSubmitButton>
-            <StyledSignUpButton onClick={() => history.push(`signin`)}>
+            <StyledSignUpButton data-test="sign-up" onClick={() => history.push(`signin`)}>
               Already have an account? Don’t worry! Sign in here
             </StyledSignUpButton>
           </StyledButtonContainer>
