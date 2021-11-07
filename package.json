@@ -14,7 +14,8 @@
     "start": "react-scripts start",
     "lint": "eslint src",
     "test": "react-scripts test --watchAll=false",
-    "analyze": "npm run build && source-map-explorer build/static/js/*.chunk.js"
+    "analyze": "npm run build && source-map-explorer build/static/js/*.chunk.js",
+    "cypress:open": "cypress open"
   },
   "dependencies": {
     "@ckeditor/ckeditor5-build-classic": "^31.0.0",
@@ -53,6 +54,7 @@
   "devDependencies": {
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.3",
+    "cypress": "^8.7.0",
     "eslint": "^7.19.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-plugin-import": "^2.22.1",
