@@ -24,10 +24,11 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
+import { useDispatch } from "react-redux"
 import { auth, userDataDb } from "../../src/data/firebase"
 
 
-Cypress.Commands.add('teacherLogin', () => {
+Cypress.Commands.add('createTeacher', () => {
     auth
       .createUserWithEmailAndPassword("testteacher@apa.com", "testing")
       .then(() => {
@@ -52,7 +53,7 @@ Cypress.Commands.add('teacherLogin', () => {
       })
 })
 
-Cypress.Commands.add('studentLogin', () => {
+Cypress.Commands.add('createStudent', () => {
     auth
       .createUserWithEmailAndPassword("teststudent@apa.com", "testing")
       .then(() => {
@@ -77,7 +78,21 @@ Cypress.Commands.add('studentLogin', () => {
       })
 })
 
-Cypress.Commands.add('Logout', () => {
-    userDataDb.deleteDoc(auth.currentUser.uid);
-    auth.currentUser.delete()
+Cypress.Commands.add('teacherLogin', () => {
+    cy.get('[data-test=login-logout]').click()
+    cy.get('[data-test=email]').type("testteacher@apa.com")
+    cy.get('[data-test=password]').type("Testing")
+    cy.get('[data-test=submit]').click()
+})
+
+Cypress.Commands.add('studentLogin', () => {
+    cy.get('[data-test=login-logout]').click()
+    cy.get('[data-test=email]').type("teststudent@apa.com")
+    cy.get('[data-test=password]').type("Testing")
+    cy.get('[data-test=submit]').click()
+})
+
+Cypress.Commands.add('deleteAccount', (user) => {
+    userDataDb.deleteDoc(user.uid);
+    user.delete()
 })

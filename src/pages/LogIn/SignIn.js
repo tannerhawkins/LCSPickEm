@@ -78,18 +78,20 @@ const SignIn = () => {
             type="email"
             placeholder="Email"
             name="email"
+            data-test="email"
             required
           />
           <StyledInput
             type="password"
             placeholder="Password"
             name="password"
+            data-test="password"
             required
           />
           <StyledForgotButton>Did you forget your password?</StyledForgotButton>
           <StyledError>{errorMessage}</StyledError>
           <StyledButtonContainer>
-            <StyledSubmitButton type="submit" onClick={handleSubmit}>
+            <StyledSubmitButton type="submit" data-test="submit" onClick={handleSubmit}>
               SIGN-IN
             </StyledSubmitButton>
             <StyledSignUpButton data-test="sign-up" onClick={() => history.push(`/signup`)}>
