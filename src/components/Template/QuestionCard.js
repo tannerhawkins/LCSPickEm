@@ -32,6 +32,7 @@ const QuestionCard = (props) => {
                 key={props.questions[
                   props.currentQuestion
                 ].answerOptions.indexOf(answerOption)}
+                data-test="answer"
               >
                 {answerOption.answerText}
               </AnswerButton>

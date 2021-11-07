@@ -20,7 +20,7 @@ const ModuleSummary = () => {
   return (
     <Body>
       <StyledButtonContainer>
-        <StyledSubmitButton onClick={() => history.push("/student/home")}>
+        <StyledSubmitButton data-test="home" onClick={() => history.push("/student/home")}>
           Back to Home
         </StyledSubmitButton>
       </StyledButtonContainer>
@@ -34,7 +34,7 @@ const ModuleSummary = () => {
         filledBackground="linear-gradient(to right, #fefb72, #f0bb31)"
       />
       <StyledStartButtonContainer>
-        <StyledSubmitButton onClick={() => dispatch(setCurrentStep(currentStep + 1))} >
+        <StyledSubmitButton data-test="start" onClick={() => dispatch(setCurrentStep(currentStep + 1))} >
           Start Module
         </StyledSubmitButton>
       </StyledStartButtonContainer>

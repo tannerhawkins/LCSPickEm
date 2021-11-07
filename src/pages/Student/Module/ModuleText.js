@@ -24,6 +24,7 @@ const ModuleText = () => {
       <StyledButtonContainer>
         <StyledSubmitButton
           onClick={() => dispatch(setCurrentStep(currentStep + 1))}
+          data-test="next-step"
         >
           Next Step
         </StyledSubmitButton>

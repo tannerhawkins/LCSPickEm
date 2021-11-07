@@ -31,6 +31,7 @@ const ModulesHomepage = () => {
           <ModuleCard
             module={module}
             key={module}
+            data-test="module-card"
             onClick={() => moduleOnClick(module)}
           ></ModuleCard>
         ))
@@ -68,6 +69,7 @@ const ModulesHomepage = () => {
                       value={item}
                       classItem={item}
                       key={item.cid}
+                      data-test="class"
                     />
                   ))}
                 </Dropdown>

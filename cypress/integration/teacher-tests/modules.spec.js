@@ -2,12 +2,11 @@
 describe('Go Through Module', () => {
     beforeEach(() => {
         cy.visit('/')
-        cy.studentLogin()
+        cy.teacherLogin()
       })
 
-    it('allows student to select module and go through it', () => {
-        // test that the student can click through module and it shows
-        // correct quiz score at end and redirects back to homepage
+    it('allows teacher to change class', () => {
+        cy.get("[data-test=class]").first().click()
 
     })
 
