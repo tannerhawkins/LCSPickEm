@@ -1,11 +1,5 @@
 import React, { Suspense, lazy } from "react";
-import {
-  BrowserRouter,
-  Switch,
-  Route,
-  Redirect,
-  matchPath,
-} from "react-router-dom";
+import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import Main from "./layouts/Main"; // fallback for lazy pages
 import {
   selectIsSignedIn,
@@ -13,7 +7,6 @@ import {
   selectIsStudent,
 } from "./app/account/selectors";
 import { useSelector } from "react-redux";
-import { selectIsInModule } from "./app/module/selectors";
 
 const { PUBLIC_URL } = process.env;
 

@@ -1,4 +1,5 @@
 export const Constants = {
+  IN_CYPRESS_TEST: window.Cypress !== undefined,
   COLOR: {
     LIGHT_GREEN: "#A2E1D0",
     DARK_GREEN: "#6BAE9B",

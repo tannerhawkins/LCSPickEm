@@ -19,7 +19,7 @@ const ModulesHomepage = () => {
   const classes = useSelector(selectClassList);
   const assignedModules = currentClass?.modules;
   const moduleCards = assignedModules?.map((currModule) => (
-    <ModuleCard module={currModule} />
+    <ModuleCard module={currModule} key={currModule} />
   ));
 
   return (

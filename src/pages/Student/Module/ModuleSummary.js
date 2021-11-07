@@ -20,21 +20,29 @@ const ModuleSummary = () => {
   return (
     <Body>
       <StyledButtonContainer>
-        <StyledSubmitButton data-test="home" onClick={() => history.push("/student/home")}>
+        <StyledSubmitButton
+          data-test="home"
+          onClick={() => history.push("/student/home")}
+        >
           Back to Home
         </StyledSubmitButton>
       </StyledButtonContainer>
       <StyledTitle>This is the {module.title} Summary Page:</StyledTitle>
-      <StyledBody>{module.description} The summary of this page is simple and short that you can read it very
-      quick for the purpose of this assignment called the "Walking Skeleton".
-      Note: You CANNOT back out of a module once you begin!
+      <StyledBody>
+        {module.description} The summary of this page is simple and short that
+        you can read it very quick for the purpose of this assignment called the
+        "Walking Skeleton". Note: You CANNOT back out of a module once you
+        begin!
       </StyledBody>
       <ProgressBar
         percent={75}
         filledBackground="linear-gradient(to right, #fefb72, #f0bb31)"
       />
       <StyledStartButtonContainer>
-        <StyledSubmitButton data-test="start" onClick={() => dispatch(setCurrentStep(currentStep + 1))} >
+        <StyledSubmitButton
+          data-test="start"
+          onClick={() => dispatch(setCurrentStep(currentStep + 1))}
+        >
           Start Module
         </StyledSubmitButton>
       </StyledStartButtonContainer>
@@ -91,8 +99,5 @@ const StyledStartButtonContainer = styled.div`
   margin: 0px;
   margin-right: 5%;
 `;
-
-
-
 
 export default ModuleSummary;

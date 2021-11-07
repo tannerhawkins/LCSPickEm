@@ -23,6 +23,7 @@ import {
 import { selectCurrentClass } from "../../../app/class/selectors";
 import { setCurrentClass } from "../../../app/class/actions";
 import { setDescription, setTitle } from "../../../app/module/actions";
+import { signIn } from "../../../app/account/actions";
 
 const CreateModule = () => {
   const history = useHistory();
@@ -116,6 +117,10 @@ const CreateModule = () => {
                         classList: classList,
                       });
                     });
+                  userDataDb
+                    .doc(auth.currentUser.uid)
+                    .get()
+                    .then((result) => dispatch(signIn(result.data())));
                 });
               });
           });
