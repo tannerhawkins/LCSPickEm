@@ -157,6 +157,7 @@ const CreateModule = () => {
             id="title"
             name="title"
             defaultValue={selectedModule?.title}
+            data-test="title"
             required
           />
           <StyledText>Module Description</StyledText>
@@ -164,6 +165,7 @@ const CreateModule = () => {
             type="text"
             id="description"
             name="description"
+            data-test="description"
             defaultValue={selectedModule?.description}
           />
           <StyledFlexContainer>
@@ -176,6 +178,7 @@ const CreateModule = () => {
                 );
                 setShowAddStepPopup(true);
               }}
+              data-test="add-step"
             >
               Add Step
             </StyledAddStepButton>
@@ -185,7 +188,7 @@ const CreateModule = () => {
           </StepsContainer>
           <StyledError>{errorMessage}</StyledError>
           <StyledButtonContainer>
-            <StyledSubmitButton onClick={handleSubmit}>
+            <StyledSubmitButton onClick={handleSubmit} data-test="create">
               CREATE
             </StyledSubmitButton>
             <StyledDashboardButton onClick={() => history.push(`teacher/home`)}>

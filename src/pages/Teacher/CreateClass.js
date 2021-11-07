@@ -86,15 +86,15 @@ const CreateClass = () => {
         </StyledParagraph>
         <StyledForm id="classForm">
           <StyledText>Class Name</StyledText>
-          <StyledInput type="text" name="name" required />
+          <StyledInput type="text" name="name" data-test="name" required />
           <StyledText>Class Description</StyledText>
-          <StyledInput type="text" name="description" />
+          <StyledInput type="text" name="description" data-test="description"/>
           <StyledError>{errorMessage}</StyledError>
           <StyledButtonContainer>
-            <StyledSubmitButton onClick={handleSubmit}>
+            <StyledSubmitButton onClick={handleSubmit} data-test="create">
               CREATE
             </StyledSubmitButton>
-            <StyledDashboardButton onClick={() => history.push(`teacher/home`)}>
+            <StyledDashboardButton onClick={() => history.push(`teacher/home`)} data-test="back">
               BACK TO DASHBOARD
             </StyledDashboardButton>
           </StyledButtonContainer>

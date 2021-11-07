@@ -37,7 +37,7 @@ const DragAndDrop = (props) => {
   };
 
   return (
-    <DragWrapper>
+    <DragWrapper data-test="step-container">
       {steps
         .sort((a, b) => a.order - b.order)
         .map((box) => (
@@ -48,6 +48,7 @@ const DragAndDrop = (props) => {
             type={box.type}
             handleDrag={handleDrag}
             handleDrop={handleDrop}
+            data-test="box"
           />
         ))}
     </DragWrapper>

@@ -75,12 +75,14 @@ const EditQuestionCard = (props) => {
               }
             }
           }}
+          data-test="answer"
         />
         <input
           type="radio"
           checked={isChecked}
           onClick={() => onRadioClick(answerOption)}
           onChange={() => null}
+          data-test="is-correct"
         />
         <StyledX
           onClick={() => {
@@ -131,10 +133,11 @@ const EditQuestionCard = (props) => {
             id="question"
             type="text"
             placeholder={questionText}
+            data-test="question"
           />
         </QuestionText>
         <StyledError>{error}</StyledError>
-        <SubmitButton onClick={onSubmit}>Submit Question</SubmitButton>
+        <SubmitButton onClick={onSubmit} data-test="submit-question">Submit Question</SubmitButton>
         <AddAnswerButton
           onClick={() =>
             answerOptions.length < 4
@@ -144,6 +147,7 @@ const EditQuestionCard = (props) => {
                 ])
               : null
           }
+          data-test="add-answer"
         >
           Add Answer
         </AddAnswerButton>

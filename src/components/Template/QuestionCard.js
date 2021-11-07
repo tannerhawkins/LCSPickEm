@@ -9,7 +9,7 @@ const QuestionCard = (props) => {
           <span>Question {props.currentQuestion + 1}</span>/
           {props.questions.length}
         </QuestionCount>
-        <QuestionText>
+        <QuestionText data-test="question-text">
           {props.questions[props.currentQuestion].questionText}
         </QuestionText>
       </QuestionSection>
@@ -32,7 +32,7 @@ const QuestionCard = (props) => {
                 key={props.questions[
                   props.currentQuestion
                 ].answerOptions.indexOf(answerOption)}
-                data-test="answer"
+                data-test="answer-text"
               >
                 {answerOption.answerText}
               </AnswerButton>

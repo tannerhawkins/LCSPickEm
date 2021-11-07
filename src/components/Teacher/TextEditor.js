@@ -22,7 +22,7 @@ const TextEditor = (props) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} data-test="editor">
       <CKEditor
         editor={ClassicEditor}
         onChange={(event, editor) => {
@@ -40,7 +40,7 @@ const TextEditor = (props) => {
         }}
       />
       <ButtonContainer>
-        <StyledButton type="submit" onClick={handleSubmit}>
+        <StyledButton type="submit" onClick={handleSubmit} data-test="submit">
           Submit
         </StyledButton>
         <StyledButton type="submit">Cancel</StyledButton>

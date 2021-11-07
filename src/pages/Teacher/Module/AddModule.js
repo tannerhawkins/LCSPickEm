@@ -103,7 +103,7 @@ const AddModule = () => {
         <StyledSectionTitle>Existing Modules</StyledSectionTitle>
         <ExistingModules>{modulesCards}</ExistingModules>
         <StyledButtonContainer>
-          <StyledDashboardButton onClick={handleCreateNewModule}>
+          <StyledDashboardButton onClick={handleCreateNewModule} data-test="create-module">
             CREATE NEW MODULE
           </StyledDashboardButton>
           <StyledDashboardButton onClick={() => history.push(`home`)}>

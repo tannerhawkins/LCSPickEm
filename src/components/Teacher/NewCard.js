@@ -10,6 +10,7 @@ const NewCard = ({
   barColor,
   cardColor,
   onClick,
+  dataTest
 }) => {
   const textColor = cardColor === Constants.COLOR.GREEN ? "white" : "black";
 
@@ -18,6 +19,7 @@ const NewCard = ({
       onClick={onClick}
       className={className}
       style={{ backgroundColor: cardColor }}
+      data-test={dataTest}
     >
       <StyledPlusIcon
         src={plusIconColor === "green" ? GreenPlusIcon : TealPlusIcon}

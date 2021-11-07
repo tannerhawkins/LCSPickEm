@@ -7,21 +7,21 @@ const ModuleCard = (props) => {
   const [moduleData, setModuleData] = useState();
 
   useEffect(() => {
+    if (!moduleData) {
     modulesDb
       .doc(props.module)
       .get()
       .then((doc) => {
         setModuleData(doc.data());
       });
-  }, [module]);
-
-  const handleClick = () => {};
+    }
+  }, []);
 
   return (
     <StyledModuleCard onClick={props.onClick}>
       {moduleData ? (
         <>
-          <StyledTitle>{moduleData.title}</StyledTitle>
+          <StyledTitle data-test="module-title">{moduleData.title}</StyledTitle>
           <StyledDescription>{moduleData.description}</StyledDescription>
         </>
       ) : (

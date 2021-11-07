@@ -38,9 +38,9 @@ const AddStepPopup = ({ className, onClose, style }) => {
     <StyledPopup style={style} className={className} onClose={onClose}>
       <StyledTitle>Select Step to Add</StyledTitle>
       <StepButtonsContainer>
-        <StepButton onClick={() => handleClick("text")}>Text</StepButton>
-        <StepButton onClick={() => handleClick("video")}>Video</StepButton>
-        <StepButton onClick={() => handleClick("quiz")}>Quiz</StepButton>
+        <StepButton onClick={() => handleClick("text")} data-test="add-text">Text</StepButton>
+        <StepButton onClick={() => handleClick("video")} data-test="add-video">Video</StepButton>
+        <StepButton onClick={() => handleClick("quiz")} data-test="add-quiz">Quiz</StepButton>
       </StepButtonsContainer>
     </StyledPopup>
   );
