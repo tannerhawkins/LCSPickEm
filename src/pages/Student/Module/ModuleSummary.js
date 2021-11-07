@@ -8,6 +8,19 @@ import { setCurrentStep } from "../../../app/module/actions";
 import { useHistory } from "react-router";
 import { Constants } from "../../../data/constants";
 import Button from "../../../components/Template/Button";
+import "react-step-progress-bar/styles.css";
+import { ProgressBar } from "react-step-progress-bar";
+
+class ProgressBar extends React.Component {
+  render() {
+    return (
+      <ProgressBar
+        percent={75}
+        filledBackground="linear-gradient(to right, #fefb72, #f0bb31)"
+      />
+    );
+  }
+}
 
 const ModuleSummary = () => {
   const dispatch = useDispatch();
@@ -23,57 +36,70 @@ const ModuleSummary = () => {
         </StyledSubmitButton>
       </StyledButtonContainer>
       <StyledTitle>This is the {module.title} Summary Page:</StyledTitle>
-      <StyledBody>{module.description}</StyledBody>
-      The summary of this page is simple and short that you can read it very
+      <StyledBody>{module.description} The summary of this page is simple and short that you can read it very
       quick for the purpose of this assignment called the "Walking Skeleton".
       Note: You CANNOT back out of a module once you begin!
-      <StyledButtonContainer>
-        <StyledSubmitButton
-          onClick={() => dispatch(setCurrentStep(currentStep + 1))}
-        >
+      </StyledBody>
+      <StyledStartButtonContainer>
+        <StyledSubmitButton onClick={() => dispatch(setCurrentStep(currentStep + 1))} >
           Start Module
         </StyledSubmitButton>
-      </StyledButtonContainer>
+      </StyledStartButtonContainer>
     </Body>
   );
 };
 
 const Body = styled.div`
-  width: 100%;
-  height: 100%;
+  display: flex;
+  justify-content: flex-center;
+  flex-direction: column;
+  width: 90vw;
+  height: 100vh;
+  align-items: stretch;
+  margin: auto;
 `;
 
 const StyledTitle = styled.p`
   color: ${Constants.COLOR.GREEN};
-  line-height: 36px;
+  margin: 0 15px;
   font-size: 30px;
-  padding-left: 30px;
 `;
 
 const StyledBody = styled.div`
-  margin-top: ${Constants.HEADER_HEIGHT};
-  margin-left: ${Constants.SIDEBAR_WIDTH};
-  padding: 0 50px;
+  margin: 30px ${Constants.SIDEBAR_WIDTH};
+  background-color: ${Constants.COLOR.DARK_GREEN};
+  height: 50vh;
+  color: white;
+  padding: 50px;
 `;
 
 const StyledButtonContainer = styled.div`
   display: flex;
-  width: 100%;
   align-items: center;
   justify-content: space-between;
-  padding-top: 30px;
+  margin: 30px;
   margin-left: ${Constants.SIDEBAR_WIDTH};
 `;
 
 const StyledSubmitButton = styled(Button)`
-  font-size: 25px;
-  height: 70px;
-  padding: 0 5px;
+  font-size: 14px;
+  padding: 5px;
   min-width: 120px;
   background-color: ${Constants.COLOR.DARK_GREEN};
   &:hover {
     cursor: pointer;
   }
 `;
+
+const StyledStartButtonContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin: 0px;
+  margin-right: 5%;
+`;
+
+
+
 
 export default ModuleSummary;
