@@ -19,7 +19,7 @@ export const Dropdown = (props) => {
 
   return (
     <DropdownWrapper action={props.action}>
-      <StyledSelect id="services" name="services" onChange={selectClass}>
+      <StyledSelect id="services" data-test="class" name="services" onChange={selectClass}>
         {props.children}
       </StyledSelect>
     </DropdownWrapper>

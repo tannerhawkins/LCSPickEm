@@ -69,7 +69,6 @@ const ModulesHomepage = () => {
                       value={item}
                       classItem={item}
                       key={item.cid}
-                      data-test="class"
                     />
                   ))}
                 </Dropdown>

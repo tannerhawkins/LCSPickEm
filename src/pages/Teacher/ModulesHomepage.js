@@ -34,7 +34,7 @@ const ModulesHomepage = () => {
               <StyledTitle>Dashboard </StyledTitle>
               {/* Maps each class in classes to an option in the dropdown list and selects the one that matches the current selected class */}
               {classes[0] && (
-                <Dropdown>
+                <Dropdown data-test="dropdown">
                   {classes.map((item) => (
                     <Option
                       selected={
