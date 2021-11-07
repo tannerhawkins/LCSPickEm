@@ -9,18 +9,7 @@ import { useHistory } from "react-router";
 import { Constants } from "../../../data/constants";
 import Button from "../../../components/Template/Button";
 import "react-step-progress-bar/styles.css";
-import { ProgressBar } from "react-step-progress-bar";
-
-class ProgressBar extends React.Component {
-  render() {
-    return (
-      <ProgressBar
-        percent={75}
-        filledBackground="linear-gradient(to right, #fefb72, #f0bb31)"
-      />
-    );
-  }
-}
+import { ProgressBar, Step } from "react-step-progress-bar";
 
 const ModuleSummary = () => {
   const dispatch = useDispatch();
@@ -40,6 +29,10 @@ const ModuleSummary = () => {
       quick for the purpose of this assignment called the "Walking Skeleton".
       Note: You CANNOT back out of a module once you begin!
       </StyledBody>
+      <ProgressBar
+        percent={75}
+        filledBackground="linear-gradient(to right, #fefb72, #f0bb31)"
+      />
       <StyledStartButtonContainer>
         <StyledSubmitButton onClick={() => dispatch(setCurrentStep(currentStep + 1))} >
           Start Module
