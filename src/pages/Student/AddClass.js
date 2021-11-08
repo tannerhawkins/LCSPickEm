@@ -94,10 +94,10 @@ const AddClass = () => {
         </StyledParagraph>
         <StyledForm id="enrollmentForm">
           <StyledText>Enrollment Code</StyledText>
-          <StyledInput type="text" name="code" required />
+          <StyledInput type="text" name="code" data-test="enrollment-code" required />
           <StyledError>{errorMessage}</StyledError>
           <StyledButtonContainer>
-            <StyledSubmitButton onClick={handleSubmit}>
+            <StyledSubmitButton onClick={handleSubmit} data-test="submit">
               ADD CLASS
             </StyledSubmitButton>
             <StyledDashboardButton onClick={() => history.push(`student/home`)}>

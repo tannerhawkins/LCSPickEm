@@ -77,6 +77,7 @@ const ModulesHomepage = () => {
               )}
               <StyledAddClassButton
                 onClick={() => history.push(`/student/add-class`)}
+                data-test="add-class"
               >
                 Add Class
               </StyledAddClassButton>

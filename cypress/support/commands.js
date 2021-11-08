@@ -150,6 +150,14 @@ const testClass2 = {
   ],
 };
 
+const brandNewClass = {
+  cid: "Zz666EQiFLXecsIJsjeo",
+  className: "Test Class 3",
+  description: "Description",
+  modules: ["aZC5gvZstpTZmkh9xRMA"],
+  students: [],
+}
+
 // realModulesDb.doc("aOrljPVgVSPtAlOh4W63").get().then(result =>
 //   modulesDb.doc("aOrljPVgVSPtAlOh4W63").set(result.data())
 // )
@@ -206,6 +214,10 @@ Cypress.Commands.add("resetStudentAccount", () => {
 Cypress.Commands.add("addNewStudent", () => {
   userDataDb.doc("nGgCZShjguNmKlepiskkSjyU3442").set(brandNewStudent);
 });
+
+Cypress.Commands.add("addNewClass", async () => {
+  await classDataDb.doc("Zz666EQiFLXecsIJsjeo").set(brandNewClass);
+})
 
 Cypress.Commands.add("resetClassDb", async () => {
   classDataDb.doc("CsC8yxKXd1IbALpDAOFL").set(testClass1);
