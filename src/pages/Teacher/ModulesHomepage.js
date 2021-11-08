@@ -19,7 +19,7 @@ const ModulesHomepage = () => {
   const classes = useSelector(selectClassList);
   const assignedModules = currentClass?.modules;
   const moduleCards = assignedModules?.map((currModule) => (
-    <ModuleCard module={currModule} />
+    <ModuleCard module={currModule} key={currModule} data-test="module-card" />
   ));
 
   return (
@@ -34,27 +34,26 @@ const ModulesHomepage = () => {
               <StyledTitle>Dashboard </StyledTitle>
               {/* Maps each class in classes to an option in the dropdown list and selects the one that matches the current selected class */}
               {classes[0] && (
-                <Dropdown>
+                <Dropdown data-test="dropdown">
                   {classes.map((item) => (
                     <Option
-                      selected={
+                      defaultValue={
                         item.cid === currentClass?.cid ? "selected" : ""
                       }
                       value={item}
                       classItem={item}
+                      key={item.cid}
                     />
                   ))}
                 </Dropdown>
               )}
             </TitleContainer>
-            <EnrollmentCode>
-              {/* Only shows the enrollment code if a current class is selected */}
-              {currentClass && (
-                <p>
-                  <b>Enrollment Code:</b> {currentClass.cid}
-                </p>
-              )}
-            </EnrollmentCode>
+            {/* Only shows the enrollment code if a current class is selected */}
+            {currentClass && (
+              <EnrollmentCode>
+                <b>Enrollment Code:</b> {currentClass.cid}
+              </EnrollmentCode>
+            )}
           </BodyHeader>
           <StyledSectionHeader>New</StyledSectionHeader>
           <NewCardContainer>
@@ -64,6 +63,7 @@ const ModulesHomepage = () => {
                 barColor={Constants.COLOR.GREEN}
                 cardColor={Constants.COLOR.TEAL}
                 onClick={() => history.push("/teacher/add-module")}
+                dataTest="add-module"
               >
                 Module
               </StyledCard>
@@ -74,6 +74,7 @@ const ModulesHomepage = () => {
                 barColor={Constants.COLOR.TEAL}
                 cardColor={Constants.COLOR.GREEN}
                 onClick={() => history.push("/teacher/add-students")}
+                dataTest="add-student"
               >
                 Students
               </StyledCard>
@@ -83,6 +84,7 @@ const ModulesHomepage = () => {
               barColor={Constants.COLOR.GREEN}
               cardColor="white"
               onClick={() => history.push("/teacher/create-class")}
+              dataTest="add-class"
             >
               Class
             </StyledCard>

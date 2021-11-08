@@ -35,10 +35,11 @@ const Quiz = () => {
   return (
     <StyledQuiz>
       {showScore ? (
-        <ScoreSection>
+        <ScoreSection data-test="score">
           You scored {score} out of {questions.length}
           <StyledSubmitButton
             onClick={() => dispatch(setCurrentStep(currentStep + 1))}
+            data-test="next-step"
           >
             Submit Quiz
           </StyledSubmitButton>

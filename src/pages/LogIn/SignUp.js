@@ -78,6 +78,7 @@ const SignUp = () => {
             dispatch(signIn(accountInfo));
             dispatch(setCurrentClass(null));
             userDataDb.doc(auth.currentUser.uid).set(accountInfo);
+            history.push(`/${data.accountType}/home`);
           });
       })
       .catch((response) => {
@@ -108,7 +109,13 @@ const SignUp = () => {
               required
             />
           </StyledNamesContainer>
-          <StyledInput type="email" data-test="email" placeholder="Email" name="email" required />
+          <StyledInput
+            type="email"
+            data-test="email"
+            placeholder="Email"
+            name="email"
+            required
+          />
           <StyledInput
             type="password"
             placeholder="Password"
@@ -137,16 +144,20 @@ const SignUp = () => {
               type="radio"
               name="accountType"
               value="student"
+              data-test="student"
               required
             />
             <StyledText>Student</StyledText>
           </StyledRadioButtonContainer>
           <StyledError>{errorMessage}</StyledError>
           <StyledButtonContainer>
-            <StyledSubmitButton  data-test="submit" onClick={handleSubmit}>
+            <StyledSubmitButton data-test="submit" onClick={handleSubmit}>
               SIGN-UP
             </StyledSubmitButton>
-            <StyledSignUpButton data-test="sign-up" onClick={() => history.push(`signin`)}>
+            <StyledSignUpButton
+              data-test="sign-up"
+              onClick={() => history.push(`signin`)}
+            >
               Already have an account? Don’t worry! Sign in here
             </StyledSignUpButton>
           </StyledButtonContainer>

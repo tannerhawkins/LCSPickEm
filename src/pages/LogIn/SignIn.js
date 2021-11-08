@@ -55,6 +55,7 @@ const SignIn = () => {
             } else {
               dispatch(setCurrentClass(null));
             }
+            history.push(`/${doc.data().accountType}/home`);
           });
       })
       .catch((error) => {
@@ -91,10 +92,17 @@ const SignIn = () => {
           <StyledForgotButton>Did you forget your password?</StyledForgotButton>
           <StyledError>{errorMessage}</StyledError>
           <StyledButtonContainer>
-            <StyledSubmitButton type="submit" data-test="submit" onClick={handleSubmit}>
+            <StyledSubmitButton
+              type="submit"
+              data-test="submit"
+              onClick={handleSubmit}
+            >
               SIGN-IN
             </StyledSubmitButton>
-            <StyledSignUpButton data-test="sign-up" onClick={() => history.push(`/signup`)}>
+            <StyledSignUpButton
+              data-test="sign-up"
+              onClick={() => history.push(`/signup`)}
+            >
               Don't have an account? Don’t worry! Sign up here
             </StyledSignUpButton>
           </StyledButtonContainer>

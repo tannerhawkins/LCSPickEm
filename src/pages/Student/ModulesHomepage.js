@@ -31,6 +31,7 @@ const ModulesHomepage = () => {
           <ModuleCard
             module={module}
             key={module}
+            data-test="module-card"
             onClick={() => moduleOnClick(module)}
           ></ModuleCard>
         ))
@@ -64,7 +65,9 @@ const ModulesHomepage = () => {
                 <Dropdown>
                   {classes.map((item) => (
                     <Option
-                      selected={item.cid === currentClass.cid ? "selected" : ""}
+                      defaultValue={
+                        item.cid === currentClass?.cid ? "selected" : ""
+                      }
                       value={item}
                       classItem={item}
                       key={item.cid}

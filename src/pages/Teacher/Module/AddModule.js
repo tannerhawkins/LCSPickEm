@@ -47,7 +47,6 @@ const AddModule = () => {
           .get()
           .then((doc) => {
             doc.data().students.forEach((student) => {
-              console.log(student.uid);
               userDataDb
                 .doc(student.uid)
                 .get()
@@ -103,10 +102,16 @@ const AddModule = () => {
         <StyledSectionTitle>Existing Modules</StyledSectionTitle>
         <ExistingModules>{modulesCards}</ExistingModules>
         <StyledButtonContainer>
-          <StyledDashboardButton onClick={handleCreateNewModule}>
+          <StyledDashboardButton
+            onClick={handleCreateNewModule}
+            data-test="create-module"
+          >
             CREATE NEW MODULE
           </StyledDashboardButton>
-          <StyledDashboardButton onClick={() => history.push(`home`)}>
+          <StyledDashboardButton
+            onClick={() => history.push(`home`)}
+            data-test="back"
+          >
             BACK TO DASHBOARD
           </StyledDashboardButton>
         </StyledButtonContainer>

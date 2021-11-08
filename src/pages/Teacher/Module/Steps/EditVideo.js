@@ -48,9 +48,9 @@ const EditVideo = () => {
       <Header />
       <StyledBody>
         <StyledSectionTitle>Edit Video</StyledSectionTitle>
-        <input id="url" type="url" />
+        <input id="url" type="url" data-test="video" />
         <StyledError>{error}</StyledError>
-        <StyledButton type="submit" onClick={onSubmit}>
+        <StyledButton type="submit" onClick={onSubmit} data-test="submit">
           Submit
         </StyledButton>
       </StyledBody>

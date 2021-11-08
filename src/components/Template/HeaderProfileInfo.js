@@ -18,8 +18,12 @@ const HeaderProfileInfo = ({ className }) => {
       <StyledProfileImage />
       <StyledDownArrow src={DownArrowIcon} />
       <StyledInfoContainer>
-        <StyledDisplayName data-test="display-name">{displayName}</StyledDisplayName>
-        <StyledAccountType data-test="account-type">{accountType}</StyledAccountType>
+        <StyledDisplayName data-test="display-name">
+          {displayName}
+        </StyledDisplayName>
+        <StyledAccountType data-test="account-type">
+          {accountType}
+        </StyledAccountType>
       </StyledInfoContainer>
     </StyledProfileInfo>
   );

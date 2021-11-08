@@ -87,7 +87,7 @@ const AddStudents = () => {
         </StyledParagraph>
         <StyledForm id="studentsForm">
           <StyledText>Student's Email</StyledText>
-          <StyledInput type="text" name="email" required />
+          <StyledInput type="text" name="email" data-test="email" required />
           <StyledText>Add to Class</StyledText>
           <Dropdown>
             {classes.map((item) => (
@@ -98,12 +98,15 @@ const AddStudents = () => {
               />
             ))}
           </Dropdown>
-          <StyledError>{errorMessage}</StyledError>
+          <StyledError data-test="error">{errorMessage}</StyledError>
           <StyledButtonContainer>
-            <StyledSubmitButton onClick={handleSubmit}>
+            <StyledSubmitButton onClick={handleSubmit} data-test="submit">
               ADD TO CLASS
             </StyledSubmitButton>
-            <StyledDashboardButton onClick={() => history.push(`teacher/home`)}>
+            <StyledDashboardButton
+              onClick={() => history.push(`teacher/home`)}
+              data-test="back"
+            >
               BACK TO DASHBOARD
             </StyledDashboardButton>
           </StyledButtonContainer>

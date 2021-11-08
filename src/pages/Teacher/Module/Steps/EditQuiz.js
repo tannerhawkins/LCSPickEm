@@ -45,14 +45,17 @@ const EditQuiz = () => {
       <Header />
       <StyledBody>
         <StyledSectionTitle>Edit Quiz</StyledSectionTitle>
-        <StyledAddQuestionButton onClick={() => setShowEditQuestion(true)}>
+        <StyledAddQuestionButton
+          onClick={() => setShowEditQuestion(true)}
+          data-test="add-question"
+        >
           Add Question
         </StyledAddQuestionButton>
         {showEditQuestion && (
           <EditQuestionCard onSubmit={addQuestion} questions={questions} />
         )}
         {questions.map((question) => (
-          <StyledQuiz>
+          <StyledQuiz key={questions.indexOf(question)}>
             <QuestionCard
               questions={questions}
               currentQuestion={questions.indexOf(question)}
@@ -61,7 +64,9 @@ const EditQuiz = () => {
           </StyledQuiz>
         ))}
         {questions.length != 0 && (
-          <StyledSubmitButton onClick={onSubmit}>Submit</StyledSubmitButton>
+          <StyledSubmitButton onClick={onSubmit} data-test="submit">
+            Submit
+          </StyledSubmitButton>
         )}
       </StyledBody>
     </Main>

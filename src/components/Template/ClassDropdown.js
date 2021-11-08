@@ -19,7 +19,12 @@ export const Dropdown = (props) => {
 
   return (
     <DropdownWrapper action={props.action}>
-      <StyledSelect id="services" name="services" onChange={selectClass}>
+      <StyledSelect
+        id="services"
+        data-test="class"
+        name="services"
+        onChange={selectClass}
+      >
         {props.children}
       </StyledSelect>
     </DropdownWrapper>
@@ -29,7 +34,7 @@ export const Dropdown = (props) => {
 export const Option = (props) => {
   return (
     <StyledOption
-      selected={props.selected}
+      defaultValue={props.defaultValue}
       data-cid={props.value.cid}
       className={props.className}
     >
@@ -55,7 +60,7 @@ export const StyledSelect = styled.select`
 `;
 
 export const StyledOption = styled.option`
-  color: ${(props) => (props.selected ? "lightgrey" : "black")};
+  color: ${(props) => (props.defaultValue ? "lightgrey" : "black")};
 `;
 
 export default Dropdown;

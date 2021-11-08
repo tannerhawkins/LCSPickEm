@@ -23,6 +23,7 @@ import {
 import { selectCurrentClass } from "../../../app/class/selectors";
 import { setCurrentClass } from "../../../app/class/actions";
 import { setDescription, setTitle } from "../../../app/module/actions";
+import { signIn } from "../../../app/account/actions";
 
 const CreateModule = () => {
   const history = useHistory();
@@ -116,6 +117,10 @@ const CreateModule = () => {
                         classList: classList,
                       });
                     });
+                  userDataDb
+                    .doc(auth.currentUser.uid)
+                    .get()
+                    .then((result) => dispatch(signIn(result.data())));
                 });
               });
           });
@@ -152,6 +157,7 @@ const CreateModule = () => {
             id="title"
             name="title"
             defaultValue={selectedModule?.title}
+            data-test="title"
             required
           />
           <StyledText>Module Description</StyledText>
@@ -159,6 +165,7 @@ const CreateModule = () => {
             type="text"
             id="description"
             name="description"
+            data-test="description"
             defaultValue={selectedModule?.description}
           />
           <StyledFlexContainer>
@@ -171,6 +178,7 @@ const CreateModule = () => {
                 );
                 setShowAddStepPopup(true);
               }}
+              data-test="add-step"
             >
               Add Step
             </StyledAddStepButton>
@@ -180,7 +188,7 @@ const CreateModule = () => {
           </StepsContainer>
           <StyledError>{errorMessage}</StyledError>
           <StyledButtonContainer>
-            <StyledSubmitButton onClick={handleSubmit}>
+            <StyledSubmitButton onClick={handleSubmit} data-test="create">
               CREATE
             </StyledSubmitButton>
             <StyledDashboardButton onClick={() => history.push(`teacher/home`)}>
