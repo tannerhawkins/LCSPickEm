@@ -4,10 +4,10 @@ describe("Modules", () => {
     cy.teacherLogin();
   });
 
-  afterEach(async () => {
-    await cy.resetUserDb();
-    await cy.resetClassDb();
-    await cy.resetModulesDb();
+  afterEach(() => {
+    cy.resetUserDb();
+    cy.resetClassDb();
+    cy.resetModulesDb();
   });
 
   it("allows teacher create new module", () => {

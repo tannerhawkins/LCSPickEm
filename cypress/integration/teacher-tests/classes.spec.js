@@ -4,10 +4,10 @@ describe("Classes", () => {
     cy.teacherLogin();
   });
 
-  afterEach(async () => {
+  afterEach(() => {
     // reset Db
-    await cy.resetClassDb();
-    await cy.resetUserDb();
+    cy.resetClassDb();
+    cy.resetUserDb();
   });
 
   it("allows teacher to change class", () => {

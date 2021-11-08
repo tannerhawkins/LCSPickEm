@@ -5,8 +5,8 @@ describe("Sign-up", () => {
     cy.visit("/");
   });
 
-  afterEach(async () => {
-    await cy.resetUserDb();
+  afterEach(() => {
+    cy.resetUserDb();
   });
 
   it("allows user to naviagate to sign-up page and sign-up", () => {

@@ -12,8 +12,9 @@
     "predeploy": "npm run build && react-snap",
     "deploy": "gh-pages -d build",
     "start": "react-scripts start",
+    "dev-start": "react-scripts -r @cypress/instrument-cra start",
     "lint": "eslint src",
-    "test": "react-scripts test --watchAll=false",
+    "test": "nyc cypress run",
     "analyze": "npm run build && source-map-explorer build/static/js/*.chunk.js",
     "cypress:open": "cypress open"
   },
@@ -30,6 +31,7 @@
     "firebase": "^8.10.0",
     "firestore": "^1.1.6",
     "git": "^0.1.5",
+    "istanbul-coverage-display": "^3.0.1",
     "js-beautify": "^1.14.0",
     "prop-types": "^15.7.2",
     "raw.macro": "^0.4.2",
@@ -53,8 +55,14 @@
     "yarn": "^1.22.11"
   },
   "devDependencies": {
+    "@babel/cli": "^7.16.0",
+    "@babel/core": "^7.16.0",
+    "@babel/preset-env": "^7.16.0",
+    "@cypress/code-coverage": "^3.9.11",
+    "@cypress/instrument-cra": "^1.4.0",
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.3",
+    "babel-plugin-istanbul": "^6.1.1",
     "cypress": "^8.7.0",
     "eslint": "^7.19.0",
     "eslint-config-airbnb": "^18.2.1",
@@ -62,6 +70,7 @@
     "eslint-plugin-jsx-a11y": "6.4.1",
     "eslint-plugin-react": "^7.22.0",
     "gh-pages": "^3.2.3",
+    "nyc": "^15.1.0",
     "prettier": "2.4.1",
     "source-map-explorer": "^2.5.2"
   },
@@ -81,5 +90,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "nyc": {
+    "report-dir": "cypress-coverage",
+    "excludeAfterRemap": false,
+    "exclude": ["src/serviceWorker.js", "src/test", "src/setupTests.js"]
   }
 }

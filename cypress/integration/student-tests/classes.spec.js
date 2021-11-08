@@ -5,9 +5,9 @@ describe("Enroll in class", () => {
       cy.studentLogin();
     });
 
-    afterEach(async () => {
-        await cy.resetUserDb();
-        await cy.resetClassDb();
+    afterEach(() => {
+        cy.resetUserDb();
+        cy.resetClassDb();
     })
   
     it("allows student to enroll in class via enrollment code", () => {

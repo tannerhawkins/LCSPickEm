@@ -46,3 +46,8 @@ build/
 # Nohup
 nohup.out
 node_modules
+
+cypress-coverage
+coverage
+.nyc_output
+cypress/videos
