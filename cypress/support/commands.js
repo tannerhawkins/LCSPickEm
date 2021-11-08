@@ -48,6 +48,14 @@ const studentAccountInfo = {
   uid: "nGgCZShjguNmKlepiskkSjyUuq32",
 };
 
+const brandNewStudent = {
+  email: "teststudent2@apa.com",
+  classList: [],
+  displayName: `Test Student 2`,
+  accountType: "student",
+  uid: "nGgCZShjguNmKlepiskkSjyU3442",
+};
+
 const testMod1 = {
   creator: "wOosY8ZSs4TbXuYgdamaIprEOR02",
   description: "Testing",
@@ -163,6 +171,7 @@ const testClass2 = {
 // })
 
 Cypress.Commands.add("teacherLogin", () => {
+  cy.url().should("contain", "/home");
   cy.get("[data-test=login-logout]").click();
   cy.get("[data-test=email]").type("testteacher@apa.com");
   cy.get("[data-test=password]").type("Testing");
@@ -170,6 +179,7 @@ Cypress.Commands.add("teacherLogin", () => {
 });
 
 Cypress.Commands.add("studentLogin", () => {
+  cy.url().should("contain", "/home");
   cy.get("[data-test=login-logout]").click();
   cy.get("[data-test=email]").type("teststudent@apa.com");
   cy.get("[data-test=password]").type("Testing");
@@ -184,75 +194,63 @@ Cypress.Commands.add("deleteAccount", (user) => {
 Cypress.Commands.add("resetTeacherAccount", () => {
   userDataDb
     .where("email", "==", "testteacher@apa.com")
-    .get()
     .set(teacherAccountInfo);
 });
 
 Cypress.Commands.add("resetStudentAccount", () => {
   userDataDb
     .where("email", "==", "teststudent@apa.com")
-    .get()
     .set(studentAccountInfo);
 });
 
-Cypress.Commands.add("resetClassDb", () => {
+Cypress.Commands.add("addNewStudent", () => {
+  userDataDb.doc("nGgCZShjguNmKlepiskkSjyU3442").set(brandNewStudent);
+});
+
+Cypress.Commands.add("resetClassDb", async () => {
   classDataDb.doc("CsC8yxKXd1IbALpDAOFL").set(testClass1);
   classDataDb.doc("Zz666EQiFLXecsIJUUGi").set(testClass2);
 
-  classDataDb.get().then((result) => {
-    result.docs.forEach((doc) => {
+  await classDataDb.get().then(async (result) => {
+    result.docs.forEach(async (doc) => {
       if (
         doc.id != "CsC8yxKXd1IbALpDAOFL" &&
         doc.id != "Zz666EQiFLXecsIJUUGi"
       ) {
-        classDataDb.doc(doc.id).delete();
+        await classDataDb.doc(doc.id).delete();
       }
     });
   });
 });
 
-Cypress.Commands.add("resetUserDb", () => {
-  userDataDb
-    .where("email", "==", "testteacher@apa.com")
-    .get()
-    .set(teacherAccountInfo);
-  userDataDb
-    .where("email", "==", "teststudent@apa.com")
-    .get()
-    .set(studentAccountInfo);
+Cypress.Commands.add("resetUserDb", async () => {
+  userDataDb.doc("nGgCZShjguNmKlepiskkSjyUuq32").set(studentAccountInfo);
+  userDataDb.doc("wOosY8ZSs4TbXuYgdamaIprEOR02").set(teacherAccountInfo);
 
-  userDataDb.get().then((result) => {
-    result.docs.forEach((doc) => {
+  await userDataDb.get().then(async (result) => {
+    result.docs.forEach(async (doc) => {
       if (
         doc.id != "nGgCZShjguNmKlepiskkSjyUuq32" &&
         doc.id != "wOosY8ZSs4TbXuYgdamaIprEOR02"
       ) {
-        userDataDb.doc(doc.id).delete();
+        await userDataDb.doc(doc.id).delete();
       }
     });
   });
 });
 
-Cypress.Commands.add("resetModulesDb", () => {
+Cypress.Commands.add("resetModulesDb", async () => {
   modulesDb.doc("aOrljPVgVSPtAlOh4W63").set(testMod1);
   modulesDb.doc("aZC5gvZstpTZmkh9xRMA").set(testMod2);
 
-  modulesDb.get().then((result) => {
-    result.docs.forEach((doc) => {
+  await modulesDb.get().then(async (result) => {
+    result.docs.forEach(async (doc) => {
       if (
         doc.id != "aOrljPVgVSPtAlOh4W63" &&
         doc.id != "aZC5gvZstpTZmkh9xRMA"
       ) {
-        modulesDb.doc(doc.id).delete();
+        await modulesDb.doc(doc.id).delete();
       }
-    });
-  });
-});
-
-Cypress.Commands.add("newCommand", () => {
-  classDataDb.get().then((result) => {
-    result.docs.forEach((doc) => {
-      console.log(doc.data());
     });
   });
 });

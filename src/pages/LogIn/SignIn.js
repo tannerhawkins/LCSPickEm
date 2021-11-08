@@ -55,6 +55,7 @@ const SignIn = () => {
             } else {
               dispatch(setCurrentClass(null));
             }
+            history.push(`/${doc.data().accountType}/home`);
           });
       })
       .catch((error) => {

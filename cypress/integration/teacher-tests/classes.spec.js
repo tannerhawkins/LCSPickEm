@@ -4,6 +4,12 @@ describe("Classes", () => {
     cy.teacherLogin();
   });
 
+  afterEach(async () => {
+    // reset Db
+    await cy.resetClassDb();
+    await cy.resetUserDb();
+  });
+
   it("allows teacher to change class", () => {
     // should be in Test Class 1
     cy.get("[data-test=class]").should("contain", "Test Class 1");
@@ -14,7 +20,7 @@ describe("Classes", () => {
     cy.get("[data-test=class]").should("contain", "Test Class 2");
   });
 
-  it.only("allows teacher to add a new class", () => {
+  it("allows teacher to add a new class", () => {
     cy.get("[data-test=add-class]").click();
 
     // should redirect
@@ -31,8 +37,28 @@ describe("Classes", () => {
 
     // should automatically select new class
     cy.get("[data-test=class]").should("contain", "Test Class 3");
+  });
 
-    // reset Db
-    cy.resetClassDb();
+  it("allows teacher to add a student to a class", () => {
+    cy.addNewStudent();
+
+    cy.get("[data-test=add-student]").click();
+
+    // should redirect
+    cy.url().should("contain", "/add-student");
+
+    cy.get("[data-test=email]").type("teststudent2@apa.com");
+
+    cy.get("[data-test=submit]").click();
+
+    cy.get("[data-test=error]").should("contain", "Added Test Student 2 to");
+
+    // should not redirect
+    cy.url().should("contain", "/add-student");
+
+    cy.get("[data-test=back]").click();
+
+    // now should redirect
+    cy.url().should("contain", "/home");
   });
 });

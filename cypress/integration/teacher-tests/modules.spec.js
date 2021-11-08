@@ -4,11 +4,14 @@ describe("Modules", () => {
     cy.teacherLogin();
   });
 
-  afterEach(() => {
-    cy.resetModulesDb();
+  afterEach(async () => {
+    await cy.resetUserDb();
+    await cy.resetClassDb();
+    await cy.resetModulesDb();
   });
 
   it("allows teacher create new module", () => {
+    cy.url().should("contain", "/teacher/home");
     cy.get("[data-test=add-module]").click();
 
     // should redirect
@@ -113,5 +116,22 @@ describe("Modules", () => {
     cy.get("[data-test=module-title]")
       .last()
       .should("contain", "Test Module 3");
+  });
+
+  it("allows teacher to add previously created module", () => {
+    cy.url().should("contain", "/teacher/home");
+
+    cy.get("[data-test=add-module]").click();
+
+    cy.get("[data-test=module-title]").click();
+
+    // should remove module
+    cy.get("[data-test=module-title]").should("not.exist");
+
+    cy.get("[data-test=back]").click();
+
+    cy.get("[data-test=module-title]")
+      .last()
+      .should("contain", "Test Module 2");
   });
 });

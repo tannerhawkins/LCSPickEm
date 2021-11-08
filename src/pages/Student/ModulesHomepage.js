@@ -65,7 +65,9 @@ const ModulesHomepage = () => {
                 <Dropdown>
                   {classes.map((item) => (
                     <Option
-                      selected={item.cid === currentClass.cid ? "selected" : ""}
+                      defaultValue={
+                        item.cid === currentClass?.cid ? "selected" : ""
+                      }
                       value={item}
                       classItem={item}
                       key={item.cid}

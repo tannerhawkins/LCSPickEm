@@ -78,6 +78,7 @@ const SignUp = () => {
             dispatch(signIn(accountInfo));
             dispatch(setCurrentClass(null));
             userDataDb.doc(auth.currentUser.uid).set(accountInfo);
+            history.push(`/${data.accountType}/home`);
           });
       })
       .catch((response) => {
@@ -143,6 +144,7 @@ const SignUp = () => {
               type="radio"
               name="accountType"
               value="student"
+              data-test="student"
               required
             />
             <StyledText>Student</StyledText>
