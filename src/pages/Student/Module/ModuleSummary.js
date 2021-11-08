@@ -10,6 +10,7 @@ import { Constants } from "../../../data/constants";
 import Button from "../../../components/Template/Button";
 import "react-step-progress-bar/styles.css";
 import { ProgressBar, Step } from "react-step-progress-bar";
+import homepageSplash from "../../../images/Homepage/homepage-splash-2.png";
 
 const ModuleSummary = () => {
   const dispatch = useDispatch();
@@ -34,7 +35,7 @@ const ModuleSummary = () => {
         "Walking Skeleton". Note: You CANNOT back out of a module once you
         begin!
       </StyledBody>
-      <ProgressBar
+      <StyledProgressBar
         percent={75}
         filledBackground="linear-gradient(to right, #fefb72, #f0bb31)"
       />
@@ -54,7 +55,7 @@ const Body = styled.div`
   display: flex;
   justify-content: flex-center;
   flex-direction: column;
-  width: 90vw;
+  width: 100vw;
   height: 100vh;
   align-items: stretch;
   margin: auto;
@@ -67,9 +68,10 @@ const StyledTitle = styled.p`
 `;
 
 const StyledBody = styled.div`
-  margin: 30px ${Constants.SIDEBAR_WIDTH};
+  margin: 3% ${Constants.SIDEBAR_WIDTH};
   background-color: ${Constants.COLOR.DARK_GREEN};
-  height: 50vh;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  height: 70vh;
   color: white;
   padding: 50px;
 `;
@@ -96,8 +98,18 @@ const StyledStartButtonContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  margin: 0px;
-  margin-right: 5%;
+  margin: 3%;
+  margin-top: 3%;
+`;
+
+const StyledProgressBar = styled(ProgressBar)`
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  margin: 0 10%;
+`;
+
+const StyledImage = styled.img`
+  object-position: center bottom;
+  object-fit: contain;
 `;
 
 export default ModuleSummary;

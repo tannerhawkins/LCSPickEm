@@ -36,8 +36,8 @@ const ModuleVideo = () => {
 };
 
 const Video = styled.iframe`
-  width: 90vw;
-  height: 90vh;
+  width: 70vw;
+  height: 70vh;
 `;
 
 const Body = styled.div`
