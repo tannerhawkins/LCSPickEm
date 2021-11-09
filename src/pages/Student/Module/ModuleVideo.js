@@ -3,19 +3,22 @@ import styled from "styled-components";
 import {
   selectCurrentStep,
   selectCurrentStepData,
+  selectSelectedModule,
 } from "../../../app/module/selectors";
 import { setCurrentStep } from "../../../app/module/actions";
 import { Constants } from "../../../data/constants";
 import Button from "../../../components/Template/Button";
+import homepageSplash from "../../../images/Homepage/homepage-splash.png";
 
 const ModuleVideo = () => {
   const dispatch = useDispatch();
   const currentStep = useSelector(selectCurrentStep);
   const stepData = useSelector(selectCurrentStepData);
+  const module = useSelector(selectSelectedModule);
 
   return (
     <Body>
-      <StyledTitle>This is the Module Video Page</StyledTitle>
+      <StyledTitle>This is the {module.title} Video Page</StyledTitle>
       <Video
         frameborder="0"
         src={`${stepData}`}
@@ -35,18 +38,22 @@ const ModuleVideo = () => {
   );
 };
 
-const Video = styled.iframe`
-  width: 70vw;
-  height: 70vh;
-`;
-
 const Body = styled.div`
-  width: 100%;
-  height: 100%;
+  display: flex;
+  justify-content: flex-center;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+  background: url(${homepageSplash}) no-repeat;
+  background-size: 100vw 90vh;
+  background-position: 30vw 0;
 `;
 
-const img = styled.img`
-  padding-left: 30px;
+const Video = styled.iframe`
+  width: 80vw;
+  height: 80vh;
+  margin: 0% 10%;
+  box-shadow: 0 4% 4% rgba(0, 0, 0, 0.25);
 `;
 
 const StyledTitle = styled.p`
@@ -56,25 +63,16 @@ const StyledTitle = styled.p`
   padding-left: 30px;
 `;
 
-const StyledBody = styled.div`
-  margin-top: ${Constants.HEADER_HEIGHT};
-  margin-left: ${Constants.SIDEBAR_WIDTH};
-  padding: 0 50px;
-`;
-
 const StyledButtonContainer = styled.div`
   display: flex;
-  width: 100%;
   align-items: center;
-  justify-content: space-between;
-  padding-top: 30px;
-  margin-left: ${Constants.SIDEBAR_WIDTH};
+  justify-content: flex-end;
+  margin: 30px;
 `;
 
 const StyledSubmitButton = styled(Button)`
-  font-size: 25px;
-  height: 70px;
-  padding: 0 5px;
+  font-size: 14px;
+  padding: 5px;
   min-width: 120px;
   background-color: ${Constants.COLOR.DARK_GREEN};
   &:hover {
