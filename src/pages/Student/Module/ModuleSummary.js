@@ -57,8 +57,8 @@ const Body = styled.div`
   flex-direction: column;
   width: 100vw;
   height: 100vh;
-  align-items: stretch;
-  margin: auto;
+  background: url(${homepageSplash}) no-repeat;
+  background-position: 0 200px;
 `;
 
 const StyledTitle = styled.p`
@@ -68,8 +68,9 @@ const StyledTitle = styled.p`
 `;
 
 const StyledBody = styled.div`
-  margin: 3% ${Constants.SIDEBAR_WIDTH};
+  margin: 3% 10%;
   background-color: ${Constants.COLOR.DARK_GREEN};
+  border-radius: 5px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   height: 70vh;
   color: white;
@@ -81,7 +82,7 @@ const StyledButtonContainer = styled.div`
   align-items: center;
   justify-content: space-between;
   margin: 30px;
-  margin-left: ${Constants.SIDEBAR_WIDTH};
+  margin-left: 3%;
 `;
 
 const StyledSubmitButton = styled(Button)`
@@ -103,13 +104,16 @@ const StyledStartButtonContainer = styled.div`
 `;
 
 const StyledProgressBar = styled(ProgressBar)`
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  margin: 0 10%;
-`;
-
-const StyledImage = styled.img`
-  object-position: center bottom;
-  object-fit: contain;
+  box-shadow: 0 4% 4% rgba(0, 0, 0, 0.25);
+  color: white;
+  width: 20px;
+  height: 20px;
+  font-size: 12px;
+  background-color: rgba(211, 211, 211, 0.8);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 export default ModuleSummary;
