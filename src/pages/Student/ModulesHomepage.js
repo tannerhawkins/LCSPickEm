@@ -61,21 +61,7 @@ const ModulesHomepage = () => {
           <BodyHeader>
             <TitleContainer>
               <StyledTitle>Dashboard</StyledTitle>
-              {/* Maps each class in classes to an option in the dropdown list and selects the one that matches the current selected class */}
-              {classes[0] && (
-                <Dropdown data-test="dropdown">
-                  {classes.map((item) => (
-                    <Option
-                      defaultValue={
-                        item.cid === currentClass?.cid ? "selected" : ""
-                      }
-                      value={item}
-                      classItem={item}
-                      key={item.cid}
-                    />
-                  ))}
-                </Dropdown>
-              )}
+              <Dropdown />
               <StyledAddClassButton
                 onClick={() => history.push(`/student/add-class`)}
                 data-test="add-class"

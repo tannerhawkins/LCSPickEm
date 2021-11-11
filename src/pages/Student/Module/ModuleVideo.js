@@ -9,6 +9,7 @@ import { setCurrentStep } from "../../../app/module/actions";
 import { Constants } from "../../../data/constants";
 import Button from "../../../components/Template/Button";
 import homepageSplash from "../../../images/Homepage/homepage-splash.png";
+import ProgressBar from "../../../components/Student/ProgressBar";
 
 const ModuleVideo = () => {
   const dispatch = useDispatch();
@@ -26,6 +27,7 @@ const ModuleVideo = () => {
         sandbox="allow-scripts allow-same-origin"
         allowFullScreen
       />
+      <ProgressBar />
       <StyledButtonContainer>
         <StyledSubmitButton
           onClick={() => dispatch(setCurrentStep(currentStep + 1))}
@@ -54,6 +56,7 @@ const Video = styled.iframe`
   height: 80vh;
   margin: 0% 10%;
   box-shadow: 0 4% 4% rgba(0, 0, 0, 0.25);
+  margin-bottom: 40px;
 `;
 
 const StyledTitle = styled.p`

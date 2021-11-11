@@ -38,3 +38,9 @@ export const selectCurrentStepData = createSelector(
   selectSteps,
   (currentStep, steps) => steps[currentStep].data
 );
+
+export const selectCurrentStepPercentage = createSelector(
+  selectCurrentStep,
+  selectSteps,
+  (currentStep, steps) => (currentStep+1)/(steps.length+1)*100
+)

@@ -8,6 +8,7 @@ import {
 import { setCurrentStep } from "../../../app/module/actions";
 import { Constants } from "../../../data/constants";
 import Button from "../../../components/Template/Button";
+import ProgressBar from "../../../components/Student/ProgressBar";
 
 const ModuleText = () => {
   const dispatch = useDispatch();
@@ -18,9 +19,7 @@ const ModuleText = () => {
     <Body>
       <StyledTitle>This is the Module Text Page</StyledTitle>
       <StyledBody dangerouslySetInnerHTML={{ __html: stepData }} />
-      <StyledQuestionContainer>
-        <StyledQuestion></StyledQuestion>
-      </StyledQuestionContainer>
+      <ProgressBar />
       <StyledButtonContainer>
         <StyledSubmitButton
           onClick={() => dispatch(setCurrentStep(currentStep + 1))}

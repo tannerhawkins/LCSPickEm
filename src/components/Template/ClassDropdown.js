@@ -1,11 +1,15 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
+import { selectClassList } from "../../app/account/selectors";
 import { setCurrentClass } from "../../app/class/actions";
+import { selectCurrentClass } from "../../app/class/selectors";
 import { Constants } from "../../data/constants";
 import { classDataDb } from "../../data/firebase";
 
 export const Dropdown = (props) => {
   const dispatch = useDispatch();
+  const classes = useSelector(selectClassList);
+  const currentClass = useSelector(selectCurrentClass);
 
   const selectClass = (event) => {
     const cid = Array.from(event.target.children)
@@ -17,17 +21,26 @@ export const Dropdown = (props) => {
       .then((result) => dispatch(setCurrentClass(result.data())));
   };
 
-  return (
-    <DropdownWrapper action={props.action}>
+  return (classes[0] ?
+    <DropdownWrapper action={props.action} data-test="dropdown">
       <StyledSelect
         id="services"
         data-test="class"
         name="services"
         onChange={selectClass}
       >
-        {props.children}
+                          {classes.map((item) => (
+                    <Option
+                      defaultValue={
+                        item.cid === currentClass?.cid ? "selected" : ""
+                      }
+                      value={item}
+                      classItem={item}
+                      key={item.cid}
+                    />
+                  ))}
       </StyledSelect>
-    </DropdownWrapper>
+    </DropdownWrapper> : <></>
   );
 };
 
