@@ -110,7 +110,8 @@ const AssignedModules = styled.div`
   width: 100%;
   flex-wrap: no-wrap;
   overflow: auto;
-  height: 300px;
+  padding: 20px;
+  height: 400px;
 `;
 
 const BodyHeader = styled.div`
