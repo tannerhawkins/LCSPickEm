@@ -12,6 +12,7 @@ import { selectClassList } from "../../app/account/selectors";
 import Dropdown, { Option } from "../../components/Template/ClassDropdown";
 import { useHistory } from "react-router";
 import ModuleCard from "../../components/Template/ModuleCard";
+import ModuleContainer from "../../components/Template/ModuleContainer";
 
 const ModulesHomepage = () => {
   const history = useHistory();
@@ -90,7 +91,7 @@ const ModulesHomepage = () => {
             </StyledCard>
           </NewCardContainer>
           <StyledSectionHeader>Assigned Modules</StyledSectionHeader>
-          <AssignedModules>{moduleCards}</AssignedModules>
+          <ModuleContainer moduleCards={moduleCards}/>
         </StyledBody>
       </StyledHomepage>
     </Main>
@@ -103,15 +104,6 @@ const StyledBody = styled.div`
   margin-top: ${Constants.HEADER_HEIGHT};
   margin-left: ${Constants.SIDEBAR_WIDTH};
   padding: 0 50px;
-`;
-
-const AssignedModules = styled.div`
-  display: flex;
-  width: 100%;
-  flex-wrap: no-wrap;
-  overflow: auto;
-  padding: 20px;
-  height: 400px;
 `;
 
 const BodyHeader = styled.div`

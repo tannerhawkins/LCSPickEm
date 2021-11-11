@@ -15,6 +15,7 @@ import { useHistory } from "react-router";
 import { modulesDb } from "../../data/firebase";
 import { setCurrentStep, setSelectedModule } from "../../app/module/actions";
 import StyledButton from "../../components/Template/Button";
+import ModuleContainer from "../../components/Template/ModuleContainer";
 
 const ModulesHomepage = () => {
   const history = useHistory();
@@ -94,7 +95,7 @@ const ModulesHomepage = () => {
           {isInClass ? (
             <>
               <StyledSectionHeader>Assigned Modules</StyledSectionHeader>
-              <ModulesContainer>{assignedModuleCards}</ModulesContainer>
+              <ModuleContainer moduleCards={assignedModuleCards}/>
               {/* <StyledSectionHeader>Completed Modules</StyledSectionHeader>
               <ModulesContainer>{completedModuleCards}</ModulesContainer> */}
             </>
@@ -122,15 +123,6 @@ const StyledAddClassButton = styled(StyledButton)`
   width: 130px;
   margin-left: 40px;
   background-color: ${Constants.COLOR.GREEN};
-`;
-
-const ModulesContainer = styled.div`
-  display: flex;
-  width: 100%;
-  flex-wrap: no-wrap;
-  overflow: auto;
-  padding: 20px;
-  height: 400px;
 `;
 
 const BodyHeader = styled.div`
