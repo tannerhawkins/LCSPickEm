@@ -1,21 +1,23 @@
-import { useSelector } from 'react-redux';
-import { ProgressBar as Bar } from 'react-step-progress-bar'
-import styled from 'styled-components';
-import { selectCurrentStepPercentage } from '../../app/module/selectors';
-import { Constants } from '../../data/constants';
-
+import { useSelector } from "react-redux";
+import { ProgressBar as Bar } from "react-step-progress-bar";
+import styled from "styled-components";
+import { selectCurrentStepPercentage } from "../../app/module/selectors";
+import { Constants } from "../../data/constants";
 
 const ProgressBar = (props) => {
-    const percent = useSelector(selectCurrentStepPercentage)
+  const percent = useSelector(selectCurrentStepPercentage);
 
-    return <Container><StyledProgressBar 
-    {...props}
-    percent={percent}
-    filledBackground={`linear-gradient(to right, ${Constants.COLOR.TEAL}, ${Constants.COLOR.GREEN})`}
-    width={"90%"}
-    /></Container>
-}
-
+  return (
+    <Container>
+      <StyledProgressBar
+        {...props}
+        percent={percent}
+        filledBackground={`linear-gradient(to right, ${Constants.COLOR.TEAL}, ${Constants.COLOR.GREEN})`}
+        width={"90%"}
+      />
+    </Container>
+  );
+};
 
 export default ProgressBar;
 
@@ -30,7 +32,7 @@ const StyledProgressBar = styled(Bar)`
 `;
 
 const Container = styled.div`
-    display: flex;
-    align-items: center;
-    justify-content: center;
-`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;

@@ -94,7 +94,12 @@ const AddClass = () => {
         </StyledParagraph>
         <StyledForm id="enrollmentForm">
           <StyledText>Enrollment Code</StyledText>
-          <StyledInput type="text" name="code" data-test="enrollment-code" required />
+          <StyledInput
+            type="text"
+            name="code"
+            data-test="enrollment-code"
+            required
+          />
           <StyledError>{errorMessage}</StyledError>
           <StyledButtonContainer>
             <StyledSubmitButton onClick={handleSubmit} data-test="submit">

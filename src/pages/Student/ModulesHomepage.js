@@ -81,7 +81,7 @@ const ModulesHomepage = () => {
           {isInClass ? (
             <>
               <StyledSectionHeader>Assigned Modules</StyledSectionHeader>
-              <ModuleContainer moduleCards={assignedModuleCards}/>
+              <ModuleContainer moduleCards={assignedModuleCards} />
               {/* <StyledSectionHeader>Completed Modules</StyledSectionHeader>
               <ModulesContainer>{completedModuleCards}</ModulesContainer> */}
             </>

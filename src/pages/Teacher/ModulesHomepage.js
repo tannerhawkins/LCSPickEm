@@ -77,7 +77,7 @@ const ModulesHomepage = () => {
             </StyledCard>
           </NewCardContainer>
           <StyledSectionHeader>Assigned Modules</StyledSectionHeader>
-          <ModuleContainer moduleCards={moduleCards}/>
+          <ModuleContainer moduleCards={moduleCards} />
         </StyledBody>
       </StyledHomepage>
     </Main>

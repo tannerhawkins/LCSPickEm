@@ -21,7 +21,7 @@ export const Dropdown = (props) => {
       .then((result) => dispatch(setCurrentClass(result.data())));
   };
 
-  return (classes[0] ?
+  return classes[0] ? (
     <DropdownWrapper action={props.action} data-test="dropdown">
       <StyledSelect
         id="services"
@@ -29,18 +29,18 @@ export const Dropdown = (props) => {
         name="services"
         onChange={selectClass}
       >
-                          {classes.map((item) => (
-                    <Option
-                      defaultValue={
-                        item.cid === currentClass?.cid ? "selected" : ""
-                      }
-                      value={item}
-                      classItem={item}
-                      key={item.cid}
-                    />
-                  ))}
+        {classes.map((item) => (
+          <Option
+            defaultValue={item.cid === currentClass?.cid ? "selected" : ""}
+            value={item}
+            classItem={item}
+            key={item.cid}
+          />
+        ))}
       </StyledSelect>
-    </DropdownWrapper> : <></>
+    </DropdownWrapper>
+  ) : (
+    <></>
   );
 };
 

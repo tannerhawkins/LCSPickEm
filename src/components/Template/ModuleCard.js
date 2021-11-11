@@ -37,7 +37,7 @@ const StyledModuleCard = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  text-transform: 'capitalize';
+  text-transform: "capitalize";
   justify-content: center;
   &:hover {
     filter: brightness(110%);
@@ -51,7 +51,7 @@ const StyledModuleCard = styled.div`
   min-width: 200px;
   margin: 0px 10px;
   border-radius: 0.5em;
-  transition: transform .45s ease, background .45s ease;
+  transition: transform 0.45s ease, background 0.45s ease;
 `;
 
 const StyledTitle = styled.p`
@@ -80,7 +80,7 @@ const StyledDescription = styled.p`
   width: 85%;
   height: 100%;
   border-radius: 5px;
-  text-transform: 'capitalize';
+  text-transform: "capitalize";
 `;
 
 export default ModuleCard;
