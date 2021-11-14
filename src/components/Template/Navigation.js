@@ -16,7 +16,6 @@ const Navigation = () => {
         <HeaderName>Ancient Path Adventures</HeaderName>
       </StyledLogoContainer>
       <StyledButtonContainer>
-        <StyledHelpButton>HELP</StyledHelpButton>
         <StyledSignInOutButton />
       </StyledButtonContainer>
     </StyledHeader>
