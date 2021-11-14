@@ -35,7 +35,8 @@ const Card = styled.div`
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+  flex-direction: column;
   &:hover {
     filter: brightness(110%);
     cursor: pointer;
@@ -45,18 +46,14 @@ const Card = styled.div`
 const StyledPlusIcon = styled.img`
   width: 80px;
   height: 80px;
+  margin-top: 50px;
 `;
 
 const StyledText = styled.p`
-  position: absolute;
-  align-self: flex-end;
-  justify-self: center;
-  margin-bottom: 40px;
 `;
 
 const Bar = styled.div`
-  position: absolute;
-  bottom: 0;
+  align-self: flex-end;
   height: 25px;
   width: 100%;
 `;
