@@ -89,15 +89,7 @@ const AddStudents = () => {
           <StyledText>Student's Email</StyledText>
           <StyledInput type="text" name="email" data-test="email" required />
           <StyledText>Add to Class</StyledText>
-          <Dropdown>
-            {classes.map((item) => (
-              <Option
-                selected={item.cid === currentClass?.cid ? "selected" : ""}
-                value={item}
-                classItem={item}
-              />
-            ))}
-          </Dropdown>
+          <Dropdown />
           <StyledError data-test="error">{errorMessage}</StyledError>
           <StyledButtonContainer>
             <StyledSubmitButton onClick={handleSubmit} data-test="submit">

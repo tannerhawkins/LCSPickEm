@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import { selectClassList } from "../../app/account/selectors";
@@ -10,6 +11,10 @@ export const Dropdown = (props) => {
   const dispatch = useDispatch();
   const classes = useSelector(selectClassList);
   const currentClass = useSelector(selectCurrentClass);
+
+  useEffect(() => {
+
+  })
 
   const selectClass = (event) => {
     const cid = Array.from(event.target.children)
@@ -28,31 +33,20 @@ export const Dropdown = (props) => {
         data-test="class"
         name="services"
         onChange={selectClass}
+        defaultValue={currentClass.cid}
       >
-        {classes.map((item) => (
-          <Option
-            defaultValue={item.cid === currentClass?.cid ? "selected" : ""}
-            value={item}
+        {classes.map((item) => {
+          return <StyledOption
+            value={item.cid}
+            data-cid={item.cid}
             classItem={item}
             key={item.cid}
-          />
-        ))}
+            >{item.className}</StyledOption>
+        })}
       </StyledSelect>
     </DropdownWrapper>
   ) : (
     <></>
-  );
-};
-
-export const Option = (props) => {
-  return (
-    <StyledOption
-      defaultValue={props.defaultValue}
-      data-cid={props.value.cid}
-      className={props.className}
-    >
-      {props.value.className}
-    </StyledOption>
   );
 };
 
