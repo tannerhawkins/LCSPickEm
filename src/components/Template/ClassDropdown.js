@@ -33,7 +33,7 @@ export const Dropdown = (props) => {
         data-test="class"
         name="services"
         onChange={selectClass}
-        defaultValue={currentClass.cid}
+        defaultValue={currentClass?.cid}
       >
         {classes.map((item) => {
           return <StyledOption
