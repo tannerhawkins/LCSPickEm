@@ -8,17 +8,17 @@ import { Constants } from "../../data/constants";
 const TextEditor = (props) => {
   const [body, setBody] = useState("");
 
-  const config = {
-    height: "500px",
-  };
-
-  const handleCancel = (e) => {
-    props.onCancel();
-  };
-
   const handleSubmit = (e) => {
     e.preventDefault();
     props.onSubmit({ body });
+  };
+
+  const config = {
+    toolbar: {
+      items: [ 'heading', '|', 'bold', 'italic', 'link', 'numberedList', 'bulletedList', '|', 'indent', 'outdent', '|',  'blockQuote', 'insertTable', 'mediaEmbed', '|', 'undo', 'redo' ],
+  
+      shouldNotGroupWhenFull: true
+    }
   };
 
   return (
@@ -38,12 +38,13 @@ const TextEditor = (props) => {
             );
           });
         }}
+        config={config}
       />
       <ButtonContainer>
         <StyledButton type="submit" onClick={handleSubmit} data-test="submit">
           Submit
         </StyledButton>
-        <StyledButton type="submit">Cancel</StyledButton>
+        <StyledButton type="submit" onClick={props.onCancel}>Cancel</StyledButton>
       </ButtonContainer>
     </form>
   );
