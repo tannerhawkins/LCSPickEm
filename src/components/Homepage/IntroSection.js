@@ -30,7 +30,6 @@ const IntroSection = () => {
         >
           Dashboard
         </StyledButtonOne>
-        <StyledButtonTwo>BTN2</StyledButtonTwo>
       </ButtonContainer>
       <StyledImage src={homepageSplash} />
     </SectionContainer>
@@ -59,6 +58,9 @@ const StyledHeaderText = styled.h1`
   font-weight: 700;
   font-size: 73px;
   line-height: 86px;
+  @media (max-width: 800px) {
+    font-size: 60px;
+  }
 `;
 
 const StyledSubText = styled.h3`

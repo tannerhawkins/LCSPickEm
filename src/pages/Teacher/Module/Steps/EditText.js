@@ -34,7 +34,7 @@ const EditText = () => {
       <Header />
       <StyledBody>
         <StyledSectionTitle>Edit Text</StyledSectionTitle>
-        <StyledTextEditor onSubmit={onSubmit} />
+        <StyledTextEditor onSubmit={onSubmit} onCancel={() => history.push(`/teacher/create-module`)}/>
       </StyledBody>
     </Main>
   );

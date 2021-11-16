@@ -1,11 +1,20 @@
-import { useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
+import { selectClassList } from "../../app/account/selectors";
 import { setCurrentClass } from "../../app/class/actions";
+import { selectCurrentClass } from "../../app/class/selectors";
 import { Constants } from "../../data/constants";
 import { classDataDb } from "../../data/firebase";
 
 export const Dropdown = (props) => {
   const dispatch = useDispatch();
+  const classes = useSelector(selectClassList);
+  const currentClass = useSelector(selectCurrentClass);
+
+  useEffect(() => {
+
+  })
 
   const selectClass = (event) => {
     const cid = Array.from(event.target.children)
@@ -17,29 +26,27 @@ export const Dropdown = (props) => {
       .then((result) => dispatch(setCurrentClass(result.data())));
   };
 
-  return (
-    <DropdownWrapper action={props.action}>
+  return classes[0] ? (
+    <DropdownWrapper action={props.action} data-test="dropdown">
       <StyledSelect
         id="services"
         data-test="class"
         name="services"
         onChange={selectClass}
+        defaultValue={currentClass?.cid}
       >
-        {props.children}
+        {classes.map((item) => {
+          return <StyledOption
+            value={item.cid}
+            data-cid={item.cid}
+            classItem={item}
+            key={item.cid}
+            >{item.className}</StyledOption>
+        })}
       </StyledSelect>
     </DropdownWrapper>
-  );
-};
-
-export const Option = (props) => {
-  return (
-    <StyledOption
-      defaultValue={props.defaultValue}
-      data-cid={props.value.cid}
-      className={props.className}
-    >
-      {props.value.className}
-    </StyledOption>
+  ) : (
+    <></>
   );
 };
 

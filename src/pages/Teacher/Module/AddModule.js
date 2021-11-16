@@ -14,6 +14,7 @@ import firebase from "firebase";
 import Button from "../../../components/Template/Button";
 import { useHistory } from "react-router";
 import { setSelectedModule } from "../../../app/module/actions";
+import ModuleContainer from "../../../components/Template/ModuleContainer";
 
 const AddModule = () => {
   const dispatch = useDispatch();
@@ -25,7 +26,7 @@ const AddModule = () => {
   // This turns the modules in the modulesList to divs to be displayed
   // This should also include buttons or the ability to be clicked or something to be
   // able to select the module to be added and assigned to the class
-  const modulesCards = modulesList
+  const moduleCards = modulesList
     ?.filter((module) => !currentClass?.modules.includes(module.mid))
     .map((moduleToAdd) => (
       <ModuleCard
@@ -100,7 +101,7 @@ const AddModule = () => {
       <Header />
       <StyledBody>
         <StyledSectionTitle>Existing Modules</StyledSectionTitle>
-        <ExistingModules>{modulesCards}</ExistingModules>
+        <ModuleContainer moduleCards={moduleCards} />
         <StyledButtonContainer>
           <StyledDashboardButton
             onClick={handleCreateNewModule}

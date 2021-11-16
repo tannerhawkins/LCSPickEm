@@ -9,7 +9,7 @@ import { useHistory } from "react-router";
 import { Constants } from "../../../data/constants";
 import Button from "../../../components/Template/Button";
 import "react-step-progress-bar/styles.css";
-import { ProgressBar, Step } from "react-step-progress-bar";
+import ProgressBar from "../../../components/Student/ProgressBar";
 import homepageSplash from "../../../images/Homepage/homepage-splash-2.png";
 
 const ModuleSummary = () => {
@@ -35,10 +35,7 @@ const ModuleSummary = () => {
         "Walking Skeleton". Note: You CANNOT back out of a module once you
         begin!
       </StyledBody>
-      <StyledProgressBar
-        percent={75}
-        filledBackground="linear-gradient(to right, #fefb72, #f0bb31)"
-      />
+      <ProgressBar />
       <StyledStartButtonContainer>
         <StyledSubmitButton
           data-test="start"

@@ -1,12 +1,15 @@
-import React, { Suspense, lazy } from "react";
+import React, { Suspense, lazy, useEffect } from "react";
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import Main from "./layouts/Main"; // fallback for lazy pages
 import {
   selectIsSignedIn,
   selectIsTeacher,
   selectIsStudent,
+  selectUID,
 } from "./app/account/selectors";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { auth, userDataDb } from "./data/firebase";
+import { signIn } from "./app/account/actions";
 
 const { PUBLIC_URL } = process.env;
 
@@ -20,9 +23,17 @@ const TeacherRoutes = lazy(() => import("./routes/TeacherRoutes"));
 const StudentRoutes = lazy(() => import("./routes/StudentRoutes"));
 
 const App = () => {
+  const dispatch = useDispatch();
   const loginState = useSelector(selectIsSignedIn);
+  const uid = useSelector(selectUID);
   const isTeacher = useSelector(selectIsTeacher);
   const isStudent = useSelector(selectIsStudent);
+
+  useEffect(() => {
+    if(loginState) {
+      userDataDb.doc(uid).get().then(data => dispatch(signIn(data.data())))
+    }
+  })
 
   return (
     <BrowserRouter basename={PUBLIC_URL}>

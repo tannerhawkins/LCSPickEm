@@ -15,6 +15,7 @@ import { useHistory } from "react-router";
 import { modulesDb } from "../../data/firebase";
 import { setCurrentStep, setSelectedModule } from "../../app/module/actions";
 import StyledButton from "../../components/Template/Button";
+import ModuleContainer from "../../components/Template/ModuleContainer";
 
 const ModulesHomepage = () => {
   const history = useHistory();
@@ -60,21 +61,7 @@ const ModulesHomepage = () => {
           <BodyHeader>
             <TitleContainer>
               <StyledTitle>Dashboard</StyledTitle>
-              {/* Maps each class in classes to an option in the dropdown list and selects the one that matches the current selected class */}
-              {classes[0] && (
-                <Dropdown data-test="dropdown">
-                  {classes.map((item) => (
-                    <Option
-                      defaultValue={
-                        item.cid === currentClass?.cid ? "selected" : ""
-                      }
-                      value={item}
-                      classItem={item}
-                      key={item.cid}
-                    />
-                  ))}
-                </Dropdown>
-              )}
+              <Dropdown />
               <StyledAddClassButton
                 onClick={() => history.push(`/student/add-class`)}
                 data-test="add-class"
@@ -94,7 +81,7 @@ const ModulesHomepage = () => {
           {isInClass ? (
             <>
               <StyledSectionHeader>Assigned Modules</StyledSectionHeader>
-              <ModulesContainer>{assignedModuleCards}</ModulesContainer>
+              <ModuleContainer moduleCards={assignedModuleCards} />
               {/* <StyledSectionHeader>Completed Modules</StyledSectionHeader>
               <ModulesContainer>{completedModuleCards}</ModulesContainer> */}
             </>
@@ -122,14 +109,6 @@ const StyledAddClassButton = styled(StyledButton)`
   width: 130px;
   margin-left: 40px;
   background-color: ${Constants.COLOR.GREEN};
-`;
-
-const ModulesContainer = styled.div`
-  display: flex;
-  width: 100%;
-  flex-wrap: no-wrap;
-  overflow: auto;
-  height: 300px;
 `;
 
 const BodyHeader = styled.div`
