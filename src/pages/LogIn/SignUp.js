@@ -6,7 +6,7 @@ import { Constants } from "../../data/constants";
 import Button from "../../components/Template/Button";
 import { auth, userDataDb } from "../../data/firebase";
 import { useDispatch } from "react-redux";
-import { signIn } from "../../app/account/actions.js";
+import { setPasswordLength, signIn } from "../../app/account/actions.js";
 import { setCurrentClass } from "../../app/class/actions";
 import { useHistory } from "react-router";
 
@@ -76,6 +76,7 @@ const SignUp = () => {
                     accountType: data.accountType,
                   };
             dispatch(signIn(accountInfo));
+            dispatch(setPasswordLength(data.password.length));
             dispatch(setCurrentClass(null));
             userDataDb.doc(auth.currentUser.uid).set(accountInfo);
             history.push(`/${data.accountType}/home`);

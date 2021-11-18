@@ -14,6 +14,13 @@ export const signOut = () => {
   };
 };
 
+export const setPasswordLength = (length) => {
+  return {
+    type: "SET_PASSWORD_LENGTH",
+    payload: length,
+  };
+};
+
 export const updateClassList = (classList) => {
   return {
     type: "UPDATE_CLASS_LIST",
