@@ -7,9 +7,12 @@ import FeedbackIcon from "../../images/Icons/green feedback icon.png";
 import MessageIcon from "../../images/Icons/green message icon.png";
 import PlusIcon from "../../images/Icons/green plus icon.png";
 import LogoutIcon from "../../images/Icons/logout icon.png";
+import Logo from "../../images/white mtn.png";
+import { useHistory } from "react-router-dom";
 
 const Hamburger = () => {
   const [open, setOpen] = useState(false);
+  const history = useHistory();
 
   return (
     <StyledHamburgerContainer>
@@ -21,11 +24,16 @@ const Hamburger = () => {
             </StyledButton>
           </StyledButtonContainer>
         ) : (
-          <StyledButtonContainer>
-            <StyledButton onClick={() => setOpen(!open)} className="menu-hover">
-              &#9776;
-            </StyledButton>
-          </StyledButtonContainer>
+          <StyledMini>
+            <StyledLogoContainer>
+              <StyledLogo onClick={() => history.push("/home")} src={Logo} />
+            </StyledLogoContainer>
+            <StyledButtonContainer>
+              <StyledButton onClick={() => setOpen(!open)} className="menu-hover">
+                &#9776;
+              </StyledButton>
+            </StyledButtonContainer>
+          </StyledMini>
         )}
       </StyledNavContainer>
       <Suspense fallback={<></>}>
@@ -74,13 +82,31 @@ const StyledNavContainer = styled.div`
   background-color: ${Constants.COLOR.DARK_GREEN};
   display: flex;
   align-items: center;
+  justify-content: space-between;
+`;
+
+const StyledLogo = styled.img`
+  display: flex;
+  margin-left: 3%;
+  width: 130px;
+  :hover {
+    cursor: pointer;
+  }
+`;
+
+const StyledLogoContainer = styled.div`
+  display: flex;
+  align-items: center;
+  margin-right: 3%;
 `;
 
 const StyledButtonContainer = styled.div`
-  margin-left: 20px;
+  display: flex;
+  align-items: center;
 `;
 
 const StyledButton = styled.div`
+  display: flex;
   font-size: 30px;
   user-select: none;
 `;
@@ -115,5 +141,11 @@ const StyledMenu = styled.div`
   height: calc(100vh - ${Constants.HEADER_HEIGHT});
   transition: margin-left 0.4s linear;
   width: 100vw;
+`;
+
+const StyledMini = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: space-between;
 `;
 export default Hamburger;

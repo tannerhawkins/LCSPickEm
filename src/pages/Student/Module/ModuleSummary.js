@@ -72,6 +72,14 @@ const StyledBody = styled.div`
   height: 70vh;
   color: white;
   padding: 50px;
+  @media (max-width: 1024px) {
+    width: 70vw;
+    height: 70vh;
+  }
+  @media (max-width: 400px) {
+    width: 55vw;
+    height: 55vh;
+  }
 `;
 
 const StyledButtonContainer = styled.div`
@@ -98,19 +106,6 @@ const StyledStartButtonContainer = styled.div`
   justify-content: flex-end;
   margin: 3%;
   margin-top: 3%;
-`;
-
-const StyledProgressBar = styled(ProgressBar)`
-  box-shadow: 0 4% 4% rgba(0, 0, 0, 0.25);
-  color: white;
-  width: 20px;
-  height: 20px;
-  font-size: 12px;
-  background-color: rgba(211, 211, 211, 0.8);
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 `;
 
 export default ModuleSummary;
