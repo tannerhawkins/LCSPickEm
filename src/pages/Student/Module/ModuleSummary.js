@@ -35,7 +35,6 @@ const ModuleSummary = () => {
         "Walking Skeleton". Note: You CANNOT back out of a module once you
         begin!
       </StyledBody>
-      <ProgressBar />
       <StyledStartButtonContainer>
         <StyledSubmitButton
           data-test="start"
@@ -44,6 +43,7 @@ const ModuleSummary = () => {
           Start Module
         </StyledSubmitButton>
       </StyledStartButtonContainer>
+      <ProgressBar />
     </Body>
   );
 };
@@ -69,7 +69,7 @@ const StyledBody = styled.div`
   background-color: ${Constants.COLOR.DARK_GREEN};
   border-radius: 5px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  height: 70vh;
+  height: 20vh;
   color: white;
   padding: 50px;
 `;
@@ -100,6 +100,9 @@ const StyledStartButtonContainer = styled.div`
   margin-top: 3%;
 `;
 
+const StyledProgressDiv = styled.div`
+`;
+
 const StyledProgressBar = styled(ProgressBar)`
   box-shadow: 0 4% 4% rgba(0, 0, 0, 0.25);
   color: white;
@@ -110,6 +113,7 @@ const StyledProgressBar = styled(ProgressBar)`
   border-radius: 50%;
   display: flex;
   justify-content: center;
+  margin-top: 500px;
   align-items: center;
 `;
 
