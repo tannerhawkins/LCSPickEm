@@ -5,20 +5,142 @@ import styled from "styled-components";
 import Hamburger from "../components/Template/Hamburger";
 import Main from "../layouts/Main";
 import { Constants } from "../data/constants";
-import { useSelector } from "react-redux";
-import { selectUser } from "../app/account/selectors";
-import { auth } from "../data/firebase";
+import { useDispatch, useSelector } from "react-redux";
+import { selectEmail, selectUser } from "../app/account/selectors";
+import { auth, userDataDb } from "../data/firebase";
 import gearIcon from "../images/Icons/gear icon.png";
 import StyledButton from "../components/Template/Button";
 import { useHistory } from "react-router";
+import { setPasswordLength, signIn } from "../app/account/actions";
 
 const ModulesHomepage = () => {
   const user = useSelector(selectUser);
   const history = useHistory();
+  const dispatch = useDispatch();
+  const [errorMessage, setErrorMessage] = useState();
   const [inForm, setInForm] = useState(false);
-  const authUser = auth.currentUser;
 
-  const handleSubmit = () => {};
+  const handleSubmit = () => {
+    setErrorMessage("");
+
+    const data = Object.values(document.forms.profileForm).reduce(
+      (obj, field) => {
+        obj[field.name] = field.value;
+        return obj;
+      },
+      {}
+    );
+
+    if (data.name !== user.displayName) {
+      if (data.currPassword === "") {
+        setErrorMessage("Enter password to change display name");
+        return;
+      } else {
+        auth
+          .signInWithEmailAndPassword(user.email, data.currPassword)
+          .then(() => {
+            auth.currentUser
+              .updateProfile({ displayName: data.name })
+              .then(() => {})
+              .catch((response) => {
+                setErrorMessage(response.message);
+                error = true;
+                return;
+              });
+          })
+          .then(
+            userDataDb
+              .doc(auth.currentUser.uid)
+              .update({
+                displayName: data.name,
+              })
+              .then(
+                userDataDb
+                  .doc(auth.currentUser.uid)
+                  .get()
+                  .then((doc) => {
+                    dispatch(signIn(doc.data()));
+                  })
+              )
+          )
+          .catch((response) => {
+            setErrorMessage(response.message);
+            return;
+          });
+      }
+    }
+
+    if (data.email !== user.email) {
+      if (data.currPassword === "") {
+        setErrorMessage("Enter password to change email");
+        return;
+      } else {
+        auth
+          .signInWithEmailAndPassword(user.email, data.currPassword)
+          .then(() => {
+            auth.currentUser
+              .updateEmail(data.email)
+              .then(() => {
+                userDataDb
+                  .doc(auth.currentUser.uid)
+                  .update({
+                    email: data.email,
+                  })
+                  .then(() =>
+                    userDataDb
+                      .doc(auth.currentUser.uid)
+                      .get()
+                      .then((doc) => dispatch(signIn(doc.data())))
+                  );
+              })
+              .catch((response) => {
+                setErrorMessage(response.message);
+                error = true;
+                return;
+              });
+          })
+          .catch((response) => {
+            setErrorMessage(response.message);
+            return;
+          });
+      }
+    }
+
+    if (data.currPassword !== "" && data.newPassword !== "") {
+      if (data.newPasswordConfirm !== data.newPassword) {
+        setErrorMessage("New password must match");
+        return;
+      } else {
+        auth
+          .signInWithEmailAndPassword(user.email, data.currPassword)
+          .then(() => {
+            if (data.currPassword === data.newPassword) {
+              setErrorMessage(
+                "New password must be different than old password"
+              );
+              return;
+            } else {
+              auth.currentUser
+                .updatePassword(data.newPassword)
+                .then(() => {
+                  dispatch(setPasswordLength(data.newPassword.length));
+                })
+                .catch((response) => {
+                  // sets error message if something goes wrong
+                  setErrorMessage(response.message);
+                  return;
+                });
+            }
+          })
+          .catch((response) => {
+            // sets error message if something goes wrong
+            setErrorMessage(response.message);
+            return;
+          });
+      }
+    }
+    setInForm(false);
+  };
 
   return (
     <Main title={"Dashboard"} description={"Dashboard"}>
@@ -34,12 +156,18 @@ const ModulesHomepage = () => {
           </BodyHeader>
           <ProfileCard>
             <form id="profileForm">
-              <StyledIcon src={gearIcon} onClick={() => setInForm(!inForm)} />
+              <StyledIcon
+                src={gearIcon}
+                onClick={() => {
+                  setInForm(!inForm);
+                  setErrorMessage("");
+                }}
+              />
               <StyledSectionHeader>Display Name</StyledSectionHeader>
               {inForm ? (
                 <StyledInput
                   name="name"
-                  deafultValue={user.displayName}
+                  defaultValue={user.displayName}
                 ></StyledInput>
               ) : (
                 <UserData>{user.displayName}</UserData>
@@ -71,6 +199,7 @@ const ModulesHomepage = () => {
                   <UserData>{"*".repeat(user.passwordLength)}</UserData>
                 </>
               )}
+              <StyledError>{errorMessage}</StyledError>
               {inForm && (
                 <StyledSubmitButton
                   style={{ backgroundColor: `${Constants.COLOR.LIGHT_GREEN}` }}
@@ -104,6 +233,10 @@ const StyledIcon = styled.img`
     filter: brightness(110%);
     cursor: pointer;
   }
+`;
+
+const StyledError = styled.p`
+  color: red;
 `;
 
 const StyledInput = styled.input`

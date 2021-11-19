@@ -29,7 +29,10 @@ const Hamburger = () => {
               <StyledLogo onClick={() => history.push("/home")} src={Logo} />
             </StyledLogoContainer>
             <StyledButtonContainer>
-              <StyledButton onClick={() => setOpen(!open)} className="menu-hover">
+              <StyledButton
+                onClick={() => setOpen(!open)}
+                className="menu-hover"
+              >
                 &#9776;
               </StyledButton>
             </StyledButtonContainer>
