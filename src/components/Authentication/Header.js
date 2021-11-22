@@ -76,6 +76,10 @@ const StyledHelpButton = styled(StyledButton)`
   margin-right: 10px;
   box-shadow: none;
   height: 10px;
+  &:hover {
+    filter: brightness(100%);
+    cursor: pointer;
+  }
 `;
 
 export default Header;
