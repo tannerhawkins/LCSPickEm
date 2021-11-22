@@ -6,9 +6,9 @@ import Button from "../../Template/Button";
 import Popup from "../../Template/Popup";
 import { selectSteps } from "../../../app/module/selectors";
 import { useHistory } from "react-router";
-import TextIcon from "../../../images/Icons/text icon.png"
-import QuizIcon from "../../../images/Icons/quiz icon.png"
-import VideoIcon from "../../../images/Icons/video icon.png"
+import TextIcon from "../../../images/Icons/text icon.png";
+import QuizIcon from "../../../images/Icons/quiz icon.png";
+import VideoIcon from "../../../images/Icons/video icon.png";
 
 const AddStepPopup = ({ className, onClose, style }) => {
   const history = useHistory();
@@ -23,15 +23,15 @@ const AddStepPopup = ({ className, onClose, style }) => {
       <StyledTitle>Select Step to Add</StyledTitle>
       <StepButtonsContainer>
         <StepButton onClick={() => handleClick("text")} data-test="add-text">
-          <StyledIcon src={TextIcon}/>
+          <StyledIcon src={TextIcon} />
           Text
         </StepButton>
         <StepButton onClick={() => handleClick("video")} data-test="add-video">
-          <StyledIcon src={VideoIcon}/>
+          <StyledIcon src={VideoIcon} />
           Video
         </StepButton>
         <StepButton onClick={() => handleClick("quiz")} data-test="add-quiz">
-          <StyledIcon src={QuizIcon}/>
+          <StyledIcon src={QuizIcon} />
           Quiz
         </StepButton>
       </StepButtonsContainer>
@@ -39,8 +39,7 @@ const AddStepPopup = ({ className, onClose, style }) => {
   );
 };
 
-const StyledPopup = styled(Popup)`
-`;
+const StyledPopup = styled(Popup)``;
 
 const StyledTitle = styled.p`
   text-align: center;

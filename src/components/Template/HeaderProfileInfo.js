@@ -1,5 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import { useHistory } from "react-router";
 import styled from "styled-components";
 import {
   selectAccountType,
@@ -12,11 +13,14 @@ import ProfileImage from "./ProfileImage";
 const HeaderProfileInfo = ({ className }) => {
   const displayName = useSelector(selectDisplayName);
   const accountType = useSelector(selectAccountType);
+  const history = useHistory();
 
   return (
-    <StyledProfileInfo className={className}>
+    <StyledProfileInfo
+      className={className}
+      onClick={() => history.push("/profile")}
+    >
       <StyledProfileImage />
-      <StyledDownArrow src={DownArrowIcon} />
       <StyledInfoContainer>
         <StyledDisplayName data-test="display-name">
           {displayName}
@@ -33,10 +37,10 @@ const StyledProfileInfo = styled.div`
   height: 100%;
   display: flex;
   align-items: center;
-`;
 
-const StyledDownArrow = styled.img`
-  height: 40%;
+  :hover {
+    cursor: pointer;
+  }
 `;
 
 const StyledProfileImage = styled(ProfileImage)`
@@ -47,7 +51,8 @@ const StyledInfoContainer = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: column;
-  padding-top: 10px;
+  padding-top: 6px;
+  padding-left: 15px;
 
   @media (max-width: 800px) {
     display: none;

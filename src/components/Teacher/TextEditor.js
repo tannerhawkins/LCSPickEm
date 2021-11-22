@@ -15,10 +15,28 @@ const TextEditor = (props) => {
 
   const config = {
     toolbar: {
-      items: [ 'heading', '|', 'bold', 'italic', 'link', 'numberedList', 'bulletedList', '|', 'indent', 'outdent', '|',  'blockQuote', 'insertTable', 'mediaEmbed', '|', 'undo', 'redo' ],
-  
-      shouldNotGroupWhenFull: true
-    }
+      items: [
+        "heading",
+        "|",
+        "bold",
+        "italic",
+        "link",
+        "numberedList",
+        "bulletedList",
+        "|",
+        "indent",
+        "outdent",
+        "|",
+        "blockQuote",
+        "insertTable",
+        "mediaEmbed",
+        "|",
+        "undo",
+        "redo",
+      ],
+
+      shouldNotGroupWhenFull: true,
+    },
   };
 
   return (
@@ -44,7 +62,9 @@ const TextEditor = (props) => {
         <StyledButton type="submit" onClick={handleSubmit} data-test="submit">
           Submit
         </StyledButton>
-        <StyledButton type="submit" onClick={props.onCancel}>Cancel</StyledButton>
+        <StyledButton type="submit" onClick={props.onCancel}>
+          Cancel
+        </StyledButton>
       </ButtonContainer>
     </form>
   );

@@ -26,6 +26,12 @@ export default function accountReducer(state = initialState, action) {
         classList: action.payload,
       };
 
+    case "SET_PASSWORD_LENGTH":
+      return {
+        ...state,
+        passwordLength: action.payload,
+      };
+
     case "CLEAR_STATE":
       return {
         initialState,

@@ -19,6 +19,7 @@ const { PUBLIC_URL } = process.env;
 const SignIn = lazy(() => import("./pages/LogIn/SignIn"));
 const SignUp = lazy(() => import("./pages/LogIn/SignUp"));
 const Index = lazy(() => import("./pages/Index"));
+const Profile = lazy(() => import("./pages/Profile"));
 const TeacherRoutes = lazy(() => import("./routes/TeacherRoutes"));
 const StudentRoutes = lazy(() => import("./routes/StudentRoutes"));
 
@@ -30,10 +31,13 @@ const App = () => {
   const isStudent = useSelector(selectIsStudent);
 
   useEffect(() => {
-    if(loginState) {
-      userDataDb.doc(uid).get().then(data => dispatch(signIn(data.data())))
+    if (loginState) {
+      userDataDb
+        .doc(uid)
+        .get()
+        .then((data) => dispatch(signIn(data.data())));
     }
-  })
+  });
 
   return (
     <BrowserRouter basename={PUBLIC_URL}>
@@ -42,6 +46,7 @@ const App = () => {
           <Route exact path="/home" component={Index} />
           {!loginState && <Route path="/signin" component={SignIn} />}
           {!loginState && <Route path="/signup" component={SignUp} />}
+          {loginState && <Route path="/profile" component={Profile} />}
           {isTeacher && <Route path="/teacher" component={TeacherRoutes} />}
           {isStudent && <Route path="/student" component={StudentRoutes} />}
           {isTeacher && <Redirect to="/teacher" />}

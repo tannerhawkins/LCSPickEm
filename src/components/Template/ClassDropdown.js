@@ -12,9 +12,7 @@ export const Dropdown = (props) => {
   const classes = useSelector(selectClassList);
   const currentClass = useSelector(selectCurrentClass);
 
-  useEffect(() => {
-
-  })
+  useEffect(() => {});
 
   const selectClass = (event) => {
     const cid = Array.from(event.target.children)
@@ -36,12 +34,16 @@ export const Dropdown = (props) => {
         defaultValue={currentClass?.cid}
       >
         {classes.map((item) => {
-          return <StyledOption
-            value={item.cid}
-            data-cid={item.cid}
-            classItem={item}
-            key={item.cid}
-            >{item.className}</StyledOption>
+          return (
+            <StyledOption
+              value={item.cid}
+              data-cid={item.cid}
+              classItem={item}
+              key={item.cid}
+            >
+              {item.className}
+            </StyledOption>
+          );
         })}
       </StyledSelect>
     </DropdownWrapper>

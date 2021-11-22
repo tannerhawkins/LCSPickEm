@@ -6,7 +6,7 @@ import { Constants } from "../../data/constants";
 import Button from "../../components/Template/Button";
 import { useDispatch } from "react-redux";
 import { auth, classDataDb, userDataDb } from "../../data/firebase";
-import { signIn } from "../../app/account/actions.js";
+import { setPasswordLength, signIn } from "../../app/account/actions.js";
 import { setCurrentClass } from "../../app/class/actions";
 import { useHistory } from "react-router";
 
@@ -47,6 +47,7 @@ const SignIn = () => {
           .get()
           .then((doc) => {
             dispatch(signIn(doc.data()));
+            dispatch(setPasswordLength(data.password.length));
             if (doc.data().classList.length !== 0) {
               classDataDb
                 .doc(doc.data().classList[0].cid)

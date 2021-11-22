@@ -49,8 +49,7 @@ const StyledPlusIcon = styled.img`
   margin-top: 50px;
 `;
 
-const StyledText = styled.p`
-`;
+const StyledText = styled.p``;
 
 const Bar = styled.div`
   align-self: flex-end;
