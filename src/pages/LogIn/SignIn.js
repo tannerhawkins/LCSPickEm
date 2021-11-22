@@ -93,6 +93,12 @@ const SignIn = () => {
           <StyledForgotButton>Did you forget your password?</StyledForgotButton>
           <StyledError>{errorMessage}</StyledError>
           <StyledButtonContainer>
+            <StyledSignUpButton
+              data-test="sign-up"
+              onClick={() => history.push(`/signup`)}
+            >
+              Don't have an account? Don’t worry! Sign up here
+            </StyledSignUpButton>
             <StyledSubmitButton
               type="submit"
               data-test="submit"
@@ -100,12 +106,6 @@ const SignIn = () => {
             >
               SIGN-IN
             </StyledSubmitButton>
-            <StyledSignUpButton
-              data-test="sign-up"
-              onClick={() => history.push(`/signup`)}
-            >
-              Don't have an account? Don’t worry! Sign up here
-            </StyledSignUpButton>
           </StyledButtonContainer>
         </StyledForm>
         {/* <StyledOrContainer>
@@ -123,9 +123,8 @@ const MainContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-around;
   padding-top: 50px;
-  height: calc(100vh - ${Constants.HEADER_HEIGHT});
+  height: calc(100vh - ${Constants.HEADER_HEIGHT})vh;
 `;
 
 const StyledButtonContainer = styled.div`
@@ -138,6 +137,11 @@ const StyledButtonContainer = styled.div`
 const StyledTitle = styled.header`
   font-weight: bold;
   font-size: 64px;
+  margin-bottom: 3%;
+  @media (max-width: 1024px) {
+    margin-top: 17%;
+    margin-bottom: 15%;
+  }
 `;
 
 const StyledForm = styled.form`
@@ -154,6 +158,9 @@ const StyledInput = styled.input`
   height: 60px;
   font-size: 30px;
   outline: none;
+  @media (max-width: 1024px) {
+    height: 50px;
+  }
 `;
 
 const StyledEmailInput = styled(StyledInput)`
@@ -176,7 +183,6 @@ const StyledSignUpButton = styled.p`
   text-align: right;
   font-size: 18px;
   width: 55%;
-  margin-bottom: 30px;
   color: red;
 
   &:hover {
