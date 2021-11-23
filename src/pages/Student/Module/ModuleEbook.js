@@ -53,13 +53,13 @@ const ModuleEbook = () => {
       width: "120vh",
       maxWidth: "100%",
       maxHeight: "700px",
-      height: "50vw"
+      height: "50vw",
     },
   };
 
   return (
     <Body>
-          <StyledTitle>{title}</StyledTitle>
+      <StyledTitle>{title}</StyledTitle>
       <StyledBody>
         <ReactReader
           location={location}
@@ -73,9 +73,9 @@ const ModuleEbook = () => {
                 background: "yellow",
               },
             });
-            rendition.book.locations.generate()
-            setPages(rendition.book.pageList.lastPage - 1)
-            setTitle(rendition.book.packaging.metadata.title)
+            rendition.book.locations.generate();
+            setPages(rendition.book.pageList.lastPage - 1);
+            setTitle(rendition.book.packaging.metadata.title);
             renditionRef.current = rendition;
             setSelections([]);
           }}
@@ -92,7 +92,7 @@ const ModuleEbook = () => {
         <StyledSubmitButton
           data-test="start"
           onClick={() => dispatch(setCurrentStep(currentStep + 1))}
-          style={{display: finished ? "flex" : "none"}}
+          style={{ display: finished ? "flex" : "none" }}
         >
           Next Step
         </StyledSubmitButton>
