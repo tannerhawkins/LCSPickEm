@@ -9,6 +9,7 @@ import ModuleSummary from "./ModuleSummary";
 import ModuleText from "./ModuleText";
 import ModuleQuiz from "./ModuleQuiz";
 import ModuleVideo from "./ModuleVideo";
+import ModuleEbook from "./ModuleEbook";
 import { useHistory } from "react-router";
 
 const Module = () => {

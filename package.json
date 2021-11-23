@@ -39,10 +39,12 @@
     "react-burger-menu": "^3.0.3",
     "react-dom": "^17.0.1",
     "react-dropdown": "^1.9.2",
+    "react-epubjs": "^0.0.18",
     "react-firebase-hooks": "^3.0.4",
     "react-ga": "^3.3.0",
     "react-helmet-async": "^1.0.7",
     "react-markdown": "^5.0.3",
+    "react-reader": "^0.20.4",
     "react-redux": "^7.2.4",
     "react-router-dom": "^5.2.0",
     "react-router-hash-link": "^2.4.3",
@@ -94,6 +96,10 @@
   "nyc": {
     "report-dir": "cypress-coverage",
     "excludeAfterRemap": false,
-    "exclude": ["src/serviceWorker.js", "src/test", "src/setupTests.js"]
+    "exclude": [
+      "src/serviceWorker.js",
+      "src/test",
+      "src/setupTests.js"
+    ]
   }
 }

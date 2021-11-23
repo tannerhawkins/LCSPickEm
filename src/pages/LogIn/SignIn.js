@@ -124,7 +124,7 @@ const MainContainer = styled.div`
   flex-direction: column;
   align-items: center;
   padding-top: 50px;
-  height: calc(100vh - ${Constants.HEADER_HEIGHT})vh;
+  height: calc(100vh - ${Constants.HEADER_HEIGHT}) vh;
 `;
 
 const StyledButtonContainer = styled.div`
