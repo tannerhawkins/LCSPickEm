@@ -21,15 +21,19 @@ const Module = () => {
 
   const StepPage = () => {
     const stepType = currentStepData.type;
-    if (stepType === "text") {
-      return <ModuleText />;
-    } else if (stepType === "video") {
-      return <ModuleVideo />;
-    } else if (stepType === "quiz") {
-      return <ModuleQuiz />;
+    switch (stepType) {
+      case "text":
+        return <ModuleText />;
+      case "video":
+        return <ModuleVideo />;
+      case "quiz":
+        return <ModuleQuiz />;
+      case "ebook":
+        return <ModuleEbook />;
+      default:
+        history.push("/student/home");
+        return;
     }
-    history.push("/student/home");
-    return;
   };
 
   return (
