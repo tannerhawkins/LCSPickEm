@@ -6,10 +6,13 @@ import {
   selectIsTeacher,
   selectIsStudent,
   selectUID,
+  selectClassList,
 } from "./app/account/selectors";
 import { useDispatch, useSelector } from "react-redux";
 import { auth, userDataDb } from "./data/firebase";
 import { signIn } from "./app/account/actions";
+import { selectCurrentClass } from "./app/class/selectors";
+import { setCurrentClass } from "./app/class/actions";
 
 const { PUBLIC_URL } = process.env;
 
@@ -29,6 +32,8 @@ const App = () => {
   const uid = useSelector(selectUID);
   const isTeacher = useSelector(selectIsTeacher);
   const isStudent = useSelector(selectIsStudent);
+  const currentClass = useSelector(selectCurrentClass);
+  const classList = useSelector(selectClassList);
 
   useEffect(() => {
     if (loginState) {
@@ -36,6 +41,11 @@ const App = () => {
         .doc(uid)
         .get()
         .then((data) => dispatch(signIn(data.data())));
+    }
+    if (loginState && !currentClass) {
+      if (classList[0]) {
+        dispatch(setCurrentClass(classList[0]))
+      }
     }
   });
 
