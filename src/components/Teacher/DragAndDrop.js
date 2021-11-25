@@ -1,18 +1,25 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router";
 import styled from "styled-components";
-import { setSteps } from "../../app/module/actions";
+import { setSelectedStep, setSteps } from "../../app/module/actions";
 import { selectSteps } from "../../app/module/selectors";
 import Box from "./Box";
 
 const DragAndDrop = (props) => {
   const dispatch = useDispatch();
+  const history = useHistory();
   const [dragId, setDragId] = useState();
   const steps = useSelector(selectSteps);
 
   const handleDrag = (ev) => {
     setDragId(ev.currentTarget.id);
   };
+
+  const handleClick = (step) => {
+    dispatch(setSelectedStep(step))
+    history.push(`/teacher/create-module/edit-${step.type}`)
+  }
 
   const handleDrop = (ev) => {
     const dragBox = steps.find((box) => box.id === parseInt(dragId));
@@ -48,6 +55,7 @@ const DragAndDrop = (props) => {
             type={box.type}
             handleDrag={handleDrag}
             handleDrop={handleDrop}
+            onClick={() => handleClick(box)}
             data-test="box"
           />
         ))}

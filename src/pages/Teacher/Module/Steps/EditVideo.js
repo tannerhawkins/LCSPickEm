@@ -4,16 +4,17 @@ import SideBar from "../../../../components/Template/SideBar";
 import Header from "../../../../components/Teacher/Header";
 import styled from "styled-components";
 import { Constants } from "../../../../data/constants";
-import { addStep } from "../../../../app/module/actions";
+import { addStep, updateStep } from "../../../../app/module/actions";
 import Button from "../../../../components/Template/Button";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
-import { selectNextID, selectSteps } from "../../../../app/module/selectors";
+import { selectNextID, selectSteps, selectSelectedStep } from "../../../../app/module/selectors";
 
 const EditVideo = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const steps = useSelector(selectSteps);
+  const step = useSelector(selectSelectedStep);
   const id = useSelector(selectNextID);
   const [error, setError] = useState("");
 
@@ -28,7 +29,14 @@ const EditVideo = () => {
         return;
       }
       const newUrl = `//www.youtube.com/embed/${match[2]}?rel=0`;
-      dispatch(
+      if (step !== undefined) {
+        dispatch(updateStep({
+          type: "video",
+          order: step.order,
+          id: step.id,
+          data: newUrl,
+        }))
+      } else {dispatch(
         addStep({
           type: "video",
           order: steps.length,
@@ -36,6 +44,7 @@ const EditVideo = () => {
           data: newUrl,
         })
       );
+    }
       history.push("/teacher/create-module");
     } else {
       setError("Please enter valid Youtube URL");
@@ -48,7 +57,7 @@ const EditVideo = () => {
       <Header />
       <StyledBody>
         <StyledSectionTitle>Edit Video</StyledSectionTitle>
-        <input id="url" type="url" data-test="video" />
+        <input id="url" type="url" data-test="video" defaultValue={step?.data}/>
         <StyledError>{error}</StyledError>
         <StyledButton type="submit" onClick={onSubmit} data-test="submit">
           Submit

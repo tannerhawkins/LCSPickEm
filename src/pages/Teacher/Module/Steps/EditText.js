@@ -6,17 +6,26 @@ import styled from "styled-components";
 import { Constants } from "../../../../data/constants";
 import TextEditor from "../../../../components/Teacher/TextEditor";
 import { useDispatch, useSelector } from "react-redux";
-import { addStep } from "../../../../app/module/actions";
+import { addStep, updateStep } from "../../../../app/module/actions";
 import { useHistory } from "react-router";
-import { selectNextID, selectSteps } from "../../../../app/module/selectors";
+import { selectNextID, selectSelectedModule, selectSelectedStep, selectSteps } from "../../../../app/module/selectors";
 
 const EditText = () => {
   const dispatch = useDispatch();
+  const step = useSelector(selectSelectedStep);
   const history = useHistory();
   const steps = useSelector(selectSteps);
   const id = useSelector(selectNextID);
 
   const onSubmit = (props) => {
+    if (step !== undefined) {
+      dispatch(updateStep({
+        type: "text",
+        order: step.order,
+        id: step.id,
+        data: props.body,
+      }))
+    } else {
     dispatch(
       addStep({
         type: "text",
@@ -24,7 +33,7 @@ const EditText = () => {
         id: id,
         data: props.body,
       })
-    );
+    )}
     history.push(`/teacher/create-module`);
   };
 
@@ -37,6 +46,7 @@ const EditText = () => {
         <StyledTextEditor
           onSubmit={onSubmit}
           onCancel={() => history.push(`/teacher/create-module`)}
+          data={step?.data}
         />
       </StyledBody>
     </Main>
