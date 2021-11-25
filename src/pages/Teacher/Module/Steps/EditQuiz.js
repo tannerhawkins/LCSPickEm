@@ -16,7 +16,7 @@ const EditQuiz = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const step = useSelector(selectSelectedStep);
-  const [questions, setQuestions] = useState(step.data ? step.data.questions : []);
+  const [questions, setQuestions] = useState(step?.data ? step.data.questions : []);
   const [showEditQuestion, setShowEditQuestion] = useState(false);
   const id = useSelector(selectNextID);
   const steps = useSelector(selectSteps);
