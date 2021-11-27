@@ -36,10 +36,6 @@ export const modulesDb = Constants.IN_CYPRESS_TEST
 export const realModulesDb = db.collection("modules");
 export const realClassDb = db.collection("classData");
 export const realUserDataDb = db.collection("userData");
-
-export const getAllModules = async () => {
-  const modules = await modulesDb.get();
-  return modules.docs.map((doc) => doc.data());
-};
+export const apaModulesDb = db.collection("apaModules");
 
 export { auth, provider, app };

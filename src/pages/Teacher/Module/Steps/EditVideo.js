@@ -8,7 +8,11 @@ import { addStep, updateStep } from "../../../../app/module/actions";
 import Button from "../../../../components/Template/Button";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
-import { selectNextID, selectSteps, selectSelectedStep } from "../../../../app/module/selectors";
+import {
+  selectNextID,
+  selectSteps,
+  selectSelectedStep,
+} from "../../../../app/module/selectors";
 
 const EditVideo = () => {
   const dispatch = useDispatch();
@@ -30,21 +34,24 @@ const EditVideo = () => {
       }
       const newUrl = `//www.youtube.com/embed/${match[2]}?rel=0`;
       if (step !== undefined) {
-        dispatch(updateStep({
-          type: "video",
-          order: step.order,
-          id: step.id,
-          data: newUrl,
-        }))
-      } else {dispatch(
-        addStep({
-          type: "video",
-          order: steps.length,
-          id: id,
-          data: newUrl,
-        })
-      );
-    }
+        dispatch(
+          updateStep({
+            type: "video",
+            order: step.order,
+            id: step.id,
+            data: newUrl,
+          })
+        );
+      } else {
+        dispatch(
+          addStep({
+            type: "video",
+            order: steps.length,
+            id: id,
+            data: newUrl,
+          })
+        );
+      }
       history.push("/teacher/create-module");
     } else {
       setError("Please enter valid Youtube URL");
@@ -57,7 +64,12 @@ const EditVideo = () => {
       <Header />
       <StyledBody>
         <StyledSectionTitle>Edit Video</StyledSectionTitle>
-        <input id="url" type="url" data-test="video" defaultValue={step?.data}/>
+        <input
+          id="url"
+          type="url"
+          data-test="video"
+          defaultValue={step?.data}
+        />
         <StyledError>{error}</StyledError>
         <StyledButton type="submit" onClick={onSubmit} data-test="submit">
           Submit

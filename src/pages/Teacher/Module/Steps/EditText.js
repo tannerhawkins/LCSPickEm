@@ -8,7 +8,12 @@ import TextEditor from "../../../../components/Teacher/TextEditor";
 import { useDispatch, useSelector } from "react-redux";
 import { addStep, updateStep } from "../../../../app/module/actions";
 import { useHistory } from "react-router";
-import { selectNextID, selectSelectedModule, selectSelectedStep, selectSteps } from "../../../../app/module/selectors";
+import {
+  selectNextID,
+  selectSelectedModule,
+  selectSelectedStep,
+  selectSteps,
+} from "../../../../app/module/selectors";
 
 const EditText = () => {
   const dispatch = useDispatch();
@@ -19,21 +24,24 @@ const EditText = () => {
 
   const onSubmit = (props) => {
     if (step !== undefined) {
-      dispatch(updateStep({
-        type: "text",
-        order: step.order,
-        id: step.id,
-        data: props.body,
-      }))
+      dispatch(
+        updateStep({
+          type: "text",
+          order: step.order,
+          id: step.id,
+          data: props.body,
+        })
+      );
     } else {
-    dispatch(
-      addStep({
-        type: "text",
-        order: steps.length,
-        id: id,
-        data: props.body,
-      })
-    )}
+      dispatch(
+        addStep({
+          type: "text",
+          order: steps.length,
+          id: id,
+          data: props.body,
+        })
+      );
+    }
     history.push(`/teacher/create-module`);
   };
 

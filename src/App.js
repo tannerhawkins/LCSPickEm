@@ -7,9 +7,10 @@ import {
   selectIsStudent,
   selectUID,
   selectClassList,
+  selectIsAdmin,
 } from "./app/account/selectors";
 import { useDispatch, useSelector } from "react-redux";
-import { auth, userDataDb } from "./data/firebase";
+import { auth, classDataDb, userDataDb } from "./data/firebase";
 import { signIn } from "./app/account/actions";
 import { selectCurrentClass } from "./app/class/selectors";
 import { setCurrentClass } from "./app/class/actions";
@@ -25,6 +26,7 @@ const Index = lazy(() => import("./pages/Index"));
 const Profile = lazy(() => import("./pages/Profile"));
 const TeacherRoutes = lazy(() => import("./routes/TeacherRoutes"));
 const StudentRoutes = lazy(() => import("./routes/StudentRoutes"));
+const AdminRoutes = lazy(() => import("./routes/AdminRoutes"));
 
 const App = () => {
   const dispatch = useDispatch();
@@ -32,6 +34,7 @@ const App = () => {
   const uid = useSelector(selectUID);
   const isTeacher = useSelector(selectIsTeacher);
   const isStudent = useSelector(selectIsStudent);
+  const isAdmin = useSelector(selectIsAdmin);
   const currentClass = useSelector(selectCurrentClass);
   const classList = useSelector(selectClassList);
 
@@ -44,10 +47,15 @@ const App = () => {
     }
     if (loginState && !currentClass) {
       if (classList[0]) {
-        dispatch(setCurrentClass(classList[0]))
+        dispatch(setCurrentClass(classList[0]));
       }
+    } else if (loginState) {
+      classDataDb
+        .doc(currentClass?.cid)
+        .get()
+        .then((doc) => dispatch(setCurrentClass(doc.data())));
     }
-  });
+  }, []);
 
   return (
     <BrowserRouter basename={PUBLIC_URL}>
@@ -59,8 +67,10 @@ const App = () => {
           {loginState && <Route path="/profile" component={Profile} />}
           {isTeacher && <Route path="/teacher" component={TeacherRoutes} />}
           {isStudent && <Route path="/student" component={StudentRoutes} />}
+          {isAdmin && <Route path="/admin" component={AdminRoutes} />}
           {isTeacher && <Redirect to="/teacher" />}
-          {isTeacher && <Redirect to="/student" />}
+          {isStudent && <Redirect to="/student" />}
+          {isAdmin && <Redirect to="/admin" />}
           <Redirect to="/home" />
         </Switch>
         <Route exact path="/">

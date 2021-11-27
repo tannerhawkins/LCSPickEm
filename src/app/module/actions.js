@@ -12,9 +12,23 @@ export const setSelectedModule = (moduleToAdd) => {
   };
 };
 
+export const setSelectedStep = (stepToAdd) => {
+  return {
+    type: "SET_SELECTED_STEP",
+    payload: stepToAdd,
+  };
+};
+
 export const addStep = (step) => {
   return {
     type: "ADD_STEP",
+    payload: step,
+  };
+};
+
+export const updateStep = (step) => {
+  return {
+    type: "UPDATE_STEP",
     payload: step,
   };
 };

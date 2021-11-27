@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Constants } from "../../data/constants";
 
-const Box = ({ id, type, handleDrag, handleDrop }) => {
+const Box = ({ id, type, handleDrag, handleDrop, onClick }) => {
   return (
     <StyledBox
       draggable={true}
@@ -10,6 +10,7 @@ const Box = ({ id, type, handleDrag, handleDrop }) => {
       onDragOver={(ev) => ev.preventDefault()}
       onDragStart={handleDrag}
       onDrop={handleDrop}
+      onClick={onClick}
     >
       {type}
     </StyledBox>

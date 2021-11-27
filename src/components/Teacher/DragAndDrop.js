@@ -17,9 +17,9 @@ const DragAndDrop = (props) => {
   };
 
   const handleClick = (step) => {
-    dispatch(setSelectedStep(step))
-    history.push(`/teacher/create-module/edit-${step.type}`)
-  }
+    dispatch(setSelectedStep(step));
+    history.push(`/teacher/create-module/edit-${step.type}`);
+  };
 
   const handleDrop = (ev) => {
     const dragBox = steps.find((box) => box.id === parseInt(dragId));

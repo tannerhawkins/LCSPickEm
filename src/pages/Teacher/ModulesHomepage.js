@@ -6,21 +6,38 @@ import Hamburger from "../../components/Template/Hamburger";
 import Main from "../../layouts/Main";
 import NewCard from "../../components/Teacher/NewCard";
 import { Constants } from "../../data/constants";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { selectCurrentClass } from "../../app/class/selectors";
 import { selectClassList } from "../../app/account/selectors";
 import Dropdown, { Option } from "../../components/Template/ClassDropdown";
 import { useHistory } from "react-router";
 import ModuleCard from "../../components/Template/ModuleCard";
 import ModuleContainer from "../../components/Template/ModuleContainer";
+import { setSelectedModule } from "../../app/module/actions";
+import { modulesDb } from "../../data/firebase";
 
 const ModulesHomepage = () => {
   const history = useHistory();
+  const dispatch = useDispatch();
   const currentClass = useSelector(selectCurrentClass);
   const classes = useSelector(selectClassList);
   const assignedModules = currentClass?.modules;
+  const moduleOnClick = (module) => {
+    modulesDb
+      .doc(module)
+      .get()
+      .then((doc) => {
+        dispatch(setSelectedModule(doc.data()));
+        history.push("/teacher/create-module");
+      });
+  };
   const moduleCards = assignedModules?.map((currModule) => (
-    <ModuleCard module={currModule} key={currModule} data-test="module-card" />
+    <ModuleCard
+      module={currModule}
+      key={currModule}
+      data-test="module-card"
+      onClick={() => moduleOnClick(currModule)}
+    />
   ));
 
   return (

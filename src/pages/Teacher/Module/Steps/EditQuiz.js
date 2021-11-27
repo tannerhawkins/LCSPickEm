@@ -10,13 +10,19 @@ import QuestionCard from "../../../../components/Template/QuestionCard";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
 import { addStep, updateStep } from "../../../../app/module/actions";
-import { selectNextID, selectSelectedStep, selectSteps } from "../../../../app/module/selectors";
+import {
+  selectNextID,
+  selectSelectedStep,
+  selectSteps,
+} from "../../../../app/module/selectors";
 
 const EditQuiz = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const step = useSelector(selectSelectedStep);
-  const [questions, setQuestions] = useState(step?.data ? step.data.questions : []);
+  const [questions, setQuestions] = useState(
+    step?.data ? step.data.questions : []
+  );
   const [showEditQuestion, setShowEditQuestion] = useState(false);
   const id = useSelector(selectNextID);
   const steps = useSelector(selectSteps);
@@ -28,25 +34,27 @@ const EditQuiz = () => {
 
   const onSubmit = () => {
     if (step !== undefined) {
-      dispatch(updateStep({
-        type: "quiz",
-        order: step.order,
-        id: step.id,
-        data: {
-          questions: questions,
-        },
-      }))
+      dispatch(
+        updateStep({
+          type: "quiz",
+          order: step.order,
+          id: step.id,
+          data: {
+            questions: questions,
+          },
+        })
+      );
     } else {
-    dispatch(
-      addStep({
-        type: "quiz",
-        order: steps.length,
-        id: id,
-        data: {
-          questions: questions,
-        },
-      })
-    );
+      dispatch(
+        addStep({
+          type: "quiz",
+          order: steps.length,
+          id: id,
+          data: {
+            questions: questions,
+          },
+        })
+      );
     }
     history.push(`/teacher/create-module`);
   };

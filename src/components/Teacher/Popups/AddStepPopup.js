@@ -1,5 +1,5 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import { Constants } from "../../../data/constants";
 import Button from "../../Template/Button";
@@ -9,12 +9,17 @@ import { useHistory } from "react-router";
 import TextIcon from "../../../images/Icons/text icon.png";
 import QuizIcon from "../../../images/Icons/quiz icon.png";
 import VideoIcon from "../../../images/Icons/video icon.png";
+import { selectAccountType } from "../../../app/account/selectors";
+import { setSelectedStep } from "../../../app/module/actions";
 
 const AddStepPopup = ({ className, onClose, style }) => {
   const history = useHistory();
+  const dispatch = useDispatch();
   const steps = useSelector(selectSteps);
+  const accountType = useSelector(selectAccountType);
   const handleClick = (type) => {
-    history.push(`/teacher/create-module/edit-${type}`);
+    dispatch(setSelectedStep(undefined));
+    history.push(`/${accountType}/create-module/edit-${type}`);
     return;
   };
 
@@ -34,6 +39,15 @@ const AddStepPopup = ({ className, onClose, style }) => {
           <StyledIcon src={QuizIcon} />
           Quiz
         </StepButton>
+        {accountType === "admin" && (
+          <StepButton
+            onClick={() => handleClick("ebook")}
+            data-test="add-ebook"
+          >
+            <StyledIcon src={QuizIcon} />
+            Ebook
+          </StepButton>
+        )}
       </StepButtonsContainer>
     </StyledPopup>
   );
