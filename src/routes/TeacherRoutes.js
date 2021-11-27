@@ -6,7 +6,6 @@ const CreateAClass = lazy(() => import("../pages/Teacher/CreateClass"));
 const AddStudents = lazy(() => import("../pages/Teacher/AddStudents"));
 const AddModule = lazy(() => import("../pages/Teacher/Module/AddModule"));
 const CreateModuleRoutes = lazy(() => import("./CreateModuleRoutes"));
-const EditModule = lazy(() => import("../pages/Teacher/Module/EditModule"));
 
 const TeacherRoutes = ({ match }) => (
   <Switch>
@@ -18,7 +17,6 @@ const TeacherRoutes = ({ match }) => (
       path={`${match.path}/create-module`}
       component={CreateModuleRoutes}
     />
-    <Route path={`${match.path}/edit-module`} component={EditModule} />
     <Redirect to={`${match.path}/home`} />
   </Switch>
 );
