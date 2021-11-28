@@ -12,6 +12,7 @@ import { selectClassList } from "../../app/account/selectors";
 import Dropdown, { Option } from "../../components/Template/ClassDropdown";
 import { useHistory } from "react-router";
 import ModuleCard from "../../components/Template/ModuleCard";
+import ApaModuleCard from "../../components/Template/ApaModuleCard";
 import ModuleContainer from "../../components/Template/ModuleContainer";
 import { setSelectedModule } from "../../app/module/actions";
 import { modulesDb } from "../../data/firebase";
@@ -22,6 +23,7 @@ const ModulesHomepage = () => {
   const currentClass = useSelector(selectCurrentClass);
   const classes = useSelector(selectClassList);
   const assignedModules = currentClass?.modules;
+  const apaModules = currentClass?.apaModules;
   const moduleOnClick = (module) => {
     modulesDb
       .doc(module)
@@ -37,6 +39,13 @@ const ModulesHomepage = () => {
       key={currModule}
       data-test="module-card"
       onClick={() => moduleOnClick(currModule)}
+    />
+  ));
+  const apaModuleCards = apaModules?.map((currModule) => (
+    <ApaModuleCard
+      module={currModule}
+      key={currModule}
+      data-test="module-card"
     />
   ));
 
@@ -94,7 +103,7 @@ const ModulesHomepage = () => {
             </StyledCard>
           </NewCardContainer>
           <StyledSectionHeader>Assigned Modules</StyledSectionHeader>
-          <ModuleContainer moduleCards={moduleCards} />
+          <ModuleContainer moduleCards={moduleCards?.concat(apaModuleCards)} />
         </StyledBody>
       </StyledHomepage>
     </Main>
