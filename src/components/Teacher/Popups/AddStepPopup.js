@@ -9,6 +9,7 @@ import { useHistory } from "react-router";
 import TextIcon from "../../../images/Icons/text icon.png";
 import QuizIcon from "../../../images/Icons/quiz icon.png";
 import VideoIcon from "../../../images/Icons/video icon.png";
+import EbookIcon from "../../../images/Icons/ebook icon.png";
 import { selectAccountType } from "../../../app/account/selectors";
 import { setSelectedStep } from "../../../app/module/actions";
 
@@ -44,7 +45,7 @@ const AddStepPopup = ({ className, onClose, style }) => {
             onClick={() => handleClick("ebook")}
             data-test="add-ebook"
           >
-            <StyledIcon src={QuizIcon} />
+            <StyledIcon src={EbookIcon} />
             Ebook
           </StepButton>
         )}

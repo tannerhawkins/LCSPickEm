@@ -47,18 +47,20 @@ const DragAndDrop = (props) => {
     <DragWrapper data-test="step-container">
       {steps
         .sort((a, b) => a.order - b.order)
-        .map((box) => (
-          <Box
-            id={parseInt(box.id)}
-            key={parseInt(box.id)}
-            boxColor={box.color}
-            type={box.type}
-            handleDrag={handleDrag}
-            handleDrop={handleDrop}
-            onClick={() => handleClick(box)}
-            data-test="box"
-          />
-        ))}
+        .map((box) => {
+          return (
+            <Box
+              id={parseInt(box.id)}
+              key={parseInt(box.id)}
+              boxColor={box.color}
+              type={box.type}
+              handleDrag={handleDrag}
+              handleDrop={handleDrop}
+              onClick={() => handleClick(box)}
+              data-test="box"
+            />
+          );
+        })}
     </DragWrapper>
   );
 };
