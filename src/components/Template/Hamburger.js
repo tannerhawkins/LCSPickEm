@@ -9,10 +9,13 @@ import PlusIcon from "../../images/Icons/green plus icon.png";
 import LogoutIcon from "../../images/Icons/logout icon.png";
 import Logo from "../../images/white mtn.png";
 import { useHistory } from "react-router-dom";
+import { clearState } from "../../app/store";
+import { useDispatch } from "react-redux";
 
 const Hamburger = () => {
   const [open, setOpen] = useState(false);
   const history = useHistory();
+  const dispatch = useDispatch();
 
   return (
     <StyledHamburgerContainer>
@@ -67,7 +70,7 @@ const Hamburger = () => {
               <StyledListItemIcon src={FeedbackIcon} />
               Feedback
             </StyledListItem>
-            <StyledListItem>
+            <StyledListItem onClick={() => dispatch(clearState())}>
               <StyledListItemIcon src={LogoutIcon} />
               LogOut
             </StyledListItem>
@@ -170,5 +173,14 @@ const StyledMini = styled.div`
   justify-content: space-between;
   margin-left: 15px;
   width: 100vw;
+`;
+
+const StyledLogoutIcon = styled.img`
+  height: 40px;
+  width: 40px;
+  margin-right: 20px;
+  :hover {
+    cursor: pointer;
+  }
 `;
 export default Hamburger;
