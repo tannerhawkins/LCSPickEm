@@ -29,7 +29,7 @@ const ModulesHomepage = () => {
   const assignedModuleCards = currentClass
     ? classList
         .filter((cls) => cls.cid == currentClass.cid)[0]
-        ?.modules.map((module) => (
+        ?.modules?.map((module) => (
           <ModuleCard
             module={module}
             key={module}
@@ -42,7 +42,7 @@ const ModulesHomepage = () => {
   const apaModuleCards = currentClass
     ? classList
         .filter((cls) => cls.cid == currentClass.cid)[0]
-        ?.apaModules.map((module) => (
+        ?.apaModules?.map((module) => (
           <ApaModuleCard
             module={module}
             key={module}
