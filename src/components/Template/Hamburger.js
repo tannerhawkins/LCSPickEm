@@ -45,7 +45,7 @@ const Hamburger = () => {
         )}
       </StyledNavContainer>
       <Suspense fallback={<></>}>
-        <StyledMenu style={{ marginLeft: open ? "0" : "150vw" }}>
+        <StyledMenu style={{display: open ? "flex" : "none"}}>
           <StyledLinkList>
             <StyledListItem>
               <StyledProfileImage />
@@ -82,7 +82,9 @@ const StyledHamburgerContainer = styled.div`
   display: none;
   @media (max-width: 500px) {
     display: block;
+    top: 0;
     width: 100vw;
+    overflow: hidden;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   }
 `;
@@ -129,6 +131,8 @@ const StyledLinkList = styled.div`
   display: block;
   height: 100%;
   background-color: white;
+  width: 100%;
+  overflow: hidden;
 `;
 
 const StyledListItem = styled.div`
