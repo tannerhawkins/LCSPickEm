@@ -8,8 +8,9 @@ const Footer = () => (
     
     
     <StyledTermsLinks>
-      <a href="http://ancientpathadventures.com/terms-conditions/">Terms of Use</a>
-      <a href="http://ancientpathadventures.com/privacy-policy/"> - Privacy Policy</a>
+      <StyledLink href="http://ancientpathadventures.com/terms-conditions/" target="_blank">Terms of Use</StyledLink>
+      <span> - </span>
+      <StyledLink href="http://ancientpathadventures.com/privacy-policy/" target="_blank">Privacy Policy</StyledLink>
     </StyledTermsLinks>
     <StyledCopyRight>Copyright © 2021 Ancient Path Adventures</StyledCopyRight>
   </StyledFooter>
@@ -30,13 +31,13 @@ const StyledFooter = styled.div`
   overflow: hidden;
 `;
 
-const StyledTermsLinks = styled.a`
+const StyledTermsLinks = styled.p`
   font-weight: bold;
   font-size: 20px;
   line-height: 43px;
   color: white;
   margin: 0 auto;
-  text-decoration: underline;
+  text-decoration: none;
 `;
 
 const StyledCopyRight = styled.p`
@@ -44,5 +45,9 @@ const StyledCopyRight = styled.p`
   color: ${Constants.COLOR.LIGHT_GREEN};
   margin: 0 auto;
 `;
+
+const StyledLink = styled.a`
+  color: white;
+`
 
 export default Footer;
