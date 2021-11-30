@@ -18,11 +18,16 @@ const Hamburger = () => {
     <StyledHamburgerContainer>
       <StyledNavContainer>
         {open ? (
-          <StyledButtonContainer>
-            <StyledButton onClick={() => setOpen(!open)} className="menu-hover">
-              &#10005;
-            </StyledButton>
-          </StyledButtonContainer>
+          <StyledMini>
+            <StyledLogoContainer>
+              <StyledLogo onClick={() => history.push("/home")} src={Logo} />
+            </StyledLogoContainer>
+              <StyledButtonContainer>
+              <StyledButton onClick={() => setOpen(!open)} className="menu-hover">
+                &#10005;
+              </StyledButton>
+            </StyledButtonContainer>
+          </StyledMini>
         ) : (
           <StyledMini>
             <StyledLogoContainer>
@@ -77,6 +82,8 @@ const StyledHamburgerContainer = styled.div`
   display: none;
   @media (max-width: 500px) {
     display: block;
+    width: 100vw;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   }
 `;
 
@@ -85,7 +92,7 @@ const StyledNavContainer = styled.div`
   background-color: ${Constants.COLOR.DARK_GREEN};
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
 `;
 
 const StyledLogo = styled.img`
@@ -100,22 +107,28 @@ const StyledLogo = styled.img`
 const StyledLogoContainer = styled.div`
   display: flex;
   align-items: center;
-  margin-right: 3%;
+  @media (max-width: 800px) {
+    jusity-content: flex-start;
+  }
 `;
 
 const StyledButtonContainer = styled.div`
   display: flex;
   align-items: center;
+  margin: 0 15px;
 `;
 
 const StyledButton = styled.div`
   display: flex;
   font-size: 30px;
   user-select: none;
+  color: white;
 `;
 
 const StyledLinkList = styled.div`
   display: block;
+  height: 100%;
+  background-color: white;
 `;
 
 const StyledListItem = styled.div`
@@ -125,6 +138,7 @@ const StyledListItem = styled.div`
   font-size: 20px;
   font-weight: bold;
   border-bottom: 2px solid grey;
+  background-color: white;
 `;
 
 const StyledListItemIcon = styled.img`
@@ -144,11 +158,13 @@ const StyledMenu = styled.div`
   height: calc(100vh - ${Constants.HEADER_HEIGHT});
   transition: margin-left 0.4s linear;
   width: 100vw;
+  z-index: 1;
 `;
 
 const StyledMini = styled.div`
   display: flex;
   justify-content: space-between;
-  align-items: space-between;
+  margin-left: 15px;
+  width: 100vw;
 `;
 export default Hamburger;

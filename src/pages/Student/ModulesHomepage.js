@@ -122,6 +122,9 @@ const StyledTitle = styled.p`
   line-height: 36px;
   font-size: 30px;
   margin-right: 20px;
+  @media (max-width: 400px) {
+    margin-right: 0;
+  }
 `;
 
 const TitleContainer = styled.div`
