@@ -10,9 +10,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectCurrentClass } from "../../app/class/selectors";
 import { selectClassList } from "../../app/account/selectors";
 import ModuleCard from "../../components/Template/ModuleCard";
+import ApaModuleCard from "../../components/Template/ApaModuleCard";
 import Dropdown, { Option } from "../../components/Template/ClassDropdown";
 import { useHistory } from "react-router";
-import { modulesDb } from "../../data/firebase";
+import { apaModulesDb, modulesDb } from "../../data/firebase";
 import { setCurrentStep, setSelectedModule } from "../../app/module/actions";
 import StyledButton from "../../components/Template/Button";
 import ModuleContainer from "../../components/Template/ModuleContainer";
@@ -28,25 +29,49 @@ const ModulesHomepage = () => {
   const assignedModuleCards = currentClass
     ? classList
         .filter((cls) => cls.cid == currentClass.cid)[0]
-        ?.modules.map((module) => (
+        ?.modules?.map((module) => (
           <ModuleCard
             module={module}
             key={module}
             data-test="module-card"
-            onClick={() => moduleOnClick(module)}
+            onClick={() => moduleOnClick(module, false)}
           ></ModuleCard>
         ))
     : undefined;
 
-  const moduleOnClick = (module) => {
-    modulesDb
-      .doc(module)
-      .get()
-      .then((doc) => {
-        dispatch(setCurrentStep(-1));
-        dispatch(setSelectedModule(doc.data()));
-        history.push("/student/module");
-      });
+  const apaModuleCards = currentClass
+    ? classList
+        .filter((cls) => cls.cid == currentClass.cid)[0]
+        ?.apaModules?.map((module) => (
+          <ApaModuleCard
+            module={module}
+            key={module}
+            data-test="module-card"
+            onClick={() => moduleOnClick(module, true)}
+          ></ApaModuleCard>
+        ))
+    : undefined;
+
+  const moduleOnClick = (module, isApa) => {
+    if (isApa) {
+      apaModulesDb
+        .doc(module)
+        .get()
+        .then((doc) => {
+          dispatch(setCurrentStep(-1));
+          dispatch(setSelectedModule(doc.data()));
+          history.push("/student/module");
+        });
+    } else {
+      modulesDb
+        .doc(module)
+        .get()
+        .then((doc) => {
+          dispatch(setCurrentStep(-1));
+          dispatch(setSelectedModule(doc.data()));
+          history.push("/student/module");
+        });
+    }
   };
 
   useEffect(() => {}, [currentClass]);
@@ -81,7 +106,9 @@ const ModulesHomepage = () => {
           {isInClass ? (
             <>
               <StyledSectionHeader>Assigned Modules</StyledSectionHeader>
-              <ModuleContainer moduleCards={assignedModuleCards} />
+              <ModuleContainer
+                moduleCards={assignedModuleCards?.concat(apaModuleCards)}
+              />
               {/* <StyledSectionHeader>Completed Modules</StyledSectionHeader>
               <ModulesContainer>{completedModuleCards}</ModulesContainer> */}
             </>

@@ -65,6 +65,16 @@ All app constants are kept in the `data/constants.js` file. These constants incl
 ### Cypress
 When new functionality is added, a new test should be added under `cypress/integration`. Currently, Cypress connects directly to the testing Firebase databases but could be configured to use fixtures instead in the future. 
 
+### APA Modules
+
+To add APA modules, sign into an admin account (these can be created by directly editing the `accountType` field of an account in Firebase to be `admin`) and create the module.
+
+### Adding Epub Files
+
+In order to add an ebook to the site, you must add it to the `epub` folder in the codebase. APA Modules are the only modules that have the ability to use these ebooks.
+
+**MAKE SURE THE FILE HAS A TITLE IN THE METADATA**
+
 [Project Website](https://tannerhawkins.github.io/Comp523-Website/home)
 
 ## Authors

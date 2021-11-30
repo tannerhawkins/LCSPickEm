@@ -17,8 +17,8 @@ const IntroSection = () => {
   return (
     <SectionContainer>
       <TextContainer>
-        <StyledHeaderText>SOME CATCHY TEXT</StyledHeaderText>
-        <StyledSubText>Some convincing text should go here</StyledSubText>
+        <StyledHeaderText>Welcome to APA!</StyledHeaderText>
+        <StyledSubText>Let's get started on your immersive biblical experience!</StyledSubText>
       </TextContainer>
       <ButtonContainer>
         <StyledButtonOne
@@ -58,13 +58,14 @@ const StyledHeaderText = styled.h1`
   font-weight: 700;
   font-size: 73px;
   line-height: 86px;
+  margin-top: 50px;
   @media (max-width: 800px) {
     font-size: 60px;
   }
 `;
 
 const StyledSubText = styled.h3`
-  color: ${Constants.COLOR.LIGHT_GREEN};
+  color: ${Constants.COLOR.GRAY};
   font-weight: 300;
   font-size: 37px;
   line-height: 43px;

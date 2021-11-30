@@ -1,14 +1,22 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { withTheme } from "styled-components";
 import { Constants } from "../../data/constants";
 
 // Websites Navbar, displays routes defined in 'src/data/routes'
 const Footer = () => (
   <StyledFooter id="footer">
-    <StyledTermsLinks>Terms of Use - Privacy Policy</StyledTermsLinks>
+    
+    
+    <StyledTermsLinks>
+      <StyledLink href="http://ancientpathadventures.com/terms-conditions/" target="_blank">Terms of Use</StyledLink>
+      <span> - </span>
+      <StyledLink href="http://ancientpathadventures.com/privacy-policy/" target="_blank">Privacy Policy</StyledLink>
+    </StyledTermsLinks>
     <StyledCopyRight>Copyright © 2021 Ancient Path Adventures</StyledCopyRight>
   </StyledFooter>
+
 );
+
 
 const StyledFooter = styled.div`
   display: flex;
@@ -29,6 +37,7 @@ const StyledTermsLinks = styled.p`
   line-height: 43px;
   color: white;
   margin: 0 auto;
+  text-decoration: none;
 `;
 
 const StyledCopyRight = styled.p`
@@ -36,5 +45,9 @@ const StyledCopyRight = styled.p`
   color: ${Constants.COLOR.LIGHT_GREEN};
   margin: 0 auto;
 `;
+
+const StyledLink = styled.a`
+  color: white;
+`
 
 export default Footer;

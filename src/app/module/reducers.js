@@ -21,12 +21,33 @@ export default function moduleReducer(state = initialState, action) {
         selectedModule: action.payload,
       };
 
+    case "SET_SELECTED_STEP":
+      return {
+        ...state,
+        selectedStep: action.payload,
+      };
+
     case "ADD_STEP":
       return {
         ...state,
         selectedModule: {
           ...state.selectedModule,
           steps: [...state.selectedModule.steps, action.payload],
+        },
+      };
+
+    case "UPDATE_STEP":
+      return {
+        ...state,
+        selectedModule: {
+          ...state.selectedModule,
+          steps: state.selectedModule.steps.map((step) => {
+            if (step.id === action.payload.id) {
+              return action.payload;
+            } else {
+              return step;
+            }
+          }),
         },
       };
 

@@ -1,11 +1,17 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Main from "../../../layouts/Main";
 import SideBar from "../../../components/Template/SideBar";
 import Header from "../../../components/Teacher/Header";
 import styled from "styled-components";
 import { Constants } from "../../../data/constants";
-import { classDataDb, userDataDb } from "../../../data/firebase";
+import {
+  apaModulesDb,
+  classDataDb,
+  getAllApaModules,
+  userDataDb,
+} from "../../../data/firebase";
 import ModuleCard from "../../../components/Template/ModuleCard";
+import ApaModuleCard from "../../../components/Template/ApaModuleCard";
 import { useDispatch, useSelector } from "react-redux";
 import { selectModuleList } from "../../../app/account/selectors";
 import { selectCurrentClass } from "../../../app/class/selectors";
@@ -21,68 +27,132 @@ const AddModule = () => {
   const history = useHistory();
   const modulesList = useSelector(selectModuleList);
   const currentClass = useSelector(selectCurrentClass);
+  const [apaModules, setApaModules] = useState([]);
 
-  // This should be edited to fit style that you would like
-  // This turns the modules in the modulesList to divs to be displayed
-  // This should also include buttons or the ability to be clicked or something to be
-  // able to select the module to be added and assigned to the class
-  const moduleCards = modulesList
-    ?.filter((module) => !currentClass?.modules.includes(module.mid))
+  useEffect(() => {
+    if (apaModules.length == 0) {
+      apaModulesDb.get().then((result) => {
+        setApaModules(result.docs.map((doc) => doc.data()));
+      });
+    }
+  }, []);
+
+  const apaModuleCards = apaModules
+    ?.filter((module) => !currentClass?.apaModules.includes(module.mid))
     .map((moduleToAdd) => (
-      <ModuleCard
-        onClick={() => handleClick(moduleToAdd.mid)}
+      <ApaModuleCard
+        onClick={() => handleClick(moduleToAdd.mid, true)}
         module={moduleToAdd.mid}
         key={moduleToAdd.mid}
       />
     ));
 
-  const handleClick = (mid) => {
-    classDataDb
-      .doc(currentClass.cid)
-      .update({
-        modules: firebase.firestore.FieldValue.arrayUnion(mid),
-      })
-      .then(
-        classDataDb
-          .doc(currentClass.cid)
-          .get()
-          .then((doc) => {
-            doc.data().students.forEach((student) => {
-              userDataDb
-                .doc(student.uid)
-                .get()
-                .then((userdoc) => {
-                  const classList = userdoc.data().classList;
-                  const oldClass = classList.filter(
-                    (cla) => cla.cid === currentClass.cid
-                  )[0];
-                  const newClass = {
-                    ...oldClass,
-                    modules: [...oldClass.modules, mid],
-                  };
-                  const getIndex = () => {
-                    for (let i = 0; i < classList.length; i++) {
-                      if (classList[i].cid === oldClass.cid) {
-                        return i;
+  const moduleCards = modulesList
+    ?.filter((module) => !currentClass?.modules.includes(module.mid))
+    .map((moduleToAdd) => (
+      <ModuleCard
+        onClick={() => handleClick(moduleToAdd.mid, false)}
+        module={moduleToAdd.mid}
+        key={moduleToAdd.mid}
+      />
+    ));
+
+  const handleClick = (mid, isApa) => {
+    if (isApa) {
+      classDataDb
+        .doc(currentClass.cid)
+        .update({
+          apaModules: firebase.firestore.FieldValue.arrayUnion(mid),
+        })
+        .then(
+          classDataDb
+            .doc(currentClass.cid)
+            .get()
+            .then((doc) => {
+              doc.data().students.forEach((student) => {
+                userDataDb
+                  .doc(student.uid)
+                  .get()
+                  .then((userdoc) => {
+                    const classList = userdoc.data().classList;
+                    const oldClass = classList.filter(
+                      (cla) => cla.cid === currentClass.cid
+                    )[0];
+                    const newClass = {
+                      ...oldClass,
+                      apaModules: [...oldClass.modules, mid],
+                    };
+                    const getIndex = () => {
+                      for (let i = 0; i < classList.length; i++) {
+                        if (classList[i].cid === oldClass.cid) {
+                          return i;
+                        }
                       }
-                    }
-                    return -1;
-                  };
-                  const index = getIndex();
-                  classList.splice(index, 1, newClass);
-                  userDataDb.doc(student.uid).update({
-                    classList: classList,
+                      return -1;
+                    };
+                    const index = getIndex();
+                    classList.splice(index, 1, newClass);
+                    userDataDb.doc(student.uid).update({
+                      classList: classList,
+                    });
                   });
-                });
-            });
-          })
-          .then(
-            classDataDb
-              .doc(currentClass?.cid)
-              .get()
-              .then((doc) => dispatch(setCurrentClass(doc.data())))
-          )
-      );
+              });
+            })
+            .then(
+              classDataDb
+                .doc(currentClass?.cid)
+                .get()
+                .then((doc) => dispatch(setCurrentClass(doc.data())))
+            )
+        );
+    } else {
+      classDataDb
+        .doc(currentClass.cid)
+        .update({
+          modules: firebase.firestore.FieldValue.arrayUnion(mid),
+        })
+        .then(
+          classDataDb
+            .doc(currentClass.cid)
+            .get()
+            .then((doc) => {
+              doc.data().students.forEach((student) => {
+                userDataDb
+                  .doc(student.uid)
+                  .get()
+                  .then((userdoc) => {
+                    const classList = userdoc.data().classList;
+                    const oldClass = classList.filter(
+                      (cla) => cla.cid === currentClass.cid
+                    )[0];
+                    const newClass = {
+                      ...oldClass,
+                      modules: [...oldClass.modules, mid],
+                    };
+                    const getIndex = () => {
+                      for (let i = 0; i < classList.length; i++) {
+                        if (classList[i].cid === oldClass.cid) {
+                          return i;
+                        }
+                      }
+                      return -1;
+                    };
+                    const index = getIndex();
+                    classList.splice(index, 1, newClass);
+                    userDataDb.doc(student.uid).update({
+                      classList: classList,
+                    });
+                  });
+              });
+            })
+            .then(
+              classDataDb
+                .doc(currentClass?.cid)
+                .get()
+                .then((doc) => dispatch(setCurrentClass(doc.data())))
+            )
+        );
+    }
   };
 
   const handleCreateNewModule = () => {
@@ -102,6 +172,8 @@ const AddModule = () => {
       <StyledBody>
         <StyledSectionTitle>Existing Modules</StyledSectionTitle>
         <ModuleContainer moduleCards={moduleCards} />
+        <StyledSectionTitle>APA Modules</StyledSectionTitle>
+        <ModuleContainer moduleCards={apaModuleCards} />
         <StyledButtonContainer>
           <StyledDashboardButton
             onClick={handleCreateNewModule}
@@ -133,18 +205,11 @@ const StyledSectionTitle = styled.p`
   font-weight: 500;
 `;
 
-const ExistingModules = styled.div`
-  display: flex;
-  width: 100%;
-  flex-wrap: no-wrap;
-  overflow: auto;
-  height: 300px;
-`;
-
 const StyledButtonContainer = styled.div`
   display: flex;
   align-items: space-around;
   justify-content: space-around;
+  margin-bottom: 50px;
   width: 60%;
 `;
 

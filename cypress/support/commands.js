@@ -158,26 +158,6 @@ const brandNewClass = {
   students: [],
 }
 
-// realModulesDb.doc("aOrljPVgVSPtAlOh4W63").get().then(result =>
-//   modulesDb.doc("aOrljPVgVSPtAlOh4W63").set(result.data())
-// )
-// realModulesDb.doc("aZC5gvZstpTZmkh9xRMA").get().then(result =>
-//   modulesDb.doc("aZC5gvZstpTZmkh9xRMA").set(result.data())
-// )
-// realClassDb.doc("CsC8yxKXd1IbALpDAOFL").get().then(result =>
-//   classDataDb.doc("CsC8yxKXd1IbALpDAOFL").set(result.data())
-// )
-// realClassDb.doc("Zz666EQiFLXecsIJUUGi").get().then(result =>
-//   classDataDb.doc("Zz666EQiFLXecsIJUUGi").set(result.data())
-// )
-// realUserDataDb.doc("nGgCZShjguNmKlepiskkSjyUuq32").get().then(result => {
-//   console.log(result)
-//   userDataDb.doc("nGgCZShjguNmKlepiskkSjyUuq32").set(result.data());
-// })
-// realUserDataDb.doc("wOosY8ZSs4TbXuYgdamaIprEOR02").get().then(result => {
-//   userDataDb.doc("wOosY8ZSs4TbXuYgdamaIprEOR02").set(result.data());
-// })
-
 Cypress.Commands.add("teacherLogin", () => {
   cy.url().should("contain", "/home");
   cy.get("[data-test=login-logout]").click();

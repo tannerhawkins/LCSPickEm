@@ -57,6 +57,7 @@ const TextEditor = (props) => {
           });
         }}
         config={config}
+        data={props.data}
       />
       <ButtonContainer>
         <StyledButton type="submit" onClick={handleSubmit} data-test="submit">

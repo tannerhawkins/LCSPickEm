@@ -11,48 +11,45 @@ const IntroSection = () => {
         <CirclesDivider>
           <StyledCircle src={circle} style={{ margin: "5% 0% 0% 5%" }} />
           <StyledTextContainer style={{ margin: "5% 0% 0% 28%" }}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          Explore creative interactive modules in our Ancient Path Adventure Learning Modules.
           </StyledTextContainer>
         </CirclesDivider>
         <CirclesDivider>
           <StyledCircle src={circle} style={{ margin: "10% 0% 0% 50%" }} />
           <StyledTextContainer style={{ margin: "10% 0% 0% 75%" }}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          Each module teaches an aspect of the Bible and combines it with a learning adventure.
           </StyledTextContainer>
         </CirclesDivider>
         <CirclesDivider>
           <StyledTextContainer style={{ margin: "30% 0% 0% 5%" }}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          Featuring the Babies Bible Series. Travel through the Bible with Baby Nahal and friends, 
+          in this series of Bible books for babies and children.
           </StyledTextContainer>
           <StyledCircle src={circle} style={{ margin: "35% 0% 0% 30%" }} />
         </CirclesDivider>
         <CirclesDivider>
           <StyledTextContainer style={{ margin: "35% 0% 0% 60%" }}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          Ancient Path Kids, produces biblical stories, animations, coloring books, and more. 
           </StyledTextContainer>
         </CirclesDivider>
       </CirclesContainer>
       <SquaresContainer>
-        <StyledHeader>HEADING TEXT</StyledHeader>
+        <StyledHeader>Get started today, sign up!</StyledHeader>
         <SquaresFlexDiv>
           <SquaresDivider>
             <StyledSquare src={square} />
-            <SquaresText>Put some type of text here</SquaresText>
+            <SquaresText>We give glory, honor and praise to God for giving us the opportunity to spread His Word through creative means. </SquaresText>
           </SquaresDivider>
           <SquaresDivider>
             <StyledSquare src={square} />
-            <SquaresText>Put some type of text here</SquaresText>
+            <SquaresText>We believe that representation matters for our little ones, as the scripture reads:</SquaresText>
           </SquaresDivider>
           <SquaresDivider>
-            <SquaresText>Put some type of text here</SquaresText>
+            <SquaresText>‘Train up a child in the way he should go, Even when he is old he turns not away from it.’</SquaresText>
             <StyledSquare src={square} />
           </SquaresDivider>
           <SquaresDivider>
-            <SquaresText>Put some type of text here</SquaresText>
+            <SquaresText>– Mishlĕ (Proverbs) 22:6</SquaresText>
             <StyledSquare src={square} />
           </SquaresDivider>
         </SquaresFlexDiv>

@@ -3,6 +3,7 @@ import styled from "styled-components";
 import {
   selectCurrentStep,
   selectSelectedModule,
+  selectSteps,
 } from "../../../app/module/selectors";
 import { setCurrentStep } from "../../../app/module/actions";
 import { useHistory } from "react-router";
@@ -11,12 +12,13 @@ import Button from "../../../components/Template/Button";
 import "react-step-progress-bar/styles.css";
 import homepageSplash from "../../../images/Homepage/homepage-splash-2.png";
 import { useRef, useState } from "react";
-import { EpubView, ReactReader, ReactReaderStyle } from "react-reader";
-import Ebook from "../../../data/epub/Book1_In_the_Beginning_ebook.epub";
+import { ReactReader, ReactReaderStyle } from "react-reader";
+import * as Ebooks from "../../../data/epub/EbookExports";
 
 const ModuleEbook = () => {
   const dispatch = useDispatch();
   const currentStep = useSelector(selectCurrentStep);
+  const steps = useSelector(selectSteps);
   const history = useHistory();
   const module = useSelector(selectSelectedModule);
   const [selections, setSelections] = useState([]);
@@ -64,7 +66,7 @@ const ModuleEbook = () => {
         <ReactReader
           location={location}
           locationChanged={locationChanged}
-          url={Ebook}
+          url={Ebooks[steps[currentStep].data]}
           styles={ownStyles}
           getRendition={(rendition) => {
             renditionRef.current = rendition;

@@ -8,6 +8,8 @@ export const Constants = {
     DARK_BLUE: "#373B53",
     TEAL: "#B5FFEA",
     GRAY: "#E5E5E5",
+    PINK: "#eb34c0",
+    LIGHT_PINK: "#e663c6",
   },
   HEADER_HEIGHT: "80px",
   SIDEBAR_WIDTH: "80px",

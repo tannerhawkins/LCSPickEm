@@ -20,6 +20,11 @@ export const selectSelectedModule = createSelector(
   (state) => state.selectedModule
 );
 
+export const selectSelectedStep = createSelector(
+  selectModuleState,
+  (state) => state.selectedStep
+);
+
 export const selectSteps = createSelector(
   selectSelectedModule,
   (module) => module?.steps
