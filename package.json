@@ -27,6 +27,8 @@
     "@fortawesome/free-regular-svg-icons": "^5.15.2",
     "@fortawesome/react-fontawesome": "0.1.14",
     "@reduxjs/toolkit": "^1.6.1",
+    "@stripe/react-stripe-js": "^1.6.0",
+    "@stripe/stripe-js": "^1.21.1",
     "dayjs": "^1.10.4",
     "epub-metadata-parser": "^1.1.14",
     "epubjs": "^0.3.90",
