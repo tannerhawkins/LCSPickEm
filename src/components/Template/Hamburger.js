@@ -9,20 +9,28 @@ import PlusIcon from "../../images/Icons/green plus icon.png";
 import LogoutIcon from "../../images/Icons/logout icon.png";
 import Logo from "../../images/white mtn.png";
 import { useHistory } from "react-router-dom";
+import { clearState } from "../../app/store";
+import { useDispatch } from "react-redux";
 
 const Hamburger = () => {
   const [open, setOpen] = useState(false);
   const history = useHistory();
+  const dispatch = useDispatch();
 
   return (
     <StyledHamburgerContainer>
       <StyledNavContainer>
         {open ? (
-          <StyledButtonContainer>
-            <StyledButton onClick={() => setOpen(!open)} className="menu-hover">
-              &#10005;
-            </StyledButton>
-          </StyledButtonContainer>
+          <StyledMini>
+            <StyledLogoContainer>
+              <StyledLogo onClick={() => history.push("/home")} src={Logo} />
+            </StyledLogoContainer>
+              <StyledButtonContainer>
+              <StyledButton onClick={() => setOpen(!open)} className="menu-hover">
+                &#10005;
+              </StyledButton>
+            </StyledButtonContainer>
+          </StyledMini>
         ) : (
           <StyledMini>
             <StyledLogoContainer>
@@ -40,7 +48,7 @@ const Hamburger = () => {
         )}
       </StyledNavContainer>
       <Suspense fallback={<></>}>
-        <StyledMenu style={{ marginLeft: open ? "0" : "150vw" }}>
+        <StyledMenu style={{display: open ? "flex" : "none"}}>
           <StyledLinkList>
             <StyledListItem>
               <StyledProfileImage />
@@ -62,7 +70,7 @@ const Hamburger = () => {
               <StyledListItemIcon src={FeedbackIcon} />
               Feedback
             </StyledListItem>
-            <StyledListItem>
+            <StyledListItem onClick={() => dispatch(clearState())}>
               <StyledListItemIcon src={LogoutIcon} />
               LogOut
             </StyledListItem>
@@ -77,6 +85,10 @@ const StyledHamburgerContainer = styled.div`
   display: none;
   @media (max-width: 500px) {
     display: block;
+    top: 0;
+    width: 100vw;
+    overflow: hidden;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   }
 `;
 
@@ -85,7 +97,7 @@ const StyledNavContainer = styled.div`
   background-color: ${Constants.COLOR.DARK_GREEN};
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
 `;
 
 const StyledLogo = styled.img`
@@ -100,22 +112,30 @@ const StyledLogo = styled.img`
 const StyledLogoContainer = styled.div`
   display: flex;
   align-items: center;
-  margin-right: 3%;
+  @media (max-width: 800px) {
+    jusity-content: flex-start;
+  }
 `;
 
 const StyledButtonContainer = styled.div`
   display: flex;
   align-items: center;
+  margin: 0 15px;
 `;
 
 const StyledButton = styled.div`
   display: flex;
   font-size: 30px;
   user-select: none;
+  color: white;
 `;
 
 const StyledLinkList = styled.div`
   display: block;
+  height: 100%;
+  background-color: white;
+  width: 100%;
+  overflow: hidden;
 `;
 
 const StyledListItem = styled.div`
@@ -125,6 +145,7 @@ const StyledListItem = styled.div`
   font-size: 20px;
   font-weight: bold;
   border-bottom: 2px solid grey;
+  background-color: white;
 `;
 
 const StyledListItemIcon = styled.img`
@@ -144,11 +165,22 @@ const StyledMenu = styled.div`
   height: calc(100vh - ${Constants.HEADER_HEIGHT});
   transition: margin-left 0.4s linear;
   width: 100vw;
+  z-index: 1;
 `;
 
 const StyledMini = styled.div`
   display: flex;
   justify-content: space-between;
-  align-items: space-between;
+  margin-left: 15px;
+  width: 100vw;
+`;
+
+const StyledLogoutIcon = styled.img`
+  height: 40px;
+  width: 40px;
+  margin-right: 20px;
+  :hover {
+    cursor: pointer;
+  }
 `;
 export default Hamburger;
