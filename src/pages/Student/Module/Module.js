@@ -23,7 +23,7 @@ const Module = () => {
     const stepType = currentStepData.type;
     switch (stepType) {
       case "text":
-        return <ModuleSummary />;
+        return <ModuleText />;
       case "video":
         return <ModuleVideo />;
       case "quiz":
