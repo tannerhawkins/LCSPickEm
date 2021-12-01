@@ -38,7 +38,7 @@ const AddModule = () => {
   }, []);
 
   const apaModuleCards = apaModules
-    ?.filter((module) => !currentClass?.apaModules.includes(module.mid))
+    ?.filter((module) => !currentClass?.apaModules?.includes(module.mid))
     .map((moduleToAdd) => (
       <ApaModuleCard
         onClick={() => handleClick(moduleToAdd.mid, true)}
