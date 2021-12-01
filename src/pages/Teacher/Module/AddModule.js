@@ -21,6 +21,7 @@ import Button from "../../../components/Template/Button";
 import { useHistory } from "react-router";
 import { setSelectedModule } from "../../../app/module/actions";
 import ModuleContainer from "../../../components/Template/ModuleContainer";
+import Hamburger from "../../../components/Template/Hamburger.js"
 
 const AddModule = () => {
   const dispatch = useDispatch();
@@ -169,6 +170,7 @@ const AddModule = () => {
     <Main title={"Add a Module"} description={"Add a Module"}>
       <SideBar />
       <Header />
+      <Hamburger />
       <StyledBody>
         <StyledSectionTitle>Existing Modules</StyledSectionTitle>
         <ModuleContainer moduleCards={moduleCards} />
@@ -197,12 +199,20 @@ const StyledBody = styled.div`
   margin-top: ${Constants.HEADER_HEIGHT};
   margin-left: ${Constants.SIDEBAR_WIDTH};
   padding: 0 50px;
+  height: 115vh;
+  @media (max-width: 500px) {
+    margin: 0px 0px;
+    padding: 0 5%;
+  }
 `;
 
 const StyledSectionTitle = styled.p`
   font-size: 36px;
   line-height: 43px;
   font-weight: 500;
+  @media (max-width: 1024px) {
+    font-size: 28px;
+  }
 `;
 
 const StyledButtonContainer = styled.div`
@@ -211,6 +221,11 @@ const StyledButtonContainer = styled.div`
   justify-content: space-around;
   margin-bottom: 50px;
   width: 60%;
+  @media (max-width: 1000px) {
+    margin-top: 20px;
+    margin-bottom: 0;
+    width: auto;
+  }
 `;
 
 const StyledDashboardButton = styled(Button)`
@@ -218,6 +233,7 @@ const StyledDashboardButton = styled(Button)`
   height: 50px;
   padding: 0 5px;
   width: 220px;
+  margin: 5px;
   background-color: ${Constants.COLOR.LIGHT_GREEN};
   &:hover {
     cursor: pointer;
