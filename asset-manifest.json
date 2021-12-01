@@ -11,8 +11,8 @@
     "main.css": "/AncientPathAdventures/static/css/main.ee54ab93.chunk.css",
     "main.js": "/AncientPathAdventures/static/js/main.ca12cd59.chunk.js",
     "main.js.map": "/AncientPathAdventures/static/js/main.ca12cd59.chunk.js.map",
-    "runtime-main.js": "/AncientPathAdventures/static/js/runtime-main.bf699b49.js",
-    "runtime-main.js.map": "/AncientPathAdventures/static/js/runtime-main.bf699b49.js.map",
+    "runtime-main.js": "/AncientPathAdventures/static/js/runtime-main.363f2d42.js",
+    "runtime-main.js.map": "/AncientPathAdventures/static/js/runtime-main.363f2d42.js.map",
     "static/css/6.7691baea.chunk.css": "/AncientPathAdventures/static/css/6.7691baea.chunk.css",
     "static/js/6.ff9a334e.chunk.js": "/AncientPathAdventures/static/js/6.ff9a334e.chunk.js",
     "static/js/6.ff9a334e.chunk.js.map": "/AncientPathAdventures/static/js/6.ff9a334e.chunk.js.map",
@@ -40,8 +40,8 @@
     "static/js/17.a16b3b0c.chunk.js.map": "/AncientPathAdventures/static/js/17.a16b3b0c.chunk.js.map",
     "static/js/18.b3f86878.chunk.js": "/AncientPathAdventures/static/js/18.b3f86878.chunk.js",
     "static/js/18.b3f86878.chunk.js.map": "/AncientPathAdventures/static/js/18.b3f86878.chunk.js.map",
-    "static/js/19.86ad9dbb.chunk.js": "/AncientPathAdventures/static/js/19.86ad9dbb.chunk.js",
-    "static/js/19.86ad9dbb.chunk.js.map": "/AncientPathAdventures/static/js/19.86ad9dbb.chunk.js.map",
+    "static/js/19.7d189278.chunk.js": "/AncientPathAdventures/static/js/19.7d189278.chunk.js",
+    "static/js/19.7d189278.chunk.js.map": "/AncientPathAdventures/static/js/19.7d189278.chunk.js.map",
     "static/js/20.1757b857.chunk.js": "/AncientPathAdventures/static/js/20.1757b857.chunk.js",
     "static/js/20.1757b857.chunk.js.map": "/AncientPathAdventures/static/js/20.1757b857.chunk.js.map",
     "static/js/21.de9ad38b.chunk.js": "/AncientPathAdventures/static/js/21.de9ad38b.chunk.js",
@@ -94,7 +94,7 @@
     "static/media/white mtn.png": "/AncientPathAdventures/static/media/white mtn.bb2904a1.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.bf699b49.js",
+    "static/js/runtime-main.363f2d42.js",
     "static/js/7.f629cc2a.chunk.js",
     "static/css/main.ee54ab93.chunk.css",
     "static/js/main.ca12cd59.chunk.js"
