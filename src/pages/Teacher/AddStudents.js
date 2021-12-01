@@ -80,11 +80,6 @@ const AddStudents = () => {
       <Header />
       <StyledBody>
         <StyledTitle>Add Students to a Class</StyledTitle>
-        <StyledParagraph>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce ac
-          purus eget lacus pellentesque consequat. Donec commodo tincidunt
-          lorem, c ursus accumsan eros varius vel.
-        </StyledParagraph>
         <StyledForm id="studentsForm">
           <StyledText>Student's Email</StyledText>
           <StyledInput type="text" name="email" data-test="email" required />

@@ -79,11 +79,6 @@ const CreateClass = () => {
       <Header />
       <StyledBody>
         <StyledTitle>Create New Class</StyledTitle>
-        <StyledParagraph>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce ac
-          purus eget lacus pellentesque consequat. Donec commodo tincidunt
-          lorem, c ursus accumsan eros varius vel.
-        </StyledParagraph>
         <StyledForm id="classForm">
           <StyledText>Class Name</StyledText>
           <StyledInput type="text" name="name" data-test="name" required />
