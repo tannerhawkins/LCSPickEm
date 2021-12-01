@@ -9,33 +9,41 @@ import { setCurrentStep } from "../../../app/module/actions";
 import { Constants } from "../../../data/constants";
 import Button from "../../../components/Template/Button";
 import ProgressBar from "../../../components/Student/ProgressBar";
+import homepageSplash from "../../../images/Homepage/homepage-splash-2.png";
 
 const ModuleText = () => {
   const dispatch = useDispatch();
   const stepData = useSelector(selectCurrentStepData);
   const currentStep = useSelector(selectCurrentStep);
+  const module = useSelector(selectSelectedModule);
 
   return (
     <Body>
-      <StyledTitle>This is the Module Text Page</StyledTitle>
+      <StyledTitle>{module.title}</StyledTitle>
       <StyledBody dangerouslySetInnerHTML={{ __html: stepData }} />
-      <ProgressBar />
-      <StyledButtonContainer>
+      <StyledProgressBar />
         <StyledSubmitButton
           onClick={() => dispatch(setCurrentStep(currentStep + 1))}
           data-test="next-step"
         >
           Next Step
         </StyledSubmitButton>
-      </StyledButtonContainer>
     </Body>
   );
 };
 
 const Body = styled.div`
+  display: flex;
+  flex-direction: column;
   width: 100%;
-  height: 100%;
+  min-height: 100vh;
+  background: url(${homepageSplash}) no-repeat;
+  background-position: 0 200px;
 `;
+
+const StyledProgressBar = styled(ProgressBar)`
+  
+`
 
 const StyledTitle = styled.p`
   color: ${Constants.COLOR.GREEN};
@@ -47,27 +55,22 @@ const StyledTitle = styled.p`
 const StyledBody = styled.div`
   margin-top: ${Constants.HEADER_HEIGHT};
   margin-left: ${Constants.SIDEBAR_WIDTH};
-  padding: 0 50px;
+  background-color: ${Constants.COLOR.DARK_GREEN};
+  border-radius: 10px;
+  padding: 20px;
+  min-height: 68vh;
+  margin: 0 50px;
+  margin-bottom: 20px;
 `;
-
-const StyledButtonContainer = styled.div`
-  display: flex;
-  width: 100%;
-  align-items: center;
-  justify-content: space-between;
-  padding-top: 30px;
-  margin-left: ${Constants.SIDEBAR_WIDTH};
-`;
-
-const StyledQuestionContainer = styled.div``;
-
-const StyledQuestion = styled.div``;
 
 const StyledSubmitButton = styled(Button)`
   font-size: 25px;
   height: 70px;
   padding: 0 5px;
   min-width: 120px;
+  align-self: flex-end;
+  margin-right: 30px;
+  margin-top: 30px;
   background-color: ${Constants.COLOR.DARK_GREEN};
   &:hover {
     cursor: pointer;
