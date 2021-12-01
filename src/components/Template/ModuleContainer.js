@@ -11,6 +11,10 @@ const StyledContainer = styled.div`
   overflow: auto;
   padding: 20px;
   height: 400px;
+  @media (max-width: 400px) {
+    padding: 0;
+    height: 380px;
+  }
 `;
 
 export default ModuleContainer;

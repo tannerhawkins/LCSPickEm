@@ -110,18 +110,27 @@ const ModulesHomepage = () => {
   );
 };
 
-const StyledHomepage = styled.div``;
+const StyledHomepage = styled.div`
+height: 110vh;`;
 
 const StyledBody = styled.div`
   margin-top: ${Constants.HEADER_HEIGHT};
   margin-left: ${Constants.SIDEBAR_WIDTH};
+  height: 100vh;
   padding: 0 50px;
+  @media (max-width: 500px) {
+    margin: 0px 0px;
+    padding: 0 5%;
+  }
 `;
 
 const BodyHeader = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  @media (max-width: 1000px) {
+    flex-flow: column;
+  }
 `;
 
 const StyledTitle = styled.p`
@@ -129,15 +138,31 @@ const StyledTitle = styled.p`
   line-height: 36px;
   font-size: 30px;
   margin-right: 20px;
+  @media (max-width: 1000px) {
+    margin: 5px 10px;
+  }
+  @media (max-width: 500px) {
+    margin-right: 0;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
 `;
 
 const TitleContainer = styled.div`
   display: flex;
   align-items: center;
+  @media (max-width: 500px) {
+    align-items: flex-start;
+    flex-flow: column;
+  }
 `;
 
 const EnrollmentCode = styled.p`
   font-size: 18px;
+  margin-left: 20px;
+  @media (max-width: 1000px) {
+    margin: 5px 0px;
+  }
 `;
 
 const NewCardContainer = styled.div`
@@ -150,12 +175,23 @@ const NewCardContainer = styled.div`
 const StyledCard = styled(NewCard)`
   width: 250px;
   height: 228px;
+  @media (max-width: 1000px) {
+    width: 180px;
+    height: 200px;
+  }
+  @media (max-width: 500px) {
+    width: 100px;
+    height: 200px;
+  }
 `;
 
 const StyledSectionHeader = styled.p`
   font-size: 36px;
   line-height: 43px;
   font-weight: 500;
+  @media (max-width: 1024px) {
+    font-size: 28px;
+  }
 `;
 
 export default ModulesHomepage;
