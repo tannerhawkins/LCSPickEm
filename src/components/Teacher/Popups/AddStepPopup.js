@@ -30,15 +30,21 @@ const AddStepPopup = ({ className, onClose, style }) => {
       <StepButtonsContainer>
         <StepButton onClick={() => handleClick("text")} data-test="add-text">
           <StyledIcon src={TextIcon} />
+          <StyledName>
           Text
+          </StyledName>
         </StepButton>
         <StepButton onClick={() => handleClick("video")} data-test="add-video">
           <StyledIcon src={VideoIcon} />
+          <StyledName>
           Video
+          </StyledName>
         </StepButton>
         <StepButton onClick={() => handleClick("quiz")} data-test="add-quiz">
           <StyledIcon src={QuizIcon} />
+          <StyledName>
           Quiz
+          </StyledName>
         </StepButton>
         {accountType === "admin" && (
           <StepButton
@@ -63,6 +69,12 @@ const StyledTitle = styled.p`
 
 const StyledIcon = styled.img`
   height: 90%;
+`;
+
+const StyledName = styled.p`
+  @media (max-width: 500px) {
+    display: none;
+  }
 `;
 
 const StepButtonsContainer = styled.div`

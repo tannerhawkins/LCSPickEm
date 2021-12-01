@@ -10,7 +10,10 @@ const StyledContainer = styled.div`
   flex-wrap: no-wrap;
   overflow: auto;
   padding: 20px;
-  height: 400px;
+  height: 320px;
+  @media (max-width: 400px) {
+    padding: 0;
+  }
 `;
 
 export default ModuleContainer;

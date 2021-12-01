@@ -15,6 +15,7 @@ import {
   selectSelectedStep,
   selectSteps,
 } from "../../../../app/module/selectors";
+import Hamburger from "../../../../components/Template/Hamburger";
 
 const EditQuiz = () => {
   const dispatch = useDispatch();
@@ -63,6 +64,7 @@ const EditQuiz = () => {
     <Main title={"Edit Quiz Step"} description={"Edit Quiz Step"}>
       <SideBar />
       <Header />
+      <Hamburger />
       <StyledBody>
         <StyledSectionTitle>Edit Quiz</StyledSectionTitle>
         <StyledAddQuestionButton

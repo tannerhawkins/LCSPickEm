@@ -13,6 +13,7 @@ import {
   selectSteps,
   selectSelectedStep,
 } from "../../../../app/module/selectors";
+import Hamburger from "../../../../components/Template/Hamburger.js";
 
 const EditVideo = () => {
   const dispatch = useDispatch();
@@ -62,6 +63,7 @@ const EditVideo = () => {
     <Main title={"Edit Video Step"} description={"Edit Video Step"}>
       <SideBar />
       <Header />
+      <Hamburger />
       <StyledBody>
         <StyledSectionTitle>Edit Video</StyledSectionTitle>
         <input

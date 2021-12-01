@@ -54,7 +54,7 @@ const StyledInfoContainer = styled.div`
   padding-top: 6px;
   padding-left: 15px;
 
-  @media (max-width: 800px) {
+  @media (max-width: 400px) {
     display: none;
   }
 `;
