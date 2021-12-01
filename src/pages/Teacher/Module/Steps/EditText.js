@@ -14,6 +14,7 @@ import {
   selectSelectedStep,
   selectSteps,
 } from "../../../../app/module/selectors";
+import Hamburger from "../../../../components/Template/Hamburger.js";
 
 const EditText = () => {
   const dispatch = useDispatch();
@@ -49,6 +50,7 @@ const EditText = () => {
     <Main title={"Edit Text Step"} description={"Edit Text Step"}>
       <SideBar />
       <Header />
+      <Hamburger />
       <StyledBody>
         <StyledSectionTitle>Edit Text</StyledSectionTitle>
         <StyledTextEditor
@@ -65,6 +67,10 @@ const StyledBody = styled.div`
   margin-top: ${Constants.HEADER_HEIGHT};
   margin-left: ${Constants.SIDEBAR_WIDTH};
   padding: 0 50px;
+  @media (max-width: 500px) {
+    margin: 0px 0px;
+    padding: 0 5%;
+  }
 `;
 
 const StyledSectionTitle = styled.p`

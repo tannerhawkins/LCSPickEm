@@ -24,6 +24,7 @@ import { selectCurrentClass } from "../../../app/class/selectors";
 import { setCurrentClass } from "../../../app/class/actions";
 import { setDescription, setTitle } from "../../../app/module/actions";
 import { signIn } from "../../../app/account/actions";
+import Hamburger from "../../../components/Template/Hamburger.js";
 
 const CreateModule = () => {
   const history = useHistory();
@@ -186,17 +187,13 @@ const CreateModule = () => {
     <Main title={"Create a Module"} description={"Create a Module"}>
       <SideBar />
       <Header />
+      <Hamburger />
       <AddStepPopup
         style={{ display: showAddStepPopup ? "flex" : "none" }}
         onClose={() => setShowAddStepPopup(false)}
       />
       <StyledBody>
         <StyledTitle>Create New Module</StyledTitle>
-        <StyledParagraph>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce ac
-          purus eget lacus pellentesque consequat. Donec commodo tincidunt
-          lorem, c ursus accumsan eros varius vel.
-        </StyledParagraph>
         <StyledForm id="moduleForm">
           <StyledText>Module Title</StyledText>
           <StyledInput
@@ -252,6 +249,11 @@ const StyledBody = styled.div`
   margin-top: ${Constants.HEADER_HEIGHT};
   margin-left: ${Constants.SIDEBAR_WIDTH};
   padding: 10px 50px;
+  height: 110vh;
+  @media (max-width: 500px) {
+    margin: 0px 0px;
+    padding: 0 5%;
+  }
 `;
 
 const StyledTitle = styled.p`
@@ -306,9 +308,15 @@ const StyledSubmitButton = styled(Button)`
   &:hover {
     cursor: pointer;
   }
+  @media (max-width: 500px) {
+    height: 50px;
+  }
 `;
 
-const StyledAddStepButton = styled(StyledSubmitButton)``;
+const StyledAddStepButton = styled(StyledSubmitButton)`
+@media (max-width: 500px) {
+  height: 50px;
+}`;
 
 const StyledDashboardButton = styled(Button)`
   font-size: 15px;
