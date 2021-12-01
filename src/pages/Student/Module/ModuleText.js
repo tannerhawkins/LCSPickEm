@@ -38,7 +38,8 @@ const Body = styled.div`
   width: 100%;
   min-height: 100vh;
   background: url(${homepageSplash}) no-repeat;
-  background-position: 0 200px;
+  background-size: 100% 90%;
+  background-position: center bottom;
 `;
 
 const StyledProgressBar = styled(ProgressBar)`

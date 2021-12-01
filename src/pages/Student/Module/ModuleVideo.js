@@ -19,7 +19,7 @@ const ModuleVideo = () => {
 
   return (
     <Body>
-      <StyledTitle>This is the {module.title} Video Page</StyledTitle>
+      <StyledTitle>{module.title}</StyledTitle>
       <Video
         frameborder="0"
         src={`${stepData}`}
