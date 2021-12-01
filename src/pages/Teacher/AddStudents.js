@@ -12,6 +12,7 @@ import { useSelector } from "react-redux";
 import { selectCurrentClass } from "../../app/class/selectors";
 import { selectClassList } from "../../app/account/selectors";
 import firebase from "firebase";
+import Hamburger from "../../components/Template/Hamburger";
 
 const AddStudents = () => {
   const history = useHistory();
@@ -78,6 +79,7 @@ const AddStudents = () => {
     <Main title={"Add a Student"} description={"Add a Student"}>
       <SideBar />
       <Header />
+      <Hamburger />
       <StyledBody>
         <StyledTitle>Add Students to a Class</StyledTitle>
         <StyledParagraph>
@@ -112,6 +114,10 @@ const StyledBody = styled.div`
   margin-top: ${Constants.HEADER_HEIGHT};
   margin-left: ${Constants.SIDEBAR_WIDTH};
   padding: 0 50px;
+  @media (max-width: 500px) {
+    margin: 0px 0px;
+    padding: 0 5%;
+  }
 `;
 
 const StyledTitle = styled.p`
@@ -157,6 +163,11 @@ const StyledSubmitButton = styled(Button)`
   background-color: ${Constants.COLOR.DARK_GREEN};
   &:hover {
     cursor: pointer;
+  }
+  @media (max-width: 500px) {
+    margin-right: 10px;
+    font-size: 20px;
+    height: 50px;
   }
 `;
 
