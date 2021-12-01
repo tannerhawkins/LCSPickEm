@@ -28,12 +28,11 @@ const ModuleSummary = () => {
           Back to Home
         </StyledSubmitButton>
       </StyledButtonContainer>
-      <StyledTitle>This is the {module.title} Summary Page:</StyledTitle>
+      <StyledTitle>{module.title} Summary:</StyledTitle>
       <StyledBody>
-        {module.description} The summary of this page is simple and short that
-        you can read it very quick for the purpose of this assignment called the
-        "Walking Skeleton". Note: You CANNOT back out of a module once you
-        begin!
+        {module.description}
+        <Note>Note: You CANNOT back out of a module once you
+        begin!</Note>
       </StyledBody>
       <ProgressBar />
       <StyledStartButtonContainer>
@@ -72,6 +71,7 @@ const StyledBody = styled.div`
   height: 70vh;
   color: white;
   padding: 50px;
+  display: flex;
   @media (max-width: 1024px) {
     width: 70vw;
     height: 70vh;
@@ -99,6 +99,10 @@ const StyledSubmitButton = styled(Button)`
     cursor: pointer;
   }
 `;
+
+const Note = styled.p`
+  align-self: flex-end;
+`
 
 const StyledStartButtonContainer = styled.div`
   display: flex;
