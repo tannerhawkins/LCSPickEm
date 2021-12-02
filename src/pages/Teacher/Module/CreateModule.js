@@ -309,6 +309,8 @@ const StyledSubmitButton = styled(Button)`
     cursor: pointer;
   }
   @media (max-width: 500px) {
+    margin-right: 10px;
+    font-size: 20px;
     height: 50px;
   }
 `;

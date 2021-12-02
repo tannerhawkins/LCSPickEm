@@ -11,6 +11,7 @@ import { auth, classDataDb, userDataDb } from "../../data/firebase";
 import firebase from "firebase";
 import { setCurrentClass } from "../../app/class/actions";
 import { signIn } from "../../app/account/actions";
+import Hamburger from "../../components/Template/Hamburger";
 
 const CreateClass = () => {
   const history = useHistory();
@@ -77,6 +78,7 @@ const CreateClass = () => {
     <Main title={"Create a Class"} description={"Create a Class"}>
       <SideBar />
       <Header />
+      <Hamburger />
       <StyledBody>
         <StyledTitle>Create New Class</StyledTitle>
         <StyledForm id="classForm">
@@ -106,6 +108,10 @@ const StyledBody = styled.div`
   margin-top: ${Constants.HEADER_HEIGHT};
   margin-left: ${Constants.SIDEBAR_WIDTH};
   padding: 0 50px;
+  @media (max-width: 500px) {
+    margin: 0px 0px;
+    padding: 0 5%;
+  }
 `;
 
 const StyledTitle = styled.p`
@@ -151,6 +157,11 @@ const StyledSubmitButton = styled(Button)`
   background-color: ${Constants.COLOR.DARK_GREEN};
   &:hover {
     cursor: pointer;
+  }
+  @media (max-width: 500px) {
+    margin-right: 10px;
+    font-size: 20px;
+    height: 50px;
   }
 `;
 

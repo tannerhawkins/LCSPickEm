@@ -11,6 +11,7 @@ import Logo from "../../images/white mtn.png";
 import { useHistory } from "react-router-dom";
 import { clearState } from "../../app/store";
 import { useDispatch } from "react-redux";
+import HeaderProfileInfo from "../Template/HeaderProfileInfo";
 
 const Hamburger = () => {
   const [open, setOpen] = useState(false);
@@ -50,7 +51,7 @@ const Hamburger = () => {
       <Suspense fallback={<></>}>
         <StyledMenu style={{display: open ? "flex" : "none"}}>
           <StyledLinkList>
-            <StyledListItem>
+            <StyledListItem onClick={() => history.push("/profile")}>
               <StyledProfileImage />
               Profile
             </StyledListItem>
@@ -159,6 +160,8 @@ const StyledProfileImage = styled(ProfileImage)`
   height: 40px;
   margin-right: 20px;
 `;
+
+const StyledProfileInfo = styled(HeaderProfileInfo)``;
 
 const StyledMenu = styled.div`
   position: absolute;

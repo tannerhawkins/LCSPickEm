@@ -97,6 +97,9 @@ const StepButton = styled(Button)`
   padding: 10px 30px;
   padding-right: 10%;
   font-size: 50px;
+  @media (max-width: 500px) {
+    padding: 0 30px;
+  }
 `;
 
 export default AddStepPopup;
