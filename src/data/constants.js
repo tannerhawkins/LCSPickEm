@@ -5,6 +5,7 @@ export const Constants = {
     DARK_GREEN: "#6BAE9B",
     GREEN: "#7DCBB5",
     WHITE: "#e9e9ff",
+    LIGHT_BLUE: "#92d4f4",
     DARK_BLUE: "#373B53",
     TEAL: "#B5FFEA",
     GRAY: "#E5E5E5",
