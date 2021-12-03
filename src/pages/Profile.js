@@ -177,7 +177,7 @@ const ModulesHomepage = () => {
                 <StyledInput
                   type="email"
                   name="email"
-                  deafultValue={user.email}
+                  defaultValue={user.email}
                 ></StyledInput>
               ) : (
                 <UserData>{user.email}</UserData>
@@ -252,6 +252,10 @@ const StyledBody = styled.div`
   margin-top: ${Constants.HEADER_HEIGHT};
   margin-left: ${Constants.SIDEBAR_WIDTH};
   padding: 0 50px;
+  @media (max-width: 500px) {
+    margin: 0px 0px;
+    padding: 0 5%;
+  }
 `;
 
 const StyledSubmitButton = styled(StyledButton)`

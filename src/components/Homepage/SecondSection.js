@@ -3,19 +3,23 @@ import styled from "styled-components";
 import homepageSplash from "../../images/Homepage/homepage-splash-2.png";
 import circle from "../../images/Homepage/circle.png";
 import square from "../../images/Homepage/square.png";
+import ManandWoman from "../../images/BookCovers/ManandWoman.png";
+import IBG from "../../images/BookCovers/IBG.png";
+import CainAndAbel from "../../images/BookCovers/CainAndAbel.png";
+import TFSCover from "../../images/BookCovers/TFSCover.png";
 
 const IntroSection = () => {
   return (
     <SectionContainer>
       <CirclesContainer>
         <CirclesDivider>
-          <StyledCircle src={circle} style={{ margin: "5% 0% 0% 5%" }} />
+          <StyledCircleImg src={CainAndAbel} style={{ margin: "5% 0% 0% 5%" }}/>
           <StyledTextContainer style={{ margin: "5% 0% 0% 28%" }}>
           Explore creative interactive modules in our Ancient Path Adventure Learning Modules.
           </StyledTextContainer>
         </CirclesDivider>
         <CirclesDivider>
-          <StyledCircle src={circle} style={{ margin: "10% 0% 0% 50%" }} />
+          <StyledCircleImg src={ManandWoman} style={{ margin: "10% 0% 0% 50%" }}/>
           <StyledTextContainer style={{ margin: "10% 0% 0% 75%" }}>
           Each module teaches an aspect of the Bible and combines it with a learning adventure.
           </StyledTextContainer>
@@ -25,7 +29,7 @@ const IntroSection = () => {
           Featuring the Babies Bible Series. Travel through the Bible with Baby Nahal and friends, 
           in this series of Bible books for babies and children.
           </StyledTextContainer>
-          <StyledCircle src={circle} style={{ margin: "35% 0% 0% 30%" }} />
+          <StyledCircleImg src={TFSCover} style={{ margin: "35% 0% 0% 30%" }} />
         </CirclesDivider>
         <CirclesDivider>
           <StyledTextContainer style={{ margin: "35% 0% 0% 60%" }}>
@@ -46,7 +50,7 @@ const IntroSection = () => {
           </SquaresDivider>
           <SquaresDivider>
             <SquaresText>‘Train up a child in the way he should go, Even when he is old he turns not away from it.’</SquaresText>
-            <StyledSquare src={square} />
+            <StyledSquareImg src={IBG}/>
           </SquaresDivider>
           <SquaresDivider>
             <SquaresText>– Mishlĕ (Proverbs) 22:6</SquaresText>
@@ -171,6 +175,31 @@ const StyledHeader = styled.h1`
     text-align: center;
     padding-left: 0%;
   }
-`;
+`
+
+  const StyledSquareImg = styled.img`
+  width: 55%;
+  max-width: 400px;
+  border-radius: 75px;
+  margin-bottom: 20px;
+  box-shadow: 0px 20px 10px rgba(0, 0, 0, 0.25);
+  @media (max-width: 1000px) {
+    width: 40%;
+    min-width: 0px;
+  }
+`
+
+const StyledCircleImg = styled.img`
+  position: absolute;
+  width: 20%;
+  max-width: 350px;
+  border-radius: 50%;
+  box-shadow: 0px 20px 10px rgba(0, 0, 0, 0.25);
+  @media (max-width: 1000px) {
+    position: relative;
+    width: 40%;
+    margin: 0 auto !important;
+  }`
+;
 
 export default IntroSection;
