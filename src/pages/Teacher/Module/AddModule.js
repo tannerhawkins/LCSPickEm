@@ -81,7 +81,7 @@ const AddModule = () => {
                     )[0];
                     const newClass = {
                       ...oldClass,
-                      apaModules: [...oldClass.modules, mid],
+                      apaModules: [...oldClass.apaModules, mid],
                     };
                     const getIndex = () => {
                       for (let i = 0; i < classList.length; i++) {
