@@ -61,6 +61,7 @@ const AddStudents = () => {
             classList: firebase.firestore.FieldValue.arrayUnion({
               cid: currentClass.cid,
               modules: currentClass.modules,
+              apaModules: currentClass.apaModules,
               className: currentClass.className,
             }),
           });

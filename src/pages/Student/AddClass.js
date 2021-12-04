@@ -61,6 +61,7 @@ const AddClass = () => {
               classList: firebase.firestore.FieldValue.arrayUnion({
                 cid: data.cid,
                 modules: data.modules,
+                apaModules: data.apaModules,
                 className: data.className,
               }),
             })
