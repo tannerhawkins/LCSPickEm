@@ -8,13 +8,13 @@ import { Constants } from "./constants";
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyBikWf9vy86sF9wXyRjkpdrrAJaw7WoQ8M",
-  authDomain: "ancient-path-adventures.firebaseapp.com",
-  projectId: "ancient-path-adventures",
-  storageBucket: "ancient-path-adventures.appspot.com",
-  messagingSenderId: "1051282870332",
-  appId: "1:1051282870332:web:8f7a5922db7d370e86b339",
-  measurementId: "G-NPPQJQTEQN",
+  apiKey: "AIzaSyCRYQ28vxe22y_CxDMFecaF8MHz8cfuf0c",
+  authDomain: "ancient-path-adventures-lms.firebaseapp.com",
+  projectId: "ancient-path-adventures-lms",
+  storageBucket: "ancient-path-adventures-lms.appspot.com",
+  messagingSenderId: "343950332366",
+  appId: "1:343950332366:web:9e919e39fd98ada2cb1b9f",
+  measurementId: "G-TG2JR6SDT9"
 };
 
 // Initialize Firebase
