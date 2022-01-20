@@ -21,10 +21,10 @@ export const setPasswordLength = (length) => {
   };
 };
 
-export const updateClassList = (classList) => {
+export const setWeek = (week) => {
   return {
-    type: "UPDATE_CLASS_LIST",
-    payload: classList,
+    type: "SET_WEEK",
+    payload: week,
   };
 };
 

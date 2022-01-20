@@ -7,8 +7,8 @@ const Main = (props) => (
   <HelmetProvider>
     <ScrollToTop />
     <Helmet
-      titleTemplate="%s | Ancient Path Adventures"
-      defaultTitle="Ancient Path Adventures"
+      titleTemplate="%s | LCS Pick'Em"
+      defaultTitle="LCS Pick'Em"
       defer={false}
     >
       {props.title && <title>{props.title}</title>}
@@ -34,7 +34,7 @@ Main.defaultProps = {
   children: null,
   fullPage: false,
   title: null,
-  description: "Ancient Path Adventures",
+  description: "LCS Pick'Em",
 };
 
 export default Main;

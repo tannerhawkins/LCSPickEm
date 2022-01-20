@@ -7,7 +7,6 @@ import Button from "../../components/Template/Button";
 import { auth, userDataDb } from "../../data/firebase";
 import { useDispatch } from "react-redux";
 import { setPasswordLength, signIn } from "../../app/account/actions.js";
-import { setCurrentClass } from "../../app/class/actions";
 import { useHistory } from "react-router";
 
 const SignUp = () => {
@@ -58,28 +57,19 @@ const SignUp = () => {
             displayName: `${data.first} ${data.last}`,
           })
           .then(() => {
-            const accountInfo =
-              data.accountType === "teacher"
-                ? {
+            const accountInfo = {
                     email: auth.currentUser.email,
                     uid: auth.currentUser.uid,
-                    classList: [],
                     displayName: `${data.first} ${data.last}`,
-                    accountType: data.accountType,
-                    moduleList: [],
+                    picks: [],
                   }
-                : {
-                    email: auth.currentUser.email,
-                    uid: auth.currentUser.uid,
-                    classList: [],
-                    displayName: `${data.first} ${data.last}`,
-                    accountType: data.accountType,
-                  };
             dispatch(signIn(accountInfo));
             dispatch(setPasswordLength(data.password.length));
-            dispatch(setCurrentClass(null));
+            gameDataDb.get().then(result => {
+              dispatch(setWeek(result.docs[0].data()))
+            })
             userDataDb.doc(auth.currentUser.uid).set(accountInfo);
-            history.push(`/${data.accountType}/home`);
+            history.push(`/home`);
           });
       })
       .catch((response) => {
@@ -131,25 +121,6 @@ const SignUp = () => {
             data-test="confirm-password"
             required
           />
-          <StyledText style={{ marginTop: "-20px" }}>I am a:</StyledText>
-          <StyledRadioButtonContainer>
-            <StyledRadioButton
-              type="radio"
-              name="accountType"
-              value="teacher"
-              data-test="teacher"
-              required
-            />
-            <StyledText>Teacher</StyledText>
-            <StyledRadioButton
-              type="radio"
-              name="accountType"
-              value="student"
-              data-test="student"
-              required
-            />
-            <StyledText>Student</StyledText>
-          </StyledRadioButtonContainer>
           <StyledError>{errorMessage}</StyledError>
           <StyledButtonContainer>
             <StyledSubmitButton data-test="submit" onClick={handleSubmit}>
@@ -159,16 +130,10 @@ const SignUp = () => {
               data-test="sign-up"
               onClick={() => history.push(`signin`)}
             >
-              Already have an account? Don’t worry! Sign in here
+              Already have an account? Sign in here
             </StyledSignUpButton>
           </StyledButtonContainer>
         </StyledForm>
-        {/* <StyledOrContainer>
-        <StyledLine />
-        <p>OR</p>
-        <StyledLine />
-    </StyledOrContainer>
-    <LoginWithGoogle /> */}
       </MainContainer>
     </Main>
   );
@@ -179,7 +144,7 @@ const MainContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  padding: 50px 0;
+  padding-top: calc(${Constants.HEADER_HEIGHT} + 40px);
 `;
 
 const StyledButtonContainer = styled.div`
@@ -193,13 +158,6 @@ const StyledNamesContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-`;
-
-const StyledRadioButtonContainer = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  margin-bottom: 70px;
 `;
 
 const StyledTitle = styled.header`
@@ -225,12 +183,6 @@ const StyledInput = styled.input`
   outline: none;
 `;
 
-const StyledRadioButton = styled.input`
-  height: 20px;
-  width: 20px;
-  margin-right: -15%;
-`;
-
 const StyledNameInput = styled(StyledInput)`
   width: 45%;
 `;
@@ -253,34 +205,16 @@ const StyledSubmitButton = styled(Button)`
   height: 70px;
   width: 20%;
   min-width: 100px;
-  background-color: ${Constants.COLOR.DARK_GREEN};
+  color: white;
+  background-color: ${Constants.COLOR.BLACK};
   &:hover {
     cursor: pointer;
   }
 `;
 
-const StyledLine = styled.div`
-  display: inline-block;
-  border-bottom: 1px solid black;
-  margin: 0px 10px;
-  width: 15%;
-`;
-
-const StyledOrContainer = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 90%;
-  margin-bottom: 30px;
-`;
-
 const StyledError = styled.p`
   color: red;
   margin-top: -20px;
-`;
-
-const StyledText = styled.p`
-  font-size: 20px;
 `;
 
 export default SignUp;

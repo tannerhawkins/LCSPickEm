@@ -5,9 +5,8 @@ import Header from "../../components/Authentication/Header";
 import { Constants } from "../../data/constants";
 import Button from "../../components/Template/Button";
 import { useDispatch } from "react-redux";
-import { auth, classDataDb, userDataDb } from "../../data/firebase";
-import { setPasswordLength, signIn } from "../../app/account/actions.js";
-import { setCurrentClass } from "../../app/class/actions";
+import { auth, gameDataDb, userDataDb } from "../../data/firebase";
+import { setPasswordLength, setWeek, signIn } from "../../app/account/actions.js";
 import { useHistory } from "react-router";
 
 const SignIn = () => {
@@ -48,15 +47,10 @@ const SignIn = () => {
           .then((doc) => {
             dispatch(signIn(doc.data()));
             dispatch(setPasswordLength(data.password.length));
-            if (doc.data().classList.length !== 0) {
-              classDataDb
-                .doc(doc.data().classList[0].cid)
-                .get()
-                .then((result) => dispatch(setCurrentClass(result.data())));
-            } else {
-              dispatch(setCurrentClass(null));
-            }
-            history.push(`/${doc.data().accountType}/home`);
+            gameDataDb.get().then(result => {
+              dispatch(setWeek(result.docs[0].data()))
+            })
+            history.push(`/home`);
           });
       })
       .catch((error) => {
@@ -90,14 +84,13 @@ const SignIn = () => {
             data-test="password"
             required
           />
-          <StyledForgotButton>Did you forget your password?</StyledForgotButton>
           <StyledError>{errorMessage}</StyledError>
           <StyledButtonContainer>
             <StyledSignUpButton
               data-test="sign-up"
               onClick={() => history.push(`/signup`)}
             >
-              Don't have an account? Don’t worry! Sign up here
+              Don't have an account? Sign up here
             </StyledSignUpButton>
             <StyledSubmitButton
               type="submit"
@@ -108,12 +101,6 @@ const SignIn = () => {
             </StyledSubmitButton>
           </StyledButtonContainer>
         </StyledForm>
-        {/* <StyledOrContainer>
-      <StyledLine />
-      <p>OR</p>
-      <StyledLine />
-    </StyledOrContainer>
-    <LoginWithGoogle /> */}
       </MainContainer>
     </Main>
   );
@@ -123,7 +110,7 @@ const MainContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 50px;
+  padding-top: calc(${Constants.HEADER_HEIGHT} + 40px);
   height: calc(100vh - ${Constants.HEADER_HEIGHT}) vh;
 `;
 
@@ -132,6 +119,7 @@ const StyledButtonContainer = styled.div`
   width: 100%;
   align-items: center;
   justify-content: space-between;
+  margin-top: 5%;
 `;
 
 const StyledTitle = styled.header`
@@ -167,18 +155,6 @@ const StyledEmailInput = styled(StyledInput)`
   margin-bottom: 60px;
 `;
 
-const StyledForgotButton = styled.p`
-  text-align: right;
-  font-size: 18px;
-  margin-bottom: 30px;
-  color: ${Constants.COLOR.LIGHT_GREEN};
-
-  &:hover {
-    cursor: pointer;
-    color: ${Constants.COLOR.DARK_GREEN};
-  }
-`;
-
 const StyledSignUpButton = styled.p`
   text-align: right;
   font-size: 18px;
@@ -196,25 +172,13 @@ const StyledSubmitButton = styled(Button)`
   height: 70px;
   width: 20%;
   min-width: 100px;
-  background-color: ${Constants.COLOR.DARK_GREEN};
+  color: white;
+  background-color: ${Constants.COLOR.BLACK};
   &:hover {
     cursor: pointer;
   }
 `;
 
-const StyledLine = styled.div`
-  display: inline-block;
-  border-bottom: 1px solid black;
-  margin: 0px 10px;
-  width: 15%;
-`;
-
-const StyledOrContainer = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 90%;
-`;
 
 const StyledError = styled.p`
   color: red;

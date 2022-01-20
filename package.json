@@ -1,11 +1,11 @@
 {
-  "name": "AncientPathAdventures",
+  "name": "LCSPickEm",
   "version": "3.0.1",
-  "homepage": "https://tannerhawkins.github.io/AncientPathAdventures/",
+  "homepage": "https://tannerhawkins.github.io/LCSPickEm/",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/tannerhawkins/AncientPathAdventures.git"
+    "url": "https://github.com/tannerhawkins/LCSPickEm.git"
   },
   "scripts": {
     "build": "react-scripts build",

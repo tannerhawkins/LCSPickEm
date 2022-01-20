@@ -8,13 +8,13 @@ import { Constants } from "./constants";
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyCRYQ28vxe22y_CxDMFecaF8MHz8cfuf0c",
-  authDomain: "ancient-path-adventures-lms.firebaseapp.com",
-  projectId: "ancient-path-adventures-lms",
-  storageBucket: "ancient-path-adventures-lms.appspot.com",
-  messagingSenderId: "343950332366",
-  appId: "1:343950332366:web:9e919e39fd98ada2cb1b9f",
-  measurementId: "G-TG2JR6SDT9"
+  apiKey: "AIzaSyCjHLGz8O2l74nClTF96qs2nQVVFNQStIo",
+  authDomain: "lcspickem-26ae4.firebaseapp.com",
+  projectId: "lcspickem-26ae4",
+  storageBucket: "lcspickem-26ae4.appspot.com",
+  messagingSenderId: "980876753088",
+  appId: "1:980876753088:web:787a12fa35989aeaca5525",
+  measurementId: "G-71Q0N4KSYM"
 };
 
 // Initialize Firebase
@@ -24,18 +24,7 @@ const db = firebase.firestore();
 var auth = firebase.auth();
 var provider = new firebase.auth.GoogleAuthProvider();
 
-export const userDataDb = Constants.IN_CYPRESS_TEST
-  ? db.collection("testUserData")
-  : db.collection("userData");
-export const classDataDb = Constants.IN_CYPRESS_TEST
-  ? db.collection("testClassData")
-  : db.collection("classData");
-export const modulesDb = Constants.IN_CYPRESS_TEST
-  ? db.collection("testModules")
-  : db.collection("modules");
-export const realModulesDb = db.collection("modules");
-export const realClassDb = db.collection("classData");
-export const realUserDataDb = db.collection("userData");
-export const apaModulesDb = db.collection("apaModules");
+export const userDataDb = db.collection("userData");
+export const gameDataDb = db.collection("gameData");
 
 export { auth, provider, app };

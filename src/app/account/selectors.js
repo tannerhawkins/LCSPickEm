@@ -8,6 +8,11 @@ const selectAccountState = createSelector(
   (state) => state.account
 );
 
+export const selectWeek = createSelector(
+  selectAccountState,
+  (state) => state.week
+)
+
 export const selectIsSignedIn = createSelector(
   selectAccountState,
   (state) => state.signedIn
@@ -28,31 +33,6 @@ export const selectUser = createSelector(selectAccountState, (state) => state);
 export const selectAccountType = createSelector(
   selectAccountState,
   (state) => state.accountType
-);
-
-export const selectIsTeacher = createSelector(
-  selectAccountType,
-  (type) => type === "teacher"
-);
-
-export const selectIsStudent = createSelector(
-  selectAccountType,
-  (type) => type === "student"
-);
-
-export const selectIsAdmin = createSelector(
-  selectAccountType,
-  (type) => type === "admin"
-);
-
-export const selectClassList = createSelector(
-  selectAccountState,
-  (state) => state.classList
-);
-
-export const selectModuleList = createSelector(
-  selectAccountState,
-  (state) => state.moduleList
 );
 
 export const selectUID = createSelector(

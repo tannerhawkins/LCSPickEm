@@ -1,15 +1,11 @@
 import { combineReducers, createStore } from "@reduxjs/toolkit";
 import accountReducer from "./account/reducers.js";
-import classReducer from "./class/reducers.js";
 import storage from "redux-persist/lib/storage";
 import persistReducer from "redux-persist/es/persistReducer";
 import persistStore from "redux-persist/es/persistStore";
-import moduleReducer from "./module/reducers.js";
 
 const allReducers = combineReducers({
   account: accountReducer,
-  class: classReducer,
-  module: moduleReducer,
 });
 
 const rootReducer = (state, action) => {

@@ -1,5 +1,5 @@
 {
-    "baseUrl": "http://localhost:3000/AncientPathAdventures",
+    "baseUrl": "http://localhost:3000/LCSPickEm",
     "env": {
         "BABEL_ENV": "e2e"
     }

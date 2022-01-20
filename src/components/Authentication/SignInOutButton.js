@@ -34,10 +34,15 @@ const SignInOutButton = ({ className }) => {
 };
 
 const StyledSignInButton = styled(StyledButton)`
-  background-color: ${Constants.COLOR.DARK_GREEN};
   width: 120px;
   height: 40px;
   margin-left: 10px;
+  color: black;
+  @media (max-width: 800px) {
+    width: 60px;
+    height: 30px;
+    font-size: 10px;
+  }
 `;
 
 export default SignInOutButton;

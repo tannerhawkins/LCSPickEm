@@ -20,12 +20,6 @@ export default function accountReducer(state = initialState, action) {
         initialState,
       };
 
-    case "UPDATE_CLASS_LIST":
-      return {
-        ...state,
-        classList: action.payload,
-      };
-
     case "SET_PASSWORD_LENGTH":
       return {
         ...state,
@@ -36,6 +30,12 @@ export default function accountReducer(state = initialState, action) {
       return {
         initialState,
       };
+
+    case "SET_WEEK":
+      return {
+        ...state,
+        week: action.payload,
+      }
 
     default:
       // If this reducer doesn't recognize the action type, or doesn't
