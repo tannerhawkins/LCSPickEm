@@ -41,7 +41,7 @@ const teamLogo = (team) => {
 const TeamButton = (props) => {
 
   return (
-    <StyledTeam onClick={props.onClick} style={{backgroundColor: props.selected ? Constants.COLOR.PURPLE : Constants.COLOR.WHITE}}>
+    <StyledTeam onClick={props.onClick} data-team={props.team} data-gid={props.gid} style={{backgroundColor: props.selected ? Constants.COLOR.PURPLE : Constants.COLOR.WHITE}}>
           <StyledLogo src={teamLogo(props.team)} />
     </StyledTeam>
   );
@@ -69,15 +69,13 @@ const StyledTeam = styled.div`
     height: 100px;
     font-size: 10px;
   }
+  z-index: 1;
 `;
 
 const StyledLogo = styled.img`
-  height: 250px;
-
-  @media (max-width: 800px) {
-    width: 60px;
-    height: 60px;
-  }
+  max-height: 100%;
+  max-width: 100%;
+  z-index: -1;
 `;
 
 export default TeamButton;

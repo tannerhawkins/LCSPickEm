@@ -10,10 +10,22 @@ import {
   selectIsSignedIn,
 } from "../../app/account/selectors.js";
 import TeamButton from "./TeamButton.js";
+import { useState } from "react";
 
 const IntroSection = () => {
   const history = useHistory();
   const isSignedIn = useSelector(selectIsSignedIn);
+
+  const [picks, setPicks] = useState([
+    {
+      gid: "C9TSM120",
+      pick: "C9",
+    },
+    {
+      gid: "TSMTL120",
+      pick: "TL",
+    },
+  ]);
 
   const games = [{
     team1: "C9",
@@ -29,6 +41,35 @@ const IntroSection = () => {
     gid: "TSMTL120",
   }]
 
+  const selectTeam = (event) => {
+    const gid = event.target.parentElement.dataset.gid;
+    const team = event.target.parentElement.dataset.team;
+
+    setPicks(picks.map(pick => {
+      if (pick.gid == gid) {
+        if (pick.pick == team) {
+          return pick;
+        } else {
+          return {
+            ...pick,
+            pick: team,
+          };
+        }
+      } else {
+        return pick;
+      }
+    }))
+  }
+  console.log(picks);
+
+  const pickedTeam = (gid) => {
+    const game = picks.filter(pick => {
+      return pick.gid == gid;
+    })[0];
+
+    return game && game.pick;
+  }
+
   return (
     <SectionContainer>
       <TopContainer>
@@ -39,9 +80,9 @@ const IntroSection = () => {
         {games.map(game =>
         <GameContainer key={`${game.team1}vs${game.team2}`}>
           <VsContainer>
-            <TeamButton team={game.team1} selected={true}/>
+            <TeamButton team={game.team1} selected={pickedTeam(game.gid) == game.team1} gid={game.gid} onClick={selectTeam}/>
             vs
-            <TeamButton team={game.team2} selected={false}/>
+            <TeamButton team={game.team2} selected={pickedTeam(game.gid) == game.team2} gid={game.gid} onClick={selectTeam}/>
           </VsContainer>
           <GameTitle>{game.team1} vs {game.team2}</GameTitle>
           <GameDate>{game.start.toLocaleDateString('en-us', {month:"short", day:"numeric"})} {game.start.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</GameDate>
