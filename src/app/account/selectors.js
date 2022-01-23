@@ -11,17 +11,17 @@ const selectAccountState = createSelector(
 export const selectWeek = createSelector(
   selectAccountState,
   (state) => state.week
-)
+);
 
 export const selectWeeks = createSelector(
   selectAccountState,
   (state) => state.weeks
-)
+);
 
 export const selectPicks = createSelector(
   selectAccountState,
   (state) => state.picks
-)
+);
 
 export const selectIsSignedIn = createSelector(
   selectAccountState,

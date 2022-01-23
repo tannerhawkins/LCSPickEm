@@ -23,9 +23,7 @@ const IntroSection = () => {
       <ButtonContainer>
         <StyledButtonOne
           onClick={() =>
-            isSignedIn
-              ? history.push(`/home`)
-              : history.push(`/signin`)
+            isSignedIn ? history.push(`/home`) : history.push(`/signin`)
           }
         >
           HOME

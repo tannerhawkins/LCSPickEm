@@ -15,14 +15,20 @@ const Navigation = () => {
   return (
     <StyledHeader id="header">
       <SideContainer>
-      <StyledLogoContainer onClick={() => history.push(`/index`)}>
-        <StyledLogo src={Logo} />
-        <HeaderName>LCS Pick'Em</HeaderName>
-      </StyledLogoContainer>
-      {isSignedIn && <LinksContainer>
-        <StyledLink onClick={() => history.push('/home')}>My Picks</StyledLink>
-        <StyledLink onClick={() => history.push('/standings')}>Standings</StyledLink>
-      </LinksContainer>}
+        <StyledLogoContainer onClick={() => history.push(`/index`)}>
+          <StyledLogo src={Logo} />
+          <HeaderName>LCS Pick'Em</HeaderName>
+        </StyledLogoContainer>
+        {isSignedIn && (
+          <LinksContainer>
+            <StyledLink onClick={() => history.push("/home")}>
+              My Picks
+            </StyledLink>
+            <StyledLink onClick={() => history.push("/standings")}>
+              Standings
+            </StyledLink>
+          </LinksContainer>
+        )}
       </SideContainer>
       <StyledButtonContainer>
         <StyledSignInOutButton />
@@ -48,7 +54,7 @@ const StyledHeader = styled.header`
 const SideContainer = styled.div`
   display: flex;
   align-items: center;
-`
+`;
 
 const StyledButtonContainer = styled.div`
   display: flex;
@@ -71,7 +77,7 @@ const LinksContainer = styled.div`
   @media (max-width: 400px) {
     border: none;
   }
-`
+`;
 
 const HeaderName = styled.div`
   color: white;
@@ -95,7 +101,7 @@ const StyledLink = styled.p`
   @media (max-width: 400px) {
     font-size: 13px;
   }
-`
+`;
 
 const StyledLogo = styled.img`
   margin-left: 3%;

@@ -5,10 +5,8 @@ import homepageSplash from "../../images/homepage-splash-2.png";
 const IntroSection = () => {
   return (
     <SectionContainer>
-      <CirclesContainer>
-      </CirclesContainer>
-      <SquaresContainer>
-      </SquaresContainer>
+      <CirclesContainer></CirclesContainer>
+      <SquaresContainer></SquaresContainer>
     </SectionContainer>
   );
 };
@@ -126,9 +124,9 @@ const StyledHeader = styled.h1`
     text-align: center;
     padding-left: 0%;
   }
-`
+`;
 
-  const StyledSquareImg = styled.img`
+const StyledSquareImg = styled.img`
   width: 55%;
   max-width: 400px;
   border-radius: 75px;
@@ -138,7 +136,7 @@ const StyledHeader = styled.h1`
     width: 40%;
     min-width: 0px;
   }
-`
+`;
 
 const StyledCircleImg = styled.img`
   position: absolute;
@@ -150,7 +148,6 @@ const StyledCircleImg = styled.img`
     position: relative;
     width: 40%;
     margin: 0 auto !important;
-  }`
-;
-
+  }
+`;
 export default IntroSection;

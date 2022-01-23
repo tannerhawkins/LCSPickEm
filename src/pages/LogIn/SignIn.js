@@ -6,7 +6,11 @@ import { Constants } from "../../data/constants";
 import Button from "../../components/Template/Button";
 import { useDispatch } from "react-redux";
 import { auth, gameDataDb, userDataDb } from "../../data/firebase";
-import { setPasswordLength, setWeek, signIn } from "../../app/account/actions.js";
+import {
+  setPasswordLength,
+  setWeek,
+  signIn,
+} from "../../app/account/actions.js";
 import { useHistory } from "react-router";
 
 const SignIn = () => {
@@ -47,9 +51,12 @@ const SignIn = () => {
           .then((doc) => {
             dispatch(signIn(doc.data()));
             dispatch(setPasswordLength(data.password.length));
-            gameDataDb.get().then(result => {
-              dispatch(setWeek(result.docs[0].data()))
-            }).then(history.push(`/home`));
+            gameDataDb
+              .get()
+              .then((result) => {
+                dispatch(setWeek(result.docs[0].data()));
+              })
+              .then(history.push(`/home`));
           });
       })
       .catch((error) => {
@@ -177,7 +184,6 @@ const StyledSubmitButton = styled(Button)`
     cursor: pointer;
   }
 `;
-
 
 const StyledError = styled.p`
   color: red;

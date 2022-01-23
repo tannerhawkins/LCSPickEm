@@ -1,10 +1,7 @@
 import React, { Suspense, lazy, useEffect } from "react";
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import Main from "./layouts/Main"; // fallback for lazy pages
-import {
-  selectIsSignedIn,
-  selectUID,
-} from "./app/account/selectors";
+import { selectIsSignedIn, selectUID } from "./app/account/selectors";
 import { useDispatch, useSelector } from "react-redux";
 import { auth, userDataDb } from "./data/firebase";
 import { signIn } from "./app/account/actions";

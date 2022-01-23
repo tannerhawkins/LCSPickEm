@@ -25,7 +25,7 @@ export default function accountReducer(state = initialState, action) {
       return {
         ...state,
         picks: action.payload,
-      }
+      };
 
     case "SET_PASSWORD_LENGTH":
       return {
@@ -42,13 +42,13 @@ export default function accountReducer(state = initialState, action) {
       return {
         ...state,
         week: action.payload,
-      }
+      };
 
     case "SET_WEEKS":
       return {
         ...state,
         weeks: action.payload,
-      }
+      };
 
     default:
       // If this reducer doesn't recognize the action type, or doesn't

@@ -19,18 +19,22 @@ const MainSection = () => {
         <StyledImage src={Podiums} />
       </StandingsContainer>
       <TableContainer>
-        <Table data={[{
-          name: "Tanner",
-          week1: 2,
-          week2: 3,
-          week3: 4,
-          week4: 5,
-          week5: 6,
-          week6: 7,
-          week7: 8,
-          week8: 9,
-          total: 44,
-          }]} />
+        <Table
+          data={[
+            {
+              name: "Tanner",
+              week1: 2,
+              week2: 3,
+              week3: 4,
+              week4: 5,
+              week5: 6,
+              week6: 7,
+              week7: 8,
+              week8: 9,
+              total: 44,
+            },
+          ]}
+        />
       </TableContainer>
     </SectionContainer>
   );
@@ -52,39 +56,38 @@ const SectionContainer = styled.div`
 const StyledTitle = styled.p`
   font-size: 50px;
   text-align: center;
-`
+`;
 
 const PlayerName = styled.p`
   position: absolute;
   font-size: 1.9vw;
-`
+`;
 
 const FirstPlace = styled(PlayerName)`
   top: 11%;
   left: 46%;
-`
+`;
 
 const SecondPlace = styled(PlayerName)`
   top: 22%;
   left: 72.5%;
-`
+`;
 
 const ThirdPlace = styled(PlayerName)`
   top: 30%;
   left: 20%;
-`
+`;
 
 const StandingsContainer = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
   position: relative;
-`
+`;
 
 const StyledImage = styled.img`
   width: 90%;
 `;
-
 
 const TableContainer = styled.div`
   width: 80%;
@@ -105,7 +108,7 @@ const TableContainer = styled.div`
 
     tr {
       background-color: #ffffff;
-      box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.1);
+      box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.1);
       :last-child {
         td {
           border-bottom: 0;
@@ -148,10 +151,10 @@ const TableContainer = styled.div`
     }
 
     tr:nth-child(even) {
-      background: #F8F8F8;
+      background: #f8f8f8;
     }
   }
-`
+`;
 
 const TopContainer = styled.div`
   width: 100%;
@@ -163,6 +166,6 @@ const TopContainer = styled.div`
     flex-direction: column;
     margin-bottom: 40px;
   }
-`
+`;
 
 export default MainSection;

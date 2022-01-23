@@ -19,7 +19,7 @@ export const setWeeks = (weeks) => {
     type: "SET_WEEKS",
     payload: weeks,
   };
-}
+};
 
 export const setPasswordLength = (length) => {
   return {
@@ -32,8 +32,8 @@ export const setPicks = (picks) => {
   return {
     type: "SET_PICKS",
     payload: picks,
-  }
-}
+  };
+};
 
 export const setWeek = (week) => {
   return {

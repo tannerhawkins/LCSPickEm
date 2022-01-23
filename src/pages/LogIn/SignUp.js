@@ -58,17 +58,22 @@ const SignUp = () => {
           })
           .then(() => {
             const accountInfo = {
-                    email: auth.currentUser.email,
-                    uid: auth.currentUser.uid,
-                    displayName: `${data.first} ${data.last}`,
-                    picks: [],
-                  }
+              email: auth.currentUser.email,
+              uid: auth.currentUser.uid,
+              displayName: `${data.first} ${data.last}`,
+              picks: [],
+            };
             dispatch(signIn(accountInfo));
             dispatch(setPasswordLength(data.password.length));
-            gameDataDb.get().then(result => {
-              dispatch(setWeek(result.docs[0].data()))
-            }).then(userDataDb.doc(auth.currentUser.uid).set(accountInfo),
-            history.push(`/home`));
+            gameDataDb
+              .get()
+              .then((result) => {
+                dispatch(setWeek(result.docs[0].data()));
+              })
+              .then(
+                userDataDb.doc(auth.currentUser.uid).set(accountInfo),
+                history.push(`/home`)
+              );
           });
       })
       .catch((response) => {

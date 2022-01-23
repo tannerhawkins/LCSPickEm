@@ -1,4 +1,7 @@
-@font-face { font-family: Neo; src: url('/src/data/fonts/NeoSans\ Bold\ TR.otf'); }
+@font-face {
+  font-family: Neo;
+  src: url("/src/data/fonts/NeoSans\ Bold\ TR.otf");
+}
 
 body {
   margin: 0;

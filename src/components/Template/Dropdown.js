@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { selectWeek, selectWeeks } from "../../app/account/selectors"
+import { selectWeek, selectWeeks } from "../../app/account/selectors";
 import styled from "styled-components";
 import { Constants } from "../../data/constants";
 import { gameDataDb } from "../../data/firebase";
@@ -12,21 +12,30 @@ export const Dropdown = (props) => {
   const week = useSelector(selectWeek);
 
   useEffect(() => {
-    gameDataDb.get().then(result => {
-      dispatch(setWeeks(result.docs.map(doc => doc.data())));
-    })
+    gameDataDb.get().then((result) => {
+      dispatch(setWeeks(result.docs.map((doc) => doc.data())));
+    });
   }, []);
 
   const chooseWeek = (event) => {
-    gameDataDb.doc(Array.from(event.target.children)
-      .filter((item) => item.selected)
-      .map((item) => item.dataset.name)[0]).get().then(result => {
+    gameDataDb
+      .doc(
+        Array.from(event.target.children)
+          .filter((item) => item.selected)
+          .map((item) => item.dataset.name)[0]
+      )
+      .get()
+      .then((result) => {
         dispatch(setWeek(result.data()));
-      })
+      });
   };
 
   return weeks && weeks[0] ? (
-    <DropdownWrapper action={props.action} data-test="dropdown" style={props.style}>
+    <DropdownWrapper
+      action={props.action}
+      data-test="dropdown"
+      style={props.style}
+    >
       <StyledSelect
         id="services"
         data-test="class"
