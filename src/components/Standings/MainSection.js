@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 import Table from "./Table.js";
 import Podiums from "../../images/podiums.png";
 
-const IntroSection = () => {
+const MainSection = () => {
   const history = useHistory();
 
   return (
@@ -85,6 +85,7 @@ const StyledImage = styled.img`
   width: 90%;
 `;
 
+
 const TableContainer = styled.div`
   width: 80%;
   display: flex;
@@ -164,4 +165,4 @@ const TopContainer = styled.div`
   }
 `
 
-export default IntroSection;
+export default MainSection;

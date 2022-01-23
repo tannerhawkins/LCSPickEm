@@ -1,15 +1,13 @@
 import React from "react";
 import Main from "../layouts/Main";
-import IntroSection from "../components/Standings/IntroSection";
-import SecondSection from "../components/Standings/SecondSection";
+import MainSection from "../components/Standings/MainSection";
 import Navigation from "../components/Template/Navigation";
 
 const Index = () => {
   return (
     <Main description={"Homepage"}>
       <Navigation />
-      <IntroSection />
-      <SecondSection />
+      <MainSection />
     </Main>
   );
 };

@@ -1,19 +1,19 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { selectWeek } from "../../app/account/selectors"
+import { selectWeek, selectWeeks } from "../../app/account/selectors"
 import styled from "styled-components";
 import { Constants } from "../../data/constants";
 import { gameDataDb } from "../../data/firebase";
-import { setWeek } from "../../app/account/actions";
+import { setWeek, setWeeks } from "../../app/account/actions";
 
 export const Dropdown = (props) => {
   const dispatch = useDispatch();
-  const [weeks, setWeeks] = useState([{name: "Week 1"}]);
+  const weeks = useSelector(selectWeeks);
   const week = useSelector(selectWeek);
 
   useEffect(() => {
     gameDataDb.get().then(result => {
-      setWeeks(result.docs.map(doc => doc.data()));
+      dispatch(setWeeks(result.docs.map(doc => doc.data())));
     })
   }, []);
 
@@ -25,14 +25,14 @@ export const Dropdown = (props) => {
       })
   };
 
-  return weeks[0] ? (
-    <DropdownWrapper action={props.action} data-test="dropdown">
+  return weeks && weeks[0] ? (
+    <DropdownWrapper action={props.action} data-test="dropdown" style={props.style}>
       <StyledSelect
         id="services"
         data-test="class"
         name="services"
         onChange={chooseWeek}
-        defaultValue={week.name}
+        defaultValue={week?.name}
       >
         {weeks.map((item) => {
           return (
@@ -59,6 +59,7 @@ export const DropdownWrapper = styled.form`
   min-width: 200px;
   max-width: 50%;
   height: 70px;
+  z-index: 6;
 `;
 
 export const StyledSelect = styled.select`
@@ -68,11 +69,15 @@ export const StyledSelect = styled.select`
   outline: 0px;
   font-size: 25px;
   color: ${Constants.COLOR.BLACK};
-  background-color: ${Constants.COLOR.PURPLE};
+  background-color: ${Constants.COLOR.WHITE};
+  border: 5px solid black;
+  border-radius: 6px;
+  z-index: 6;
 `;
 
 export const StyledOption = styled.option`
   color: ${(props) => (props.defaultValue ? "lightgrey" : "black")};
+  z-index: 6;
 `;
 
 export default Dropdown;

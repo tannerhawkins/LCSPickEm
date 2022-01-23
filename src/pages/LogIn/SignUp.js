@@ -67,9 +67,8 @@ const SignUp = () => {
             dispatch(setPasswordLength(data.password.length));
             gameDataDb.get().then(result => {
               dispatch(setWeek(result.docs[0].data()))
-            })
-            userDataDb.doc(auth.currentUser.uid).set(accountInfo);
-            history.push(`/home`);
+            }).then(userDataDb.doc(auth.currentUser.uid).set(accountInfo),
+            history.push(`/home`));
           });
       })
       .catch((response) => {

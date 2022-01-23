@@ -49,8 +49,7 @@ const SignIn = () => {
             dispatch(setPasswordLength(data.password.length));
             gameDataDb.get().then(result => {
               dispatch(setWeek(result.docs[0].data()))
-            })
-            history.push(`/home`);
+            }).then(history.push(`/home`));
           });
       })
       .catch((error) => {

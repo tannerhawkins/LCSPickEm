@@ -9,7 +9,6 @@ const Index = () => {
     <Main description={"Homepage"}>
       <Navigation />
       <IntroSection />
-      <SecondSection />
     </Main>
   );
 };

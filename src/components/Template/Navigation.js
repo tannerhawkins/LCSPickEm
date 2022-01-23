@@ -15,7 +15,7 @@ const Navigation = () => {
   return (
     <StyledHeader id="header">
       <SideContainer>
-      <StyledLogoContainer onClick={() => history.push(`/home`)}>
+      <StyledLogoContainer onClick={() => history.push(`/index`)}>
         <StyledLogo src={Logo} />
         <HeaderName>LCS Pick'Em</HeaderName>
       </StyledLogoContainer>

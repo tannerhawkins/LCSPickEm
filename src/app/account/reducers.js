@@ -1,5 +1,6 @@
 const initialState = {
   signedIn: false,
+  weeks: [],
 };
 
 // Use the initialState as a default value
@@ -20,6 +21,12 @@ export default function accountReducer(state = initialState, action) {
         initialState,
       };
 
+    case "SET_PICKS":
+      return {
+        ...state,
+        picks: action.payload,
+      }
+
     case "SET_PASSWORD_LENGTH":
       return {
         ...state,
@@ -35,6 +42,12 @@ export default function accountReducer(state = initialState, action) {
       return {
         ...state,
         week: action.payload,
+      }
+
+    case "SET_WEEKS":
+      return {
+        ...state,
+        weeks: action.payload,
       }
 
     default:

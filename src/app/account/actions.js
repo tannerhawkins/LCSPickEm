@@ -14,12 +14,26 @@ export const signOut = () => {
   };
 };
 
+export const setWeeks = (weeks) => {
+  return {
+    type: "SET_WEEKS",
+    payload: weeks,
+  };
+}
+
 export const setPasswordLength = (length) => {
   return {
     type: "SET_PASSWORD_LENGTH",
     payload: length,
   };
 };
+
+export const setPicks = (picks) => {
+  return {
+    type: "SET_PICKS",
+    payload: picks,
+  }
+}
 
 export const setWeek = (week) => {
   return {

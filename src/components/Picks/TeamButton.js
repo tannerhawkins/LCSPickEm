@@ -39,9 +39,17 @@ const teamLogo = (team) => {
 }
 
 const TeamButton = (props) => {
+  const background = props.result == "TBD" ? 
+      props.selected ? Constants.COLOR.PURPLE : Constants.COLOR.WHITE
+     : 
+      props.result == props.team ? "green" : props.picked != props.result ? "red" : Constants.COLOR.WHITE;
+    ;
 
   return (
-    <StyledTeam onClick={props.onClick} data-team={props.team} data-gid={props.gid} style={{backgroundColor: props.selected ? Constants.COLOR.PURPLE : Constants.COLOR.WHITE}}>
+    <StyledTeam onClick={props.onClick} started={props.started} background={background} data-team={props.team} data-gid={props.gid} data-result={props.result} style={{
+      backgroundColor: background,
+      }
+      }>
           <StyledLogo src={teamLogo(props.team)} />
     </StyledTeam>
   );
@@ -55,8 +63,10 @@ const StyledTeam = styled.div`
   align-items: center;
   justify-content: center;
   &:hover {
-    cursor: pointer;
-    background: ${Constants.COLOR.PURPLE} !important;
+    cursor: ${props => {
+      return props.started ? "initial" : "pointer"}} !important;
+    background-color: ${props => {
+      return props.started ? props.background : Constants.COLOR.PURPLE}} !important;
   }
   width: 300px;
   max-width: 40vw;
