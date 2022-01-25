@@ -117,226 +117,55 @@ const IntroSection = () => {
 
   const schedule = [
     {
-      name: "Week 1",
+      name: "Lock In",
       games: [
-        {
-          team1: "C9",
-          team2: "TSM",
-          result: "TBD",
-          start: "Jan 30 2022 16:00",
-          gid: "C9TSM120",
-        },
-        {
-          team1: "TSM",
-          team2: "TL",
-          result: "TBD",
-          start: "Jan 30 2022 16:00",
-          gid: "TSMTL120",
-        },
-        {
-          team1: "DIG",
-          team2: "IMT",
-          result: "TBD",
-          start: "Jan 30 2022 16:00",
-          gid: "DIGIMT120",
-        },
-        {
-          team1: "DIG",
-          team2: "TL",
-          result: "TBD",
-          start: "Jan 30 2022 16:00",
-          gid: "DIGTL120",
-        },
-        {
-          team1: "DIG",
-          team2: "TSM",
-          result: "TBD",
-          start: "Jan 30 2022 16:00",
-          gid: "DIGTSM120",
-        },
-        {
-          team1: "DIG",
-          team2: "GG",
-          result: "TBD",
-          start: "Jan 30 2022 16:00",
-          gid: "DIGGG120",
-        },
-        {
-          team1: "TSM",
-          team2: "C9",
-          result: "TBD",
-          start: "Jan 30 2022 16:00",
-          gid: "TSMGG120",
-        },
-        {
-          team1: "TSM",
-          team2: "FLY",
-          result: "TBD",
-          start: "Jan 30 2022 16:00",
-          gid: "TSMFLY120",
-        },
-        {
-          team1: "C9",
-          team2: "FLY",
-          result: "TBD",
-          start: "Jan 30 2022 16:00",
-          gid: "C9FLY120",
-        },
-        {
-          team1: "C9",
-          team2: "IMT",
-          result: "TBD",
-          start: "Jan 30 2022 16:00",
-          gid: "C9IMT120",
-        },
-        {
-          team1: "IMT",
-          team2: "FLY",
-          result: "TBD",
-          start: "Jan 30 2022 16:00",
-          gid: "IMTFLY120",
-        },
-        {
-          team1: "100T",
-          team2: "TL",
-          result: "TBD",
-          start: "Jan 30 2022 16:00",
-          gid: "100TTL120",
-        },
-      ],
+      {
+        team1: "TL",
+        team2: "DIG",
+        result: "TBD",
+        start: "Jan 28 2022 17:30",
+        gid: "TLDIG128",
+      },
+      {
+        team1: "EG",
+        team2: "C9",
+        result: "TBD",
+        start: "Jan 29 2022 16:30",
+        gid: "EGC9129",
+      },
+  ],
+    },
+    {
+      name: "Week 1",
+      games: [],
     },
     {
       name: "Week 2",
-      games: [
-        {
-          team1: "FLY",
-          team2: "TSM",
-          result: "TBD",
-          start: "Jan 27 2022 16:00",
-          gid: "FLYTSM127",
-        },
-        {
-          team1: "C9",
-          team2: "TL",
-          result: "TBD",
-          start: "Jan 27 2022 20:00",
-          gid: "C9TL127",
-        },
-      ],
+      games: [],
     },
     {
       name: "Week 3",
-      games: [
-        {
-          team1: "C9",
-          team2: "TSM",
-          result: "TBD",
-          start: "Jan 20 2022 16:00",
-          gid: "C9TSM120",
-        },
-        {
-          team1: "TSM",
-          team2: "TL",
-          result: "TBD",
-          start: "Jan 20 2022 20:00",
-          gid: "TSMTL120",
-        },
-      ],
+      games: [],
     },
     {
       name: "Week 4",
-      games: [
-        {
-          team1: "C9",
-          team2: "TSM",
-          result: "TBD",
-          start: "Jan 20 2022 16:00",
-          gid: "C9TSM120",
-        },
-        {
-          team1: "TSM",
-          team2: "TL",
-          result: "TBD",
-          start: "Jan 20 2022 20:00",
-          gid: "TSMTL120",
-        },
-      ],
+      games: [],
     },
     {
       name: "Week 5",
-      games: [
-        {
-          team1: "C9",
-          team2: "TSM",
-          result: "TBD",
-          start: "Jan 20 2022 16:00",
-          gid: "C9TSM120",
-        },
-        {
-          team1: "TSM",
-          team2: "TL",
-          result: "TBD",
-          start: "Jan 20 2022 20:00",
-          gid: "TSMTL120",
-        },
-      ],
+      games: [],
     },
     {
       name: "Week 6",
-      games: [
-        {
-          team1: "C9",
-          team2: "TSM",
-          result: "TBD",
-          start: "Jan 20 2022 16:00",
-          gid: "C9TSM120",
-        },
-        {
-          team1: "TSM",
-          team2: "TL",
-          result: "TBD",
-          start: "Jan 20 2022 20:00",
-          gid: "TSMTL120",
-        },
-      ],
+      games: [],
     },
     {
       name: "Week 7",
-      games: [
-        {
-          team1: "C9",
-          team2: "TSM",
-          result: "TBD",
-          start: "Jan 20 2022 16:00",
-          gid: "C9TSM120",
-        },
-        {
-          team1: "TSM",
-          team2: "TL",
-          result: "TBD",
-          start: "Jan 20 2022 20:00",
-          gid: "TSMTL120",
-        },
-      ],
+      games: [],
     },
     {
       name: "Week 8",
-      games: [
-        {
-          team1: "C9",
-          team2: "TSM",
-          result: "TBD",
-          start: "Jan 20 2022 16:00",
-          gid: "C9TSM120",
-        },
-        {
-          team1: "TSM",
-          team2: "TL",
-          result: "TBD",
-          start: "Jan 20 2022 20:00",
-          gid: "TSMTL120",
-        },
-      ],
+      games: [],
     },
   ];
 
