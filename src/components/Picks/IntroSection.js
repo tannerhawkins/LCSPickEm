@@ -355,7 +355,7 @@ const IntroSection = () => {
         <Dropdown />
       </TopContainer>
       <GamesSection>
-        {games[0] ? (
+        {games && games[0] ? (
           games.map((game) => (
             <GameContainer key={`${game.team1}vs${game.team2}`}>
               <VsContainer>

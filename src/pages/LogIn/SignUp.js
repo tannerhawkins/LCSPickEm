@@ -4,9 +4,9 @@ import styled from "styled-components";
 import Header from "../../components/Authentication/Header";
 import { Constants } from "../../data/constants";
 import Button from "../../components/Template/Button";
-import { auth, userDataDb } from "../../data/firebase";
+import { auth, gameDataDb, userDataDb } from "../../data/firebase";
 import { useDispatch } from "react-redux";
-import { setPasswordLength, signIn } from "../../app/account/actions.js";
+import { setPasswordLength, setWeek, signIn } from "../../app/account/actions.js";
 import { useHistory } from "react-router";
 
 const SignUp = () => {
@@ -54,13 +54,13 @@ const SignUp = () => {
         // updates account with user display name
         auth.currentUser
           .updateProfile({
-            displayName: `${data.first} ${data.last}`,
+            displayName: `${data.username}`,
           })
           .then(() => {
             const accountInfo = {
               email: auth.currentUser.email,
               uid: auth.currentUser.uid,
-              displayName: `${data.first} ${data.last}`,
+              displayName: `${data.username}`,
               picks: [],
             };
             dispatch(signIn(accountInfo));
@@ -91,16 +91,9 @@ const SignUp = () => {
           <StyledNamesContainer>
             <StyledNameInput
               type="text"
-              placeholder="First Name"
-              name="first"
-              data-test="first-name"
-              required
-            />
-            <StyledNameInput
-              type="text"
-              placeholder="Last Name"
-              name="last"
-              data-test="last-name"
+              placeholder="Username"
+              name="username"
+              data-test="username"
               required
             />
           </StyledNamesContainer>
@@ -188,7 +181,7 @@ const StyledInput = styled.input`
 `;
 
 const StyledNameInput = styled(StyledInput)`
-  width: 45%;
+  width: 100%;
 `;
 
 const StyledSignUpButton = styled.p`

@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { useTable } from "react-table";
 
 const Table = ({ data }) => {
+  console.log(data);
   const scoreCols = data[0]
     ? data[0]?.weeks?.map((week) => {
         return {
