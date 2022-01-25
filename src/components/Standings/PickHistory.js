@@ -1,0 +1,218 @@
+import { Constants } from "../../data/constants.js";
+import styled from "styled-components";
+import Table from "./PickTable.js";
+import { useEffect, useState } from "react";
+import { gameDataDb, userDataDb } from "../../data/firebase.js";
+
+const PickHistory = () => {
+  const [weeksData, setWeeksData] = useState([]);
+  const [userPicks, setUserPicks] = useState([]);
+
+  useEffect(() => {
+    userDataDb.get().then((users) => {
+      const userList = users.docs.map((doc) => doc.data());
+      gameDataDb.get().then((weeks) => {
+        const weekData = weeks.docs.map((doc) => doc.data());
+        weekData.forEach((week) => {
+          week["games"] = week.games
+            ? week.games.filter((game) => {
+                const now = new Date();
+                const start = new Date(game.start);
+                if (now > start) {
+                  return true;
+                } else {
+                  return false;
+                }
+              })
+            : [];
+          week["picks"] = userList.map((user) => {
+            const picks = {};
+            user.picks
+              .filter((pick) =>
+                week.games.map((game) => game.gid).includes(pick.gid)
+              )
+              .forEach((pick) => {
+                picks[`${pick.gid}`] = pick.pick;
+              });
+            return {
+              user: user,
+              ...week,
+              picks: picks,
+            };
+          });
+        });
+        setWeeksData(weekData);
+      });
+    });
+  }, []);
+
+  return (
+    <SectionContainer>
+      <TopContainer>
+        <StyledTitle>Pick History</StyledTitle>
+      </TopContainer>
+      <TableContainer>
+        {weeksData.map((week) => {
+          if (week.games.length == 0) {
+            return <div key={week.name}></div>;
+          } else if (week.games.length < 6) {
+            return (
+              <TablesContainer key={week.name}>
+                {week.name}
+                <Table
+                  data={week.picks}
+                  key={`${week.name}1`}
+                  games={week.games}
+                />
+              </TablesContainer>
+            );
+          } else if (week.games.length < 11) {
+            return (
+              <TablesContainer key={week.name}>
+                {week.name}
+                <Table
+                  data={week.picks}
+                  key={`${week.name}1`}
+                  games={week.games.slice(0, 5)}
+                />
+                <Table
+                  data={week.picks}
+                  key={`${week.name}2`}
+                  games={week.games.slice(5, week.games.length)}
+                />
+              </TablesContainer>
+            );
+          } else {
+            return (
+              <TablesContainer key={week.name}>
+                {week.name}
+                <Table
+                  data={week.picks}
+                  key={`${week.name}1`}
+                  games={week.games.slice(0, 5)}
+                />
+                <Table
+                  data={week.picks}
+                  key={`${week.name}2`}
+                  games={week.games.slice(5, 10)}
+                />
+                <Table
+                  data={week.picks}
+                  key={`${week.name}3`}
+                  games={week.games.slice(10, week.games.length)}
+                />
+              </TablesContainer>
+            );
+          }
+        })}
+      </TableContainer>
+    </SectionContainer>
+  );
+};
+
+const SectionContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding: 0 5%;
+  align-items: center;
+  background-color: ${Constants.COLOR.WHITE};
+  display: flex;
+  width: 100%;
+`;
+
+const StyledTitle = styled.p`
+  font-size: 50px;
+  text-align: center;
+`;
+
+const TableContainer = styled.div`
+  max-width: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  table {
+    border-spacing: 0;
+    border-radius: 5px;
+    font-size: 20px;
+    font-weight: normal;
+    border: none;
+    border-collapse: collapse;
+    width: 80%;
+    background-color: white;
+    margin-top: 40px;
+
+    tr {
+      background-color: #ffffff;
+      box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.1);
+      :last-child {
+        td {
+          border-bottom: 0;
+        }
+      }
+    }
+
+    th,
+    td {
+      text-align: center;
+      padding: 8px;
+      margin: 0;
+      border-bottom: 1px solid black;
+      border-right: 1px solid black;
+
+      :last-child {
+        border-right: 0;
+      }
+    }
+
+    td {
+      border-right: 1px solid #f8f8f8;
+      font-size: 20px;
+      @media (max-width: 800px) {
+        font-size: 9px;
+      }
+    }
+
+    thead th {
+      color: #ffffff;
+      background: ${Constants.COLOR.PURPLE};
+      @media (max-width: 800px) {
+        font-size: 8px;
+      }
+    }
+
+    thead th:nth-child(odd) {
+      color: #ffffff;
+      background: ${Constants.COLOR.BLACK};
+    }
+
+    tr:nth-child(even) {
+      background: #f8f8f8;
+    }
+  }
+`;
+
+const TablesContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  font-size: 40px;
+  margin: 50px;
+  text-align: center;
+  align-items: center;
+`;
+
+const TopContainer = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @media (max-width: 800px) {
+    flex-direction: column;
+    margin-bottom: 40px;
+  }
+`;
+
+export default PickHistory;

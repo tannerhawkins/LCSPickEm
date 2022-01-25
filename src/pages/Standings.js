@@ -1,13 +1,15 @@
 import React from "react";
 import Main from "../layouts/Main";
-import MainSection from "../components/Standings/MainSection";
+import OverallScores from "../components/Standings/OverallScores";
+import PickHistory from "../components/Standings/PickHistory";
 import Navigation from "../components/Template/Navigation";
 
 const Index = () => {
   return (
     <Main description={"Homepage"}>
       <Navigation />
-      <MainSection />
+      <OverallScores />
+      <PickHistory />
     </Main>
   );
 };

@@ -2,31 +2,20 @@ import React, { useEffect } from "react";
 import styled from "styled-components";
 import { useTable } from "react-table";
 
-const Table = ({ data }) => {
-  const scoreCols = data[0]
-    ? data[0]?.weeks?.map((week) => {
-        return {
-          Header: week.name,
-          accessor: week.name,
-        };
-      })
-    : [];
+const Table = ({ data, games }) => {
+  const gameCols = games?.map((game) => {
+    return {
+      Header: `${game.team1} vs ${game.team2}`,
+      accessor: `picks.${game.gid}`,
+    };
+  });
   const columns = React.useMemo(
     () => [
       {
         Header: "Name",
-        accessor: "name",
+        accessor: "user.displayName",
       },
-      {
-        Header: "Scores",
-        columns: [
-          ...scoreCols,
-          {
-            Header: "Total",
-            accessor: "total",
-          },
-        ],
-      },
+      ...gameCols,
     ],
     [data]
   );

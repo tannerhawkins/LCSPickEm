@@ -2,39 +2,72 @@ import { Constants } from "../../data/constants.js";
 import styled from "styled-components";
 import { useHistory } from "react-router-dom";
 import Table from "./Table.js";
-import Podiums from "../../images/podiums.png";
+import { useEffect, useState } from "react";
+import { gameDataDb, userDataDb } from "../../data/firebase.js";
 
-const MainSection = () => {
-  const history = useHistory();
+const OverallScores = () => {
+  const [tableData, setTableData] = useState([]);
+
+  useEffect(() => {
+    userDataDb.get().then((users) => {
+      const userList = users.docs.map((doc) => doc.data());
+      gameDataDb.get().then((weeks) => {
+        const weekData = weeks.docs.map((doc) => doc.data());
+        const userData = userList.map((user) => {
+          const gameIds = user.picks.map((pick) => pick.gid);
+          return {
+            user: user,
+            weeks: weekData.map((week) => {
+              return {
+                ...week,
+                pickedGames: week.games.filter((game) =>
+                  gameIds.includes(game.gid)
+                ),
+                score: week.games
+                  .map((game) => {
+                    if (gameIds.includes(game.gid)) {
+                      const pick = user.picks.filter(
+                        (pick) => pick.gid == game.gid
+                      )[0];
+                      if (game.result == pick.pick) {
+                        return 1;
+                      } else {
+                        return 0;
+                      }
+                    } else {
+                      return 0;
+                    }
+                  })
+                  .reduce((prev, curr) => prev + curr, 0),
+              };
+            }),
+          };
+        });
+        const tableData = userData.map((user) => {
+          const toReturn = {
+            name: user.user.displayName,
+            weeks: user.weeks,
+          };
+          user.weeks.forEach((week) => {
+            toReturn[week.name] = week.score;
+          });
+          toReturn["total"] = toReturn?.weeks
+            ?.map((week) => week.score)
+            .reduce((prev, curr) => prev + curr);
+          return toReturn;
+        });
+        setTableData(tableData);
+      });
+    });
+  }, []);
 
   return (
     <SectionContainer>
       <TopContainer>
         <StyledTitle>Standings</StyledTitle>
       </TopContainer>
-      <StandingsContainer>
-        <FirstPlace>Tanner</FirstPlace>
-        <SecondPlace>Tanner</SecondPlace>
-        <ThirdPlace>Tanner</ThirdPlace>
-        <StyledImage src={Podiums} />
-      </StandingsContainer>
       <TableContainer>
-        <Table
-          data={[
-            {
-              name: "Tanner",
-              week1: 2,
-              week2: 3,
-              week3: 4,
-              week4: 5,
-              week5: 6,
-              week6: 7,
-              week7: 8,
-              week8: 9,
-              total: 44,
-            },
-          ]}
-        />
+        <Table data={tableData} />
       </TableContainer>
     </SectionContainer>
   );
@@ -46,7 +79,6 @@ const SectionContainer = styled.div`
   box-sizing: border-box;
   padding: 0 5%;
   align-items: center;
-  height: 775px;
   background-color: ${Constants.COLOR.WHITE};
   display: flex;
   width: 100%;
@@ -63,30 +95,11 @@ const PlayerName = styled.p`
   font-size: 1.9vw;
 `;
 
-const FirstPlace = styled(PlayerName)`
-  top: 11%;
-  left: 46%;
-`;
-
-const SecondPlace = styled(PlayerName)`
-  top: 22%;
-  left: 72.5%;
-`;
-
-const ThirdPlace = styled(PlayerName)`
-  top: 30%;
-  left: 20%;
-`;
-
 const StandingsContainer = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
   position: relative;
-`;
-
-const StyledImage = styled.img`
-  width: 90%;
 `;
 
 const TableContainer = styled.div`
@@ -168,4 +181,4 @@ const TopContainer = styled.div`
   }
 `;
 
-export default MainSection;
+export default OverallScores;

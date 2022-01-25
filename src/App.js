@@ -1,10 +1,19 @@
 import React, { Suspense, lazy, useEffect } from "react";
-import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
+import {
+  BrowserRouter,
+  Switch,
+  Route,
+  Redirect,
+  useHistory,
+  useLocation,
+} from "react-router-dom";
 import Main from "./layouts/Main"; // fallback for lazy pages
 import { selectIsSignedIn, selectUID } from "./app/account/selectors";
 import { useDispatch, useSelector } from "react-redux";
 import { auth, userDataDb } from "./data/firebase";
 import { signIn } from "./app/account/actions";
+import { ErrorBoundary } from "react-error-boundary";
+import ErrorFallback from "./pages/Error";
 
 const { PUBLIC_URL } = process.env;
 
@@ -34,18 +43,20 @@ const App = () => {
   return (
     <BrowserRouter basename={PUBLIC_URL}>
       <Suspense fallback={<Main />}>
-        <Switch>
-          <Route exact path="/index" component={Index} />
-          {!loginState && <Route path="/signin" component={SignIn} />}
-          {!loginState && <Route path="/signup" component={SignUp} />}
-          {loginState && <Route path="/home" component={Home} />}
-          {loginState && <Route path="/standings" component={Standings} />}
-          {loginState && <Redirect to="/home" />}
-          <Redirect to="/index" />
-        </Switch>
-        <Route exact path="/">
-          <Redirect to="/index" />
-        </Route>
+        <ErrorBoundary FallbackComponent={ErrorFallback} onReset={() => {}}>
+          <Switch>
+            <Route exact path="/index" component={Index} />
+            {!loginState && <Route path="/signin" component={SignIn} />}
+            {!loginState && <Route path="/signup" component={SignUp} />}
+            {loginState && <Route path="/home" component={Home} />}
+            {loginState && <Route path="/standings" component={Standings} />}
+            {loginState && <Redirect to="/home" />}
+            <Redirect to="/index" />
+          </Switch>
+          <Route exact path="/">
+            <Redirect to="/index" />
+          </Route>
+        </ErrorBoundary>
       </Suspense>
     </BrowserRouter>
   );
