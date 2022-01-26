@@ -118,6 +118,7 @@ const TableContainer = styled.div`
     max-width: 100%;
     white-space: nowrap;
     background-color: white;
+    border: 1px solid black;
 
     tr {
       background-color: #ffffff;

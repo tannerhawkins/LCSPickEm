@@ -36,7 +36,12 @@ const IntroSection = () => {
 
 const SectionContainer = styled.div`
   display: flex;
-  flex-flow: column wrap;
+  flex-direction: column;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   height: calc(100vh - ${Constants.HEADER_HEIGHT});
   background-color: ${Constants.COLOR.PURPLE};
   position: relative;
@@ -59,6 +64,12 @@ const StyledHeaderText = styled.h1`
   margin-top: 50px;
   @media (max-width: 800px) {
     font-size: 60px;
+    line-height: 56px;
+    margin-top: 20px;
+  }
+  @media (max-width: 500px) {
+    font-size: 40px;
+    line-height: 56px;
   }
 `;
 
@@ -67,19 +78,30 @@ const StyledSubText = styled.p`
   font-weight: 300;
   font-size: 37px;
   line-height: 43px;
+  @media (max-width: 500px) {
+    font-size: 20px;
+    line-height: 33px;
+  }
 `;
 
 const TextContainer = styled.div`
   margin-left: 10%;
   margin-top: 5%;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-flow: column wrap;
+  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   max-width: 35%;
   z-index: 1;
 `;
 
 const ButtonContainer = styled.div`
   display: flex;
+  display: -webkit-box;
+  display: -ms-flexbox;
   margin-top: 6%;
   margin-left: 10%;
   z-index: 1;
@@ -92,6 +114,12 @@ const StyledButtonOne = styled(Button)`
   max-width: 200px;
   height: 60px;
   padding: 10px 35px;
+  @media (max-width: 600px) {
+    height: 20px;
+    font-size: 20px;
+    line-height: 20px;
+    font-weight: 700;
+  }
 `;
 
 export default IntroSection;
