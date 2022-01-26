@@ -23,11 +23,11 @@
 `,x=i.a.div`
   display: flex;
   align-items: center;
-`,h=i.a.div`
+`,m=i.a.div`
   display: flex;
   align-items: center;
   margin-right: 3%;
-`,m=i.a.div`
+`,h=i.a.div`
   display: flex;
   min-width: 200px;
   padding-left: 30px;
@@ -64,11 +64,9 @@
   }
 `,j=i.a.img`
   margin-left: 3%;
-  width: 100px;
-  height: 70px;
+  width: 70px;
   @media (max-width: 800px) {
     width: 50px;
-    height: 40px;
   }
   @media (max-width: 400px) {
     display: none;
@@ -80,7 +78,7 @@
   :hover {
     cursor: pointer;
   }
-`,u=Object(i.a)(r.a)``;t.a=()=>{const e=Object(d.g)(),t=Object(n.c)(o.b);return Object(l.jsxs)(p,{id:"header",children:[Object(l.jsxs)(x,{children:[Object(l.jsxs)(f,{onClick:()=>e.push("/index"),children:[Object(l.jsx)(j,{src:c.a}),Object(l.jsx)(b,{children:"LCS Pick'Em"})]}),t&&Object(l.jsxs)(m,{children:[Object(l.jsx)(g,{onClick:()=>e.push("/home"),children:"My Picks"}),Object(l.jsx)(g,{onClick:()=>e.push("/standings"),children:"Standings"})]})]}),Object(l.jsx)(h,{children:Object(l.jsx)(u,{})})]})}},81:function(e,t,a){"use strict";a.r(t);var i=a(2),s=a.n(i),c=a(40),r=a(22),d=a(21),n=a(74),o=a(5);var l=({data:e})=>{var t,a;const i=e[0]?null===(t=e[0])||void 0===t||null===(a=t.weeks)||void 0===a?void 0:a.map((e=>({Header:e.name,accessor:e.name}))):[],c=s.a.useMemo((()=>[{Header:"Name",accessor:"name"},{Header:"Scores",columns:[...i,{Header:"Total",accessor:"total"}]}]),[e]),{getTableProps:r,getTableBodyProps:d,headerGroups:l,rows:p,prepareRow:x}=Object(n.useTable)({columns:c,data:e});return Object(o.jsxs)("table",{...r(),children:[Object(o.jsx)("thead",{children:l.map((e=>Object(o.jsx)("tr",{...e.getHeaderGroupProps(),children:e.headers.map((e=>Object(o.jsx)("th",{...e.getHeaderProps(),children:e.render("Header")})))})))}),Object(o.jsx)("tbody",{...d(),children:p.map(((e,t)=>(x(e),Object(o.jsx)("tr",{...e.getRowProps(),children:e.cells.map((e=>Object(o.jsx)("td",{...e.getCellProps(),children:e.render("Cell")})))}))))})]})},p=a(24);const x=d.a.div`
+`,u=Object(i.a)(r.a)``;t.a=()=>{const e=Object(d.g)(),t=Object(n.c)(o.b);return Object(l.jsxs)(p,{id:"header",children:[Object(l.jsxs)(x,{children:[Object(l.jsxs)(f,{onClick:()=>e.push("/index"),children:[Object(l.jsx)(j,{src:c.a}),Object(l.jsx)(b,{children:"LCS Pick'Em"})]}),t&&Object(l.jsxs)(h,{children:[Object(l.jsx)(g,{onClick:()=>e.push("/home"),children:"My Picks"}),Object(l.jsx)(g,{onClick:()=>e.push("/standings"),children:"Standings"})]})]}),Object(l.jsx)(m,{children:Object(l.jsx)(u,{})})]})}},81:function(e,t,a){"use strict";a.r(t);var i=a(2),s=a.n(i),c=a(40),r=a(22),d=a(21),n=a(74),o=a(5);var l=({data:e})=>{var t,a;const i=e[0]?null===(t=e[0])||void 0===t||null===(a=t.weeks)||void 0===a?void 0:a.map((e=>({Header:e.name,accessor:e.name}))):[],c=s.a.useMemo((()=>[{Header:"Name",accessor:"name"},{Header:"Scores",columns:[...i,{Header:"Total",accessor:"total"}]}]),[e]),{getTableProps:r,getTableBodyProps:d,headerGroups:l,rows:p,prepareRow:x}=Object(n.useTable)({columns:c,data:e});return Object(o.jsxs)("table",{...r(),children:[Object(o.jsx)("thead",{children:l.map((e=>Object(o.jsx)("tr",{...e.getHeaderGroupProps(),children:e.headers.map((e=>Object(o.jsx)("th",{...e.getHeaderProps(),children:e.render("Header")})))})))}),Object(o.jsx)("tbody",{...d(),children:p.map(((e,t)=>(x(e),Object(o.jsx)("tr",{...e.getRowProps(),children:e.cells.map((e=>Object(o.jsx)("td",{...e.getCellProps(),children:e.render("Cell")})))}))))})]})},p=a(24);const x=d.a.div`
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
@@ -90,10 +88,10 @@
   display: flex;
   width: 100%;
   margin-top: ${r.a.HEADER_HEIGHT};
-`,h=d.a.p`
+`,m=d.a.p`
   font-size: 50px;
   text-align: center;
-`,m=(d.a.p`
+`,h=(d.a.p`
   position: absolute;
   font-size: 1.9vw;
 `,d.a.div`
@@ -176,7 +174,7 @@
     flex-direction: column;
     margin-bottom: 40px;
   }
-`;var g=()=>{const[e,t]=Object(i.useState)([]);return Object(i.useEffect)((()=>{p.c.get().then((e=>{const a=e.docs.map((e=>e.data()));p.b.get().then((e=>{const i=e.docs.map((e=>e.data())),s=a.map((e=>{const t=e.picks.map((e=>e.gid));return{user:e,weeks:i.map((a=>({...a,pickedGames:a.games.filter((e=>t.includes(e.gid))),score:a.games.map((a=>{if(t.includes(a.gid)){const t=e.picks.filter((e=>e.gid==a.gid))[0];return a.result==t.pick?1:0}return 0})).reduce(((e,t)=>e+t),0)})))}})).map((e=>{var t;const a={name:e.user.displayName,weeks:e.weeks};return e.weeks.forEach((e=>{a[e.name]=e.score})),a.total=null===a||void 0===a||null===(t=a.weeks)||void 0===t?void 0:t.map((e=>e.score)).reduce(((e,t)=>e+t)),a}));t(s)}))}))}),[]),Object(o.jsxs)(x,{children:[Object(o.jsx)(b,{children:Object(o.jsx)(h,{children:"Standings"})}),Object(o.jsx)(m,{children:Object(o.jsx)(l,{data:e})})]})};var j=({data:e,games:t})=>{const a=null===t||void 0===t?void 0:t.map((e=>({Header:`${e.team1} vs ${e.team2}`,accessor:`picks.${e.gid}`}))),i=s.a.useMemo((()=>[{Header:"Name",accessor:"user.displayName"},...a]),[e]),{getTableProps:c,getTableBodyProps:r,headerGroups:d,rows:l,prepareRow:p}=Object(n.useTable)({columns:i,data:e});return Object(o.jsxs)("table",{...c(),children:[Object(o.jsx)("thead",{children:d.map((e=>Object(o.jsx)("tr",{...e.getHeaderGroupProps(),children:e.headers.map((e=>Object(o.jsx)("th",{...e.getHeaderProps(),children:e.render("Header")})))})))}),Object(o.jsx)("tbody",{...r(),children:l.map(((e,t)=>(p(e),Object(o.jsx)("tr",{...e.getRowProps(),children:e.cells.map((e=>Object(o.jsx)("td",{...e.getCellProps(),children:e.render("Cell")})))}))))})]})};const f=d.a.div`
+`;var g=()=>{const[e,t]=Object(i.useState)([]);return Object(i.useEffect)((()=>{p.c.get().then((e=>{const a=e.docs.map((e=>e.data()));p.b.get().then((e=>{const i=e.docs.map((e=>e.data())),s=a.map((e=>{const t=e.picks.map((e=>e.gid));return{user:e,weeks:i.map((a=>({...a,pickedGames:a.games.filter((e=>t.includes(e.gid))),score:a.games.map((a=>{if(t.includes(a.gid)){const t=e.picks.filter((e=>e.gid==a.gid))[0];return a.result==t.pick?1:0}return 0})).reduce(((e,t)=>e+t),0)})))}})).map((e=>{var t;const a={name:e.user.displayName,weeks:e.weeks};return e.weeks.forEach((e=>{a[e.name]=e.score})),a.total=null===a||void 0===a||null===(t=a.weeks)||void 0===t?void 0:t.map((e=>e.score)).reduce(((e,t)=>e+t)),a}));t(s)}))}))}),[]),Object(o.jsxs)(x,{children:[Object(o.jsx)(b,{children:Object(o.jsx)(m,{children:"Standings"})}),Object(o.jsx)(h,{children:Object(o.jsx)(l,{data:e})})]})};var j=({data:e,games:t})=>{const a=null===t||void 0===t?void 0:t.map((e=>({Header:`${e.team1} vs ${e.team2}`,accessor:`picks.${e.gid}`}))),i=s.a.useMemo((()=>[{Header:"Name",accessor:"user.displayName"},...a]),[e]),{getTableProps:c,getTableBodyProps:r,headerGroups:d,rows:l,prepareRow:p}=Object(n.useTable)({columns:i,data:e});return Object(o.jsxs)("table",{...c(),children:[Object(o.jsx)("thead",{children:d.map((e=>Object(o.jsx)("tr",{...e.getHeaderGroupProps(),children:e.headers.map((e=>Object(o.jsx)("th",{...e.getHeaderProps(),children:e.render("Header")})))})))}),Object(o.jsx)("tbody",{...r(),children:l.map(((e,t)=>(p(e),Object(o.jsx)("tr",{...e.getRowProps(),children:e.cells.map((e=>Object(o.jsx)("td",{...e.getCellProps(),children:e.render("Cell")})))}))))})]})};const f=d.a.div`
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
@@ -272,4 +270,4 @@
     margin-bottom: 40px;
   }
 `;var v=()=>{const[e,t]=Object(i.useState)([]),[a,s]=Object(i.useState)([]);return Object(i.useEffect)((()=>{p.c.get().then((e=>{const a=e.docs.map((e=>e.data()));p.b.get().then((e=>{const i=e.docs.map((e=>e.data()));i.forEach((e=>{e.games=e.games?e.games.filter((e=>new Date>new Date(e.start))):[],e.picks=a.map((t=>{const a={};return t.picks.filter((t=>e.games.map((e=>e.gid)).includes(t.gid))).forEach((e=>{a[`${e.gid}`]=e.pick})),{user:t,...e,picks:a}}))})),t(i)}))}))}),[]),Object(o.jsxs)(f,{children:[Object(o.jsx)(k,{children:Object(o.jsx)(u,{children:"Pick History"})}),Object(o.jsx)(O,{children:e.map((e=>0==e.games.length?Object(o.jsx)("div",{},e.name):e.games.length<6?Object(o.jsxs)(w,{children:[e.name,Object(o.jsx)(j,{data:e.picks,games:e.games},`${e.name}1`)]},e.name):e.games.length<11?Object(o.jsxs)(w,{children:[e.name,Object(o.jsx)(j,{data:e.picks,games:e.games.slice(0,5)},`${e.name}1`),Object(o.jsx)(j,{data:e.picks,games:e.games.slice(5,e.games.length)},`${e.name}2`)]},e.name):Object(o.jsxs)(w,{children:[e.name,Object(o.jsx)(j,{data:e.picks,games:e.games.slice(0,5)},`${e.name}1`),Object(o.jsx)(j,{data:e.picks,games:e.games.slice(5,10)},`${e.name}2`),Object(o.jsx)(j,{data:e.picks,games:e.games.slice(10,e.games.length)},`${e.name}3`)]},e.name)))})]})},y=a(72);t.default=()=>Object(o.jsxs)(c.a,{description:"Homepage",children:[Object(o.jsx)(y.a,{}),Object(o.jsx)(g,{}),Object(o.jsx)(v,{})]})}}]);
-//# sourceMappingURL=8.d6ae065f.chunk.js.map
+//# sourceMappingURL=8.9df08858.chunk.js.map

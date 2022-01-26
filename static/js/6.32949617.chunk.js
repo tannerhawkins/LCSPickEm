@@ -64,11 +64,9 @@
   }
 `,u=a.a.img`
   margin-left: 3%;
-  width: 100px;
-  height: 70px;
+  width: 70px;
   @media (max-width: 800px) {
     width: 50px;
-    height: 40px;
   }
   @media (max-width: 400px) {
     display: none;
@@ -317,4 +315,4 @@
     margin: 0 auto !important;
   }
 `;var J=i(72);t.default=()=>Object(x.jsxs)(d.a,{description:"Homepage",children:[Object(x.jsx)(J.a,{}),Object(x.jsx)(Y,{})]})}}]);
-//# sourceMappingURL=6.6aca8d15.chunk.js.map
+//# sourceMappingURL=6.32949617.chunk.js.map

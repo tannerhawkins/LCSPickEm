@@ -1,4 +1,4 @@
-(this.webpackJsonpLCSPickEm=this.webpackJsonpLCSPickEm||[]).push([[7],{70:function(e,i,t){"use strict";i.a=t.p+"static/media/lcs-logo.dbbe227a.png"},71:function(e,i,t){"use strict";t(2);var a=t(24),n=t(18),c=t(39),s=(t(22),t(21)),p=t(31),x=t(26),d=t(11),h=t(5);const o=Object(s.a)(c.a)`
+(this.webpackJsonpLCSPickEm=this.webpackJsonpLCSPickEm||[]).push([[7],{70:function(e,i,t){"use strict";i.a=t.p+"static/media/lcs-logo.dbbe227a.png"},71:function(e,i,t){"use strict";t(2);var a=t(24),n=t(18),c=t(39),s=(t(22),t(21)),d=t(31),p=t(26),x=t(11),o=t(5);const l=Object(s.a)(c.a)`
   width: 120px;
   height: 40px;
   margin-left: 10px;
@@ -8,7 +8,7 @@
     height: 30px;
     font-size: 10px;
   }
-`;i.a=({className:e})=>{const i=Object(d.g)(),t=Object(n.b)(),c=Object(n.c)(p.b);return Object(h.jsxs)("div",{className:e,"data-test":"login-logout",children:[!c&&Object(h.jsx)(o,{onClick:()=>i.push("/signin"),children:"SIGN-IN"}),c&&Object(h.jsx)(o,{onClick:()=>{a.a.signOut().then((()=>{t(Object(x.a)())}))},children:"LOGOUT"})]})}},72:function(e,i,t){"use strict";t(2);var a=t(21),n=t(22),c=(t(39),t(70)),s=t(71),p=t(11),x=t(18),d=t(31),h=t(5);const o=a.a.header`
+`;i.a=({className:e})=>{const i=Object(x.g)(),t=Object(n.b)(),c=Object(n.c)(d.b);return Object(o.jsxs)("div",{className:e,"data-test":"login-logout",children:[!c&&Object(o.jsx)(l,{onClick:()=>i.push("/signin"),children:"SIGN-IN"}),c&&Object(o.jsx)(l,{onClick:()=>{a.a.signOut().then((()=>{t(Object(p.a)())}))},children:"LOGOUT"})]})}},72:function(e,i,t){"use strict";t(2);var a=t(21),n=t(22),c=(t(39),t(70)),s=t(71),d=t(11),p=t(18),x=t(31),o=t(5);const l=a.a.header`
   display: flex;
   background-color: ${n.a.COLOR.BLACK};
   justify-content: space-between;
@@ -20,7 +20,7 @@
   width: 100%;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   z-index: 100000;
-`,l=a.a.div`
+`,h=a.a.div`
   display: flex;
   align-items: center;
 `,r=a.a.div`
@@ -64,11 +64,9 @@
   }
 `,m=a.a.img`
   margin-left: 3%;
-  width: 100px;
-  height: 70px;
+  width: 70px;
   @media (max-width: 800px) {
     width: 50px;
-    height: 40px;
   }
   @media (max-width: 400px) {
     display: none;
@@ -80,7 +78,7 @@
   :hover {
     cursor: pointer;
   }
-`,f=Object(a.a)(s.a)``;i.a=()=>{const e=Object(p.g)(),i=Object(x.c)(d.b);return Object(h.jsxs)(o,{id:"header",children:[Object(h.jsxs)(l,{children:[Object(h.jsxs)(O,{onClick:()=>e.push("/index"),children:[Object(h.jsx)(m,{src:c.a}),Object(h.jsx)(g,{children:"LCS Pick'Em"})]}),i&&Object(h.jsxs)(j,{children:[Object(h.jsx)(b,{onClick:()=>e.push("/home"),children:"My Picks"}),Object(h.jsx)(b,{onClick:()=>e.push("/standings"),children:"Standings"})]})]}),Object(h.jsx)(r,{children:Object(h.jsx)(f,{})})]})}},82:function(e,i,t){"use strict";t.r(i);t(2);var a=t(40),n=t(22),c=t(21),s=t.p+"static/media/homepage-splash.efe78cb4.png",p=t(39),x=t(11),d=t(18),h=t(31),o=t(5);const l=c.a.div`
+`,f=Object(a.a)(s.a)``;i.a=()=>{const e=Object(d.g)(),i=Object(p.c)(x.b);return Object(o.jsxs)(l,{id:"header",children:[Object(o.jsxs)(h,{children:[Object(o.jsxs)(O,{onClick:()=>e.push("/index"),children:[Object(o.jsx)(m,{src:c.a}),Object(o.jsx)(g,{children:"LCS Pick'Em"})]}),i&&Object(o.jsxs)(j,{children:[Object(o.jsx)(b,{onClick:()=>e.push("/home"),children:"My Picks"}),Object(o.jsx)(b,{onClick:()=>e.push("/standings"),children:"Standings"})]})]}),Object(o.jsx)(r,{children:Object(o.jsx)(f,{})})]})}},82:function(e,i,t){"use strict";t.r(i);t(2);var a=t(40),n=t(22),c=t(21),s=t.p+"static/media/homepage-splash.efe78cb4.png",d=t(39),p=t(11),x=t(18),o=t(31),l=t(5);const h=c.a.div`
   display: flex;
   flex-flow: column wrap;
   height: calc(100vh - ${n.a.HEADER_HEIGHT});
@@ -120,12 +118,12 @@
   margin-top: 6%;
   margin-left: 10%;
   z-index: 1;
-`,O=Object(c.a)(p.a)`
+`,O=Object(c.a)(d.a)`
   font-size: 30px;
   line-height: 30px;
   font-weight: 700;
   max-width: 200px;
   height: 60px;
   padding: 10px 35px;
-`;var f=()=>{const e=Object(x.g)(),i=(Object(d.c)(h.a),Object(d.c)(h.b));return Object(o.jsxs)(l,{children:[Object(o.jsxs)(b,{children:[Object(o.jsx)(j,{children:"LCS PICK'EM!"}),Object(o.jsx)(g,{children:"free spica pls he deserves better"})]}),Object(o.jsx)(m,{children:Object(o.jsx)(O,{onClick:()=>i?e.push("/home"):e.push("/signin"),children:"HOME"})}),Object(o.jsx)(r,{src:s})]})},w=t(72);i.default=()=>Object(o.jsxs)(a.a,{description:"Homepage",children:[Object(o.jsx)(w.a,{}),Object(o.jsx)(f,{})]})}}]);
-//# sourceMappingURL=7.7bb6a033.chunk.js.map
+`;var f=()=>{const e=Object(p.g)(),i=(Object(x.c)(o.a),Object(x.c)(o.b));return Object(l.jsxs)(h,{children:[Object(l.jsxs)(b,{children:[Object(l.jsx)(j,{children:"LCS PICK'EM!"}),Object(l.jsx)(g,{children:"free spica pls he deserves better"})]}),Object(l.jsx)(m,{children:Object(l.jsx)(O,{onClick:()=>i?e.push("/home"):e.push("/signin"),children:"HOME"})}),Object(l.jsx)(r,{src:s})]})},w=t(72);i.default=()=>Object(l.jsxs)(a.a,{description:"Homepage",children:[Object(l.jsx)(w.a,{}),Object(l.jsx)(f,{})]})}}]);
+//# sourceMappingURL=7.6d23b62e.chunk.js.map
