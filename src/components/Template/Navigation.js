@@ -105,11 +105,9 @@ const StyledLink = styled.p`
 
 const StyledLogo = styled.img`
   margin-left: 3%;
-  width: 100px;
-  height: 70px;
+  width: 70px;
   @media (max-width: 800px) {
     width: 50px;
-    height: 40px;
   }
   @media (max-width: 400px) {
     display: none;
