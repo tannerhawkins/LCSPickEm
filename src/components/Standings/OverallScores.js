@@ -1,6 +1,5 @@
 import { Constants } from "../../data/constants.js";
 import styled from "styled-components";
-import { useHistory } from "react-router-dom";
 import Table from "./Table.js";
 import { useEffect, useState } from "react";
 import { gameDataDb, userDataDb } from "../../data/firebase.js";
@@ -74,14 +73,20 @@ const OverallScores = () => {
 };
 
 const SectionContainer = styled.div`
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
   padding: 0 5%;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
   background-color: ${Constants.COLOR.WHITE};
-  display: flex;
-  width: 100%;
   margin-top: ${Constants.HEADER_HEIGHT};
 `;
 
@@ -90,22 +95,11 @@ const StyledTitle = styled.p`
   text-align: center;
 `;
 
-const PlayerName = styled.p`
-  position: absolute;
-  font-size: 1.9vw;
-`;
-
-const StandingsContainer = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  position: relative;
-`;
-
 const TableContainer = styled.div`
-  width: 80%;
+  max-width: 95%;
   display: flex;
   justify-content: center;
+  border: 1px solid black;
 
   table {
     border-spacing: 0;
@@ -114,14 +108,13 @@ const TableContainer = styled.div`
     font-weight: normal;
     border: none;
     border-collapse: collapse;
-    width: 100%;
-    max-width: 100%;
     white-space: nowrap;
     background-color: white;
-    border: 1px solid black;
 
     tr {
       background-color: #ffffff;
+      box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.1);
+      -webkit-box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.1);
       box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.1);
       :last-child {
         td {
@@ -141,13 +134,22 @@ const TableContainer = styled.div`
       :last-child {
         border-right: 0;
       }
+      @media (max-width: 1150px) {
+        font-size: 8px;
+      }
     }
 
     td {
       border-right: 1px solid #f8f8f8;
       font-size: 20px;
-      @media (max-width: 800px) {
-        font-size: 9px;
+      @media (max-width: 1100px) {
+        font-size: 8px;
+      }
+      @media (max-width: 400px) {
+        font-size: 7px;
+      }
+      @media (max-width: 350px) {
+        font-size: 6px;
       }
     }
 
@@ -173,10 +175,19 @@ const TableContainer = styled.div`
 const TopContainer = styled.div`
   width: 100%;
   display: flex;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
   justify-content: space-between;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
 
   @media (max-width: 800px) {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
     flex-direction: column;
     margin-bottom: 40px;
   }

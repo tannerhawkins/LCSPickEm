@@ -119,21 +119,21 @@ const IntroSection = () => {
     {
       name: "Lock In",
       games: [
-      {
-        team1: "TL",
-        team2: "DIG",
-        result: "TBD",
-        start: "Jan 28 2022 17:30",
-        gid: "TLDIG128",
-      },
-      {
-        team1: "EG",
-        team2: "C9",
-        result: "TBD",
-        start: "Jan 29 2022 16:30",
-        gid: "EGC9129",
-      },
-  ],
+        {
+          team1: "TL",
+          team2: "DIG",
+          result: "TBD",
+          start: "Jan 28 2022 17:30",
+          gid: "TLDIG128",
+        },
+        {
+          team1: "EG",
+          team2: "C9",
+          result: "TBD",
+          start: "Jan 29 2022 16:30",
+          gid: "EGC9129",
+        },
+      ],
     },
     {
       name: "Week 1",

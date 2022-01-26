@@ -6,7 +6,11 @@ import { Constants } from "../../data/constants";
 import Button from "../../components/Template/Button";
 import { auth, gameDataDb, userDataDb } from "../../data/firebase";
 import { useDispatch } from "react-redux";
-import { setPasswordLength, setWeek, signIn } from "../../app/account/actions.js";
+import {
+  setPasswordLength,
+  setWeek,
+  signIn,
+} from "../../app/account/actions.js";
 import { useHistory } from "react-router";
 
 const SignUp = () => {
