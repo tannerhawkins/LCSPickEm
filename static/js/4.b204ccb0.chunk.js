@@ -1,4 +1,4 @@
-(this.webpackJsonpLCSPickEm=this.webpackJsonpLCSPickEm||[]).push([[4],{70:function(e,t,i){"use strict";t.a=i.p+"static/media/lcs-logo.dbbe227a.png"},71:function(e,t,i){"use strict";i(2);var a=i(24),n=i(18),s=i(39),c=(i(22),i(21)),o=i(31),r=i(26),d=i(11),l=i(5);const h=Object(c.a)(s.a)`
+(this.webpackJsonpLCSPickEm=this.webpackJsonpLCSPickEm||[]).push([[4],{70:function(e,t,i){"use strict";t.a=i.p+"static/media/lcs-logo.dbbe227a.png"},71:function(e,t,i){"use strict";i(2);var a=i(24),n=i(18),s=i(39),c=(i(22),i(21)),o=i(31),r=i(25),d=i(11),l=i(5);const h=Object(c.a)(s.a)`
   width: 120px;
   height: 40px;
   margin-left: 10px;
@@ -106,4 +106,4 @@
   color: red;
   margin-top: -20px;
 `;t.default=()=>{const e=Object(p.g)(),[t,i]=Object(a.useState)(),s=Object(d.b)();return Object(x.jsxs)(n.a,{title:"Sign-In",description:"Sign-In",children:[Object(x.jsx)(c.a,{}),Object(x.jsxs)(b,{children:[Object(x.jsx)(g,{children:"Sign-In"}),Object(x.jsxs)(j,{id:"signInForm",children:[Object(x.jsx)(O,{type:"email",placeholder:"Email",name:"email","data-test":"email",required:!0}),Object(x.jsx)(u,{type:"password",placeholder:"Password",name:"password","data-test":"password",required:!0}),Object(x.jsx)(v,{children:t}),Object(x.jsxs)(m,{children:[Object(x.jsx)(f,{"data-test":"sign-up",onClick:()=>e.push("/signup"),children:"Don't have an account? Sign up here"}),Object(x.jsx)(w,{type:"submit","data-test":"submit",onClick:()=>{i();const t=Object.values(document.forms.signInForm).reduce(((e,t)=>(e[t.name]=t.value,e)),{});for(var a in t)if(""===t[a])return void i("Please fill out all fields");t.email.includes("@")?l.a.signInWithEmailAndPassword(t.email,t.password).then((()=>{l.c.doc(l.a.currentUser.uid).get().then((i=>{s(Object(h.e)(i.data())),s(Object(h.a)(t.password.length)),l.b.get().then((e=>{s(Object(h.c)(e.docs[0].data()))})).then(e.push("/home"))}))})).catch((e=>{"auth/user-not-found"===e.code?i("A user with this email address does not exist"):"auth/wrong-password"===e.code?i("The password is invalid."):i(e.message)})):i("Please enter valid email address")},children:"SIGN-IN"})]})]})]})]})}}}]);
-//# sourceMappingURL=4.04dcc062.chunk.js.map
+//# sourceMappingURL=4.b204ccb0.chunk.js.map

@@ -1,4 +1,4 @@
-(this.webpackJsonpLCSPickEm=this.webpackJsonpLCSPickEm||[]).push([[7],{70:function(e,i,t){"use strict";i.a=t.p+"static/media/lcs-logo.dbbe227a.png"},71:function(e,i,t){"use strict";t(2);var a=t(24),n=t(18),s=t(39),c=(t(22),t(21)),x=t(31),o=t(26),d=t(11),p=t(5);const l=Object(c.a)(s.a)`
+(this.webpackJsonpLCSPickEm=this.webpackJsonpLCSPickEm||[]).push([[7],{70:function(e,i,t){"use strict";i.a=t.p+"static/media/lcs-logo.dbbe227a.png"},71:function(e,i,t){"use strict";t(2);var a=t(24),n=t(18),s=t(39),c=(t(22),t(21)),x=t(31),o=t(25),d=t(11),p=t(5);const l=Object(c.a)(s.a)`
   width: 120px;
   height: 40px;
   margin-left: 10px;
@@ -154,4 +154,4 @@
     font-weight: 700;
   }
 `;var O=()=>{const e=Object(o.g)(),i=(Object(d.c)(p.a),Object(d.c)(p.b));return Object(l.jsxs)(h,{children:[Object(l.jsxs)(g,{children:[Object(l.jsx)(b,{children:"LCS PICK'EM!"}),Object(l.jsx)(m,{children:"free spica pls he deserves better"})]}),Object(l.jsx)(j,{children:Object(l.jsx)(f,{onClick:()=>i?e.push("/home"):e.push("/signin"),children:"HOME"})}),Object(l.jsx)(r,{src:c})]})},w=t(72);i.default=()=>Object(l.jsxs)(a.a,{description:"Homepage",children:[Object(l.jsx)(w.a,{}),Object(l.jsx)(O,{})]})}}]);
-//# sourceMappingURL=7.8c518d87.chunk.js.map
+//# sourceMappingURL=7.70cd7ff8.chunk.js.map
