@@ -315,4 +315,4 @@
     margin: 0 auto !important;
   }
 `;var J=i(72);t.default=()=>Object(x.jsxs)(d.a,{description:"Homepage",children:[Object(x.jsx)(J.a,{}),Object(x.jsx)(Y,{})]})}}]);
-//# sourceMappingURL=6.aa2eabb3.chunk.js.map
+//# sourceMappingURL=6.c232d0b4.chunk.js.map
