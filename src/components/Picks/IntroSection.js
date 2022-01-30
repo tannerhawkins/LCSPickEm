@@ -122,16 +122,23 @@ const IntroSection = () => {
         {
           team1: "TL",
           team2: "DIG",
-          result: "TBD",
+          result: "TL",
           start: "Jan 28 2022 17:30",
           gid: "TLDIG128",
         },
         {
           team1: "EG",
           team2: "C9",
-          result: "TBD",
+          result: "EG",
           start: "Jan 29 2022 16:30",
           gid: "EGC9129",
+        },
+        {
+          team1: "EG",
+          team2: "TL",
+          result: "TBD",
+          start: "Jan 30 2022 15:30",
+          gid: "EGTL130",
         },
       ],
     },
@@ -234,7 +241,7 @@ const IntroSection = () => {
       )}
       <StyledBackdrop src={HomepageSplash} />
       {
-        // <button style={{zIndex: 10}}onClick={updateGames}>Update Games</button>
+      // <button style={{zIndex: 10}}onClick={updateGames}>Update Games</button>
       }
     </SectionContainer>
   );
