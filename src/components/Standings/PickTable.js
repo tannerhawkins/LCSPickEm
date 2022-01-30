@@ -6,6 +6,7 @@ const Table = ({ data, games }) => {
   const gameCols = games?.map((game) => {
     return {
       Header: `${game.team1} vs ${game.team2}`,
+      result: game.result,
       accessor: `picks.${game.gid}`,
     };
   });
@@ -45,7 +46,8 @@ const Table = ({ data, games }) => {
           return (
             <tr {...row.getRowProps()}>
               {row.cells.map((cell) => {
-                return <td {...cell.getCellProps()}>{cell.render("Cell")}</td>;
+                const bg = cell.column.result == undefined ? "white" : cell.column.result == cell.value ? "green" : cell.column.result == "TBD" ? "white" : "red";
+                return <td {...cell.getCellProps()} style={{background: bg}}>{cell.render("Cell")}</td>;
               })}
             </tr>
           );
