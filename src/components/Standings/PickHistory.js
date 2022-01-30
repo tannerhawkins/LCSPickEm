@@ -147,11 +147,6 @@ const TableContainer = styled.div`
     tr {
       background-color: #ffffff;
       box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.1);
-      :last-child {
-        td {
-          border-bottom: 0;
-        }
-      }
     }
 
     th,
@@ -168,7 +163,7 @@ const TableContainer = styled.div`
     }
 
     td {
-      border-right: 1px solid #f8f8f8;
+      border: 1px solid black;
       font-size: 20px;
       @media (max-width: 800px) {
         font-size: 9px;
