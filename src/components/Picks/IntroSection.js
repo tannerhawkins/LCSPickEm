@@ -39,10 +39,23 @@ const IntroSection = () => {
           )
         );
       } else {
-        dispatch(setWeek(result.docs[0].data()));
+        const weekEnds = result.docs.map(doc => doc.data().games[doc.data().games.length - 1]?.start);
+        const passedWeeks = weekEnds.reduce(weekEnd => {
+          const now = new Date();
+          if (now > weekEnd) {
+            return 1;
+          } else {
+            return 0;
+          }
+        })
+        dispatch(setWeek(result.docs[passedWeeks]?.data() ? result.docs[passedWeeks]?.data() : result.docs[0]?.data()));
       }
     });
   }, []);
+
+  useEffect(() => {
+
+  }, [week])
 
   const games = week?.games;
 
@@ -115,69 +128,8 @@ const IntroSection = () => {
     }
   };
 
-  const schedule = [
-    {
-      name: "Lock In",
-      games: [
-        {
-          team1: "TL",
-          team2: "DIG",
-          result: "TL",
-          start: "Jan 28 2022 17:30",
-          gid: "TLDIG128",
-        },
-        {
-          team1: "EG",
-          team2: "C9",
-          result: "EG",
-          start: "Jan 29 2022 16:30",
-          gid: "EGC9129",
-        },
-        {
-          team1: "EG",
-          team2: "TL",
-          result: "TBD",
-          start: "Jan 30 2022 15:30",
-          gid: "EGTL130",
-        },
-      ],
-    },
-    {
-      name: "Week 1",
-      games: [],
-    },
-    {
-      name: "Week 2",
-      games: [],
-    },
-    {
-      name: "Week 3",
-      games: [],
-    },
-    {
-      name: "Week 4",
-      games: [],
-    },
-    {
-      name: "Week 5",
-      games: [],
-    },
-    {
-      name: "Week 6",
-      games: [],
-    },
-    {
-      name: "Week 7",
-      games: [],
-    },
-    {
-      name: "Week 8",
-      games: [],
-    },
-  ];
-
   const updateGames = () => {
-    schedule.forEach((week) => {
+    Constants.GAMES.forEach((week) => {
       gameDataDb.doc(week.name).update({
         games: week.games,
       });

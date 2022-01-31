@@ -54,7 +54,16 @@ const SignIn = () => {
             gameDataDb
               .get()
               .then((result) => {
-                dispatch(setWeek(result.docs[0].data()));
+                const weekEnds = result.docs.map(doc => doc.data().games[doc.data().games.length - 1]?.start);
+                const passedWeeks = weekEnds.reduce(weekEnd => {
+                  const now = new Date();
+                  if (now > weekEnd) {
+                    return 1;
+                  } else {
+                    return 0;
+                  }
+                })
+                dispatch(setWeek(result.docs[passedWeeks]?.data() ? result.docs[passedWeeks]?.data() : result.docs[0]?.data()));
               })
               .then(history.push(`/home`));
           });

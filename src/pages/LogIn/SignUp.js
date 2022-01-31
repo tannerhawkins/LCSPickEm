@@ -72,7 +72,7 @@ const SignUp = () => {
             gameDataDb
               .get()
               .then((result) => {
-                dispatch(setWeek(result.docs[0].data()));
+                dispatch(setWeek(result.docs[1].data()));
               })
               .then(
                 userDataDb.doc(auth.currentUser.uid).set(accountInfo),

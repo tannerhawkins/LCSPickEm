@@ -17,6 +17,8 @@ export const Dropdown = (props) => {
     });
   }, []);
 
+  useEffect(() => {}, [week])
+
   const chooseWeek = (event) => {
     gameDataDb
       .doc(
@@ -30,7 +32,7 @@ export const Dropdown = (props) => {
       });
   };
 
-  return weeks && weeks[0] ? (
+  return weeks && week ? (
     <DropdownWrapper
       action={props.action}
       data-test="dropdown"
