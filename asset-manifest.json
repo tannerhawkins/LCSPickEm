@@ -1,20 +1,20 @@
 {
   "files": {
     "main.css": "/LCSPickEm/static/css/main.f6d83a42.chunk.css",
-    "main.js": "/LCSPickEm/static/js/main.1c783c09.chunk.js",
-    "main.js.map": "/LCSPickEm/static/js/main.1c783c09.chunk.js.map",
-    "runtime-main.js": "/LCSPickEm/static/js/runtime-main.5195c4de.js",
-    "runtime-main.js.map": "/LCSPickEm/static/js/runtime-main.5195c4de.js.map",
+    "main.js": "/LCSPickEm/static/js/main.0888d2e9.chunk.js",
+    "main.js.map": "/LCSPickEm/static/js/main.0888d2e9.chunk.js.map",
+    "runtime-main.js": "/LCSPickEm/static/js/runtime-main.2b1a4b2a.js",
+    "runtime-main.js.map": "/LCSPickEm/static/js/runtime-main.2b1a4b2a.js.map",
     "static/js/2.96abd8fb.chunk.js": "/LCSPickEm/static/js/2.96abd8fb.chunk.js",
     "static/js/2.96abd8fb.chunk.js.map": "/LCSPickEm/static/js/2.96abd8fb.chunk.js.map",
     "static/js/3.8ee70f31.chunk.js": "/LCSPickEm/static/js/3.8ee70f31.chunk.js",
     "static/js/3.8ee70f31.chunk.js.map": "/LCSPickEm/static/js/3.8ee70f31.chunk.js.map",
-    "static/js/4.a5034488.chunk.js": "/LCSPickEm/static/js/4.a5034488.chunk.js",
-    "static/js/4.a5034488.chunk.js.map": "/LCSPickEm/static/js/4.a5034488.chunk.js.map",
+    "static/js/4.f86e7b4a.chunk.js": "/LCSPickEm/static/js/4.f86e7b4a.chunk.js",
+    "static/js/4.f86e7b4a.chunk.js.map": "/LCSPickEm/static/js/4.f86e7b4a.chunk.js.map",
     "static/js/5.5f0fe6ea.chunk.js": "/LCSPickEm/static/js/5.5f0fe6ea.chunk.js",
     "static/js/5.5f0fe6ea.chunk.js.map": "/LCSPickEm/static/js/5.5f0fe6ea.chunk.js.map",
-    "static/js/6.1b962def.chunk.js": "/LCSPickEm/static/js/6.1b962def.chunk.js",
-    "static/js/6.1b962def.chunk.js.map": "/LCSPickEm/static/js/6.1b962def.chunk.js.map",
+    "static/js/6.38de23da.chunk.js": "/LCSPickEm/static/js/6.38de23da.chunk.js",
+    "static/js/6.38de23da.chunk.js.map": "/LCSPickEm/static/js/6.38de23da.chunk.js.map",
     "static/js/7.70cd7ff8.chunk.js": "/LCSPickEm/static/js/7.70cd7ff8.chunk.js",
     "static/js/7.70cd7ff8.chunk.js.map": "/LCSPickEm/static/js/7.70cd7ff8.chunk.js.map",
     "static/js/8.123ecbf5.chunk.js": "/LCSPickEm/static/js/8.123ecbf5.chunk.js",
@@ -42,9 +42,9 @@
     "static/media/sadge.b9f214e6.png": "/LCSPickEm/static/media/sadge.b9f214e6.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.5195c4de.js",
+    "static/js/runtime-main.2b1a4b2a.js",
     "static/js/2.96abd8fb.chunk.js",
     "static/css/main.f6d83a42.chunk.css",
-    "static/js/main.1c783c09.chunk.js"
+    "static/js/main.0888d2e9.chunk.js"
   ]
 }
