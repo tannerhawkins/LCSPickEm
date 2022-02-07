@@ -63,7 +63,8 @@ const SignIn = () => {
                     return 0;
                   }
                 })
-                dispatch(setWeek(result.docs[passedWeeks]?.data() ? result.docs[passedWeeks]?.data() : result.docs[0]?.data()));
+                const nextWeek = passedWeeks == result.docs.length ? passedWeeks : passedWeeks + 1;
+                dispatch(setWeek(result.docs[nextWeek]?.data() ? result.docs[nextWeek]?.data() : result.docs[0]?.data()));
               })
               .then(history.push(`/home`));
           });
