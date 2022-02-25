@@ -1,4 +1,4 @@
-(this.webpackJsonpLCSPickEm=this.webpackJsonpLCSPickEm||[]).push([[7],{70:function(e,i,t){"use strict";i.a=t.p+"static/media/lcs-logo.dbbe227a.png"},71:function(e,i,t){"use strict";t(2);var a=t(24),n=t(18),s=t(39),c=(t(22),t(21)),x=t(31),o=t(25),d=t(11),p=t(5);const l=Object(c.a)(s.a)`
+(this.webpackJsonpLCSPickEm=this.webpackJsonpLCSPickEm||[]).push([[4],{70:function(i,e,t){"use strict";e.a=t.p+"static/media/lcs-logo.dbbe227a.png"},71:function(i,e,t){"use strict";t(2);var a=t(24),n=t(18),c=t(39),s=(t(22),t(21)),x=t(31),o=t(25),d=t(11),p=t(5);const l=Object(s.a)(c.a)`
   width: 120px;
   height: 40px;
   margin-left: 10px;
@@ -8,7 +8,7 @@
     height: 30px;
     font-size: 10px;
   }
-`;i.a=({className:e})=>{const i=Object(d.g)(),t=Object(n.b)(),s=Object(n.c)(x.b);return Object(p.jsxs)("div",{className:e,"data-test":"login-logout",children:[!s&&Object(p.jsx)(l,{onClick:()=>i.push("/signin"),children:"SIGN-IN"}),s&&Object(p.jsx)(l,{onClick:()=>{a.a.signOut().then((()=>{t(Object(o.a)())}))},children:"LOGOUT"})]})}},72:function(e,i,t){"use strict";t(2);var a=t(21),n=t(22),s=(t(39),t(70)),c=t(71),x=t(11),o=t(18),d=t(31),p=t(5);const l=a.a.header`
+`;e.a=({className:i})=>{const e=Object(d.g)(),t=Object(n.b)(),c=Object(n.c)(x.b);return Object(p.jsxs)("div",{className:i,"data-test":"login-logout",children:[!c&&Object(p.jsx)(l,{onClick:()=>e.push("/signin"),children:"SIGN-IN"}),c&&Object(p.jsx)(l,{onClick:()=>{a.a.signOut().then((()=>{t(Object(o.a)())}))},children:"LOGOUT"})]})}},72:function(i,e,t){"use strict";t(2);var a=t(21),n=t(22),c=(t(39),t(70)),s=t(71),x=t(11),o=t(18),d=t(31),p=t(5);const l=a.a.header`
   display: flex;
   background-color: ${n.a.COLOR.BLACK};
   justify-content: space-between;
@@ -78,7 +78,7 @@
   :hover {
     cursor: pointer;
   }
-`,O=Object(a.a)(c.a)``;i.a=()=>{const e=Object(x.g)(),i=Object(o.c)(d.b);return Object(p.jsxs)(l,{id:"header",children:[Object(p.jsxs)(h,{children:[Object(p.jsxs)(f,{onClick:()=>e.push("/index"),children:[Object(p.jsx)(j,{src:s.a}),Object(p.jsx)(m,{children:"LCS Pick'Em"})]}),i&&Object(p.jsxs)(b,{children:[Object(p.jsx)(g,{onClick:()=>e.push("/home"),children:"My Picks"}),Object(p.jsx)(g,{onClick:()=>e.push("/standings"),children:"Standings"})]})]}),Object(p.jsx)(r,{children:Object(p.jsx)(O,{})})]})}},82:function(e,i,t){"use strict";t.r(i);t(2);var a=t(40),n=t(22),s=t(21),c=t.p+"static/media/homepage-splash.efe78cb4.png",x=t(39),o=t(11),d=t(18),p=t(31),l=t(5);const h=s.a.div`
+`,O=Object(a.a)(s.a)``;e.a=()=>{const i=Object(x.g)(),e=Object(o.c)(d.b);return Object(p.jsxs)(l,{id:"header",children:[Object(p.jsxs)(h,{children:[Object(p.jsxs)(f,{onClick:()=>i.push("/index"),children:[Object(p.jsx)(j,{src:c.a}),Object(p.jsx)(m,{children:"LCS Pick'Em"})]}),e&&Object(p.jsxs)(b,{children:[Object(p.jsx)(g,{onClick:()=>i.push("/home"),children:"My Picks"}),Object(p.jsx)(g,{onClick:()=>i.push("/standings"),children:"Standings"})]})]}),Object(p.jsx)(r,{children:Object(p.jsx)(O,{})})]})}},74:function(i,e,t){"use strict";e.a=t.p+"static/media/sadge.b9f214e6.png"},83:function(i,e,t){"use strict";t.r(e);t(2);var a=t(40),n=t(22),c=t(21),s=t.p+"static/media/homepage-splash.efe78cb4.png",x=t(39),o=t(11),d=t(18),p=t(31),l=t(74),h=t(5);const r=c.a.div`
   display: flex;
   flex-direction: column;
   display: -webkit-box;
@@ -91,13 +91,16 @@
   position: relative;
   display: flex;
   margin-top: ${n.a.HEADER_HEIGHT};
-`,r=s.a.img`
+`,b=c.a.img`
   position: absolute;
   right: 0;
   height: 100%;
   width: 60%;
   max-width: 600px;
-`,b=s.a.h1`
+`,m=c.a.img`
+  height: 40px;
+  padding-left: 10px;
+`,g=c.a.h1`
   color: white;
   font-weight: 700;
   font-size: 100px;
@@ -112,7 +115,7 @@
     font-size: 40px;
     line-height: 56px;
   }
-`,m=s.a.p`
+`,j=c.a.p`
   color: ${n.a.COLOR.WHITE};
   font-weight: 300;
   font-size: 37px;
@@ -121,7 +124,7 @@
     font-size: 20px;
     line-height: 33px;
   }
-`,g=s.a.div`
+`,f=c.a.div`
   margin-left: 10%;
   margin-top: 5%;
   display: -webkit-box;
@@ -133,14 +136,14 @@
   -ms-flex-direction: column;
   max-width: 35%;
   z-index: 1;
-`,j=s.a.div`
+`,O=c.a.div`
   display: flex;
   display: -webkit-box;
   display: -ms-flexbox;
   margin-top: 6%;
   margin-left: 10%;
   z-index: 1;
-`,f=Object(s.a)(x.a)`
+`,w=Object(c.a)(x.a)`
   font-size: 30px;
   line-height: 30px;
   font-weight: 700;
@@ -153,5 +156,5 @@
     line-height: 20px;
     font-weight: 700;
   }
-`;var O=()=>{const e=Object(o.g)(),i=(Object(d.c)(p.a),Object(d.c)(p.b));return Object(l.jsxs)(h,{children:[Object(l.jsxs)(g,{children:[Object(l.jsx)(b,{children:"LCS PICK'EM!"}),Object(l.jsx)(m,{children:"free spica pls he deserves better"})]}),Object(l.jsx)(j,{children:Object(l.jsx)(f,{onClick:()=>i?e.push("/home"):e.push("/signin"),children:"HOME"})}),Object(l.jsx)(r,{src:c})]})},w=t(72);i.default=()=>Object(l.jsxs)(a.a,{description:"Homepage",children:[Object(l.jsx)(w.a,{}),Object(l.jsx)(O,{})]})}}]);
-//# sourceMappingURL=7.70cd7ff8.chunk.js.map
+`;var u=()=>{const i=Object(o.g)(),e=(Object(d.c)(p.a),Object(d.c)(p.b));return Object(h.jsxs)(r,{children:[Object(h.jsxs)(f,{children:[Object(h.jsx)(g,{children:"LCS PICK'EM!"}),Object(h.jsxs)(j,{children:["rip LS ",Object(h.jsx)(m,{src:l.a})]})]}),Object(h.jsx)(O,{children:Object(h.jsx)(w,{onClick:()=>e?i.push("/home"):i.push("/signin"),children:"HOME"})}),Object(h.jsx)(b,{src:s})]})},k=t(72);e.default=()=>Object(h.jsxs)(a.a,{description:"Homepage",children:[Object(h.jsx)(k.a,{}),Object(h.jsx)(u,{})]})}}]);
+//# sourceMappingURL=4.10d9aefb.chunk.js.map
