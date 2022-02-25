@@ -8,6 +8,7 @@ import {
   selectAccountType,
   selectIsSignedIn,
 } from "../../app/account/selectors.js";
+import sadge from "../../images/sadge.png";
 
 const IntroSection = () => {
   const history = useHistory();
@@ -18,7 +19,7 @@ const IntroSection = () => {
     <SectionContainer>
       <TextContainer>
         <StyledHeaderText>LCS PICK'EM!</StyledHeaderText>
-        <StyledSubText>free spica pls he deserves better</StyledSubText>
+        <StyledSubText>rip LS <Sadge src={sadge} /></StyledSubText>
       </TextContainer>
       <ButtonContainer>
         <StyledButtonOne
@@ -55,6 +56,11 @@ const StyledImage = styled.img`
   width: 60%;
   max-width: 600px;
 `;
+
+const Sadge = styled.img`
+  height: 40px;
+  padding-left: 10px;
+`
 
 const StyledHeaderText = styled.h1`
   color: white;
