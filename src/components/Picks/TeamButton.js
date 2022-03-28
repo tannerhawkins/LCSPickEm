@@ -80,7 +80,7 @@ const StyledTeam = styled.div`
       return props.started || props.gid == "TBD" ? "initial" : "pointer";
     }} !important;
     background-color: ${(props) => {
-      return props.started || props.gid ? props.background : Constants.COLOR.PURPLE;
+      return props.started || props.gid == "TBD" ? props.background : Constants.COLOR.PURPLE;
     }} !important;
   }
   width: 300px;
