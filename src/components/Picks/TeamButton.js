@@ -77,10 +77,10 @@ const StyledTeam = styled.div`
   justify-content: center;
   &:hover {
     cursor: ${(props) => {
-      return props.started || props.gid == "TBD" ? "initial" : "pointer";
+      return (props.started || props.gid == "TBD") ? "initial" : "pointer";
     }} !important;
     background-color: ${(props) => {
-      return props.started || props.gid == "TBD" ? props.background : Constants.COLOR.PURPLE;
+      return (props.started || props.gid == "TBD") ? props.background : Constants.COLOR.PURPLE;
     }} !important;
   }
   width: 300px;
