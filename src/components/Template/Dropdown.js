@@ -45,7 +45,22 @@ export const Dropdown = (props) => {
         onChange={chooseWeek}
         defaultValue={week?.name}
       >
-        {weeks.map((item) => {
+        {weeks.sort((week1, week2) => {
+              const week1Start = Date.parse(week1.games[0]?.start);
+              const week2Start = Date.parse(week2.games[0]?.start);
+              if (isNaN(week1Start) && isNaN(week2Start)) {
+                return 0;
+              } else if (isNaN(week1Start)) {
+                return 1;
+              } else if (isNaN(week2Start)) {
+                return -1;
+              }
+              if (week1Start < week2Start) {
+                return -1;
+              } else {
+                return 1;
+              }
+            }).map((item) => {
           return (
             <StyledOption
               value={item.name}

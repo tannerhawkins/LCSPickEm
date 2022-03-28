@@ -10,6 +10,7 @@ import CLG from "../../images/Logos/CLG.png";
 import GG from "../../images/Logos/GG.png";
 import FLY from "../../images/Logos/FLY.png";
 import IMT from "../../images/Logos/IMT.png";
+import LCS from "../../images/lcs-logo.png";
 
 const teamLogo = (team) => {
   switch (team) {
@@ -34,7 +35,7 @@ const teamLogo = (team) => {
     case "IMT":
       return IMT;
     default:
-      return;
+      return LCS;
   }
 };
 
@@ -54,6 +55,7 @@ const TeamButton = (props) => {
       onClick={props.onClick}
       started={props.started}
       background={background}
+      gid={props.gid}
       data-team={props.team}
       data-gid={props.gid}
       data-result={props.result}
@@ -75,10 +77,10 @@ const StyledTeam = styled.div`
   justify-content: center;
   &:hover {
     cursor: ${(props) => {
-      return props.started ? "initial" : "pointer";
+      return props.started || props.gid == "TBD" ? "initial" : "pointer";
     }} !important;
     background-color: ${(props) => {
-      return props.started ? props.background : Constants.COLOR.PURPLE;
+      return props.started || props.gid ? props.background : Constants.COLOR.PURPLE;
     }} !important;
   }
   width: 300px;

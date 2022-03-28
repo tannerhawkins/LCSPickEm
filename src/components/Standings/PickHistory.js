@@ -52,7 +52,38 @@ const PickHistory = () => {
         <StyledTitle>Pick History</StyledTitle>
       </TopContainer>
       <TableContainer>
-        {weeksData.map((week) => {
+        {weeksData.sort((week1, week2) => {
+              const week1Start = Date.parse(week1.games[0]?.start);
+              const week2Start = Date.parse(week2.games[0]?.start);
+              if (isNaN(week1Start) && isNaN(week2Start)) {
+                return 0;
+              } else if (isNaN(week1Start)) {
+                return -1;
+              } else if (isNaN(week2Start)) {
+                return 1;
+              }
+              if (week1Start < week2Start) {
+                return 1;
+              } else {
+                return -1;
+              }
+            }).map((week) => {
+              const games = week.games.sort((game1, game2) => {
+              const game1Start = Date.parse(game1.start);
+              const game2Start = Date.parse(game2.start);
+              if (isNaN(game1Start) && isNaN(game2Start)) {
+                return 0;
+              } else if (isNaN(game1Start)) {
+                return -1;
+              } else if (isNaN(game2Start)) {
+                return 1;
+              }
+              if (game1Start < game2Start) {
+                return 1;
+              } else {
+                return -1;
+              }
+            });
           if (week.games.length == 0) {
             return <div key={week.name}></div>;
           } else if (week.games.length < 6) {
@@ -62,7 +93,7 @@ const PickHistory = () => {
                 <Table
                   data={week.picks}
                   key={`${week.name}1`}
-                  games={week.games}
+                  games={games}
                 />
               </TablesContainer>
             );
@@ -73,12 +104,12 @@ const PickHistory = () => {
                 <Table
                   data={week.picks}
                   key={`${week.name}1`}
-                  games={week.games.slice(0, 5)}
+                  games={games.slice(0, 5)}
                 />
                 <Table
                   data={week.picks}
                   key={`${week.name}2`}
-                  games={week.games.slice(5, week.games.length)}
+                  games={games.slice(5, week.games.length)}
                 />
               </TablesContainer>
             );
@@ -89,17 +120,17 @@ const PickHistory = () => {
                 <Table
                   data={week.picks}
                   key={`${week.name}1`}
-                  games={week.games.slice(0, 5)}
+                  games={games.slice(0, 5)}
                 />
                 <Table
                   data={week.picks}
                   key={`${week.name}2`}
-                  games={week.games.slice(5, 10)}
+                  games={games.slice(5, 10)}
                 />
                 <Table
                   data={week.picks}
                   key={`${week.name}3`}
-                  games={week.games.slice(10, week.games.length)}
+                  games={games.slice(10, week.games.length)}
                 />
               </TablesContainer>
             );

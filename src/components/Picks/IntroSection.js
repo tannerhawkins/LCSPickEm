@@ -54,11 +54,26 @@ const IntroSection = () => {
     });
   }, []);
 
+  const games = week?.games.sort((game1, game2) => {
+    const game1Start = Date.parse(game1.start);
+    const game2Start = Date.parse(game2.start);
+    if (isNaN(game1Start) && isNaN(game2Start)) {
+      return 0;
+    } else if (isNaN(game1Start)) {
+      return 1;
+    } else if (isNaN(game2Start)) {
+      return -1;
+    }
+    if (game1Start < game2Start) {
+      return -1;
+    } else {
+      return 1;
+    }
+  });
+
   useEffect(() => {
 
   }, [week])
-
-  const games = week?.games;
 
   const started = (game) => {
     const start = new Date(
@@ -72,6 +87,11 @@ const IntroSection = () => {
   const selectTeam = (event) => {
     const gid = event.target.parentElement.dataset.gid;
     const team = event.target.parentElement.dataset.team;
+
+    // Can't pick tbd team
+    if (gid == "TBD") {
+      return;
+    }
 
     // cannot pick after start time
     const start = new Date(
@@ -146,7 +166,7 @@ const IntroSection = () => {
       <GamesSection>
         {games && games[0] ? (
           games.map((game) => (
-            <GameContainer key={`${game.team1}vs${game.team2}`}>
+            <GameContainer key={`${game.team1}vs${game.team2}on${game.start}`}>
               <VsContainer>
                 <TeamButton
                   team={game.team1}

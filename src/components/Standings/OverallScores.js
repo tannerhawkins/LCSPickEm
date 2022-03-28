@@ -16,7 +16,22 @@ const OverallScores = () => {
           const gameIds = user.picks.map((pick) => pick.gid);
           return {
             user: user,
-            weeks: weekData.map((week) => {
+            weeks: weekData.sort((week1, week2) => {
+              const week1Start = Date.parse(week1.games[0]?.start);
+              const week2Start = Date.parse(week2.games[0]?.start);
+              if (isNaN(week1Start) && isNaN(week2Start)) {
+                return 0;
+              } else if (isNaN(week1Start)) {
+                return 1;
+              } else if (isNaN(week2Start)) {
+                return -1;
+              }
+              if (week1Start < week2Start) {
+                return -1;
+              } else {
+                return 1;
+              }
+            }).map((week) => {
               return {
                 ...week,
                 pickedGames: week.games.filter((game) =>
@@ -29,6 +44,13 @@ const OverallScores = () => {
                         (pick) => pick.gid == game.gid
                       )[0];
                       if (game.result == pick.pick) {
+                        if (week.playoffs == true) {
+                          if (game.finals == true) {
+                            return 5;
+                          } else {
+                            return 3;
+                          }
+                        }
                         return 1;
                       } else {
                         return 0;
@@ -96,7 +118,6 @@ const StyledTitle = styled.p`
 `;
 
 const TableContainer = styled.div`
-  max-width: 95%;
   display: flex;
   justify-content: center;
   border: 1px solid black;
@@ -126,15 +147,16 @@ const TableContainer = styled.div`
     th,
     td {
       text-align: center;
-      padding: 8px;
+      padding: 6px;
       margin: 0;
       border-bottom: 1px solid black;
       border-right: 1px solid black;
+      font-size: 0.75em;
 
       :last-child {
         border-right: 0;
       }
-      @media (max-width: 1150px) {
+      @media (max-width: 1400px) {
         font-size: 8px;
       }
     }
