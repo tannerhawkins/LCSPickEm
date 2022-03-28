@@ -109,7 +109,7 @@
   justify-content: center;
   &:hover {
     cursor: ${e=>e.started||"TBD"==e.gid?"initial":"pointer"} !important;
-    background-color: ${e=>e.started||e.gid?e.background:n.a.COLOR.PURPLE} !important;
+    background-color: ${e=>e.started||"TBD"==e.gid?e.background:n.a.COLOR.PURPLE} !important;
   }
   width: 300px;
   max-width: 40vw;
@@ -159,17 +159,17 @@
   margin-bottom: 30px;
   width: 80vw;
   font-size: 30px;
-`,M=s.a.div`
+`,B=s.a.div`
   display: flex;
   text-align: center;
   align-items: center;
   justify-content: space-around;
   width: 100%;
-`,W=s.a.p`
+`,M=s.a.p`
   background-color: white;
   padding: 10px;
   border-radius: 8px;
-`,B=s.a.p`
+`,W=s.a.p`
   color: Gray;
   background-color: white;
   padding: 10px;
@@ -200,7 +200,7 @@
   }
 
   z-index: 2;
-`;var _=()=>{Object(c.g)();const e=Object(r.b)(),t=(Object(r.c)(o.b),Object(r.c)(o.e),Object(r.c)(o.d)),i=Object(r.c)(o.f),d=Object(r.c)(o.c);Object(a.useEffect)((()=>{p.b.get().then((t=>{if(e(Object(l.d)(t.docs.map((e=>e.data())))),null===i||void 0===i?void 0:i.name)e(Object(l.c)(t.docs.map((e=>e.data())).filter((e=>e.name==i.name))[0]));else{var a,d,n;const i=t.docs.map((e=>{var t;return null===(t=e.data().games[e.data().games.length-1])||void 0===t?void 0:t.start})).reduce((e=>new Date>e?1:0)),s=i==t.docs.length?i:i+1;e(Object(l.c)((null===(a=t.docs[s])||void 0===a?void 0:a.data())?null===(d=t.docs[s])||void 0===d?void 0:d.data():null===(n=t.docs[0])||void 0===n?void 0:n.data()))}}))}),[]);const n=null===i||void 0===i?void 0:i.games.sort(((e,t)=>{const i=Date.parse(e.start),a=Date.parse(t.start);return isNaN(i)&&isNaN(a)?0:isNaN(i)?1:isNaN(a)||i<a?-1:1}));Object(a.useEffect)((()=>{}),[i]);const s=e=>new Date(i.games.filter((t=>t.gid==e.gid))[0].start)<new Date,m=a=>{var n;const s=a.target.parentElement.dataset.gid,c=a.target.parentElement.dataset.team;if("TBD"==s)return;if(!(new Date(null===(n=i.games.filter((e=>e.gid==s))[0])||void 0===n?void 0:n.start)<new Date))if(d.filter((e=>e.gid==s))[0]){const i=d.map((e=>e.gid==s?e.pick==c?e:{...e,pick:c}:e));p.c.doc(t).update({picks:i}),e(Object(l.b)(i))}else{const i=[...d,{gid:s,pick:c}];p.c.doc(t).update({picks:i}),e(Object(l.b)(i))}},g=e=>{const t=null===d||void 0===d?void 0:d.filter((t=>t.gid==e))[0];return void 0!=t?t.pick:void 0};return Object(x.jsxs)(I,{children:[Object(x.jsxs)(Y,{children:[Object(x.jsx)(F,{children:"My Picks"}),Object(x.jsx)(b,{})]}),Object(x.jsx)(H,{children:n&&n[0]?n.map((e=>Object(x.jsxs)(A,{children:[Object(x.jsxs)(M,{children:[Object(x.jsx)(D,{team:e.team1,started:s(e),picked:g(e.gid),selected:g(e.gid)==e.team1,gid:e.gid,result:e.result,onClick:m}),"vs",Object(x.jsx)(D,{team:e.team2,started:s(e),picked:g(e.gid),selected:g(e.gid)==e.team2,gid:e.gid,result:e.result,onClick:m})]}),Object(x.jsxs)(W,{children:[e.team1," vs ",e.team2]}),Object(x.jsxs)(B,{children:[new Date(e.start).toLocaleDateString("en-us",{month:"short",day:"numeric"})," ",new Date(e.start).toLocaleTimeString([],{hour:"2-digit",minute:"2-digit"})]})]},`${e.team1}vs${e.team2}on${e.start}`))):Object(x.jsx)(S,{children:"No Games This Week!"})}),n&&n[0]?Object(x.jsx)(K,{src:G}):Object(x.jsx)(P,{src:$.a}),Object(x.jsx)(U,{src:R})]})},J=i.p+"static/media/homepage-splash-2.df6b84b2.png";s.a.div`
+`;var _=()=>{Object(c.g)();const e=Object(r.b)(),t=(Object(r.c)(o.b),Object(r.c)(o.e),Object(r.c)(o.d)),i=Object(r.c)(o.f),d=Object(r.c)(o.c);Object(a.useEffect)((()=>{p.b.get().then((t=>{if(e(Object(l.d)(t.docs.map((e=>e.data())))),null===i||void 0===i?void 0:i.name)e(Object(l.c)(t.docs.map((e=>e.data())).filter((e=>e.name==i.name))[0]));else{var a,d,n;const i=t.docs.map((e=>{var t;return null===(t=e.data().games[e.data().games.length-1])||void 0===t?void 0:t.start})).reduce((e=>new Date>e?1:0)),s=i==t.docs.length?i:i+1;e(Object(l.c)((null===(a=t.docs[s])||void 0===a?void 0:a.data())?null===(d=t.docs[s])||void 0===d?void 0:d.data():null===(n=t.docs[0])||void 0===n?void 0:n.data()))}}))}),[]);const n=null===i||void 0===i?void 0:i.games.sort(((e,t)=>{const i=Date.parse(e.start),a=Date.parse(t.start);return isNaN(i)&&isNaN(a)?0:isNaN(i)?1:isNaN(a)||i<a?-1:1}));Object(a.useEffect)((()=>{}),[i]);const s=e=>new Date(i.games.filter((t=>t.gid==e.gid))[0].start)<new Date,m=a=>{var n;const s=a.target.parentElement.dataset.gid,c=a.target.parentElement.dataset.team;if("TBD"==s)return;if(!(new Date(null===(n=i.games.filter((e=>e.gid==s))[0])||void 0===n?void 0:n.start)<new Date))if(d.filter((e=>e.gid==s))[0]){const i=d.map((e=>e.gid==s?e.pick==c?e:{...e,pick:c}:e));p.c.doc(t).update({picks:i}),e(Object(l.b)(i))}else{const i=[...d,{gid:s,pick:c}];p.c.doc(t).update({picks:i}),e(Object(l.b)(i))}},g=e=>{const t=null===d||void 0===d?void 0:d.filter((t=>t.gid==e))[0];return void 0!=t?t.pick:void 0};return Object(x.jsxs)(I,{children:[Object(x.jsxs)(Y,{children:[Object(x.jsx)(F,{children:"My Picks"}),Object(x.jsx)(b,{})]}),Object(x.jsx)(H,{children:n&&n[0]?n.map((e=>Object(x.jsxs)(A,{children:[Object(x.jsxs)(B,{children:[Object(x.jsx)(D,{team:e.team1,started:s(e),picked:g(e.gid),selected:g(e.gid)==e.team1,gid:e.gid,result:e.result,onClick:m}),"vs",Object(x.jsx)(D,{team:e.team2,started:s(e),picked:g(e.gid),selected:g(e.gid)==e.team2,gid:e.gid,result:e.result,onClick:m})]}),Object(x.jsxs)(M,{children:[e.team1," vs ",e.team2]}),Object(x.jsxs)(W,{children:[new Date(e.start).toLocaleDateString("en-us",{month:"short",day:"numeric"})," ",new Date(e.start).toLocaleTimeString([],{hour:"2-digit",minute:"2-digit"})]})]},`${e.team1}vs${e.team2}on${e.start}`))):Object(x.jsx)(S,{children:"No Games This Week!"})}),n&&n[0]?Object(x.jsx)(K,{src:G}):Object(x.jsx)(P,{src:$.a}),Object(x.jsx)(U,{src:R})]})},J=i.p+"static/media/homepage-splash-2.df6b84b2.png";s.a.div`
   position: relative;
 `,s.a.div`
   height: 55vw;
@@ -315,4 +315,4 @@
     margin: 0 auto !important;
   }
 `;var V=i(72);t.default=()=>Object(x.jsxs)(d.a,{description:"Homepage",children:[Object(x.jsx)(V.a,{}),Object(x.jsx)(_,{})]})}}]);
-//# sourceMappingURL=3.d6fb306e.chunk.js.map
+//# sourceMappingURL=3.a84253f4.chunk.js.map
