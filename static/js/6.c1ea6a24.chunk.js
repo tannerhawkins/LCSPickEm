@@ -1,4 +1,4 @@
-(this.webpackJsonpLCSPickEm=this.webpackJsonpLCSPickEm||[]).push([[6],{110:function(e,i,t){"use strict";t.r(i);t(2);var n=t(41),a=t(22),c=t(21),o=t.p+"static/media/homepage-splash.efe78cb4.png",s=t(40),d=t(11),l=t(18),x=t(31),p=t.p+"static/media/hopium.2dcfc988.png",r=t(4);const h=c.a.div`
+(this.webpackJsonpLCSPickEm=this.webpackJsonpLCSPickEm||[]).push([[6],{130:function(e,i,t){"use strict";t.r(i);t(2);var n=t(41),a=t(22),c=t(21),o=t.p+"static/media/homepage-splash.efe78cb4.png",s=t(40),d=t(11),l=t(18),x=t(31),p=t.p+"static/media/hopium.2dcfc988.png",r=t(4);const h=c.a.div`
   display: flex;
   flex-direction: column;
   display: -webkit-box;
@@ -157,4 +157,4 @@
     cursor: pointer;
   }
 `,j=Object(n.a)(c.a)``;i.a=()=>{const e=Object(o.g)(),i=Object(s.c)(d.b);return Object(l.jsxs)(x,{id:"header",children:[Object(l.jsxs)(p,{children:[Object(l.jsxs)(f,{onClick:()=>e.push("/index"),children:[Object(l.jsx)(m,{src:t(86)(`./${a.a.TITLE}-logo${"worlds"==a.a.TITLE?"-white":""}.png`).default}),Object(l.jsxs)(g,{children:["LCS"==a.a.TITLE?"LCS":"Worlds"," Pick'Em"]})]}),i&&Object(l.jsxs)(h,{children:[Object(l.jsx)(b,{onClick:()=>e.push("/home"),children:"My Picks"}),Object(l.jsx)(b,{onClick:()=>e.push("/standings"),children:"Standings"})]})]}),Object(l.jsx)(r,{children:Object(l.jsx)(j,{})})]})}}}]);
-//# sourceMappingURL=6.27f51b47.chunk.js.map
+//# sourceMappingURL=6.c1ea6a24.chunk.js.map

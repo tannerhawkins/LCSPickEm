@@ -1,4 +1,4 @@
-(this.webpackJsonpLCSPickEm=this.webpackJsonpLCSPickEm||[]).push([[4],{106:function(e,t,i){"use strict";i.r(t);var n=i(2),a=i(41),o=i(21),s=i(88),r=i(22),c=i(40),d=i(18),l=i(24),p=i(42),h=i(11),u=i(4);const g=o.a.div`
+(this.webpackJsonpLCSPickEm=this.webpackJsonpLCSPickEm||[]).push([[4],{126:function(e,t,i){"use strict";i.r(t);var n=i(2),a=i(41),o=i(21),s=i(88),r=i(22),c=i(40),d=i(18),l=i(24),p=i(42),h=i(11),u=i(4);const g=o.a.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -106,4 +106,4 @@
     cursor: pointer;
   }
 `;Object(n.a)(o.a)``;t.a=()=>{const e=Object(s.g)();return Object(r.jsx)(c,{id:"header",children:Object(r.jsxs)(p,{onClick:()=>e.push("/home"),children:[Object(r.jsx)(l,{src:i(86)(`./${a.a.TITLE}-logo${"worlds"==a.a.TITLE?"-white":""}.png`).default}),Object(r.jsxs)(d,{children:["LCS"==a.a.TITLE?"LCS":"Worlds"," Pick'Em"]})]})})}}}]);
-//# sourceMappingURL=4.751eaca6.chunk.js.map
+//# sourceMappingURL=4.adec011a.chunk.js.map
