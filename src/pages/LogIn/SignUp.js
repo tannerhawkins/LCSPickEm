@@ -4,7 +4,7 @@ import styled from "styled-components";
 import Header from "../../components/Authentication/Header";
 import { Constants } from "../../data/constants";
 import Button from "../../components/Template/Button";
-import { auth, gameDataDb, userDataDb } from "../../data/firebase";
+import * as firebase from "../../data/firebase";
 import { useDispatch } from "react-redux";
 import {
   setPasswordLength,
@@ -52,30 +52,40 @@ const SignUp = () => {
       return;
     }
     // sends request to create account
-    auth
+    firebase.auth
       .createUserWithEmailAndPassword(data.email, data.password)
       .then(() => {
         // updates account with user display name
-        auth.currentUser
+        firebase.auth.currentUser
           .updateProfile({
             displayName: `${data.username}`,
           })
           .then(() => {
             const accountInfo = {
-              email: auth.currentUser.email,
-              uid: auth.currentUser.uid,
+              email: firebase.auth.currentUser.email,
+              uid: firebase.auth.currentUser.uid,
               displayName: `${data.username}`,
-              picks: [],
-            };
+              picks: {},
+            }
             dispatch(signIn(accountInfo));
             dispatch(setPasswordLength(data.password.length));
-            gameDataDb
-              .get()
+            firebase.getSeasonGameData(Constants.SEASON)
               .then((result) => {
-                dispatch(setWeek(result.docs[1].data()));
+                const weeks = Object.values(result.data());
+                const weekEnds = weeks.map(week => week.games[week.games.length - 1]?.start);
+                const passedWeeks = weekEnds.reduce(weekEnd => {
+                  const now = new Date();
+                  if (now > weekEnd) {
+                    return 1;
+                  } else {
+                    return 0;
+                  }
+                })
+                const nextWeek = passedWeeks == weeks.length ? passedWeeks : passedWeeks + 1;
+                dispatch(setWeek(weeks[nextWeek] ? weeks[nextWeek] : weeks[0]));
               })
               .then(
-                userDataDb.doc(auth.currentUser.uid).set(accountInfo),
+                firebase.userDataDb.doc(firebase.auth.currentUser.uid).set(accountInfo),
                 history.push(`/home`)
               );
           });

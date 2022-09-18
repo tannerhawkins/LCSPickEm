@@ -24,7 +24,15 @@ const db = firebase.firestore();
 var auth = firebase.auth();
 var provider = new firebase.auth.GoogleAuthProvider();
 
+export function getUserPicks(user) {
+  return user.picks;
+}
+
+export function getSeasonGameData(season) {
+  return gameDataDb.doc(season).get();
+}
+
 export const userDataDb = db.collection("userData");
-export const gameDataDb = db.collection("gameData");
+export const gameDataDb = db.collection(`gameData`);
 
 export { auth, provider, app };

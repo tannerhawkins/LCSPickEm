@@ -1,5 +1,7 @@
 export const Constants = {
   IN_CYPRESS_TEST: window.Cypress !== undefined,
+  TITLE: "worlds",
+  SEASON: "Worlds2022",
   COLOR: {
     PURPLE: "#6066FA",
     LIGHT_GREEN: "#A2E1D0",
@@ -23,33 +25,7 @@ export const Constants = {
     creator: undefined,
     steps: [],
   },
-  MOCK_MODULE: {
-    title: "Mock Module",
-    description: "This module is used for testing and development",
-    public: true,
-    creator: "someteacherIDhere",
-    steps: [
-      {
-        type: "text",
-        data: {
-          // Some kind of text data here (title, description, etc.)
-        },
-      },
-      {
-        type: "video",
-        data: {
-          // Some kind of reference to a video stored somewhere in Firebase and maybe a video title
-        },
-      },
-      {
-        type: "quiz",
-        data: {
-          // Some kind of quiz data here (array of questions, title, etc.)
-        },
-      },
-    ],
-  },
-  GAMES: [
+  GAMES_LCSSpring2022: [
     {
       name: "Lock In",
       games: [
@@ -744,6 +720,228 @@ export const Constants = {
           start: "Mar 27 2022 19:30",
           gid: "DIG100T327",
         },
+      ],
+    },
+  ],
+  GAMES_Worlds2022: [
+    {
+      name: "Play-In Group A",
+      games: [
+        {
+          team1: "FNC",
+          team2: "BYG",
+          result: "TBD",
+          start: "TBD",
+          gid: "TBD",
+        },
+        {
+          team1: "FNC",
+          team2: "DFM",
+          result: "TBD",
+          start: "TBD",
+          gid: "TBD",
+        },
+        {
+          team1: "FNC",
+          team2: "EG",
+          result: "TBD",
+          start: "TBD",
+          gid: "TBD",
+        },
+        {
+          team1: "FNC",
+          team2: "LOUD",
+          result: "TBD",
+          start: "TBD",
+          gid: "TBD",
+        },
+        {
+          team1: "FNC",
+          team2: "CHF",
+          result: "TBD",
+          start: "TBD",
+          gid: "TBD",
+        },
+        {
+          team1: "BYG",
+          team2: "DFM",
+          result: "TBD",
+          start: "TBD",
+          gid: "TBD",
+        },
+        {
+          team1: "BYG",
+          team2: "EG",
+          result: "TBD",
+          start: "TBD",
+          gid: "TBD",
+        },
+        {
+          team1: "BYG",
+          team2: "LOUD",
+          result: "TBD",
+          start: "TBD",
+          gid: "TBD",
+        },
+        {
+          team1: "BYG",
+          team2: "CHF",
+          result: "TBD",
+          start: "TBD",
+          gid: "TBD",
+        },
+        {
+          team1: "DFM",
+          team2: "EG",
+          result: "TBD",
+          start: "TBD",
+          gid: "TBD",
+        },
+        {
+          team1: "DFM",
+          team2: "LOUD",
+          result: "TBD",
+          start: "TBD",
+          gid: "TBD",
+        },
+        {
+          team1: "DFM",
+          team2: "CHF",
+          result: "TBD",
+          start: "TBD",
+          gid: "TBD",
+        },
+        {
+          team1: "EG",
+          team2: "LOUD",
+          result: "TBD",
+          start: "TBD",
+          gid: "TBD",
+        },
+        {
+          team1: "EG",
+          team2: "CHF",
+          result: "TBD",
+          start: "TBD",
+          gid: "TBD",
+        },
+        {
+          team1: "LOUD",
+          team2: "CHF",
+          result: "TBD",
+          start: "TBD",
+          gid: "TBD",
+        }
+      ],
+    },
+    {
+      name: "Play-In Group B",
+      games: [
+        {
+          team1: "DRX",
+          team2: "RNG",
+          result: "TBD",
+          start: "TBD",
+          gid: "TBD",
+        },
+        {
+          team1: "DRX",
+          team2: "SGB",
+          result: "TBD",
+          start: "TBD",
+          gid: "TBD",
+        },
+        {
+          team1: "DRX",
+          team2: "MAD",
+          result: "TBD",
+          start: "TBD",
+          gid: "TBD",
+        },
+        {
+          team1: "DRX",
+          team2: "IW",
+          result: "TBD",
+          start: "TBD",
+          gid: "TBD",
+        },
+        {
+          team1: "DRX",
+          team2: "ISG",
+          result: "TBD",
+          start: "TBD",
+          gid: "TBD",
+        },
+        {
+          team1: "RNG",
+          team2: "SGB",
+          result: "TBD",
+          start: "TBD",
+          gid: "TBD",
+        },
+        {
+          team1: "RNG",
+          team2: "MAD",
+          result: "TBD",
+          start: "TBD",
+          gid: "TBD",
+        },
+        {
+          team1: "RNG",
+          team2: "IW",
+          result: "TBD",
+          start: "TBD",
+          gid: "TBD",
+        },
+        {
+          team1: "RNG",
+          team2: "ISG",
+          result: "TBD",
+          start: "TBD",
+          gid: "TBD",
+        },
+        {
+          team1: "SGB",
+          team2: "MAD",
+          result: "TBD",
+          start: "TBD",
+          gid: "TBD",
+        },
+        {
+          team1: "SGB",
+          team2: "IW",
+          result: "TBD",
+          start: "TBD",
+          gid: "TBD",
+        },
+        {
+          team1: "SGB",
+          team2: "ISG",
+          result: "TBD",
+          start: "TBD",
+          gid: "TBD",
+        },
+        {
+          team1: "MAD",
+          team2: "IW",
+          result: "TBD",
+          start: "TBD",
+          gid: "TBD",
+        },
+        {
+          team1: "MAD",
+          team2: "ISG",
+          result: "TBD",
+          start: "TBD",
+          gid: "TBD",
+        },
+        {
+          team1: "IW",
+          team2: "ISG",
+          result: "TBD",
+          start: "TBD",
+          gid: "TBD",
+        }
       ],
     },
   ]

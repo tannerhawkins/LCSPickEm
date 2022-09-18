@@ -4,16 +4,16 @@ import Table from "./Table.js";
 import { useEffect, useState } from "react";
 import * as firebase from "../../data/firebase.js";
 
-const OverallScores = () => {
+const Graphs = () => {
   const [tableData, setTableData] = useState([]);
 
   useEffect(() => {
     firebase.userDataDb.get().then((users) => {
       const userList = users.docs.map((doc) => doc.data());
-      firebase.getSeasonGameData(Constants.SEASON).then((weeks) => {
-        const weekData = Object.values(weeks.data());
+      firebase.gameDataDb.get().then((weeks) => {
+        const weekData = weeks.docs.map((doc) => doc.data());
         const userData = userList.map((user) => {
-          const gameIds = user.picks[Constants.SEASON]?.map((pick) => pick.gid);
+          const gameIds = firebase.getUserPicks().map((pick) => pick.gid);
           return {
             user: user,
             weeks: weekData.sort((week1, week2) => {
@@ -35,12 +35,12 @@ const OverallScores = () => {
               return {
                 ...week,
                 pickedGames: week.games.filter((game) =>
-                  gameIds?.includes(game.gid)
+                  gameIds.includes(game.gid)
                 ),
                 score: week.games
                   .map((game) => {
-                    if (gameIds?.includes(game.gid)) {
-                      const pick = user.picks[Constants.SEASON]?.filter(
+                    if (gameIds.includes(game.gid)) {
+                      const pick = user[`picks_${Constants.SEASON}`].filter(
                         (pick) => pick.gid == game.gid
                       )[0];
                       if (game.result == pick.pick) {
@@ -215,4 +215,4 @@ const TopContainer = styled.div`
   }
 `;
 
-export default OverallScores;
+export default Graphs;

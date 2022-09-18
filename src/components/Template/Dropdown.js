@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectWeek, selectWeeks } from "../../app/account/selectors";
 import styled from "styled-components";
 import { Constants } from "../../data/constants";
-import { gameDataDb } from "../../data/firebase";
+import * as firebase from "../../data/firebase";
 import { setWeek, setWeeks } from "../../app/account/actions";
 
 export const Dropdown = (props) => {
@@ -12,24 +12,20 @@ export const Dropdown = (props) => {
   const week = useSelector(selectWeek);
 
   useEffect(() => {
-    gameDataDb.get().then((result) => {
-      dispatch(setWeeks(result.docs.map((doc) => doc.data())));
+    firebase.getSeasonGameData(Constants.SEASON).then((weeks) => {
+      dispatch(setWeeks(Object.values(weeks.data())));
     });
   }, []);
 
   useEffect(() => {}, [week])
 
   const chooseWeek = (event) => {
-    gameDataDb
-      .doc(
-        Array.from(event.target.children)
-          .filter((item) => item.selected)
-          .map((item) => item.dataset.name)[0]
-      )
-      .get()
-      .then((result) => {
-        dispatch(setWeek(result.data()));
-      });
+    firebase.getSeasonGameData(Constants.SEASON).then(result => {
+      const weekData = Object.values(result.data());
+      dispatch(setWeek(weekData.filter((weekItem) => Array.from(event.target.children)
+      .filter((item) => item.selected)
+      .map((item) => item.dataset.name)[0] == weekItem.name)[0]));
+    })
   };
 
   return weeks && week ? (

@@ -1,41 +1,11 @@
 import styled from "styled-components";
 import { Constants } from "../../data/constants";
-import HT from "../../images/Logos/100T.png";
-import DIG from "../../images/Logos/DIG.png";
-import TL from "../../images/Logos/TL.png";
-import C9 from "../../images/Logos/C9.png";
-import EG from "../../images/Logos/EG.png";
-import TSM from "../../images/Logos/TSM.png";
-import CLG from "../../images/Logos/CLG.png";
-import GG from "../../images/Logos/GG.png";
-import FLY from "../../images/Logos/FLY.png";
-import IMT from "../../images/Logos/IMT.png";
-import LCS from "../../images/lcs-logo.png";
 
 const teamLogo = (team) => {
-  switch (team) {
-    case "100T":
-      return HT;
-    case "DIG":
-      return DIG;
-    case "TL":
-      return TL;
-    case "C9":
-      return C9;
-    case "EG":
-      return EG;
-    case "TSM":
-      return TSM;
-    case "CLG":
-      return CLG;
-    case "GG":
-      return GG;
-    case "FLY":
-      return FLY;
-    case "IMT":
-      return IMT;
-    default:
-      return LCS;
+  try {
+    return require(`../../images/Logos/${team}.png`);
+  } catch (error) {
+    return require(`../../images/Logos/${Constants.TITLE}-logo.png`)
   }
 };
 
@@ -63,7 +33,7 @@ const TeamButton = (props) => {
         backgroundColor: background,
       }}
     >
-      <StyledLogo src={teamLogo(props.team)} />
+      <StyledLogo src={teamLogo(props.team).default} />
     </StyledTeam>
   );
 };

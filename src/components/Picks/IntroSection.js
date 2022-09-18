@@ -15,7 +15,7 @@ import { useEffect, useState } from "react";
 import LcsKings from "../../images/lcskings.png";
 import HomepageSplash from "../../images/purpleSplash.png";
 import Sadge from "../../images/sadge.png";
-import { auth, gameDataDb, userDataDb } from "../../data/firebase.js";
+import * as firebase from "../../data/firebase.js";
 import { setPicks, setWeek, setWeeks } from "../../app/account/actions.js";
 
 const IntroSection = () => {
@@ -28,18 +28,18 @@ const IntroSection = () => {
   const picks = useSelector(selectPicks);
 
   useEffect(() => {
-    gameDataDb.get().then((result) => {
-      dispatch(setWeeks(result.docs.map((doc) => doc.data())));
+    firebase.getSeasonGameData(Constants.SEASON).then((result) => {
+      const weeks = Object.values(result.data());
+      dispatch(setWeeks(weeks));
       if (week?.name) {
         dispatch(
           setWeek(
-            result.docs
-              .map((doc) => doc.data())
+            weeks
               .filter((newWeek) => newWeek.name == week.name)[0]
           )
         );
       } else {
-        const weekEnds = result.docs.map(doc => doc.data().games[doc.data().games.length - 1]?.start);
+        const weekEnds = weeks.map(week => week.games[week.games.length - 1]?.start);
         const passedWeeks = weekEnds.reduce(weekEnd => {
           const now = new Date();
           if (now > weekEnd) {
@@ -48,8 +48,8 @@ const IntroSection = () => {
             return 0;
           }
         })
-        const nextWeek = passedWeeks == result.docs.length ? passedWeeks : passedWeeks + 1;
-        dispatch(setWeek(result.docs[nextWeek]?.data() ? result.docs[nextWeek]?.data() : result.docs[0]?.data()));
+        const nextWeek = passedWeeks == weeks.length ? passedWeeks : passedWeeks + 1;
+        dispatch(setWeek(weeks[nextWeek] ? weeks[nextWeek]: weeks[0]));
       }
     });
   }, []);
@@ -75,10 +75,9 @@ const IntroSection = () => {
 
   }, [week])
 
-  const started = (game) => {
-    const start = new Date(
-      week.games.filter((games) => games.gid == game.gid)[0].start
-    );
+  const started = (gid) => {
+    const startString = week.games.filter((games) => games.gid == gid)[0].start;
+    const start = new Date(startString);
     const now = new Date();
 
     return start < now;
@@ -94,17 +93,12 @@ const IntroSection = () => {
     }
 
     // cannot pick after start time
-    const start = new Date(
-      week.games.filter((game) => game.gid == gid)[0]?.start
-    );
-    const now = new Date();
-
-    if (start < now) {
+    if (started(gid)) {
       return;
     }
 
-    if (picks.filter((pick) => pick.gid == gid)[0]) {
-      const newPicks = picks.map((pick) => {
+    if (picks[Constants.SEASON]?.filter((pick) => pick.gid == gid)[0]) {
+      const newPicks = picks[Constants.SEASON]?.map((pick) => {
         if (pick.gid == gid) {
           if (pick.pick == team) {
             return pick;
@@ -118,27 +112,30 @@ const IntroSection = () => {
           return pick;
         }
       });
-      userDataDb.doc(uid).update({
-        picks: newPicks,
+      const updatedPicks = picks;
+      updatedPicks[Constants.SEASON] = newPicks;
+      firebase.userDataDb.doc(uid).update({
+        picks: updatedPicks,
       });
-      dispatch(setPicks(newPicks));
+      dispatch(setPicks(updatedPicks));
     } else {
-      const newPicks = [
-        ...picks,
-        {
+      const updatedPicks = picks;
+      updatedPicks[Constants.SEASON] = picks[Constants.SEASON] ? [...picks[Constants.SEASON], {
           gid: gid,
           pick: team,
-        },
-      ];
-      userDataDb.doc(uid).update({
-        picks: newPicks,
+        }] : [{
+          gid: gid,
+          pick: team,
+        }];
+      firebase.userDataDb.doc(uid).update({
+        picks: updatedPicks,
       });
-      dispatch(setPicks(newPicks));
+      dispatch(setPicks(updatedPicks));
     }
   };
 
   const pickedTeam = (gid) => {
-    const game = picks?.filter((pick) => {
+    const game = picks[Constants.SEASON]?.filter((pick) => {
       return pick.gid == gid;
     })[0];
 
@@ -150,8 +147,8 @@ const IntroSection = () => {
   };
 
   const updateGames = () => {
-    Constants.GAMES.forEach((week) => {
-      gameDataDb.doc(week.name).update({
+    Constants.GAMES_Worlds2022.forEach((week) => {
+      firebase.gameDataDb.doc(week.name).update({
         games: week.games,
       });
     });
@@ -170,7 +167,7 @@ const IntroSection = () => {
               <VsContainer>
                 <TeamButton
                   team={game.team1}
-                  started={started(game)}
+                  started={started(game.gid)}
                   picked={pickedTeam(game.gid)}
                   selected={pickedTeam(game.gid) == game.team1}
                   gid={game.gid}
@@ -180,7 +177,7 @@ const IntroSection = () => {
                 vs
                 <TeamButton
                   team={game.team2}
-                  started={started(game)}
+                  started={started(game.gid)}
                   picked={pickedTeam(game.gid)}
                   selected={pickedTeam(game.gid) == game.team2}
                   gid={game.gid}
@@ -191,6 +188,7 @@ const IntroSection = () => {
               <GameTitle>
                 {game.team1} vs {game.team2}
               </GameTitle>
+              {game.start != "TBD" ? (
               <GameDate>
                 {new Date(game.start).toLocaleDateString("en-us", {
                   month: "short",
@@ -200,7 +198,7 @@ const IntroSection = () => {
                   hour: "2-digit",
                   minute: "2-digit",
                 })}
-              </GameDate>
+              </GameDate>) : ""}
             </GameContainer>
           ))
         ) : (
@@ -214,7 +212,7 @@ const IntroSection = () => {
       )}
       <StyledBackdrop src={HomepageSplash} />
       {
-      // <button style={{zIndex: 10}}onClick={updateGames}>Update Games</button>
+       // <button style={{zIndex: 10}}onClick={updateGames}>Update Games</button>
       }
     </SectionContainer>
   );

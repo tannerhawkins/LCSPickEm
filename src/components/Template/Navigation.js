@@ -1,8 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import { Constants } from "../../data/constants";
-import StyledButton from "./Button";
-import Logo from "../../images/lcs-logo.png";
 import SignInOutButton from "../Authentication/SignInOutButton";
 import { useHistory } from "react-router";
 import { useSelector } from "react-redux";
@@ -16,8 +14,8 @@ const Navigation = () => {
     <StyledHeader id="header">
       <SideContainer>
         <StyledLogoContainer onClick={() => history.push(`/index`)}>
-          <StyledLogo src={Logo} />
-          <HeaderName>LCS Pick'Em</HeaderName>
+          <StyledLogo src={require(`../../images/Logos/${Constants.TITLE}-logo${Constants.TITLE == "worlds" ? "-white": ""}.png`).default} />
+          <HeaderName>{Constants.TITLE == "LCS" ? "LCS" : "Worlds"} Pick'Em</HeaderName>
         </StyledLogoContainer>
         {isSignedIn && (
           <LinksContainer>

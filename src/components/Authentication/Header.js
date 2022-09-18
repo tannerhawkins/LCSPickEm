@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import { Constants } from "../../data/constants";
-import Logo from "../../images/lcs-logo.png";
 import SignInOutButton from "../Authentication/SignInOutButton";
 import { useHistory } from "react-router";
 
@@ -11,8 +10,8 @@ const Navigation = () => {
   return (
     <StyledHeader id="header">
       <StyledLogoContainer onClick={() => history.push(`/home`)}>
-        <StyledLogo src={Logo} />
-        <HeaderName>LCS Pick'Em</HeaderName>
+      <StyledLogo src={require(`../../images/Logos/${Constants.TITLE}-logo${Constants.TITLE == "worlds" ? "-white": ""}.png`).default} />
+        <HeaderName>{Constants.TITLE == "LCS" ? "LCS" : "Worlds"} Pick'Em</HeaderName>
       </StyledLogoContainer>
     </StyledHeader>
   );

@@ -27,7 +27,7 @@ const Table = ({ data, games }) => {
       columns,
       data,
     });
-
+    
   // Render the UI for your table
   return (
     <table {...getTableProps()}>

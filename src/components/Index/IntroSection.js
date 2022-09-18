@@ -8,7 +8,7 @@ import {
   selectAccountType,
   selectIsSignedIn,
 } from "../../app/account/selectors.js";
-import sadge from "../../images/sadge.png";
+import hopium from "../../images/hopium.png";
 
 const IntroSection = () => {
   const history = useHistory();
@@ -18,8 +18,8 @@ const IntroSection = () => {
   return (
     <SectionContainer>
       <TextContainer>
-        <StyledHeaderText>LCS PICK'EM!</StyledHeaderText>
-        <StyledSubText>rip LS <Sadge src={sadge} /></StyledSubText>
+        <StyledHeaderText>{Constants.TITLE.charAt(0).toUpperCase() + Constants.TITLE.slice(1)} PICK'EM!</StyledHeaderText>
+        <StyledSubText><Hopium src={hopium} /></StyledSubText>
       </TextContainer>
       <ButtonContainer>
         <StyledButtonOne
@@ -57,8 +57,8 @@ const StyledImage = styled.img`
   max-width: 600px;
 `;
 
-const Sadge = styled.img`
-  height: 40px;
+const Hopium = styled.img`
+  height: 90px;
   padding-left: 10px;
 `
 

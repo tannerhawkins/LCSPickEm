@@ -5,7 +5,7 @@ import Header from "../../components/Authentication/Header";
 import { Constants } from "../../data/constants";
 import Button from "../../components/Template/Button";
 import { useDispatch } from "react-redux";
-import { auth, gameDataDb, userDataDb } from "../../data/firebase";
+import * as firebase from "../../data/firebase";
 import {
   setPasswordLength,
   setWeek,
@@ -42,19 +42,20 @@ const SignIn = () => {
       return;
     }
 
-    auth
+    firebase.auth
       .signInWithEmailAndPassword(data.email, data.password)
       .then(() => {
-        userDataDb
-          .doc(auth.currentUser.uid)
+        firebase.userDataDb
+          .doc(firebase.auth.currentUser.uid)
           .get()
           .then((doc) => {
             dispatch(signIn(doc.data()));
             dispatch(setPasswordLength(data.password.length));
-            gameDataDb
-              .get()
+            firebase
+              .getSeasonGameData(Constants.SEASON)
               .then((result) => {
-                const weekEnds = result.docs.map(doc => doc.data().games[doc.data().games.length - 1]?.start);
+                const weeks = Object.values(result.data());
+                const weekEnds = weeks.map(week => week.games[week.games.length - 1]?.start);
                 const passedWeeks = weekEnds.reduce(weekEnd => {
                   const now = new Date();
                   if (now > weekEnd) {
@@ -63,8 +64,8 @@ const SignIn = () => {
                     return 0;
                   }
                 })
-                const nextWeek = passedWeeks == result.docs.length ? passedWeeks : passedWeeks + 1;
-                dispatch(setWeek(result.docs[nextWeek]?.data() ? result.docs[nextWeek]?.data() : result.docs[0]?.data()));
+                const nextWeek = passedWeeks == weeks.length ? passedWeeks : passedWeeks + 1;
+                dispatch(setWeek(weeks[nextWeek] ? weeks[nextWeek] : weeks[0]));
               })
               .then(history.push(`/home`));
           });

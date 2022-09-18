@@ -2,17 +2,16 @@ import { Constants } from "../../data/constants.js";
 import styled from "styled-components";
 import Table from "./PickTable.js";
 import { useEffect, useState } from "react";
-import { gameDataDb, userDataDb } from "../../data/firebase.js";
+import * as firebase from "../../data/firebase.js";
 
 const PickHistory = () => {
   const [weeksData, setWeeksData] = useState([]);
-  const [userPicks, setUserPicks] = useState([]);
 
   useEffect(() => {
-    userDataDb.get().then((users) => {
+    firebase.userDataDb.get().then((users) => {
       const userList = users.docs.map((doc) => doc.data());
-      gameDataDb.get().then((weeks) => {
-        const weekData = weeks.docs.map((doc) => doc.data());
+      firebase.getSeasonGameData(Constants.SEASON).then((weeks) => {
+        const weekData = Object.values(weeks.data());
         weekData.forEach((week) => {
           week["games"] = week.games
             ? week.games.filter((game) => {
@@ -27,8 +26,8 @@ const PickHistory = () => {
             : [];
           week["picks"] = userList.map((user) => {
             const picks = {};
-            user.picks
-              .filter((pick) =>
+            user.picks[Constants.SEASON]
+              ?.filter((pick) =>
                 week.games.map((game) => game.gid).includes(pick.gid)
               )
               .forEach((pick) => {
