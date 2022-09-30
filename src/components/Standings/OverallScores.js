@@ -76,6 +76,8 @@ const OverallScores = () => {
             ?.map((week) => week.score)
             .reduce((prev, curr) => prev + curr);
           return toReturn;
+        }).filter((user) => {
+          return user.total > 0
         });
         setTableData(tableData);
       });
