@@ -24,7 +24,9 @@ const PickHistory = () => {
                 }
               })
             : [];
-          week["picks"] = userList.map((user) => {
+          week["picks"] = userList.filter((user) => {
+            return user.picks[Constants.SEASON] != null
+          }).map((user) => {
             const picks = {};
             user.picks[Constants.SEASON]
               ?.filter((pick) =>
